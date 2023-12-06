@@ -1,0 +1,353 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.8": {
+      "FontAwesome.Sharp/6.1.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "System.Windows.Forms",
+          "System.Xaml",
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net48/FontAwesome.Sharp.dll": {}
+        },
+        "runtime": {
+          "lib/net48/FontAwesome.Sharp.dll": {}
+        }
+      },
+      "CommonVariable/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/CommonVariable.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CommonVariable.dll": {}
+        }
+      },
+      "OperationLog/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "CommonVariable": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/OperationLog.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OperationLog.dll": {}
+        }
+      },
+      "UILanguage/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/UILanguage.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UILanguage.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.8/win": {
+      "FontAwesome.Sharp/6.1.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "System.Windows.Forms",
+          "System.Xaml",
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net48/FontAwesome.Sharp.dll": {}
+        },
+        "runtime": {
+          "lib/net48/FontAwesome.Sharp.dll": {}
+        }
+      },
+      "CommonVariable/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/CommonVariable.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CommonVariable.dll": {}
+        }
+      },
+      "OperationLog/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "CommonVariable": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/OperationLog.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OperationLog.dll": {}
+        }
+      },
+      "UILanguage/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/UILanguage.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UILanguage.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.8/win-arm64": {
+      "FontAwesome.Sharp/6.1.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "System.Windows.Forms",
+          "System.Xaml",
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net48/FontAwesome.Sharp.dll": {}
+        },
+        "runtime": {
+          "lib/net48/FontAwesome.Sharp.dll": {}
+        }
+      },
+      "CommonVariable/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/CommonVariable.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CommonVariable.dll": {}
+        }
+      },
+      "OperationLog/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "CommonVariable": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/OperationLog.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OperationLog.dll": {}
+        }
+      },
+      "UILanguage/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/UILanguage.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UILanguage.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.8/win-x64": {
+      "FontAwesome.Sharp/6.1.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "System.Windows.Forms",
+          "System.Xaml",
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net48/FontAwesome.Sharp.dll": {}
+        },
+        "runtime": {
+          "lib/net48/FontAwesome.Sharp.dll": {}
+        }
+      },
+      "CommonVariable/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/CommonVariable.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CommonVariable.dll": {}
+        }
+      },
+      "OperationLog/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "CommonVariable": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/OperationLog.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OperationLog.dll": {}
+        }
+      },
+      "UILanguage/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/UILanguage.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UILanguage.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.8/win-x86": {
+      "FontAwesome.Sharp/6.1.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "System.Windows.Forms",
+          "System.Xaml",
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net48/FontAwesome.Sharp.dll": {}
+        },
+        "runtime": {
+          "lib/net48/FontAwesome.Sharp.dll": {}
+        }
+      },
+      "CommonVariable/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/CommonVariable.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CommonVariable.dll": {}
+        }
+      },
+      "OperationLog/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "CommonVariable": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/OperationLog.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OperationLog.dll": {}
+        }
+      },
+      "UILanguage/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/UILanguage.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UILanguage.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FontAwesome.Sharp/6.1.1": {
+      "sha512": "p6dnSMcKQg790vGSJgvFk6S8gXQnEcCugfaJ21WFxZz9h+9KyxL+sX6kbGv8p4iVoX/e5BAMnTV4QJFJvx8QxQ==",
+      "type": "package",
+      "path": "fontawesome.sharp/6.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fontawesome.sharp.6.1.1.nupkg.sha512",
+        "fontawesome.sharp.nuspec",
+        "lib/net40/FontAwesome.Sharp.dll",
+        "lib/net45/FontAwesome.Sharp.dll",
+        "lib/net472/FontAwesome.Sharp.dll",
+        "lib/net48/FontAwesome.Sharp.dll",
+        "lib/net5.0-windows7.0/FontAwesome.Sharp.dll",
+        "lib/net6.0-windows7.0/FontAwesome.Sharp.dll",
+        "lib/netcoreapp3.1/FontAwesome.Sharp.dll"
+      ]
+    },
+    "CommonVariable/1.0.0": {
+      "type": "project",
+      "path": "../CommonVariable/CommonVariable.csproj",
+      "msbuildProject": "../CommonVariable/CommonVariable.csproj"
+    },
+    "OperationLog/1.0.0": {
+      "type": "project",
+      "path": "../OperationLog/OperationLog.csproj",
+      "msbuildProject": "../OperationLog/OperationLog.csproj"
+    },
+    "UILanguage/1.0.0": {
+      "type": "project",
+      "path": "../UILanguage/UILanguage.csproj",
+      "msbuildProject": "../UILanguage/UILanguage.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.8": [
+      "CommonVariable >= 1.0.0",
+      "FontAwesome.Sharp >= 6.1.1",
+      "OperationLog >= 1.0.0",
+      "UILanguage >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\minhchau.nguyen\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\BarcodeVerificationSystem\\BarcodeVerificationSystem.csproj",
+      "projectName": "BarcodeVerificationSystem",
+      "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\BarcodeVerificationSystem\\BarcodeVerificationSystem.csproj",
+      "packagesPath": "C:\\Users\\minhchau.nguyen\\.nuget\\packages\\",
+      "outputPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\BarcodeVerificationSystem\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "configFilePaths": [
+        "C:\\Users\\minhchau.nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net48"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net48": {
+          "projectReferences": {
+            "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\CommonVariable\\CommonVariable.csproj": {
+              "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\CommonVariable\\CommonVariable.csproj"
+            },
+            "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\OperationLog\\OperationLog.csproj": {
+              "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\OperationLog\\OperationLog.csproj"
+            },
+            "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\UILanguage\\UILanguage.csproj": {
+              "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\UILanguage\\UILanguage.csproj"
+            }
+          }
+        }
+      }
+    },
+    "frameworks": {
+      "net48": {
+        "dependencies": {
+          "FontAwesome.Sharp": {
+            "target": "Package",
+            "version": "[6.1.1, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-arm64": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}

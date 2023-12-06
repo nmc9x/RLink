@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BarcodeVerificationSystem.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SoftwareVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1.0.6</Value>
+    </Setting>
+    <Setting Name="SoftwareModel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BarcodeVerificationSystem</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

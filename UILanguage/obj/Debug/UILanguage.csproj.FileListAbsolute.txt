@@ -1,0 +1,157 @@
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\bin\Debug\vi-VN\UILanguage.resources.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.resources
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.vi-VN.resources
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.GenerateResource.cache
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\vi-VN\UILanguage.resources.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.pdb
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.pdb
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\UILanguage\bin\Debug\vi-VN\UILanguage.resources.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csprojAssemblyReference.cache
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.resources
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.vi-VN.resources
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.GenerateResource.cache
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\UILanguage\obj\Debug\vi-VN\UILanguage.resources.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\UILanguage\bin\Debug\vi\UILanguage.resources.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csprojAssemblyReference.cache
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.resources
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.vi.resources
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.GenerateResource.cache
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\UILanguage\obj\Debug\vi\UILanguage.resources.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\bin\Debug\vi\UILanguage.resources.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.vi.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.GenerateResource.cache
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.CoreCompileInputs.cache
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\vi\UILanguage.resources.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.pdb
+D:\RYNAN Tech\BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.pdb
+D:\RYNAN Tech\BarcodeVerificationSystem\UILanguage\bin\Debug\vi\UILanguage.resources.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csprojAssemblyReference.cache
+D:\RYNAN Tech\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.vi.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.GenerateResource.cache
+D:\RYNAN Tech\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.CoreCompileInputs.cache
+D:\RYNAN Tech\BarcodeVerificationSystem\UILanguage\obj\Debug\vi\UILanguage.resources.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.pdb
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.pdb
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\UILanguage\bin\Debug\vi\UILanguage.resources.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.vi.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.GenerateResource.cache
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.CoreCompileInputs.cache
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\UILanguage\obj\Debug\vi\UILanguage.resources.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.pdb
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csprojAssemblyReference.cache
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csprojAssemblyReference.cache
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.pdb
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\UILanguage\bin\Debug\vi\UILanguage.resources.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.vi.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.GenerateResource.cache
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\UILanguage\obj\Debug\vi\UILanguage.resources.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\bin\Debug\vi\UILanguage.resources.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.vi.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.GenerateResource.cache
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.CoreCompileInputs.cache
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\vi\UILanguage.resources.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csprojAssemblyReference.cache
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\bin\Debug\UILanguage.pdb
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\bin\Debug\vi\UILanguage.resources.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.Lang.vi.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.GenerateResource.cache
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.csproj.CoreCompileInputs.cache
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\vi\UILanguage.resources.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\UILanguage\obj\Debug\UILanguage.pdb
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\UILanguage\bin\Debug\UILanguage.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\UILanguage\bin\Debug\UILanguage.pdb
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\UILanguage\bin\Debug\vi\UILanguage.resources.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\UILanguage\obj\Debug\UILanguage.Lang.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\UILanguage\obj\Debug\UILanguage.Lang.vi.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\UILanguage\obj\Debug\UILanguage.csproj.GenerateResource.cache
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\UILanguage\obj\Debug\UILanguage.csproj.CoreCompileInputs.cache
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\UILanguage\obj\Debug\vi\UILanguage.resources.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\UILanguage\obj\Debug\UILanguage.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\UILanguage\obj\Debug\UILanguage.pdb
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\UILanguage\bin\Debug\UILanguage.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\UILanguage\bin\Debug\UILanguage.pdb
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\UILanguage\bin\Debug\vi\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\UILanguage\obj\Debug\UILanguage.Lang.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\UILanguage\obj\Debug\UILanguage.Lang.vi.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\UILanguage\obj\Debug\UILanguage.csproj.GenerateResource.cache
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\UILanguage\obj\Debug\UILanguage.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\UILanguage\obj\Debug\vi\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\UILanguage\obj\Debug\UILanguage.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\UILanguage\obj\Debug\UILanguage.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\UILanguage\bin\Debug\UILanguage.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\UILanguage\bin\Debug\UILanguage.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\UILanguage\bin\Debug\vi\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\UILanguage\obj\Debug\UILanguage.Lang.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\UILanguage\obj\Debug\UILanguage.Lang.vi.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\UILanguage\obj\Debug\UILanguage.csproj.GenerateResource.cache
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\UILanguage\obj\Debug\UILanguage.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\UILanguage\obj\Debug\vi\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\UILanguage\obj\Debug\UILanguage.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\UILanguage\obj\Debug\UILanguage.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\UILanguage\bin\Debug\UILanguage.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\UILanguage\bin\Debug\UILanguage.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\UILanguage\bin\Debug\vi\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\UILanguage\obj\Debug\UILanguage.Lang.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\UILanguage\obj\Debug\UILanguage.Lang.vi.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\UILanguage\obj\Debug\UILanguage.csproj.GenerateResource.cache
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\UILanguage\obj\Debug\UILanguage.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\UILanguage\obj\Debug\vi\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\UILanguage\obj\Debug\UILanguage.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\UILanguage\obj\Debug\UILanguage.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\UILanguage\obj\Debug\UILanguage.csprojAssemblyReference.cache
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\UILanguage\bin\Debug\UILanguage.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\UILanguage\bin\Debug\UILanguage.pdb
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\UILanguage\bin\Debug\vi\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\UILanguage\obj\Debug\UILanguage.Lang.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\UILanguage\obj\Debug\UILanguage.Lang.vi.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\UILanguage\obj\Debug\UILanguage.csproj.GenerateResource.cache
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\UILanguage\obj\Debug\UILanguage.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\UILanguage\obj\Debug\vi\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\UILanguage\obj\Debug\UILanguage.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\UILanguage\obj\Debug\UILanguage.pdb
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\UILanguage\bin\Debug\UILanguage.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\UILanguage\bin\Debug\UILanguage.pdb
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\UILanguage\bin\Debug\vi\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\UILanguage\obj\Debug\UILanguage.Lang.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\UILanguage\obj\Debug\UILanguage.Lang.vi.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\UILanguage\obj\Debug\UILanguage.csproj.GenerateResource.cache
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\UILanguage\obj\Debug\UILanguage.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\UILanguage\obj\Debug\vi\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\UILanguage\obj\Debug\UILanguage.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\UILanguage\obj\Debug\UILanguage.pdb

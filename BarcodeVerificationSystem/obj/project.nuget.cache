@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ydheTw+0DR5of1kCLSFi6xTy7948MkkRI6wN8qDtVROQrYQEWGVqKJ/n8LYEm6JvQFJWah/ZnXdc3tYcAbzcag==",
+  "success": true,
+  "projectFilePath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\BarcodeVerificationSystem\\BarcodeVerificationSystem.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\minhchau.nguyen\\.nuget\\packages\\fontawesome.sharp\\6.1.1\\fontawesome.sharp.6.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}

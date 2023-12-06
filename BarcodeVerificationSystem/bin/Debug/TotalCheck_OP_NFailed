@@ -1,0 +1,12 @@
+﻿Index,PBarData - Field1,MFD - Field2,EXP - Field3,Address - Field4,Status,VerifyDate
+1,BarcodeVerification_K100E00C1,1,10,TEST,Waiting,
+2,BarcodeVerification_K100E01C1,2,9,TEST,Waiting,
+3,BarcodeVerification_K100E02C1,3,8,TEST,Waiting,
+4,BarcodeVerification_K100E03C1,4,7,TEST,Waiting,
+5,BarcodeVerification_K100E04C1,5,6,TEST,Waiting,
+6,BarcodeVerification_K100E05C1,6,5,TEST,Waiting,
+7,BarcodeVerification_K100E06C1,7,4,TEST,Waiting,
+8,BarcodeVerification_K100E07C1,8,3,TEST,Waiting,
+9,BarcodeVerification_K100E08C1,9,2,TEST,Waiting,
+10,BarcodeVerification_K100E09C1,10,1,TEST,Waiting,
+11,BarcodeVerification_K100E00C1,1,10,TEST,Duplicate,

@@ -1,0 +1,879 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PleaseStopTheSystemBeforeClosingTheApplication" xml:space="preserve">
+    <value>Vui lòng dừng hệ thống  trước khi đóng ứng dụng?</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Cảnh báo</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Thoát</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Đăng xuất</value>
+  </data>
+  <data name="LogoutSuccessfully" xml:space="preserve">
+    <value>Đăng xuất thành công</value>
+  </data>
+  <data name="DoYouWantToContinue" xml:space="preserve">
+    <value>Bạn có muốn tiếp tục không?</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
+  <data name="SwitchUser" xml:space="preserve">
+    <value>Chuyển người dùng</value>
+  </data>
+  <data name="SomePrintParametersAreMissing" xml:space="preserve">
+    <value>Một số thông số in bị thiếu! Vui lòng kiểm tra lại!</value>
+  </data>
+  <data name="SensorController" xml:space="preserve">
+    <value>Bộ điều khiển cảm biến</value>
+  </data>
+  <data name="Printer" xml:space="preserve">
+    <value>Máy in</value>
+  </data>
+  <data name="Camera" xml:space="preserve">
+    <value>Máy ảnh</value>
+  </data>
+  <data name="PleaseCheckTheDatabaseConnection" xml:space="preserve">
+    <value>Vui lòng kiểm tra kết nối cơ sở dữ liệu!</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Thông tin</value>
+  </data>
+  <data name="PleaseCheckTheTemplate" xml:space="preserve">
+    <value>Vui lòng kiểm tra mẫu!</value>
+  </data>
+  <data name="PleaseCheckTheCameraConnection" xml:space="preserve">
+    <value>Vui lòng kiểm tra kết nối máy ảnh!</value>
+  </data>
+  <data name="SomeParametersAreMissing" xml:space="preserve">
+    <value>Một số thông số bị thiếu! Vui lòng kiểm tra lại!</value>
+  </data>
+  <data name="PleaseCheckThePrinterConnection" xml:space="preserve">
+    <value>Vui lòng kiểm tra kết nối máy in!</value>
+  </data>
+  <data name="ThereMustBeAtLeastOneActionSelected" xml:space="preserve">
+    <value>Phải có ít nhất một hành động được chọn!</value>
+  </data>
+  <data name="SomeActivationParametersAreMissing" xml:space="preserve">
+    <value>Một số thông số kích hoạt bị thiếu!  Vui lòng kiểm tra lại!</value>
+  </data>
+  <data name="DoYouWantToStopTheSystem" xml:space="preserve">
+    <value>Bạn có muốn dừng hệ thống?</value>
+  </data>
+  <data name="UserStoppedTheSystem" xml:space="preserve">
+    <value>Người dùng đã dừng hệ thống</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Mật khẩu không hợp lệ</value>
+  </data>
+  <data name="PasswordAtLeast6Character" xml:space="preserve">
+    <value>Mật khẩu ít nhất 6 ký tự</value>
+  </data>
+  <data name="PasswordNotMatch" xml:space="preserve">
+    <value>Mật khẩu không hợp lệ</value>
+  </data>
+  <data name="UsernameOrPasswordCannotBeLeftBlank" xml:space="preserve">
+    <value>Tên người dùng hoặc mật khẩu không được để trống!</value>
+  </data>
+  <data name="UsernameOrPasswordIsIncorrect" xml:space="preserve">
+    <value>Tên đăng nhập hoặc tài khoản của bạn không chính xác!</value>
+  </data>
+  <data name="TotalChecked" xml:space="preserve">
+    <value>Tổng kiểm tra</value>
+  </data>
+  <data name="ResultFile" xml:space="preserve">
+    <value>Tệp kết quả</value>
+  </data>
+  <data name="PassedUpperCase" xml:space="preserve">
+    <value>Đạt</value>
+  </data>
+  <data name="FailedUpperCase" xml:space="preserve">
+    <value>Thất bại</value>
+  </data>
+  <data name="Running" xml:space="preserve">
+    <value>Đang chạy</value>
+  </data>
+  <data name="ProcessingTime" xml:space="preserve">
+    <value>Thời gian xử lý</value>
+  </data>
+  <data name="Stopped" xml:space="preserve">
+    <value>Đã dừng</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Đang tải . . .</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Xin chờ .  .  .</value>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Bật</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Mẫu</value>
+  </data>
+  <data name="NoReadOuputString" xml:space="preserve">
+    <value>Chuỗi dữ liệu đầu ra khi không đọc</value>
+  </data>
+  <data name="AutoReconnect" xml:space="preserve">
+    <value>Tự động kết nối lại</value>
+  </data>
+  <data name="IPAddress" xml:space="preserve">
+    <value>Địa chỉ IP</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>Số sê-ri</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="Output" xml:space="preserve">
+    <value>Đầu ra</value>
+  </data>
+  <data name="Port" xml:space="preserve">
+    <value>Cổng</value>
+  </data>
+  <data name="PODProtocol" xml:space="preserve">
+    <value>Giao thức POD</value>
+  </data>
+  <data name="OldVersion" xml:space="preserve">
+    <value>Phiên bản cũ</value>
+  </data>
+  <data name="NewVersion" xml:space="preserve">
+    <value>Phiên bản mới</value>
+  </data>
+  <data name="Path" xml:space="preserve">
+    <value>Đường dẫn</value>
+  </data>
+  <data name="ImageExport" xml:space="preserve">
+    <value>Xuất hình ảnh</value>
+  </data>
+  <data name="TheImageExportFunction" xml:space="preserve">
+    <value>Tính năng xuất hình ảnh sẽ ảnh hưởng đến hiệu năng của hệ thống!</value>
+  </data>
+  <data name="DataCheckedFileName" xml:space="preserve">
+    <value>Tên tệp kiểm tra dữ liệu</value>
+  </data>
+  <data name="Generate" xml:space="preserve">
+    <value>Tạo ra</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Ngôn ngữ</value>
+  </data>
+  <data name="OutputSignal" xml:space="preserve">
+    <value>Tín hiệu đầu ra</value>
+  </data>
+  <data name="NotLoadDatabase" xml:space="preserve">
+    <value>Không thể tải cơ sở dữ liệu</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Phiên bản</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Tìm kiếm</value>
+  </data>
+  <data name="JobDetails" xml:space="preserve">
+    <value>Chi tiết công việc</value>
+  </data>
+  <data name="CompareType" xml:space="preserve">
+    <value>Loại so sánh</value>
+  </data>
+  <data name="CanRead" xml:space="preserve">
+    <value>Có thể đọc</value>
+  </data>
+  <data name="StaticText" xml:space="preserve">
+    <value>Văn bản tĩnh</value>
+  </data>
+  <data name="Database" xml:space="preserve">
+    <value>Cơ sở dữ liệu</value>
+  </data>
+  <data name="PODFormat" xml:space="preserve">
+    <value>Định dạng dữ liệu so sánh</value>
+  </data>
+  <data name="JobSystem" xml:space="preserve">
+    <value>Cài đặt hệ thống</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>Tên tệp</value>
+  </data>
+  <data name="AutoLoad" xml:space="preserve">
+    <value>Tự động tải tệp</value>
+  </data>
+  <data name="Gennerate" xml:space="preserve">
+    <value>Tự động</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Đăng nhập</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Tên tài khoản</value>
+  </data>
+  <data name="RememberPassword" xml:space="preserve">
+    <value>Nhớ mật khẩu</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Mật khẩu hiện tại</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Đóng</value>
+  </data>
+  <data name="RetypePassword" xml:space="preserve">
+    <value>Nhập lại mật khẩu</value>
+  </data>
+  <data name="InfomationDetails" xml:space="preserve">
+    <value>Thông tin chi tiết</value>
+  </data>
+  <data name="Fullname" xml:space="preserve">
+    <value>Họ và tên</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Quyền</value>
+  </data>
+  <data name="PODList" xml:space="preserve">
+    <value>Danh sách các trường từ cơ sở dữ liệu</value>
+  </data>
+  <data name="Sample" xml:space="preserve">
+    <value>Định dạng trường xác minh</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Nội dung trường văn bản</value>
+  </data>
+  <data name="Display" xml:space="preserve">
+    <value>Hiển thị</value>
+  </data>
+  <data name="CameraSettings" xml:space="preserve">
+    <value>Cài đặt máy ảnh</value>
+  </data>
+  <data name="SystemSettings" xml:space="preserve">
+    <value>Cài đặt hệ thống</value>
+  </data>
+  <data name="PrinterSettings" xml:space="preserve">
+    <value>Cài đặt máy in</value>
+  </data>
+  <data name="AreYouSureYouWantToDeleteFile" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn xóa tệp không?</value>
+  </data>
+  <data name="PleaseInputTemplateName" xml:space="preserve">
+    <value>Vui lòng nhập tên mẫu!</value>
+  </data>
+  <data name="DoYouWantToReplaceExistingTemplate" xml:space="preserve">
+    <value>Bạn có muốn thay thế mẫu hiện có không?</value>
+  </data>
+  <data name="PleaseSeletedJobForTheSystem" xml:space="preserve">
+    <value>Vui lòng chọn một công việc cho hệ thống</value>
+  </data>
+  <data name="AreYouSureYouWantToDeleteUser" xml:space="preserve">
+    <value>Bạn có chắc muốn xóa người dùng </value>
+  </data>
+  <data name="DefaultAccountEdited" xml:space="preserve">
+    <value>Không thể xóa hay chỉnh sửa người dùng mặc định</value>
+  </data>
+  <data name="DeleteAccountFailed" xml:space="preserve">
+    <value>Xóa người dùng không thành công</value>
+  </data>
+  <data name="DeleteAccountSuccess" xml:space="preserve">
+    <value>Xóa người dùng thành công</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Nâng cao</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Tài khoản</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Trợ giúp</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="ProgramHistory" xml:space="preserve">
+    <value>Lịch sử chương trình</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Quản lý</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Về chúng tôi</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Bắt đầu</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Dừng lại</value>
+  </data>
+  <data name="SeletedJobInfo" xml:space="preserve">
+    <value>Thông tin công việc đã chọn</value>
+  </data>
+  <data name="TemplateName" xml:space="preserve">
+    <value>Tên mẫu in</value>
+  </data>
+  <data name="JobFormat" xml:space="preserve">
+    <value>Định dạng công việc</value>
+  </data>
+  <data name="DateTimeFormat" xml:space="preserve">
+    <value>Định dạng ngày giờ</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Mặc định</value>
+  </data>
+  <data name="CompleteTheBarcodeVerificationProcess" xml:space="preserve">
+    <value>Hoàn tất quá trình xác minh mã vạch!</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Địa chỉ</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="GeneralInfo" xml:space="preserve">
+    <value>Thông tin chung</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>Tên sản phâm</value>
+  </data>
+  <data name="ReleaseNote" xml:space="preserve">
+    <value>Ghi chú phát hành</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>Trang web</value>
+  </data>
+  <data name="StartIndex" xml:space="preserve">
+    <value>Chỉ số bắt đầu</value>
+  </data>
+  <data name="EndIndex" xml:space="preserve">
+    <value>Chỉ số kết thúc</value>
+  </data>
+  <data name="ViewLog" xml:space="preserve">
+    <value>Xem lịch sử</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Lọc</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Lỗi</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Từ</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>Đến</value>
+  </data>
+  <data name="ClearLog" xml:space="preserve">
+    <value>Xóa lịch sử</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Xuất báo cáo</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Làm mới</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>Công việc</value>
+  </data>
+  <data name="JobList" xml:space="preserve">
+    <value>Tên công việc</value>
+  </data>
+  <data name="ImportDatabase" xml:space="preserve">
+    <value>Đường dẫn database</value>
+  </data>
+  <data name="Template" xml:space="preserve">
+    <value>Mẫu bản in</value>
+  </data>
+  <data name="EditAccountFailed" xml:space="preserve">
+    <value>Chỉnh sửa người dùng thất bại</value>
+  </data>
+  <data name="EditAccountSuccess" xml:space="preserve">
+    <value>Chỉnh sửa người dùng thành công</value>
+  </data>
+  <data name="TextboxEmpty" xml:space="preserve">
+    <value> còn trống</value>
+  </data>
+  <data name="TextboxEmpty1" xml:space="preserve">
+    <value> is empty</value>
+  </data>
+  <data name="AccountList" xml:space="preserve">
+    <value>Danh sách người dùng</value>
+  </data>
+  <data name="FullnameColum" xml:space="preserve">
+    <value>Họ tên</value>
+  </data>
+  <data name="PasswordColumn" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="RoleColumn" xml:space="preserve">
+    <value>Quyền</value>
+  </data>
+  <data name="UsernameColumn" xml:space="preserve">
+    <value>Người dùng</value>
+  </data>
+  <data name="previewdatabase" xml:space="preserve">
+    <value>Cơ sở dữ liệu</value>
+  </data>
+  <data name="ConfirmPC" xml:space="preserve">
+    <value>Bạn không có giấy phép cho phần mềm này, vui lòng liên hệ với nhà cung cấp!</value>
+  </data>
+  <data name="ApplicationIsAlreadyRunning" xml:space="preserve">
+    <value>Ứng dụng đã được khởi động!</value>
+  </data>
+  <data name="CannotAccessToFile" xml:space="preserve">
+    <value>Không thể truy cập tập tin</value>
+  </data>
+  <data name="DatabaseFrmMain" xml:space="preserve">
+    <value>CSDL</value>
+  </data>
+  <data name="ProgramHistoryFrmMain" xml:space="preserve">
+    <value>Lịch sử</value>
+  </data>
+  <data name="DoYouWantExitApplication" xml:space="preserve">
+    <value>Bạn có muốn thoát khỏi ứng dụng?</value>
+  </data>
+  <data name="CheckedFailed" xml:space="preserve">
+    <value>Thất bại</value>
+  </data>
+  <data name="CheckedPassed" xml:space="preserve">
+    <value>Đạt</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Nội dung mã vạch</value>
+  </data>
+  <data name="PrintedCode" xml:space="preserve">
+    <value>Dữ liệu đã in</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>Đang xử lý</value>
+  </data>
+  <data name="SentData" xml:space="preserve">
+    <value>Dữ liệu đã gửi</value>
+  </data>
+  <data name="StatusCode" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="TotalsPrint" xml:space="preserve">
+    <value>Tổng dữ liệu</value>
+  </data>
+  <data name="VerifyProgress" xml:space="preserve">
+    <value>Tiến trình xác minh</value>
+  </data>
+  <data name="CheckedResult1" xml:space="preserve">
+    <value>Kết quả xác minh</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Tiếp theo</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Khác</value>
+  </data>
+  <data name="PrinterSeries" xml:space="preserve">
+    <value>Dòng máy in</value>
+  </data>
+  <data name="RSeries" xml:space="preserve">
+    <value>R series</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Lưu lại</value>
+  </data>
+  <data name="SupportForCamera" xml:space="preserve">
+    <value>Hỗ trợ cho dòng camera</value>
+  </data>
+  <data name="CreateANewJob" xml:space="preserve">
+    <value>Tạo công việc mới</value>
+  </data>
+  <data name="SelectJob" xml:space="preserve">
+    <value>Chọn công việc</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="PleaseCheckTheUSBKey" xml:space="preserve">
+    <value>Vui lòng kiểm tra chìa khóa USB! Ứng dụng sẽ đóng sau 60 giây.</value>
+  </data>
+  <data name="PleaseChooseAJobOrCreateANewOne" xml:space="preserve">
+    <value>Vui lòng chọn một công việc hoặc tạo một công việc mới.</value>
+  </data>
+  <data name="PleaseSaveTheWorkYouJustEntered" xml:space="preserve">
+    <value>Vui lòng! Lưu công việc bạn vừa nhập!</value>
+  </data>
+  <data name="SuccessfulNewJobCreationStartTheProcess" xml:space="preserve">
+    <value>Tạo việc làm mới thành công! Bắt đầu quá trình?</value>
+  </data>
+  <data name="NewJobCreationFailed" xml:space="preserve">
+    <value>Tạo việc làm mới không thành công!</value>
+  </data>
+  <data name="VerifyAndPrint" xml:space="preserve">
+    <value>Xác minh và in</value>
+  </data>
+  <data name="ResponseContent" xml:space="preserve">
+    <value>Nội dung phản hồi</value>
+  </data>
+  <data name="PrinterRemotePort" xml:space="preserve">
+    <value>Cổng điều khiển máy in từ xa</value>
+  </data>
+  <data name="AdvancedPrinterSettings" xml:space="preserve">
+    <value>Cài đặt máy in nâng cao</value>
+  </data>
+  <data name="PleaseSelectDatabasePath" xml:space="preserve">
+    <value>Vui lòng chọn đường dẫn cơ sở dữ liệu!</value>
+  </data>
+  <data name="PleaseSelectPODFormat" xml:space="preserve">
+    <value>Vui lòng chọn định dạng POD!</value>
+  </data>
+  <data name="CheckExistTemplatePrinter" xml:space="preserve">
+    <value>Mẫu in không tồn tại, vui lòng kiểm tra lại danh sách mẫu in hoặc kết nối máy in!</value>
+  </data>
+  <data name="PODChangedWarning" xml:space="preserve">
+    <value>Tính năng này cần khởi động lại ứng dụng để có hiệu lực!</value>
+  </data>
+  <data name="Disable" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="PleaseSelectTheDatabaseFileFirst" xml:space="preserve">
+    <value>Vui lòng chọn tệp cơ sở dữ liệu trước!</value>
+  </data>
+  <data name="DataTypeMustBeRAWData" xml:space="preserve">
+    <value>Loại dữ liệu phải là dữ liệu RAW</value>
+  </data>
+  <data name="ResponsePODDataFeatureIsNotEnable" xml:space="preserve">
+    <value>Tính năng POD Data phản hồi không được kích hoạt!</value>
+  </data>
+  <data name="ResponsePODCommandFeatureIsNotEnable" xml:space="preserve">
+    <value>Tính năng POD Command không được kích hoạt!</value>
+  </data>
+  <data name="PODFeatureIsNotEnabled" xml:space="preserve">
+    <value>Tính năng POD chưa được bật!</value>
+  </data>
+  <data name="MonitorFeatureIsNotEnabled" xml:space="preserve">
+    <value>Tính năng Monitor chưa được bật!</value>
+  </data>
+  <data name="Totals" xml:space="preserve">
+    <value>Tổng</value>
+  </data>
+  <data name="PODModeMustBePrintAll" xml:space="preserve">
+    <value>Chế độ POD phải là "In tất cả"</value>
+  </data>
+  <data name="ThePrinterIsInAnAbnormalStatePleaseCheckAgain" xml:space="preserve">
+    <value>Máy in đang ở trạng thái bất thường, vui lòng kiểm tra lại!</value>
+  </data>
+  <data name="NewLyCreated" xml:space="preserve">
+    <value>Mới tạo</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Đã hoàn thành</value>
+  </data>
+  <data name="Unfinished" xml:space="preserve">
+    <value>Chưa hoàn thành</value>
+  </data>
+  <data name="AfterProduction" xml:space="preserve">
+    <value>Sau sản xuất</value>
+  </data>
+  <data name="OnProduction" xml:space="preserve">
+    <value>Trong sản xuất</value>
+  </data>
+  <data name="JobType" xml:space="preserve">
+    <value>Loại công việc</value>
+  </data>
+  <data name="JobStatus" xml:space="preserve">
+    <value>Tình trạng công việc</value>
+  </data>
+  <data name="PreviewComparisonData" xml:space="preserve">
+    <value>Xem trước dữ liệu so sánh</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Trang</value>
+  </data>
+  <data name="Per" xml:space="preserve">
+    <value>của</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>dòng</value>
+  </data>
+  <data name="GoToPage" xml:space="preserve">
+    <value>Đi đến trang</value>
+  </data>
+  <data name="Go" xml:space="preserve">
+    <value>Đến</value>
+  </data>
+  <data name="TotalNumberOfCodeInTheDatabase" xml:space="preserve">
+    <value>Tổng số mã trong cơ sở dữ liệu</value>
+  </data>
+  <data name="TotalCodeOfTheJob" xml:space="preserve">
+    <value>Tổng số mã của công việc</value>
+  </data>
+  <data name="NumberOfCodesPrinted" xml:space="preserve">
+    <value>Số lượng mã được in</value>
+  </data>
+  <data name="NumberOfVerifiedCode" xml:space="preserve">
+    <value>Số mã đã xác minh</value>
+  </data>
+  <data name="NumberOfValidCodes" xml:space="preserve">
+    <value>Số lượng mã hợp lệ</value>
+  </data>
+  <data name="NumberOfFailedCodes" xml:space="preserve">
+    <value>Số mã lỗi</value>
+  </data>
+  <data name="RePrint" xml:space="preserve">
+    <value>In lại</value>
+  </data>
+  <data name="PrinterOperatingSystem" xml:space="preserve">
+    <value>Hệ điều hành máy in</value>
+  </data>
+  <data name="CheckAllPrinterSettings" xml:space="preserve">
+    <value>Kiểm tra tất cả các cài đặt máy in</value>
+  </data>
+  <data name="Received" xml:space="preserve">
+    <value>Đã nhận</value>
+  </data>
+  <data name="PleaseEnterTheStaticText" xml:space="preserve">
+    <value>Vui lòng nhập văn bản tĩnh</value>
+  </data>
+  <data name="SendDataMethod" xml:space="preserve">
+    <value>Phương thức gửi dữ liệu cho chế độ Xác minh và in</value>
+  </data>
+  <data name="StopCondition" xml:space="preserve">
+    <value>Điều kiện hoàn thành</value>
+  </data>
+  <data name="ReprintError" xml:space="preserve">
+    <value>Không thể thực hiện in lại</value>
+  </data>
+  <data name="Basic" xml:space="preserve">
+    <value>Cơ bản</value>
+  </data>
+  <data name="Compare" xml:space="preserve">
+    <value>So sánh</value>
+  </data>
+  <data name="FailureDataSentToPrinter" xml:space="preserve">
+    <value>Dữ liệu gửi đến máy in khi lỗi</value>
+  </data>
+  <data name="TotalPassed" xml:space="preserve">
+    <value>Tổng số lượng đạt</value>
+  </data>
+  <data name="ListOfField" xml:space="preserve">
+    <value>Danh sách trường in</value>
+  </data>
+  <data name="PrintField" xml:space="preserve">
+    <value>Trường in</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Chọn</value>
+  </data>
+  <data name="SelectedField" xml:space="preserve">
+    <value>Các trường đã chọn</value>
+  </data>
+  <data name="SelectPrintField" xml:space="preserve">
+    <value>Chọn trường in</value>
+  </data>
+  <data name="CannotAccessFile" xml:space="preserve">
+    <value>Không thể truy cập tệp!</value>
+  </data>
+  <data name="PleaseInputJobName" xml:space="preserve">
+    <value>Vui lòng nhập tên công việc</value>
+  </data>
+  <data name="ClearResponse" xml:space="preserve">
+    <value>Xóa phản hồi</value>
+  </data>
+  <data name="PrinterDisconnected" xml:space="preserve">
+    <value>Mất kết nối máy in</value>
+  </data>
+  <data name="CameraDisconnected" xml:space="preserve">
+    <value>Mất kết nối camera</value>
+  </data>
+  <data name="CantDetect" xml:space="preserve">
+    <value>Không phát hiện</value>
+  </data>
+  <data name="PODModeMustBePrintLast" xml:space="preserve">
+    <value>Chế độ POD phải là "In cuối"</value>
+  </data>
+  <data name="CanNotFindCheckedResult" xml:space="preserve">
+    <value>Không thể tìm thấy tệp sao lưu kết quả kiểm tra</value>
+  </data>
+  <data name="CanNotFindDatabase" xml:space="preserve">
+    <value>Không thể tìm thấy tệp cơ sở dữ liệu</value>
+  </data>
+  <data name="CanNotFindPrintedResponse" xml:space="preserve">
+    <value>Không thể tìm thấy tệp sao lưu phản hồi mã đã in</value>
+  </data>
+  <data name="DatabaseDoesNotExist" xml:space="preserve">
+    <value>Cơ sở dữ liệu không tồn tại</value>
+  </data>
+  <data name="Deleted" xml:space="preserve">
+    <value>Đã bị xóa</value>
+  </data>
+  <data name="YouDoNotHavePermission" xml:space="preserve">
+    <value>Bạn không có quyền thực hiện hành động này</value>
+  </data>
+  <data name="CameraTMP" xml:space="preserve">
+    <value>Máy ảnh</value>
+  </data>
+  <data name="ExportLog" xml:space="preserve">
+    <value>Xuất log</value>
+  </data>
+  <data name="CannotDetect" xml:space="preserve">
+    <value>Không có dữ liệu</value>
+  </data>
+  <data name="DuplicateDataMessage" xml:space="preserve">
+    <value>Tim thấy NN dữ liệu trùng lặp trong cơ sở dữ liệu dựa vào </value>
+  </data>
+  <data name="NumberOfMarkSensor" xml:space="preserve">
+    <value>Number of mark sensor</value>
+  </data>
+  <data name="DetectError" xml:space="preserve">
+    <value>Lỗi không xác định từ tệp NN</value>
+  </data>
+  <data name="Handle" xml:space="preserve">
+    <value>Xử lý</value>
+  </data>
+  <data name="PleaseCheck" xml:space="preserve">
+    <value>Vui lòng kiểm tra</value>
+  </data>
+  <data name="PrintedResponse" xml:space="preserve">
+    <value>Phản hồi đã in</value>
+  </data>
+  <data name="Backup" xml:space="preserve">
+    <value>Sao lưu</value>
+  </data>
+  <data name="CheckedResult" xml:space="preserve">
+    <value>Kết quả xác minh</value>
+  </data>
+  <data name="UnableToAccess" xml:space="preserve">
+    <value>Không thể truy cập vào tệp NN</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Không xác định</value>
+  </data>
+  <data name="ReprintConfirm" xml:space="preserve">
+    <value>Bạn có muốn thực hiện in lại?</value>
+  </data>
+  <data name="HandleError" xml:space="preserve">
+    <value>Lỗi xử lý</value>
+  </data>
+</root>

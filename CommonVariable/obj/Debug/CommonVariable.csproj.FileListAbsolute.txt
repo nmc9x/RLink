@@ -1,0 +1,80 @@
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.csprojAssemblyReference.cache
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.pdb
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.pdb
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.csprojAssemblyReference.cache
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.pdb
+D:\RYNAN Tech\BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.pdb
+D:\RYNAN Tech\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+D:\RYNAN Tech\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.pdb
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.pdb
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.pdb
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.pdb
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.csprojAssemblyReference.cache
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\bin\Debug\CommonVariable.pdb
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.csprojAssemblyReference.cache
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Debug\CommonVariable.pdb
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\CommonVariable\bin\Debug\CommonVariable.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\CommonVariable\bin\Debug\CommonVariable.pdb
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\CommonVariable\obj\Debug\CommonVariable.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\CommonVariable\obj\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\CommonVariable\bin\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\CommonVariable\bin\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\CommonVariable\obj\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\CommonVariable\obj\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\CommonVariable\bin\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\CommonVariable\bin\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\CommonVariable\obj\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\CommonVariable\obj\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\CommonVariable\bin\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\CommonVariable\bin\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\CommonVariable\obj\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\CommonVariable\obj\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\CommonVariable\obj\Debug\CommonVariable.csprojAssemblyReference.cache
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\CommonVariable\bin\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\CommonVariable\bin\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\CommonVariable\obj\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\CommonVariable\obj\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\CommonVariable\bin\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\CommonVariable\bin\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\CommonVariable\obj\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\CommonVariable\obj\Debug\CommonVariable.pdb

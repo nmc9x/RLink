@@ -1,0 +1,201 @@
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csprojAssemblyReference.cache
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.Properties.Resources.resources
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.GenerateResource.cache
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.EF6.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.Linq.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.pdb
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.EF6.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.Linq.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.pdb
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csprojAssemblyReference.cache
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.Properties.Resources.resources
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.GenerateResource.cache
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.EF6.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.Linq.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csprojAssemblyReference.cache
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.Properties.Resources.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.GenerateResource.cache
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.pdb
+D:\RYNAN Tech\BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.pdb
+D:\RYNAN Tech\BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.EF6.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.Linq.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.pdb
+D:\RYNAN Tech\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csprojAssemblyReference.cache
+D:\RYNAN Tech\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.Properties.Resources.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.GenerateResource.cache
+D:\RYNAN Tech\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+D:\RYNAN Tech\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
+D:\RYNAN Tech\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.pdb
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.pdb
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.EF6.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.Linq.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.pdb
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csprojAssemblyReference.cache
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.Properties.Resources.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.GenerateResource.cache
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.pdb
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.pdb
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.EF6.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.Linq.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.pdb
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csprojAssemblyReference.cache
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.Properties.Resources.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.GenerateResource.cache
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.EF6.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.Linq.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csprojAssemblyReference.cache
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.Properties.Resources.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.GenerateResource.cache
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.pdb
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\OperationLog.pdb
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.EF6.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\System.Data.SQLite.Linq.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\bin\Debug\CommonVariable.pdb
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csprojAssemblyReference.cache
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.Properties.Resources.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.GenerateResource.cache
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\OperationLog\obj\Debug\OperationLog.pdb
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\OperationLog\bin\Debug\OperationLog.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\OperationLog\bin\Debug\OperationLog.pdb
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\OperationLog\bin\Debug\CommonVariable.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\OperationLog\bin\Debug\System.Data.SQLite.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\OperationLog\bin\Debug\System.Data.SQLite.EF6.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\OperationLog\bin\Debug\System.Data.SQLite.Linq.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\OperationLog\bin\Debug\CommonVariable.pdb
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\OperationLog\obj\Debug\OperationLog.csprojAssemblyReference.cache
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\OperationLog\obj\Debug\OperationLog.Properties.Resources.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\OperationLog\obj\Debug\OperationLog.csproj.GenerateResource.cache
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\OperationLog\obj\Debug\OperationLog.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\OperationLog\obj\Debug\OperationLog.pdb
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\OperationLog\bin\Debug\OperationLog.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\OperationLog\bin\Debug\OperationLog.pdb
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\OperationLog\bin\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\OperationLog\bin\Debug\System.Data.SQLite.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\OperationLog\bin\Debug\System.Data.SQLite.EF6.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\OperationLog\bin\Debug\System.Data.SQLite.Linq.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\OperationLog\bin\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\OperationLog\obj\Debug\OperationLog.csprojAssemblyReference.cache
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\OperationLog\obj\Debug\OperationLog.Properties.Resources.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\OperationLog\obj\Debug\OperationLog.csproj.GenerateResource.cache
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\OperationLog\obj\Debug\OperationLog.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\OperationLog\obj\Debug\OperationLog.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\OperationLog\bin\Debug\OperationLog.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\OperationLog\bin\Debug\OperationLog.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\OperationLog\bin\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\OperationLog\bin\Debug\System.Data.SQLite.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\OperationLog\bin\Debug\System.Data.SQLite.EF6.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\OperationLog\bin\Debug\System.Data.SQLite.Linq.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\OperationLog\bin\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\OperationLog\obj\Debug\OperationLog.csprojAssemblyReference.cache
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\OperationLog\obj\Debug\OperationLog.Properties.Resources.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\OperationLog\obj\Debug\OperationLog.csproj.GenerateResource.cache
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\OperationLog\obj\Debug\OperationLog.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\OperationLog\obj\Debug\OperationLog.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\OperationLog\bin\Debug\OperationLog.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\OperationLog\bin\Debug\OperationLog.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\OperationLog\bin\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\OperationLog\bin\Debug\System.Data.SQLite.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\OperationLog\bin\Debug\System.Data.SQLite.EF6.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\OperationLog\bin\Debug\System.Data.SQLite.Linq.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\OperationLog\bin\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\OperationLog\obj\Debug\OperationLog.csprojAssemblyReference.cache
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\OperationLog\obj\Debug\OperationLog.Properties.Resources.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\OperationLog\obj\Debug\OperationLog.csproj.GenerateResource.cache
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\OperationLog\obj\Debug\OperationLog.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\OperationLog\obj\Debug\OperationLog.pdb
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\OperationLog\bin\Debug\OperationLog.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\OperationLog\bin\Debug\OperationLog.pdb
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\OperationLog\bin\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\OperationLog\bin\Debug\System.Data.SQLite.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\OperationLog\bin\Debug\System.Data.SQLite.EF6.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\OperationLog\bin\Debug\System.Data.SQLite.Linq.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\OperationLog\bin\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\OperationLog\obj\Debug\OperationLog.csprojAssemblyReference.cache
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\OperationLog\obj\Debug\OperationLog.Properties.Resources.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\OperationLog\obj\Debug\OperationLog.csproj.GenerateResource.cache
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\OperationLog\obj\Debug\OperationLog.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\OperationLog\obj\Debug\OperationLog.pdb
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\bin\Debug\OperationLog.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\bin\Debug\OperationLog.pdb
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\bin\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\bin\Debug\System.Data.SQLite.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\bin\Debug\System.Data.SQLite.EF6.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\bin\Debug\System.Data.SQLite.Linq.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\bin\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\obj\Debug\OperationLog.csprojAssemblyReference.cache
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\obj\Debug\OperationLog.Properties.Resources.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\obj\Debug\OperationLog.csproj.GenerateResource.cache
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\obj\Debug\OperationLog.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\obj\Debug\OperationLog.pdb

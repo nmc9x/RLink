@@ -1,0 +1,946 @@
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe.config
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csprojAssemblyReference.cache
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.Properties.Resources.resources
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.GenerateResource.cache
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.Cnx.CioMicro.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.CogNamer.PC.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.PC.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Utils.PC.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.xml
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.xml
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\IPAddressControlLib.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.Cnx.CioMicro.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.CogNamer.PC.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.PC.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Utils.PC.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\IPAddressControlLib.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.xml
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.xml
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CopyComplete
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSplashScreen.resources
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.pdb
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\vi-VN\UILanguage.resources.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLogin.resources
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.EF6.dll
+E:\ThongThach\Task\221010_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.Linq.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.Cnx.CioMicro.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.CogNamer.PC.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.PC.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Utils.PC.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.xml
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.xml
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\IPAddressControlLib.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe.config
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.pdb
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.Cnx.CioMicro.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.CogNamer.PC.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.PC.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Utils.PC.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\IPAddressControlLib.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.EF6.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.Linq.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.pdb
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.pdb
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.pdb
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.xml
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.xml
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\vi-VN\UILanguage.resources.dll
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csprojAssemblyReference.cache
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.Properties.Resources.resources
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmAbout.resources
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLogin.resources
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMain.resources
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSettings.resources
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSplashScreen.resources
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucCameraSettings.resources
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucPrinterSettings.resources
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSensorSettings.resources
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSystemSettings.resources
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.GenerateResource.cache
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CopyComplete
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe
+E:\ThongThach\Task\BarcodeVerificationSystemO\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.Cnx.CioMicro.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.CogNamer.PC.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.PC.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Utils.PC.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.xml
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.xml
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\IPAddressControlLib.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe.config
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Newtonsoft.Json.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.Cnx.CioMicro.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.CogNamer.PC.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.PC.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Utils.PC.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\IPAddressControlLib.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.EF6.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.Linq.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.xml
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.xml
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\vi\UILanguage.resources.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\vi-VN\UILanguage.resources.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csprojAssemblyReference.cache
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe.config
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.Properties.Resources.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmAbout.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmChangePassword.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmJob.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmManageAccount.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPODFormat.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPreviewDatabase.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSettings.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSplashScreen.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmViewHistoryProgram.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucCameraSettings.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucPrinterSettings.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSensorSettings.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSystemSettings.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.GenerateResource.cache
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CoreCompileInputs.cache
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CopyComplete
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLoginNew.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\FontAwesome.Sharp.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMainNew.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.Cnx.CioMicro.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.CogNamer.PC.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Discovery.PC.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.PC.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Utils.PC.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.xml
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.xml
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\IPAddressControlLib.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe.config
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.pdb
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\FontAwesome.Sharp.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Newtonsoft.Json.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.Cnx.CioMicro.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.CogNamer.PC.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Discovery.PC.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.PC.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Utils.PC.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\IPAddressControlLib.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.EF6.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.Linq.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.pdb
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.pdb
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.pdb
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.xml
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.xml
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\vi\UILanguage.resources.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\vi-VN\UILanguage.resources.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csprojAssemblyReference.cache
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe.config
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.Properties.Resources.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmAbout.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmChangePassword.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmJob.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLoginNew.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLogin.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMainNew.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMain.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmManageAccount.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPODFormat.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPreviewDatabase.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSettings.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSplashScreen.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmViewHistoryProgram.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucCameraSettings.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucPrinterSettings.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSensorSettings.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSystemSettings.resources
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.GenerateResource.cache
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CoreCompileInputs.cache
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CopyComplete
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe
+D:\RYNAN Tech\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CircularProgressBar.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\WinFormAnimation.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.Cnx.CioMicro.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.CogNamer.PC.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.PC.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Utils.PC.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.xml
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.xml
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\IPAddressControlLib.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe.config
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.pdb
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CircularProgressBar.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\FontAwesome.Sharp.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Newtonsoft.Json.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\WinFormAnimation.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.Cnx.CioMicro.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.CogNamer.PC.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.PC.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Utils.PC.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\DesignUI.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\IPAddressControlLib.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.EF6.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.Linq.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.pdb
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.pdb
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.pdb
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.xml
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.xml
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\vi\UILanguage.resources.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\vi-VN\UILanguage.resources.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csprojAssemblyReference.cache
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe.config
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.Properties.Resources.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmAbout.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmBased.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmChangePassword.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmJob.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLoginNew.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMainNew.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmManageAccount.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPODFormat.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPreviewDatabase.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSettings.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSplashScreen.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmViewHistoryProgram.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucCameraSettings.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucPrinterSettings.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSensorSettings.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSystemSettings.resources
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.GenerateResource.cache
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CoreCompileInputs.cache
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CopyComplete
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.pdb
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmResize.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\DesignUI.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmBased.resources
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmResize.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.Cnx.CioMicro.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.CogNamer.PC.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.PC.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Utils.PC.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.xml
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.xml
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\IPAddressControlLib.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe.config
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.pdb
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CircularProgressBar.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.Cnx.CioMicro.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.CogNamer.PC.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.PC.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Utils.PC.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\DesignUI.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\FontAwesome.Sharp.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\IPAddressControlLib.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Core.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.WinForms.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Wpf.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Newtonsoft.Json.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.EF6.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.Linq.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\WinFormAnimation.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.pdb
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.pdb
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.pdb
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.xml
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.xml
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\vi\UILanguage.resources.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\vi-VN\UILanguage.resources.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csprojAssemblyReference.cache
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe.config
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.Properties.Resources.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmAbout.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmBased.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmChangePassword.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmJob.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLoginNew.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMainAnime.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMainNew.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmManageAccount.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPODFormat.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPreviewDatabase.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmRemotePrinter.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmResize.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSettings.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSplashScreen.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmViewHistoryProgram.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucCameraSettings.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucPrinterSettings.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSensorSettings.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSystemSettings.resources
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.GenerateResource.cache
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CopyComplete
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.Cnx.CioMicro.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.CogNamer.PC.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.PC.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Utils.PC.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.xml
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.xml
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\IPAddressControlLib.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe.config
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\FontAwesome.Sharp.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CircularProgressBar.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.Cnx.CioMicro.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.CogNamer.PC.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.PC.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Utils.PC.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\DesignUI.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\IPAddressControlLib.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Core.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.WinForms.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Wpf.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Newtonsoft.Json.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.EF6.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.Linq.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\WinFormAnimation.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.xml
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.xml
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\vi\UILanguage.resources.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\vi-VN\UILanguage.resources.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csprojAssemblyReference.cache
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe.config
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.Properties.Resources.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmAbout.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmBased.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmChangePassword.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmJob.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLoginNew.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMainNew.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMain.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmManageAccount.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPODFormat.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPreviewDatabase.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmRemotePrinter.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSettings.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSplashScreen.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmViewHistoryProgram.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucCameraSettings.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucPrinterSettings.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSensorSettings.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSystemSettings.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.GenerateResource.cache
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CoreCompileInputs.cache
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CopyComplete
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmCheckedResult.resources
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLogin.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csprojAssemblyReference.cache
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe.config
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.Properties.Resources.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmAbout.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmBased.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmChangePassword.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmCheckedResult.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmJob.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLogin.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLoginNew.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMain.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmManageAccount.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPODFormat.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPreviewDatabase.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmRemotePrinter.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSettings.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSplashScreen.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmViewHistoryProgram.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmWarningUSBDongleKey.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucCameraSettings.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucPrinterSettings.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSensorSettings.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSystemSettings.resources
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.GenerateResource.cache
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CoreCompileInputs.cache
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.Cnx.CioMicro.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.CogNamer.PC.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.PC.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Utils.PC.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.xml
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.xml
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Libs\IPAddressControlLib.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe.config
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.pdb
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\FontAwesome.Sharp.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CircularProgressBar.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.Cnx.CioMicro.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.CogNamer.PC.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.PC.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Utils.PC.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\DesignUI.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\IPAddressControlLib.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Core.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.WinForms.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Wpf.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Newtonsoft.Json.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\SecureDongle_Control.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.EF6.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.Linq.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\WinFormAnimation.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\CommonVariable.pdb
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\OperationLog.pdb
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\UILanguage.pdb
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.xml
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.xml
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\vi\UILanguage.resources.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\bin\Debug\vi-VN\UILanguage.resources.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CopyComplete
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.pdb
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csprojAssemblyReference.cache
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe.config
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.Properties.Resources.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmAbout.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmBased.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmChangePassword.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmCheckedResult.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmJob.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLogin.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLoginNew.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMain.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmManageAccount.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPODFormat.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPreviewDatabase.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmRemotePrinter.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSettings.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSplashScreen.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmViewHistoryProgram.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmWarningUSBDongleKey.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucCameraSettings.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucPrinterSettings.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSensorSettings.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSystemSettings.resources
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.GenerateResource.cache
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CoreCompileInputs.cache
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.pdb
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.Cnx.CioMicro.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.CogNamer.PC.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.PC.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Utils.PC.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.xml
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.xml
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Libs\IPAddressControlLib.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe.config
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.pdb
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\CircularProgressBar.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Cognex.Cnx.CioMicro.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.CogNamer.PC.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.PC.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Utils.PC.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\CommonVariable.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\DesignUI.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\FontAwesome.Sharp.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\IPAddressControlLib.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Core.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.WinForms.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Wpf.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Newtonsoft.Json.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\OperationLog.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\SecureDongle_Control.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.EF6.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.Linq.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\UILanguage.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\WinFormAnimation.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\CommonVariable.pdb
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\OperationLog.pdb
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\UILanguage.pdb
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.xml
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.xml
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\vi\UILanguage.resources.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\bin\Debug\vi-VN\UILanguage.resources.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CopyComplete
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.Cnx.CioMicro.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.CogNamer.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Utils.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.xml
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.xml
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\IPAddressControlLib.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe.config
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.pdb
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\FontAwesome.Sharp.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\CircularProgressBar.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Cognex.Cnx.CioMicro.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.CogNamer.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Utils.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\DesignUI.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\IPAddressControlLib.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Core.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.WinForms.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Wpf.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Newtonsoft.Json.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\OperationLog.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\SecureDongle_Control.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.EF6.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.Linq.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\UILanguage.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\WinFormAnimation.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\OperationLog.pdb
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\UILanguage.pdb
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.xml
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Cognex.InSight.Controls.Display.xml
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\vi\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\vi-VN\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csprojAssemblyReference.cache
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe.config
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.Properties.Resources.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmAbout.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmBased.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmChangePassword.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmCheckedResult.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmJob.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLogin.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLoginNew.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMain.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmManageAccount.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPODFormat.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPreviewDatabase.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmRemotePrinter.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSplashScreen.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmViewHistoryProgram.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmWarningUSBDongleKey.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucCameraSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucPrinterSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSensorSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSystemSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.GenerateResource.cache
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CopyComplete
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.pdb
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPrintFieldForVerifyAndPrintCompareMode.resources
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\DesignUI.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.Cnx.CioMicro.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.CogNamer.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Utils.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.xml
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.xml
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\DesignUI.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\IPAddressControlLib.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe.config
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\FontAwesome.Sharp.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\CircularProgressBar.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.CogNamer.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Utils.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\DesignUI.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\IPAddressControlLib.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Core.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.WinForms.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Wpf.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Newtonsoft.Json.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\OperationLog.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\SecureDongle_Control.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.EF6.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.Linq.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\UILanguage.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\WinFormAnimation.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\OperationLog.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\UILanguage.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\vi\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\vi-VN\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csprojAssemblyReference.cache
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.Properties.Resources.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmAbout.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmBased.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmChangePassword.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmCheckedResult.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmJob.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLogin.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLoginNew.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMain.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmManageAccount.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPODFormat.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPreviewDatabase.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPrintFieldForVerifyAndPrintCompareMode.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmRemotePrinter.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSplashScreen.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmViewHistoryProgram.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmWarningUSBDongleKey.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucCameraSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucPrinterSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSensorSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSystemSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.GenerateResource.cache
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CopyComplete
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\CircularProgressBar.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\FontAwesome.Sharp.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Microsoft.Web.WebView2.Core.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Microsoft.Web.WebView2.WinForms.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Microsoft.Web.WebView2.Wpf.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\Newtonsoft.Json.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\SecureDongle_Control.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\System.Data.SQLite.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\System.Data.SQLite.EF6.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\System.Data.SQLite.Linq.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\BarcodeVerificationSystem\bin\Debug\Libs\WinFormAnimation.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\CircularProgressBar.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.Cnx.CioMicro.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.CogNamer.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Utils.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.xml
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.xml
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\DesignUI.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\FontAwesome.Sharp.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\IPAddressControlLib.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Microsoft.Web.WebView2.Core.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Microsoft.Web.WebView2.WinForms.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Microsoft.Web.WebView2.Wpf.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Newtonsoft.Json.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\SecureDongle_Control.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\System.Data.SQLite.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\System.Data.SQLite.EF6.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\System.Data.SQLite.Linq.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Libs\WinFormAnimation.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe.config
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\FontAwesome.Sharp.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\CircularProgressBar.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.CogNamer.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Utils.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\DesignUI.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\IPAddressControlLib.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Core.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.WinForms.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Wpf.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\Newtonsoft.Json.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\OperationLog.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\SecureDongle_Control.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.EF6.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.Linq.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\UILanguage.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\WinFormAnimation.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\OperationLog.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\UILanguage.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\vi\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\bin\Debug\vi-VN\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csprojAssemblyReference.cache
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.Properties.Resources.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmAbout.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmBased.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmChangePassword.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmCheckedResult.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmJob.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLogin.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLoginNew.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMain.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmManageAccount.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPODFormat.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPreviewDatabase.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPrintFieldForVerifyAndPrintCompareMode.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmRemotePrinter.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSplashScreen.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmViewHistoryProgram.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmWarningUSBDongleKey.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucCameraSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucPrinterSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSensorSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSystemSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.GenerateResource.cache
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CopyComplete
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.pdb
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\CircularProgressBar.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.Cnx.CioMicro.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.CogNamer.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Utils.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.xml
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.xml
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\DesignUI.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\FontAwesome.Sharp.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\IPAddressControlLib.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Microsoft.Web.WebView2.Core.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Microsoft.Web.WebView2.WinForms.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Microsoft.Web.WebView2.Wpf.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\Newtonsoft.Json.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\SecureDongle_Control.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\System.Data.SQLite.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\System.Data.SQLite.EF6.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\System.Data.SQLite.Linq.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Libs\WinFormAnimation.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe.config
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.pdb
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\FontAwesome.Sharp.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\CircularProgressBar.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.CogNamer.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Utils.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\DesignUI.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\IPAddressControlLib.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Core.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.WinForms.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Wpf.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\Newtonsoft.Json.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\OperationLog.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\SecureDongle_Control.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.EF6.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.Linq.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\UILanguage.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\WinFormAnimation.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\OperationLog.pdb
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\UILanguage.pdb
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\vi\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\bin\Debug\vi-VN\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csprojAssemblyReference.cache
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.Properties.Resources.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmAbout.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmBased.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmChangePassword.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmCheckedResult.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmJob.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLogin.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLoginNew.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMain.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmManageAccount.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPODFormat.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPreviewDatabase.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPrintFieldForVerifyAndPrintCompareMode.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmRemotePrinter.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSplashScreen.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmViewHistoryProgram.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmWarningUSBDongleKey.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucCameraSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucPrinterSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSensorSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSystemSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.GenerateResource.cache
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CopyComplete
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.pdb
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csprojAssemblyReference.cache
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.Properties.Resources.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmAbout.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmBased.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmChangePassword.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmCheckedResult.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmJob.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLogin.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmLoginNew.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmMain.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmManageAccount.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPODFormat.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPreviewDatabase.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmPrintFieldForVerifyAndPrintCompareMode.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmRemotePrinter.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmSplashScreen.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmViewHistoryProgram.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.frmWarningUSBDongleKey.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucCameraSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucPrinterSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSensorSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.View.ucSystemSettings.resources
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.GenerateResource.cache
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.exe
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.pdb
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\CircularProgressBar.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.Cnx.CioMicro.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.CogNamer.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.DataMan.SDK.Utils.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.Controls.Display.xml
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\Cognex.InSight.xml
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\DesignUI.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\FontAwesome.Sharp.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\IPAddressControlLib.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\Microsoft.Web.WebView2.Core.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\Microsoft.Web.WebView2.WinForms.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\Microsoft.Web.WebView2.Wpf.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\Newtonsoft.Json.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\SecureDongle_Control.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\System.Data.SQLite.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\System.Data.SQLite.EF6.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\System.Data.SQLite.Linq.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Libs\WinFormAnimation.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe.config
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.exe
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\BarcodeVerificationSystem.pdb
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\FontAwesome.Sharp.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\CircularProgressBar.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.CogNamer.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Discovery.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Cognex.DataMan.SDK.Utils.PC.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\DesignUI.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\IPAddressControlLib.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Core.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.WinForms.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Microsoft.Web.WebView2.Wpf.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\Newtonsoft.Json.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\OperationLog.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\SecureDongle_Control.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.EF6.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\System.Data.SQLite.Linq.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\UILanguage.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\WinFormAnimation.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\OperationLog.pdb
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\UILanguage.pdb
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\vi\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\bin\Debug\vi-VN\UILanguage.resources.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\BarcodeVerificationSystem\obj\Debug\BarcodeVerificationSystem.csproj.CopyComplete

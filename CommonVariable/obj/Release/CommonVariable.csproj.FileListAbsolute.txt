@@ -1,0 +1,67 @@
+D:\RYNAN Tech\BarcodeVerificationSystem\CommonVariable\bin\Release\CommonVariable.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\CommonVariable\bin\Release\CommonVariable.pdb
+D:\RYNAN Tech\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.csprojAssemblyReference.cache
+D:\RYNAN Tech\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.csproj.CoreCompileInputs.cache
+D:\RYNAN Tech\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.dll
+D:\RYNAN Tech\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\bin\Release\CommonVariable.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\bin\Release\CommonVariable.pdb
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.csproj.CoreCompileInputs.cache
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.dll
+E:\MINHDUNG\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.pdb
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\CommonVariable\bin\Release\CommonVariable.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\CommonVariable\bin\Release\CommonVariable.pdb
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.csproj.CoreCompileInputs.cache
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.dll
+E:\MINHDUNG\11. BarcodeVerificationSystemUI\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.pdb
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\CommonVariable\bin\Release\CommonVariable.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\CommonVariable\bin\Release\CommonVariable.pdb
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.dll
+E:\ThongThach\Task\230214_BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.pdb
+E:\ThongThach\Task\FoodBot\CommonVariable\bin\Release\CommonVariable.dll
+E:\ThongThach\Task\FoodBot\CommonVariable\bin\Release\CommonVariable.pdb
+E:\ThongThach\Task\FoodBot\CommonVariable\obj\Release\CommonVariable.csproj.CoreCompileInputs.cache
+E:\ThongThach\Task\FoodBot\CommonVariable\obj\Release\CommonVariable.dll
+E:\ThongThach\Task\FoodBot\CommonVariable\obj\Release\CommonVariable.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\bin\Release\CommonVariable.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\bin\Release\CommonVariable.pdb
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.csproj.CoreCompileInputs.cache
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.dll
+E:\02. Project\6. BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.pdb
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\bin\Release\CommonVariable.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\bin\Release\CommonVariable.pdb
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.csproj.CoreCompileInputs.cache
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.dll
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.pdb
+E:\02_H_Project\6_BarcodeVerificationSystem\BarcodeVerificationSystem\CommonVariable\obj\Release\CommonVariable.csprojAssemblyReference.cache
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\CommonVariable\bin\Release\CommonVariable.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\CommonVariable\bin\Release\CommonVariable.pdb
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\CommonVariable\obj\Release\CommonVariable.csproj.CoreCompileInputs.cache
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\CommonVariable\obj\Release\CommonVariable.dll
+E:\05_H_BackUp\01_H_R_Link_Backup\Current\CommonVariable\obj\Release\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\CommonVariable\bin\Release\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\CommonVariable\bin\Release\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\CommonVariable\obj\Release\CommonVariable.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\CommonVariable\obj\Release\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_07_17_RLink\Current\CommonVariable\obj\Release\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\CommonVariable\bin\Release\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\CommonVariable\bin\Release\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\CommonVariable\obj\Release\CommonVariable.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\CommonVariable\obj\Release\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_08_15_RLink\Current\CommonVariable\obj\Release\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\CommonVariable\bin\Release\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\CommonVariable\bin\Release\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\CommonVariable\obj\Release\CommonVariable.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\CommonVariable\obj\Release\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_08_31_RLink\CommonVariable\obj\Release\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\CommonVariable\bin\Release\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\CommonVariable\bin\Release\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\CommonVariable\obj\Release\CommonVariable.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\CommonVariable\obj\Release\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_10_17_RLink\CommonVariable\obj\Release\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\CommonVariable\bin\Release\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\CommonVariable\bin\Release\CommonVariable.pdb
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\CommonVariable\obj\Release\CommonVariable.csproj.CoreCompileInputs.cache
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\CommonVariable\obj\Release\CommonVariable.dll
+E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\CommonVariable\obj\Release\CommonVariable.pdb
