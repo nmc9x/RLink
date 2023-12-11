@@ -882,4 +882,8 @@
   <data name="HandleError" xml:space="preserve">
     <value>Handle error</value>
   </data>
+  <data name="PrinterNotSupportHttpRequest" xml:space="preserve">
+    <value>Printer not support Http Request, please disable "Check All Printer Setting" in setting tab</value>
+    <comment>MinhChau Add 08122023</comment>
+  </data>
 </root>

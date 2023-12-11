@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Net.WebSockets;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -164,6 +165,12 @@ namespace BarcodeVerificationSystem.Controller
                         }
                     }
                 }
+                printerSettingsModel.IsSupportHttpRequest = true;
+                return printerSettingsModel;
+            }
+            catch (WebException)
+            {
+                printerSettingsModel.IsSupportHttpRequest = false;
                 return printerSettingsModel;
             }
             catch (Exception)

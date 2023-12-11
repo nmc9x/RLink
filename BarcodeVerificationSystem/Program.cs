@@ -48,10 +48,11 @@ namespace BarcodeVerificationSystem
 
             //Get UUID of computer run this software
             string idOfPC = FingerPrint.Value();
-//#if DEBUG
-//            bool isAllow = true;
-//#else
+
             bool isAllow = false;
+#if DEBUG
+             isAllow = true; // bypass usb key in debug mode
+#endif
             string path1 = CommVariables.PathAllowPC + "RConfig.dat";
             if (!Directory.Exists(CommVariables.PathAllowPC))
             {

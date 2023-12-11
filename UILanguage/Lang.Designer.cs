@@ -1609,6 +1609,15 @@ namespace UILanguage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Printer not support Http Request, please disable &quot;Check All Printer Setting&quot; in setting tab.
+        /// </summary>
+        public static string PrinterNotSupportHttpRequest {
+            get {
+                return ResourceManager.GetString("PrinterNotSupportHttpRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Printer remote port.
         /// </summary>
         public static string PrinterRemotePort {

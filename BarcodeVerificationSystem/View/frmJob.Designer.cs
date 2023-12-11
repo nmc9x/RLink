@@ -107,6 +107,7 @@
             this.txtPODFormat = new DesignUI.CuzUI.CuzTextBox();
             this.btnGennerate = new DesignUI.CuzUI.CuzButton();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.BtnViewLog = new DesignUI.CuzUI.CuzButton();
             this.pnlMenu.SuspendLayout();
             this.statusStrip2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -628,6 +629,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.White;
+            this.tabPage2.Controls.Add(this.BtnViewLog);
             this.tabPage2.Controls.Add(this.tblCompareType);
             this.tabPage2.Controls.Add(this.lblCompare);
             this.tabPage2.Controls.Add(this.tblJobType);
@@ -1090,6 +1092,25 @@
             resources.ApplyResources(this.pnlMain, "pnlMain");
             this.pnlMain.Name = "pnlMain";
             // 
+            // BtnViewLog
+            // 
+            this.BtnViewLog._BorderColor = System.Drawing.Color.Silver;
+            this.BtnViewLog._BorderRadius = 10;
+            this.BtnViewLog._BorderSize = 1;
+            this.BtnViewLog._GradientsButton = false;
+            this.BtnViewLog._Text = "";
+            this.BtnViewLog.BackColor = System.Drawing.Color.White;
+            this.BtnViewLog.BackgroundColor = System.Drawing.Color.White;
+            this.BtnViewLog.FillColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.BtnViewLog.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(165)))));
+            this.BtnViewLog.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.BtnViewLog, "BtnViewLog");
+            this.BtnViewLog.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnViewLog.Image = global::BarcodeVerificationSystem.Properties.Resources.icon_open_321;
+            this.BtnViewLog.Name = "BtnViewLog";
+            this.BtnViewLog.TextColor = System.Drawing.SystemColors.ControlText;
+            this.BtnViewLog.UseVisualStyleBackColor = false;
+            // 
             // frmJob
             // 
             resources.ApplyResources(this, "$this");
@@ -1201,5 +1222,6 @@
         private System.Windows.Forms.Label lblJobName;
         private DesignUI.CuzUI.CuzListBox listBoxJobList;
         private DesignUI.CuzUI.CuzListBox listBoxPrintProductTemplate;
+        private DesignUI.CuzUI.CuzButton BtnViewLog;
     }
 }

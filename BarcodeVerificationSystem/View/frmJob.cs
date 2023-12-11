@@ -6,20 +6,17 @@ using Cognex.DataMan.SDK.Utils;
 using CommonVariable;
 using DesignUI.CuzAlert;
 using DesignUI.CuzMesageBox;
-using DesignUI.CuzUI;
 using OperationLog.Controller;
 using OperationLog.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -84,6 +81,9 @@ namespace BarcodeVerificationSystem.View
 
         private void InitControls()
         {
+#if DEBUG
+            DebugVirtual();
+#endif
             // Show icon camera status
             _LabelStatusCameraList.Add(lblStatusCamera01);
             UpdateStatusLabelCamera();
@@ -120,8 +120,11 @@ namespace BarcodeVerificationSystem.View
             // Camera sw Listener server
             MonitorListenerServer();
         }
-
-        private async void MonitorListenerServer()
+        private void DebugVirtual()
+        {
+            BtnViewLog.Visible = true;
+        }
+            private async void MonitorListenerServer()
         {
             try
             {
@@ -211,6 +214,7 @@ namespace BarcodeVerificationSystem.View
             radCanRead.CheckedChanged += RadioButton_CheckedChanged;
             radDatabase.CheckedChanged += RadioButton_CheckedChanged;
             radStaticText.CheckedChanged += RadioButton_CheckedChanged;
+            BtnViewLog.Click += BtnViewLog_Click;
 
             cboSupportForCamera.DrawMode = DrawMode.OwnerDrawVariable;
             cboSupportForCamera.Height = 40;
@@ -232,6 +236,28 @@ namespace BarcodeVerificationSystem.View
             Shared.OnCameraOutputSignalChange += Shared_OnCameraOutputSignalChange;
 
             listBoxJobList.DrawItem += ListBoxJobList_DrawItem;
+        }
+
+        private void BtnViewLog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.InitialDirectory = CommVariables.PathProgramDataApp;
+                    openFileDialog.Filter = "Text files (*.txt)|*.txt|Job files (*.rvis)|*.rvis|Database files (*.db)|*.db|csv files (*.csv)|*.csv|All files (*.*)|*.*";
+                    //openFileDialog.RestoreDirectory = true;
+                    openFileDialog.FilterIndex = 5;
+                    openFileDialog.Multiselect = true;
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string selectedFile = openFileDialog.FileName;
+                        Process.Start("notepad.exe", selectedFile);
+                    }
+                }
+            }
+            catch (Exception){ }
+            
         }
 
         private void ListBoxJobList_DrawItem(object sender, DrawItemEventArgs e)
@@ -805,12 +831,20 @@ namespace BarcodeVerificationSystem.View
                     if (Shared.Settings.PrinterList.FirstOrDefault().CheckAllPrinterSettings && _JobModel.CompareType == CompareType.Database && _JobModel.PrinterSeries)
                     {
                         PrinterSettingsModel printerSettingsModel = Shared.GetSettingsPrinter();
-
-                        if (printerSettingsModel.podDataType != 1)
+                        if (printerSettingsModel.IsSupportHttpRequest)
                         {
-                            CuzMessageBox.Show(Lang.DataTypeMustBeRAWData, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (printerSettingsModel.PodDataType != 1)
+                            {
+                                CuzMessageBox.Show(Lang.DataTypeMustBeRAWData, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            CuzMessageBox.Show(Lang.PrinterNotSupportHttpRequest, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
                         }
+                       
                     }
 
                     this.Hide();
@@ -1238,7 +1272,7 @@ namespace BarcodeVerificationSystem.View
                     {
                         PrinterSettingsModel printerSettingsModel = Shared.GetSettingsPrinter();
 
-                        if (printerSettingsModel.podDataType != 1)
+                        if (printerSettingsModel.PodDataType != 1)
                         {
                             radOther.Checked = true;
                             txtFileName.Text = "";

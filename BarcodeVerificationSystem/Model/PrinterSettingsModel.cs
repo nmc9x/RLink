@@ -11,18 +11,20 @@ namespace BarcodeVerificationSystem.Model
     public class PrinterSettingsModel
     {
         [DataMember(Name = "podMode")]
-        public int podMode { get; set; } // 0 print all, 1 print last, 2 print last and repeat
+        public int PodMode { get; set; } // 0 print all, 1 print last, 2 print last and repeat
         [DataMember(Name = "podDataType")]
-        public int podDataType { get; set; }// 0 json, 1 Raw data, 2 Customise
+        public int PodDataType { get; set; }// 0 json, 1 Raw data, 2 Customise
         [DataMember(Name = "monitorResponse")]
-        public int monitorResponse { get; set; } // 0 Timed Interval, 1 Each print
+        public int MonitorResponse { get; set; } // 0 Timed Interval, 1 Each print
         [DataMember(Name= "enablePOD")]
-        public bool enablePOD { get; set; } // Enable POD
+        public bool EnablePOD { get; set; } // Enable POD
         [DataMember(Name = "responsePODData")]
-        public bool responsePODData { get; set; } // Response POD data
+        public bool ResponsePODData { get; set; } // Response POD data
         [DataMember(Name = "responsePODCommand")]
-        public bool responsePODCommand { get; set; } // Response POD commnand
+        public bool ResponsePODCommand { get; set; } // Response POD commnand
         [DataMember(Name = "enableMonitor")]
-        public bool enableMonitor { get; set; } // Enable monitor
+        public bool EnableMonitor { get; set; } // Enable monitor
+        [DataMember(Name = "isSupportHttpRequest")] // MinhChau Add 08122023
+        public bool IsSupportHttpRequest { get; set; }
     }
 }

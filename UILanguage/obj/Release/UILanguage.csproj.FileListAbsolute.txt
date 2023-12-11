@@ -130,3 +130,14 @@ E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\UILanguage\obj\Release\UILa
 E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\UILanguage\obj\Release\vi\UILanguage.resources.dll
 E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\UILanguage\obj\Release\UILanguage.dll
 E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\UILanguage\obj\Release\UILanguage.pdb
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\UILanguage\bin\Release\UILanguage.dll
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\UILanguage\bin\Release\UILanguage.pdb
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\UILanguage\bin\Release\vi\UILanguage.resources.dll
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\UILanguage\obj\Release\UILanguage.csproj.AssemblyReference.cache
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\UILanguage\obj\Release\UILanguage.Lang.resources
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\UILanguage\obj\Release\UILanguage.Lang.vi.resources
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\UILanguage\obj\Release\UILanguage.csproj.GenerateResource.cache
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\UILanguage\obj\Release\UILanguage.csproj.CoreCompileInputs.cache
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\UILanguage\obj\Release\vi\UILanguage.resources.dll
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\UILanguage\obj\Release\UILanguage.dll
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\UILanguage\obj\Release\UILanguage.pdb

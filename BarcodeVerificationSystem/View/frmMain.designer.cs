@@ -50,6 +50,7 @@
             this.btnStop = new DesignUI.CuzUI.CuzButton();
             this.btnStart = new DesignUI.CuzUI.CuzButton();
             this.pnlJobInformation = new DesignUI.CuzUI.RoundPanel();
+            this.btnViewLog = new System.Windows.Forms.Button();
             this.txtJobType = new DesignUI.CuzUI.CuzTextBox();
             this.lblJobType = new System.Windows.Forms.Label();
             this.txtTemplatePrint = new DesignUI.CuzUI.CuzTextBox();
@@ -101,6 +102,7 @@
             this.lblCheckedResult = new System.Windows.Forms.Label();
             this.pnlDatabase = new DesignUI.CuzUI.CuzPanel();
             this.picDatabaseLoading = new System.Windows.Forms.PictureBox();
+            this.dgvDatabase = new DesignUI.CuzUI.CuzDataGridView();
             this.lblDatabase = new System.Windows.Forms.Label();
             this.tableLayoutPanelPrintedState = new System.Windows.Forms.TableLayoutPanel();
             this.pnlPrintedState3 = new System.Windows.Forms.Panel();
@@ -132,7 +134,6 @@
             this.mnManage = new System.Windows.Forms.ToolStripMenuItem();
             this.mnChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.mnLogOut = new System.Windows.Forms.ToolStripMenuItem();
-            this.dgvDatabase = new DesignUI.CuzUI.CuzDataGridView();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlControllButton.SuspendLayout();
@@ -158,6 +159,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCheckedResult)).BeginInit();
             this.pnlDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDatabaseLoading)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatabase)).BeginInit();
             this.tableLayoutPanelPrintedState.SuspendLayout();
             this.pnlPrintedState3.SuspendLayout();
             this.pnlPrintedCode.SuspendLayout();
@@ -167,7 +169,6 @@
             this.pnlSentData.SuspendLayout();
             this.pnlMenu.SuspendLayout();
             this.cuzDropdownManageAccount.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatabase)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -223,7 +224,7 @@
             this.lblSensorControllerStatus.Margin = new System.Windows.Forms.Padding(10, 3, 0, 5);
             this.lblSensorControllerStatus.Name = "lblSensorControllerStatus";
             this.lblSensorControllerStatus.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.lblSensorControllerStatus.Size = new System.Drawing.Size(1115, 25);
+            this.lblSensorControllerStatus.Size = new System.Drawing.Size(1084, 25);
             this.lblSensorControllerStatus.Spring = true;
             this.lblSensorControllerStatus.Text = "Sensor controller";
             this.lblSensorControllerStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -388,6 +389,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlJobInformation.BackColor = System.Drawing.Color.White;
+            this.pnlJobInformation.Controls.Add(this.btnViewLog);
             this.pnlJobInformation.Controls.Add(this.txtJobType);
             this.pnlJobInformation.Controls.Add(this.lblJobType);
             this.pnlJobInformation.Controls.Add(this.txtTemplatePrint);
@@ -414,6 +416,16 @@
             this.pnlJobInformation.TitleForeColor = System.Drawing.Color.White;
             this.pnlJobInformation.TitleHatchStyle = System.Drawing.Drawing2D.HatchStyle.Percent60;
             this.pnlJobInformation.TitleHeight = 30;
+            // 
+            // btnViewLog
+            // 
+            this.btnViewLog.Location = new System.Drawing.Point(14, 431);
+            this.btnViewLog.Name = "btnViewLog";
+            this.btnViewLog.Size = new System.Drawing.Size(78, 31);
+            this.btnViewLog.TabIndex = 123;
+            this.btnViewLog.Text = "Log View";
+            this.btnViewLog.UseVisualStyleBackColor = true;
+            this.btnViewLog.Visible = false;
             // 
             // txtJobType
             // 
@@ -1326,6 +1338,68 @@
             this.picDatabaseLoading.TabStop = false;
             this.picDatabaseLoading.Visible = false;
             // 
+            // dgvDatabase
+            // 
+            this.dgvDatabase.AllowUserToAddRows = false;
+            this.dgvDatabase.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.dgvDatabase.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvDatabase.AlterRowBackColor = System.Drawing.Color.White;
+            this.dgvDatabase.AlterRowForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.dgvDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvDatabase.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDatabase.BackgroundColor = System.Drawing.Color.White;
+            this.dgvDatabase.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvDatabase.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvDatabase.ColumnHeaderBackColor = System.Drawing.Color.White;
+            this.dgvDatabase.ColumnHeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dgvDatabase.ColumnHeaderForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.dgvDatabase.ColumnHeaderHeight = 4;
+            this.dgvDatabase.ColumnHeaderPadding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.dgvDatabase.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDatabase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvDatabase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatabase.EnableHeadersVisualStyles = false;
+            this.dgvDatabase.GridLineColor = System.Drawing.Color.LightBlue;
+            this.dgvDatabase.HeaderBorder = true;
+            this.dgvDatabase.HeaderBorderStyle = DesignUI.CuzUI.CuzDataGridView.CustomBorderStyle.SingleHorizontal;
+            this.dgvDatabase.Location = new System.Drawing.Point(24, 41);
+            this.dgvDatabase.MultiSelect = false;
+            this.dgvDatabase.Name = "dgvDatabase";
+            this.dgvDatabase.ReadOnly = true;
+            this.dgvDatabase.RowBackColor = System.Drawing.Color.White;
+            this.dgvDatabase.RowBorder = true;
+            this.dgvDatabase.RowBorderStyle = DesignUI.CuzUI.CuzDataGridView.CustomBorderStyle.SingleHorizontal;
+            this.dgvDatabase.RowFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dgvDatabase.RowForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.dgvDatabase.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvDatabase.RowHeadersVisible = false;
+            this.dgvDatabase.RowHeight = 35;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.dgvDatabase.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvDatabase.RowSelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.dgvDatabase.RowSelectionForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.dgvDatabase.RowTemplate.Height = 35;
+            this.dgvDatabase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDatabase.Size = new System.Drawing.Size(929, 296);
+            this.dgvDatabase.TabIndex = 111;
+            // 
             // lblDatabase
             // 
             this.lblDatabase.AutoSize = true;
@@ -1858,68 +1932,6 @@
             this.mnLogOut.Size = new System.Drawing.Size(168, 22);
             this.mnLogOut.Text = "Log out";
             // 
-            // dgvDatabase
-            // 
-            this.dgvDatabase.AllowUserToAddRows = false;
-            this.dgvDatabase.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.dgvDatabase.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDatabase.AlterRowBackColor = System.Drawing.Color.White;
-            this.dgvDatabase.AlterRowForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.dgvDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvDatabase.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDatabase.BackgroundColor = System.Drawing.Color.White;
-            this.dgvDatabase.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvDatabase.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvDatabase.ColumnHeaderBackColor = System.Drawing.Color.White;
-            this.dgvDatabase.ColumnHeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.dgvDatabase.ColumnHeaderForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.dgvDatabase.ColumnHeaderHeight = 4;
-            this.dgvDatabase.ColumnHeaderPadding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.dgvDatabase.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDatabase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvDatabase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatabase.EnableHeadersVisualStyles = false;
-            this.dgvDatabase.GridLineColor = System.Drawing.Color.LightBlue;
-            this.dgvDatabase.HeaderBorder = true;
-            this.dgvDatabase.HeaderBorderStyle = DesignUI.CuzUI.CuzDataGridView.CustomBorderStyle.SingleHorizontal;
-            this.dgvDatabase.Location = new System.Drawing.Point(24, 41);
-            this.dgvDatabase.MultiSelect = false;
-            this.dgvDatabase.Name = "dgvDatabase";
-            this.dgvDatabase.ReadOnly = true;
-            this.dgvDatabase.RowBackColor = System.Drawing.Color.White;
-            this.dgvDatabase.RowBorder = true;
-            this.dgvDatabase.RowBorderStyle = DesignUI.CuzUI.CuzDataGridView.CustomBorderStyle.SingleHorizontal;
-            this.dgvDatabase.RowFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.dgvDatabase.RowForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.dgvDatabase.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvDatabase.RowHeadersVisible = false;
-            this.dgvDatabase.RowHeight = 35;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.dgvDatabase.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvDatabase.RowSelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.dgvDatabase.RowSelectionForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.dgvDatabase.RowTemplate.Height = 35;
-            this.dgvDatabase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatabase.Size = new System.Drawing.Size(929, 296);
-            this.dgvDatabase.TabIndex = 111;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1969,6 +1981,7 @@
             this.pnlDatabase.ResumeLayout(false);
             this.pnlDatabase.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDatabaseLoading)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatabase)).EndInit();
             this.tableLayoutPanelPrintedState.ResumeLayout(false);
             this.pnlPrintedState3.ResumeLayout(false);
             this.pnlPrintedCode.ResumeLayout(false);
@@ -1981,7 +1994,6 @@
             this.pnlSentData.PerformLayout();
             this.pnlMenu.ResumeLayout(false);
             this.cuzDropdownManageAccount.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatabase)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2084,5 +2096,6 @@
         private System.Windows.Forms.PictureBox picCheckedResultLoading;
         private System.Windows.Forms.PictureBox picDatabaseLoading;
         private DesignUI.CuzUI.CuzDataGridView dgvDatabase;
+        private System.Windows.Forms.Button btnViewLog;
     }
 }

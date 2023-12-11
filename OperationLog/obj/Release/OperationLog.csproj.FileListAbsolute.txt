@@ -180,3 +180,17 @@ E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\obj\Release\Op
 E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\obj\Release\OperationLog.csproj.CopyComplete
 E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\obj\Release\OperationLog.dll
 E:\04_H_Task\03_H_R-Link\2023_11_27_RLink_SourceCode\OperationLog\obj\Release\OperationLog.pdb
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\bin\Release\OperationLog.dll
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\bin\Release\OperationLog.pdb
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\bin\Release\CommonVariable.dll
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\bin\Release\System.Data.SQLite.dll
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\bin\Release\System.Data.SQLite.EF6.dll
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\bin\Release\System.Data.SQLite.Linq.dll
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\bin\Release\CommonVariable.pdb
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\obj\Release\OperationLog.csproj.AssemblyReference.cache
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\obj\Release\OperationLog.Properties.Resources.resources
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\obj\Release\OperationLog.csproj.GenerateResource.cache
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\obj\Release\OperationLog.csproj.CoreCompileInputs.cache
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\obj\Release\OperationLog.csproj.CopyComplete
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\obj\Release\OperationLog.dll
+D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\obj\Release\OperationLog.pdb

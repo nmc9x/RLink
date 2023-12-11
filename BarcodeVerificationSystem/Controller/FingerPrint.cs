@@ -92,7 +92,7 @@ namespace Security
                 {
                     try
                     {
-                        result = mo[wmiProperty].ToString();
+                        result = mo[wmiProperty]?.ToString();
                         break;
                     }
                     catch
