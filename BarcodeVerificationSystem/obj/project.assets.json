@@ -18,6 +18,29 @@
           "lib/net48/FontAwesome.Sharp.dll": {}
         }
       },
+      "Cognex.InSight.Web/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "compile": {
+          "bin/placeholder/Cognex.InSight.Web.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Cognex.InSight.Web.dll": {}
+        }
+      },
+      "Cognex.InSight.Web.Controls/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "dependencies": {
+          "Cognex.InSight.Web": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Cognex.InSight.Web.Controls.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Cognex.InSight.Web.Controls.dll": {}
+        }
+      },
       "CommonVariable/1.0.0": {
         "type": "project",
         "compile": {
@@ -64,6 +87,29 @@
         },
         "runtime": {
           "lib/net48/FontAwesome.Sharp.dll": {}
+        }
+      },
+      "Cognex.InSight.Web/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "compile": {
+          "bin/placeholder/Cognex.InSight.Web.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Cognex.InSight.Web.dll": {}
+        }
+      },
+      "Cognex.InSight.Web.Controls/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "dependencies": {
+          "Cognex.InSight.Web": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Cognex.InSight.Web.Controls.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Cognex.InSight.Web.Controls.dll": {}
         }
       },
       "CommonVariable/1.0.0": {
@@ -114,6 +160,29 @@
           "lib/net48/FontAwesome.Sharp.dll": {}
         }
       },
+      "Cognex.InSight.Web/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "compile": {
+          "bin/placeholder/Cognex.InSight.Web.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Cognex.InSight.Web.dll": {}
+        }
+      },
+      "Cognex.InSight.Web.Controls/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "dependencies": {
+          "Cognex.InSight.Web": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Cognex.InSight.Web.Controls.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Cognex.InSight.Web.Controls.dll": {}
+        }
+      },
       "CommonVariable/1.0.0": {
         "type": "project",
         "compile": {
@@ -162,6 +231,29 @@
           "lib/net48/FontAwesome.Sharp.dll": {}
         }
       },
+      "Cognex.InSight.Web/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "compile": {
+          "bin/placeholder/Cognex.InSight.Web.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Cognex.InSight.Web.dll": {}
+        }
+      },
+      "Cognex.InSight.Web.Controls/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "dependencies": {
+          "Cognex.InSight.Web": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Cognex.InSight.Web.Controls.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Cognex.InSight.Web.Controls.dll": {}
+        }
+      },
       "CommonVariable/1.0.0": {
         "type": "project",
         "compile": {
@@ -208,6 +300,29 @@
         },
         "runtime": {
           "lib/net48/FontAwesome.Sharp.dll": {}
+        }
+      },
+      "Cognex.InSight.Web/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "compile": {
+          "bin/placeholder/Cognex.InSight.Web.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Cognex.InSight.Web.dll": {}
+        }
+      },
+      "Cognex.InSight.Web.Controls/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "dependencies": {
+          "Cognex.InSight.Web": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Cognex.InSight.Web.Controls.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Cognex.InSight.Web.Controls.dll": {}
         }
       },
       "CommonVariable/1.0.0": {
@@ -261,6 +376,16 @@
         "lib/netcoreapp3.1/FontAwesome.Sharp.dll"
       ]
     },
+    "Cognex.InSight.Web/1.0.0": {
+      "type": "project",
+      "path": "../SDK/Cognex.InSight.Web/Cognex.InSight.Web.csproj",
+      "msbuildProject": "../SDK/Cognex.InSight.Web/Cognex.InSight.Web.csproj"
+    },
+    "Cognex.InSight.Web.Controls/1.0.0": {
+      "type": "project",
+      "path": "../SDK/Cognex.InSight.Web.Controls/Cognex.InSight.Web.Controls.csproj",
+      "msbuildProject": "../SDK/Cognex.InSight.Web.Controls/Cognex.InSight.Web.Controls.csproj"
+    },
     "CommonVariable/1.0.0": {
       "type": "project",
       "path": "../CommonVariable/CommonVariable.csproj",
@@ -279,6 +404,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.8": [
+      "Cognex.InSight.Web >= 1.0.0",
+      "Cognex.InSight.Web.Controls >= 1.0.0",
       "CommonVariable >= 1.0.0",
       "FontAwesome.Sharp >= 6.1.1",
       "OperationLog >= 1.0.0",
@@ -317,6 +444,12 @@
             },
             "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\OperationLog\\OperationLog.csproj": {
               "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\OperationLog\\OperationLog.csproj"
+            },
+            "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web.Controls\\Cognex.InSight.Web.Controls.csproj": {
+              "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web.Controls\\Cognex.InSight.Web.Controls.csproj"
+            },
+            "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj": {
+              "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj"
             },
             "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\UILanguage\\UILanguage.csproj": {
               "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\UILanguage\\UILanguage.csproj"

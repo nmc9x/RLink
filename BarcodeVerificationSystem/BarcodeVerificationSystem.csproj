@@ -13,6 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,7 +28,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -144,6 +144,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\CameraListenerServer .cs" />
+    <Compile Include="Controller\CamerasHandler.cs" />
+    <Compile Include="Controller\Camera\DMSeries.cs" />
+    <Compile Include="Controller\Camera\ISSeries.cs" />
     <Compile Include="Controller\ComboBoxCustom.cs" />
     <Compile Include="Controller\CompareStatus.cs" />
     <Compile Include="Controller\CsvHandler.cs" />
@@ -166,6 +169,7 @@
     <Compile Include="Model\InternalData.cs" />
     <Compile Include="Model\ItemCustomModel.cs" />
     <Compile Include="Model\JobModel.cs" />
+    <Compile Include="Model\ObjectResultModel.cs" />
     <Compile Include="Model\PODDataModel.cs" />
     <Compile Include="Model\PODModel.cs" />
     <Compile Include="Model\PODResponseModel.cs" />
@@ -682,6 +686,14 @@
     <ProjectReference Include="..\OperationLog\OperationLog.csproj">
       <Project>{5774be71-5280-4f15-951a-a63377dac379}</Project>
       <Name>OperationLog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SDK\Cognex.InSight.Web.Controls\Cognex.InSight.Web.Controls.csproj">
+      <Project>{FE709697-9058-40E9-BE11-C685E2B50E05}</Project>
+      <Name>Cognex.InSight.Web.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SDK\Cognex.InSight.Web\Cognex.InSight.Web.csproj">
+      <Project>{4B139CAB-9B75-4260-B137-B793FE1143D5}</Project>
+      <Name>Cognex.InSight.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\UILanguage\UILanguage.csproj">
       <Project>{a01b423f-b159-422c-8961-474feae9bd78}</Project>

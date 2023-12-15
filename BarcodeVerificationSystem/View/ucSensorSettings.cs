@@ -52,6 +52,7 @@ namespace BarcodeVerificationSystem.View
 
             txtSensorControllerIP.TextChanged += AdjustData;
             numSensorControllerPort.ValueChanged += AdjustData;
+        
             numSensorControllerPulseEncoder.ValueChanged += AdjustData;
             numSensorControllerEncoderDiameter.ValueChanged += AdjustData;
             numSensorControllerDelayBefore.ValueChanged += AdjustData;

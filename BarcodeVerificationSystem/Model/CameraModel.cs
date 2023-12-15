@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -15,6 +16,22 @@ namespace BarcodeVerificationSystem.Model
     [Serializable]
     public class CameraModel
     {
+        private CameraType _CameraType = CameraType.UKN;
+        public CameraType CameraType
+        {
+            get => _CameraType; 
+            set => _CameraType = value;
+        }
+
+        private string _Port = "80";
+
+        public string Port
+        {
+            get { return _Port; }
+            set { _Port = value; }
+        }
+
+
         private int _Index = 0;
         private RoleOfStation _RoleOfCamera = RoleOfStation.ForProduct;
         private string _IP = "192.168.0.2";
@@ -45,5 +62,11 @@ namespace BarcodeVerificationSystem.Model
         public bool AutoReconnect { get => _AutoReconnect; set => _AutoReconnect = value; }
         public bool OutputEnable { get => _OutputEnable; set => _OutputEnable = value; }
         public bool IsEnable { get => _IsEnable; set => _IsEnable = value; }
+    }
+    public enum CameraType
+    {
+        UKN,
+        DM,
+        IS
     }
 }

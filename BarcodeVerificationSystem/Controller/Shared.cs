@@ -226,7 +226,7 @@ namespace BarcodeVerificationSystem.Controller
             if (Settings.CameraList.Count <= 0)
             {
                 Settings.CameraList.Add(new CameraModel { Index = 0,IP = "192.168.0.2",RoleOfCamera = RoleOfStation.ForProduct });
-                //Settings.CameraList.Add(new CameraModel { Index = 1,IP = "192.168.0.3",RoleOfCamera = RoleOfStation.ForBox });
+               // Settings.CameraList.Add(new CameraModel { Index = 1,IP = "192.168.0.3",RoleOfCamera = RoleOfStation.ForProduct });
             }
 
             // Check settings unavailable printer and add default

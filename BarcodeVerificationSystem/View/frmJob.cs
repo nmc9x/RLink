@@ -1,11 +1,15 @@
 ﻿using BarcodeVerificationSystem.Controller;
+using BarcodeVerificationSystem.Controller.Camera;
 using BarcodeVerificationSystem.Model;
 using Cognex.DataMan.SDK;
-using Cognex.DataMan.SDK.Discovery;
-using Cognex.DataMan.SDK.Utils;
+using Cognex.InSight.Remoting.Serialization;
+using Cognex.InSight.Web;
+using Cognex.InSight.Web.Controls;
 using CommonVariable;
 using DesignUI.CuzAlert;
 using DesignUI.CuzMesageBox;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using OperationLog.Controller;
 using OperationLog.Model;
 using System;
@@ -13,10 +17,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Reflection;
+using System.Management;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,595 +32,292 @@ namespace BarcodeVerificationSystem.View
     public partial class frmJob : Form
     {
         #region Variables Jobs
-        //Datetime clock 
-        private Timer _TimerDateTime = new Timer();
-        private string _DateTimeFormat = "yyyy/MM/dd hh:mm:ss tt";
-        //END Datetime clock 
+        private readonly DMSeries DMCamera = new DMSeries(); // MinhChau Add 11122023
+        //private static  ISSeries ISCamera = new ISSeries(); // MinhChau Add 11122023
+        private CvsInSight _InSight;
+        public static CvsDisplay _CvsDisplay;
+
+        #region MyRegion
+        private readonly Timer _TimerDateTime = new Timer();
+        private readonly string _DateTimeFormat = "yyyy/MM/dd hh:mm:ss tt";
         public double _NumberTotalsCode = 0;
-        // Variable for loading data to user interface
         private bool _IsBinding = false;
-        // END Variable for loading data to user interface
-        // Variable for create, edit Job
         private bool _IsProcessing = false;
         private string _NameOfJobOld = "";
+        private int countSkipFirstAlert = 0;
         private List<PODModel> _PODFormat = new List<PODModel>();
-        private List<PODModel> _PODList = new List<PODModel>();
+        private readonly List<PODModel> _PODList = new List<PODModel>();
         private List<string> _JobNameList = null;
-        private List<ToolStripLabel> _LabelStatusCameraList = new List<ToolStripLabel>();
-        private List<ToolStripLabel> _LabelStatusPrinterList = new List<ToolStripLabel>();
-
+        private readonly List<ToolStripLabel> _LabelStatusCameraList = new List<ToolStripLabel>();
+        private readonly List<ToolStripLabel> _LabelStatusPrinterList = new List<ToolStripLabel>();
         private frmSettings _FormSettings;
-        
         private JobModel _JobModel = null;
         private frmMain _FormMainPC = null;
 
-        private string[] _PrinterSeries = new string[] { "RYNAN R10", "RYNAN R20", "RYNAN B1040", "RYNAN R40", "RYNAN R60", "Standalone" };
+        private Thread _ThreadMonitorPrinter;
+        private readonly bool _IsObtainingPrintProductTemplateList = false;
+        private string[] _PrintProductTemplateList = new string[] { };
+        private Thread _ThreadMonitorCamera;
+        private Thread _ThreadMonitorCameraIs;
 
-        private string SupportForPrinter = "Support for printer: RYNAN R10, RYNAN R20, RYNAN R40, RYNAN R60, RYNAN B1040.";
-        private string Standalone = "In this mode the software does not communicate and control the printer, the software only verifies the barcode through the camera.";
-        private static Color _AferProductionColor = Color.FromArgb(0, 171, 230);
-        private static Color _OnProductionColor = Color.FromArgb(62, 151, 149);
-        private static Color _VerifyAndPrintColor = Color.DarkBlue;
-        private static Color _CanreadColor = Color.IndianRed;
-        private static Color _StaticTextColor = Color.LightGray;
-        private static Color _Standalone = Color.DarkBlue;
-        private static Color _RLinkColor = Color.FromArgb(0, 171, 230);
+        private static readonly CancellationTokenSource _ctsThreadConnectDM = new CancellationTokenSource();
+        private readonly CancellationToken _ctsCamConnToken = _ctsThreadConnectDM.Token;
+
+        private static readonly CancellationTokenSource _ctsThreadConnectIS = new CancellationTokenSource();
+        private readonly CancellationToken _ctsIsToken = _ctsThreadConnectIS.Token;
+
+        // private string[] _PrinterSeries = new string[] { "RYNAN R10", "RYNAN R20", "RYNAN B1040", "RYNAN R40", "RYNAN R60", "Standalone" };
+
+        private readonly string SupportForPrinter = "Support for printer: RYNAN R10, RYNAN R20, RYNAN R40, RYNAN R60, RYNAN B1040.";
+        private readonly string Standalone = "In this mode the software does not communicate and control the printer, the software only verifies the barcode through the camera.";
+        private readonly List<string> CameraSupportNameList = new List<string>
+        {
+            "Camera Cognex DM series",
+            "Camera Cognex IS2800 series"
+        };
+        private static readonly Color _Standalone = Color.DarkBlue;
+        private static readonly Color _RLinkColor = Color.FromArgb(0, 171, 230);
+        #endregion
+
         #endregion Variables Jobs
 
         public frmJob()
         {
             InitializeComponent();
+            _InSight = new CvsInSight();
+            _CvsDisplay = new CvsDisplay();
+            // Reg Event InSight Camera
+            _InSight.ConnectedChanged += _InSight_ConnectedChangedAsync;
+            _InSight.ResultsChanged += InSight_ResultsChanged;
+            _CvsDisplay.SetInSight(_InSight);
+        }
+
+        private List<ObjectResultModel> _ObjectResList = new List<ObjectResultModel>();
+        List<(int, string)> _DesireDataList = new List<(int, string)>();
+        private string CameraData = "";
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void InSight_ResultsChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CameraModel cameraModel = Shared.GetCameraModelBasedOnIPAddress(_InSight.RemoteIPAddress);
+                JToken tokenResults = _InSight.Results;
+                JObject objectResult = tokenResults.ToObject<JObject>();
+                JToken tokenObjectCells = objectResult["cells"];
+                string jsonString = tokenObjectCells.ToString();
+
+                if (objectResult != null && jsonString != "")
+                {
+                    _ObjectResList = JsonConvert.DeserializeObject<List<ObjectResultModel>>(jsonString);
+                    _DesireDataList = GetDesireDataByObjectName().ToList();
+                    _DesireDataList.Sort();
+                    if (_DesireDataList != null)
+                    {
+                        CameraData = "";
+                        int i = 0;
+                        foreach ((int, string) item in _DesireDataList)
+                        {
+                            if (i < _DesireDataList.Count)
+                                CameraData += item.Item2.ToString() + ";";
+                            if (i == _DesireDataList.Count - 1)
+                            {
+                                CameraData = CameraData.Substring(0, CameraData.Length - 1);
+                            }
+                            i++;
+                        }
+                    }
+                }
+                await _CvsDisplay.UpdateResults();
+                DetectModel detectModel = new DetectModel
+                {
+                    CvsDisplayImage = _CvsDisplay,
+                    Text = CameraData
+                };
+                Debug.WriteLine("Data OCR: " + CameraData);
+                 detectModel.RoleOfCamera = cameraModel != null ? cameraModel.RoleOfCamera : detectModel.RoleOfCamera;
+                
+                Shared.RaiseOnCameraReadDataChangeEvent(detectModel);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private async void InSight_ResultsChanged_New(object sender, EventArgs e)
+        {
+            try
+            {
+                CameraModel cameraModel = Shared.GetCameraModelBasedOnIPAddress(_InSight.RemoteIPAddress);
+                JToken tokenResults = _InSight.Results;
+                JObject objectResult = tokenResults.ToObject<JObject>();
+                JToken tokenObjectCells = objectResult["cells"];
+                string jsonString = tokenObjectCells.ToString();
+
+                if (objectResult != null && jsonString != "")
+                {
+                    _ObjectResList = JsonConvert.DeserializeObject<List<ObjectResultModel>>(jsonString);
+                    _DesireDataList = GetDesireDataByObjectName().ToList();
+                    _DesireDataList.Sort();
+                    if (_DesireDataList != null)
+                    {
+                        CameraData = "";
+                        int i = 0;
+                        foreach ((int, string) item in _DesireDataList)
+                        {
+                            if (i < _DesireDataList.Count)
+                                CameraData += item.Item2.ToString() + ";";
+                            if (i == _DesireDataList.Count - 1)
+                            {
+                                CameraData = CameraData.Substring(0, CameraData.Length - 1);
+                            }
+                            i++;
+                        }
+                    }
+                }
+                Bitmap bmpResult = await _CvsDisplay.UpdateResultsOCR();
+                DetectModel detectModel = new DetectModel
+                {
+                    Image = bmpResult,
+                    Text = CameraData
+                };
+                Debug.WriteLine("Data OCR: " + CameraData);
+                detectModel.RoleOfCamera = cameraModel != null ? cameraModel.RoleOfCamera : detectModel.RoleOfCamera;
+  
+                Shared.RaiseOnCameraReadDataChangeEvent(detectModel);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private string[] _ObjectName_Temp = new string[5];
+        public bool[] _IsCode = new bool[5];
+        private readonly string suf_code = ".Result00.String";
+        private readonly string suf_text = ".ReadText";
+        internal void AutoAddSuffixes()
+        {
+            try
+            {
+                //SaveObjectToFile();
+                for (int i = 0; i < 5; i++)
+                {
+                    _ObjectName_Temp[i] = _ObjectName[i].Replace(suf_code, "");
+                    _ObjectName_Temp[i] = _ObjectName[i].Replace(suf_text, "");
+                    if (_ObjectName_Temp[i] != null)
+                    {
+                        if (_IsCode[i])
+                        {
+                            if (_ObjectName_Temp[i].EndsWith(suf_code))
+                            {
+                                int suffixPosition = _ObjectName_Temp[i].LastIndexOf(suf_code);  // If already exists, update only the non-suffix part
+                                _ObjectName_Temp[i] = _ObjectName_Temp[i].Substring(0, suffixPosition);
+                            }
+                            _ObjectName_Temp[i] += suf_code;
+                        }
+                        else
+                        {
+                            if (_ObjectName_Temp[i].EndsWith(suf_text))
+                            {
+                                int suffixPosition = _ObjectName_Temp[i].LastIndexOf(suf_text);  // If already exists, update only the non-suffix part
+                                _ObjectName_Temp[i] = _ObjectName_Temp[i].Substring(0, suffixPosition);
+                            }
+                            _ObjectName_Temp[i] += suf_text;
+                        }
+                    }
+                }
+            }
+            catch (Exception){}
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+
+        private readonly bool[] _EnableObject = new bool[5] { true, false, false, false, false };
+        private string[] _ObjectName = new string[5] { "Object_1.ReadText", "Object_2", "Object_3", "Object_4", "Object_5" };
+        private readonly ObjectResultModel[] _ObjectData = new ObjectResultModel[5];
+        private List<(int, string)> GetDesireDataByObjectName()
+        {
+            List<(int, string)> desireData = new List<(int, string)>();
+            List<ObjectResultModel> objectResultList = new List<ObjectResultModel>();
+            for (int i = 0; i < 5; i++)
+            {
+                if (_EnableObject[i])
+                {
+                    _ObjectData[i] = _ObjectResList.FirstOrDefault(x => x.Name != null && x.Name.Contains(_ObjectName[i]));
+                    if (_ObjectData[i] != null)
+                    {
+                        objectResultList.Add(_ObjectData[i]);
+                        desireData.Add((i, _ObjectData[i].Data.ToString()));
+                    }
+                }
+            }
+            return desireData;
+        }
+
+        private async void _InSight_ConnectedChangedAsync(object sender, EventArgs e)
+        {
+            try
+            {
+                var cameraModel = Shared.GetCameraModelBasedOnIPAddress("192.168.1.42");
+                if (cameraModel != null)
+                {
+                    if (_InSight.Connected)
+                    {
+                        cameraModel.IsConnected = true;
+                        cameraModel.Name = _InSight.CameraInfo.ModelNumber;
+                        cameraModel.SerialNumber = _InSight.CameraInfo.SerialNumber;
+                    }
+                    else
+                    {
+                        cameraModel.IsConnected = false;
+                        cameraModel.Name = "";
+                        cameraModel.SerialNumber = "";
+                  
+                        await _InSight.Disconnect();
+                    }
+                    UpdateStatusLabelCamera();
+                    Shared.RaiseOnCameraStatusChangeEvent();
+                }
+            }
+            catch (Exception) { }
+        }
+
+        private void UnsubscribeEvents()
+        {
+            _InSight.ConnectedChanged -= _InSight_ConnectedChangedAsync;
+            _InSight.ResultsChanged -= InSight_ResultsChanged_New;
+        }
+
+        public async void FirstConnection()
+        {
+            var sessionInfo = new HmiSessionInfo();
+            sessionInfo.SheetName = "Inspection";
+            sessionInfo.CellNames = new string[1] { "A0:Z599" };
+            sessionInfo.EnableQueuedResults = true; 
+            sessionInfo.IncludeCustomView = true;
+            await _InSight.Connect("192.168.1.42", "admin", "", sessionInfo);
+            await _CvsDisplay.OnConnected();
         }
 
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
-
             InitControls();
-            InitCameraVariables();
+            DMCamera.InitCameraVariables();
             InitEvents();
             SetLanguage();
         }
-
-        private void InitControls()
-        {
-#if DEBUG
-            DebugVirtual();
-#endif
-            // Show icon camera status
-            _LabelStatusCameraList.Add(lblStatusCamera01);
-            UpdateStatusLabelCamera();
-
-            // Show icon printer status
-            _LabelStatusPrinterList.Add(lblStatusPrinter01);
-            UpdateStatusLabelPrinter();
-
-            _NameOfJobOld = "";
-
-            CreateJob();
-
-            cboSupportForCamera.Items.Add("Camera Cognex DM series");
-            cboSupportForCamera.SelectedIndex = 0;
-
-            _TimerDateTime.Start();
-            // Initilize default item form POD format list
-            _NameOfJobOld = "";
-            Shared.JobNameSelected = "";
-
-            PODModel podText = new PODModel(0, "", PODModel.TypePOD.TEXT, "");
-            _PODList.Add(podText);
-            for (int index = 1; index <= 20; index++)
-            {
-                PODModel podVCD = new PODModel(index, "", PODModel.TypePOD.FIELD, "");
-                _PODList.Add(podVCD);
-            }
-            // Monitor camera connection
-            MonitorCameraConnection();
-            // Monitor printer connection
-            MonitorPrinterConnection();
-            // Monitor sensor connection
-            MonitorSensorControllerConnection();
-            // Camera sw Listener server
-            MonitorListenerServer();
-        }
-        private void DebugVirtual()
-        {
-            BtnViewLog.Visible = true;
-        }
-            private async void MonitorListenerServer()
-        {
-            try
-            {
-                await StartListenerServer();
-            }
-            catch (Exception exx)
-            {
-                MessageBox.Show("ERROR: " + exx);
-            }
-        }
-
-        private async Task StartListenerServer()
-        {
-            StringBuilder url = new StringBuilder("http://");
-            url.Append(Shared.GetLocalIPAddress());
-            url.Append("/");
-            string[] prefixes = new string[] { url.ToString() };
-
-            var server = new CameraListenerServer(prefixes);
-            await server.StartAsync();
-        }
-
-        public static void RadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            //Color.FromArgb(210, 232, 255)
-            if (sender is RadioButton radioButton)
-            {
-                if (radioButton.Enabled)
-                {
-                    radioButton.BackColor = radioButton.Checked ? Color.FromArgb(0, 170, 230) : Color.White;
-                }
-            }
-        }
-
-        private void InitEvents()
-        {
-            _TimerDateTime.Tick += TimerDateTime_Tick;
-            btnGennerate.Click += ActionResult;
-            radCanRead.CheckedChanged += ActionResult;
-            radCanRead.EnabledChanged += JobType_EnabledChanged;
-            radStaticText.CheckedChanged += ActionResult;
-            radStaticText.EnabledChanged += JobType_EnabledChanged;
-            radDatabase.CheckedChanged += ActionResult;
-            radDatabase.EnabledChanged += JobType_EnabledChanged;
-
-            radRSeries.CheckedChanged += ActionResult;
-            radOther.CheckedChanged += ActionResult;
-            radRSeries.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radOther.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-
-            radAfterProduction.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radAfterProduction.CheckedChanged += ActionResult;
-            radAfterProduction.EnabledChanged += JobType_EnabledChanged; ;
-            radOnProduction.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radOnProduction.CheckedChanged += ActionResult;
-            radOnProduction.EnabledChanged += JobType_EnabledChanged;
-            radVerifyAndPrint.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radVerifyAndPrint.CheckedChanged += ActionResult;
-            radVerifyAndPrint.EnabledChanged += JobType_EnabledChanged;
-            txtStaticText.TextChanged += TxtStaticText_TextChanged; ;
-            txtDirectoryDatabse.TextChanged += TxtDirectoryDatabse_TextChanged; ;
-            txtFileName.TextChanged += TxtFileName_TextChanged; ;
-            txtPODFormat.TextChanged += TxtPODFormat_TextChanged; ;
-
-            txtSearch.TextChanged += TxtSearch_TextChanged; ;
-            txtSearchTemplate.TextChanged += TxtSearchTemplate_TextChanged;
-
-            btnPODFormat.Click += ActionResult;
-            //btnSave.Click += ActionResult;
-            btnSettings.Click += ActionResult;
-            listBoxJobList.SelectedIndexChanged += ActionResult;
-            listBoxPrintProductTemplate.SelectedIndexChanged += ActionResult;
-            btnRefesh.Click += ActionResult;
-            btnImportDatabase.Click += ActionResult;
-            Shared.OnLanguageChange += Shared_OnLanguageChange;
-
-            this.Load += FrmJob_Load;
-            tabControl1.SelectedIndexChanged += ActionResult;
-            tabPage2.Click += ActionResult;
-
-            btnExit.Click += BtnClose_Click;
-            btnNext.Click += ActionResult;
-            btnSave.Click += ActionResult;
-            btnAbout.Click += ActionResult;
-            btnDelete.Click += ActionResult;
-            btnRefeshTemplate.Click += ActionResult;
-            radCanRead.CheckedChanged += RadioButton_CheckedChanged;
-            radDatabase.CheckedChanged += RadioButton_CheckedChanged;
-            radStaticText.CheckedChanged += RadioButton_CheckedChanged;
-            BtnViewLog.Click += BtnViewLog_Click;
-
-            cboSupportForCamera.DrawMode = DrawMode.OwnerDrawVariable;
-            cboSupportForCamera.Height = 40;
-            cboSupportForCamera.DropDownHeight = 150;
-            cboSupportForCamera.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboSupportForCamera.DrawItem += ComboBoxCustom.myComboBox_DrawItem;
-            cboSupportForCamera.MeasureItem += ComboBoxCustom.cbo_MeasureItem;
-
-
-            Shared.OnCameraStatusChange += Shared_OnCameraStatusChange;
-            Shared.OnPrintingStateChange += Shared_OnPrintingStateChange;
-            Shared.OnPrinterStatusChange += Shared_OnPrinterStatusChange;
-            Shared.OnPrinterDataChange += Shared_OnPrinterDataChange;
-            Shared.OnLanguageChange += Shared_OnLanguageChange;
-            Shared.OnSensorControllerChangeEvent += Shared_OnSensorControllerChangeEvent;
-
-            Shared.OnCameraTriggerOnChange += Shared_OnCameraTriggerOnChange;
-            Shared.OnCameraTriggerOffChange += Shared_OnCameraTriggerOffChange;
-            Shared.OnCameraOutputSignalChange += Shared_OnCameraOutputSignalChange;
-
-            listBoxJobList.DrawItem += ListBoxJobList_DrawItem;
-        }
-
-        private void BtnViewLog_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (OpenFileDialog openFileDialog = new OpenFileDialog())
-                {
-                    openFileDialog.InitialDirectory = CommVariables.PathProgramDataApp;
-                    openFileDialog.Filter = "Text files (*.txt)|*.txt|Job files (*.rvis)|*.rvis|Database files (*.db)|*.db|csv files (*.csv)|*.csv|All files (*.*)|*.*";
-                    //openFileDialog.RestoreDirectory = true;
-                    openFileDialog.FilterIndex = 5;
-                    openFileDialog.Multiselect = true;
-                    if (openFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        string selectedFile = openFileDialog.FileName;
-                        Process.Start("notepad.exe", selectedFile);
-                    }
-                }
-            }
-            catch (Exception){ }
-            
-        }
-
-        private void ListBoxJobList_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            if (e.Index == -1 || (sender as ListBox).Items.Count == 0) return;
-            try
-            {
-                var job = Shared.GetJob((sender as ListBox).Items[e.Index].ToString());
-                Rectangle headItemRect = new Rectangle(0, e.Bounds.Y + 4, 8, e.Bounds.Height - 10);
-                using (Brush brush = new SolidBrush(_Standalone))
-                    if(!job.PrinterSeries)
-                        e.Graphics.FillRectangle(brush, headItemRect);
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void JobType_EnabledChanged(object sender, EventArgs e)
-        {
-            if (sender is RadioButton radioButton)
-            {
-                if (!radioButton.Enabled)
-                {
-                    radioButton.BackColor = Color.WhiteSmoke;
-                }
-                else
-                {
-                    if (radioButton.Checked)
-                    {
-                        radioButton.BackColor = Color.FromArgb(0, 171, 230);
-                    }
-                    else
-                    {
-                        radioButton.BackColor = Color.White;
-                    }
-                }
-            }
-        }
-
-        private void TxtSearchTemplate_TextChanged(object sender, EventArgs e)
-        {
-            string keyWord = txtSearchTemplate.Text.ToLower();
-            if (_PrintProductTemplateList.Count() > 0)
-            {
-                UpdateUIListBoxPrintProductTemplateList(_PrintProductTemplateList, keyWord);
-            }
-        }
-
-        // Counter skip the first alert when load form jobs.
-        int countSkipFirstAlert = 0;
-        private void PrinterSupport(bool printerSub, bool isAlert = true)
-        {
-            if (InvokeRequired)
-            {
-                Invoke(new Action(() => PrinterSupport(printerSub)));
-                return;
-            }
-            if (countSkipFirstAlert == 0)
-            {
-                countSkipFirstAlert++;
-                return;
-            }
-            string content = printerSub ? SupportForPrinter : Standalone;
-
-            if (isAlert) CuzAlert.Show(content, Alert.enmType.Info, new Size(500, 90), new Point(Location.X, Location.Y), this.Size);
-            if (printerSub)
-            {
-                radDatabase.Checked = true;
-
-                radCanRead.Enabled = false;
-                radStaticText.Enabled = false;
-                radDatabase.Enabled = true;
-
-                tblJobType.Enabled = true;
-
-                DatabaseChecked(true, true);
-            }
-            else
-            {
-                radCanRead.Enabled = true;
-                radCanRead.Checked = true;
-
-                if (_JobModel.CompareType == CompareType.Database) _JobModel.JobType = JobType.StandAlone;
-
-                radStaticText.Enabled = true;
-                radDatabase.Enabled = true;
-
-                tblJobType.Enabled = false;
-
-                DatabaseChecked(false, true);
-            }
-
-            //if (radRSeries.Checked)
-            //{
-            //    radCanRead.Enabled = false;
-            //    radStaticText.Enabled = false;
-            //    radAfterProduction.Enabled = true;
-            //    radAfterProduction.Checked = true;
-            //    radOnProduction.Enabled = true;
-            //    radVerifyAndPrint.Enabled = true;
-            //    listBoxPrintProductTemplate.Enabled = true;
-            //    txtSearchTemplate.BackColor = Color.White;
-            //    txtSearchTemplate.Enabled = true;
-            //    btnRefeshTemplate.Enabled = true;
-            //    listBoxPrintProductTemplate.Enabled = true;
-            //}
-            //else
-            //{
-            //    btnImportDatabase.Enabled = false;
-            //    btnPODFormat.Enabled = false;
-            //    tblJobType.Enabled = false;
-
-            //    txtDirectoryDatabse.BackColor = Color.WhiteSmoke;
-            //    txtPODFormat.BackColor = Color.WhiteSmoke;
-            //    txtSearchTemplate.BackColor = Color.WhiteSmoke;
-            //    txtSearchTemplate.Enabled = false;
-            //    btnRefeshTemplate.Enabled = false;
-            //    listBoxPrintProductTemplate.Enabled = false;
-            //    listBoxPrintProductTemplate.ClearSelected();
-            //    txtDirectoryDatabse.Text = "";
-            //    txtPODFormat.Text = "";
-            //    txtStaticText.Text = "";
-            //}
-        }
-
-        private void DatabaseChecked(bool isChecked, bool isTemplate)
-        {
-            if (isChecked)
-            {
-                txtDirectoryDatabse.Enabled = true;
-                txtPODFormat.Enabled = true;
-
-                if (isTemplate)
-                {
-                    txtSearchTemplate.Enabled = true;
-                    btnRefeshTemplate.Enabled = true;
-                    listBoxPrintProductTemplate.Enabled = true;
-                    listBoxPrintProductTemplate.ClearSelected();
-                    txtSearchTemplate.BackColor = Color.White;
-                }
-
-                btnImportDatabase.Enabled = true;
-                btnPODFormat.Enabled = true;
-
-                txtDirectoryDatabse.BackColor = Color.White;
-                txtPODFormat.BackColor = Color.White;
-
-                txtStaticText.Text = "";
-                txtDirectoryDatabse.Text = "";
-                txtPODFormat.Text = "";
-            }
-            else
-            {
-                txtDirectoryDatabse.Enabled = false;
-                txtPODFormat.Enabled = false;
-
-                if (isTemplate)
-                {
-                    txtSearchTemplate.Enabled = false;
-                    btnRefeshTemplate.Enabled = false;
-                    listBoxPrintProductTemplate.Enabled = false;
-                    listBoxPrintProductTemplate.ClearSelected();
-                    txtSearchTemplate.BackColor = Color.WhiteSmoke;
-                }
-
-                btnImportDatabase.Enabled = false;
-                btnPODFormat.Enabled = false;
-
-                txtDirectoryDatabse.BackColor = Color.WhiteSmoke;
-                txtPODFormat.BackColor = Color.WhiteSmoke;
-
-                txtStaticText.Text = "";
-                txtDirectoryDatabse.Text = "";
-                txtPODFormat.Text = "";
-            }
-        }
-
-        private void Shared_OnPrinterDataChange(object sender, EventArgs e)
-        {
-            if (sender is PODDataModel)
-            {
-                PODDataModel podDataModel = sender as PODDataModel;
-                try
-                {
-                    //Console.WriteLine("POD Message: {0}", message);
-                    string[] pODcommand = podDataModel.Text.Split(';');
-                    PODResponseModel PODResponseModel = new PODResponseModel
-                    {
-                        //PODResponseModel PODResponseModel = JsonConvert.DeserializeObject<PODResponseModel>(podDataModel.Text);
-                        Command = pODcommand[0]
-                    };
-
-                    if (PODResponseModel != null)
-                    {
-                        if (PODResponseModel.Command == "RSLI")
-                        {
-                            pODcommand = pODcommand.Skip(1).ToArray();
-                            pODcommand = pODcommand.Take(pODcommand.Count() - 1).ToArray();
-                            PODResponseModel.Template = pODcommand;
-                            if (podDataModel.RoleOfPrinter == RoleOfStation.ForProduct)
-                            {
-                                // List print template
-                                _PrintProductTemplateList = PODResponseModel.Template;
-                                //_IsObtainingPrintProductTemplateList = false;
-                                UpdateUIListBoxPrintProductTemplateList(_PrintProductTemplateList);
-                            }
-                            else { }
-                        }
-                    }
-                }
-                catch (Exception) { }
-            }
-        }
-
-        private void TimerDateTime_Tick(object sender, EventArgs e)
-        {
-            toolStripDateTime.Text = DateTime.Now.ToString(_DateTimeFormat);
-        }
-
-        private void FrmJob_Load(object sender, EventArgs e)
-        {
-            LoadJobNameList();
-
-            radRSeries.Checked = _JobModel.PrinterSeries;
-            radOther.Checked = !_JobModel.PrinterSeries;
-
-            if (_JobModel.JobType == JobType.AfterProduction)
-                radAfterProduction.Checked = true;
-            else if (_JobModel.JobType == JobType.OnProduction)
-                radOnProduction.Checked = true;
-            else
-                radVerifyAndPrint.Checked = true;
-
-            EnableUIPrinting();
-
-            _LabelStatusCameraList.Add(lblStatusCamera01);
-            UpdateStatusLabelCamera();
-
-            // Show icon printer status
-            _LabelStatusPrinterList.Add(lblStatusPrinter01);
-            UpdateStatusLabelPrinter();
-
-            EnableUIPrinting();
-            // Show icon sensor controller
-            UpdateUISensorControllerStatus(Shared.IsSensorControllerConnected);
-
-            tblJobType.Enabled = false;
-            UpdateUIListBoxPrintProductTemplateList(_PrintProductTemplateList);
-
-            pnlStandaloneColor.BackColor = _Standalone;
-            pnlRLinkSeriesColor.BackColor = _RLinkColor;
-        }
-
-        #region TextChanged
-        private void TxtPODFormat_TextChanged(object sender, EventArgs e)
-        {
-            if (_JobModel != null && radDatabase.Checked)
-            {
-                _JobModel.PODFormat = _PODFormat;
-            }
-        }
-
-        private void TxtDirectoryDatabse_TextChanged(object sender, EventArgs e)
-        {
-            if (_JobModel != null && radDatabase.Checked)
-            {
-                _JobModel.DirectoryDatabase = txtDirectoryDatabse.Text;
-            }
-        }
-
-        private void TxtStaticText_TextChanged(object sender, EventArgs e)
-        {
-            if (_JobModel != null && radStaticText.Checked)
-            {
-                _JobModel.StaticText = txtStaticText.Text;
-            }
-        }
-
-        private void TxtFileName_TextChanged(object sender, EventArgs e)
-        {
-            if (_JobModel != null)
-            {
-                _JobModel.FileName = txtFileName.Text;
-            }
-        }
-
-        private void TxtSearch_TextChanged(object sender, EventArgs e)
-        {
-            string keyWord = txtSearch.Text.ToLower();
-            if (_JobNameList != null)
-            {
-                listBoxJobList.Items.Clear();
-                foreach (string templateName in _JobNameList)
-                {
-                    if (templateName.ToLower().Contains(keyWord))
-                    {
-                        var jobModel = Shared.GetJob(templateName);
-                        if (jobModel != null && jobModel.JobStatus != JobStatus.Deleted)
-                            listBoxJobList.Items.Add(templateName);
-                    }
-                }
-            }
-        }
-        #endregion TextChanged
-
-        #region Events called
-        private void Shared_OnPrinterStatusChange(object sender, EventArgs e)
-        {
-            UpdateStatusLabelPrinter();
-            ObtainPrintProductTemplateList();
-        }
-
-        private void Shared_OnCameraStatusChange(object sender, EventArgs e)
-        {
-            UpdateStatusLabelCamera();
-        }
-
-        private void Shared_OnSensorControllerChangeEvent(object sender, EventArgs e)
-        {
-            UpdateUISensorControllerStatus(Shared.IsSensorControllerConnected);
-        }
-
-        private void BtnClose_Click(object sender, EventArgs e)
-        {
-            Exit();
-        }
-
-        public void Exit()
-        {
-            DialogResult dialogResult = CuzMessageBox.Show(Lang.DoYouWantExitApplication, Lang.Info, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes)
-            {
-                try
-                {
-                    //Save history
-                    LoggingController.SaveHistory(
-                        Lang.Exit,
-                        Lang.LogOut,
-                        Lang.LogoutSuccessfully,
-                        SecurityController.Decrypt(Shared.LoggedInUser.UserName, "rynan_encrypt_remember"),
-                        LoggingType.LogedOut);
-
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    throw (ex);
-                }
-            }
-        }
-
-        private void Shared_OnLanguageChange(object sender, EventArgs e)
-        {
-            SetLanguage();
-        }
-
-        #endregion Events called
-
+      
+        #region UI_Control_Event
         private void ActionResult(object sender, EventArgs e)
         {
             if (_IsBinding)
@@ -629,7 +329,7 @@ namespace BarcodeVerificationSystem.View
             {
                 Shared.JobNameSelected = "";
                 txtFileName.Text = "";
-                if(tabControl1.SelectedIndex == 1)
+                if (tabControl1.SelectedIndex == 1)
                 {
                     PrinterSupport(radRSeries.Checked, false);
                 }
@@ -844,7 +544,7 @@ namespace BarcodeVerificationSystem.View
                             CuzMessageBox.Show(Lang.PrinterNotSupportHttpRequest, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
                         }
-                       
+
                     }
 
                     this.Hide();
@@ -887,7 +587,6 @@ namespace BarcodeVerificationSystem.View
             else if (sender == btnDelete)
             {
                 DeleteJob();
-                //CreateJob();
             }
             else if (sender == btnRefeshTemplate)
             {
@@ -896,12 +595,582 @@ namespace BarcodeVerificationSystem.View
                 UpdateUIListBoxPrintProductTemplateList(_PrintProductTemplateList);
             }
         }
+        public static void RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            //Color.FromArgb(210, 232, 255)
+            if (sender is RadioButton radioButton)
+            {
+                if (radioButton.Enabled)
+                {
+                    radioButton.BackColor = radioButton.Checked ? Color.FromArgb(0, 170, 230) : Color.White;
+                }
+            }
+        }
+        private void CboSupportForCamera_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var cbbSupportCam = (ComboBox)sender;
+            switch (cbbSupportCam.SelectedIndex)
+            {
+                case 0: // DM Series
 
+                    break;
+                case 1: // IS2800 Series
+
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void BtnViewLog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.InitialDirectory = CommVariables.PathProgramDataApp;
+                    openFileDialog.Filter = "Text files (*.txt)|*.txt|Job files (*.rvis)|*.rvis|Database files (*.db)|*.db|csv files (*.csv)|*.csv|All files (*.*)|*.*";
+                    //openFileDialog.RestoreDirectory = true;
+                    openFileDialog.FilterIndex = 5;
+                    openFileDialog.Multiselect = true;
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string selectedFile = openFileDialog.FileName;
+                        Process.Start("notepad.exe", selectedFile);
+                    }
+                }
+            }
+            catch (Exception) { }
+
+        }
+        private void ListBoxJobList_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index == -1 || (sender as ListBox).Items.Count == 0) return;
+            try
+            {
+                var job = Shared.GetJob((sender as ListBox).Items[e.Index].ToString());
+                Rectangle headItemRect = new Rectangle(0, e.Bounds.Y + 4, 8, e.Bounds.Height - 10);
+                using (Brush brush = new SolidBrush(_Standalone))
+                    if (!job.PrinterSeries)
+                        e.Graphics.FillRectangle(brush, headItemRect);
+            }
+            catch
+            {
+
+            }
+        }
+        private void JobType_EnabledChanged(object sender, EventArgs e)
+        {
+            if (sender is RadioButton radioButton)
+            {
+                if (!radioButton.Enabled)
+                {
+                    radioButton.BackColor = Color.WhiteSmoke;
+                }
+                else
+                {
+                    if (radioButton.Checked)
+                    {
+                        radioButton.BackColor = Color.FromArgb(0, 171, 230);
+                    }
+                    else
+                    {
+                        radioButton.BackColor = Color.White;
+                    }
+                }
+            }
+        }
+        private void TxtSearchTemplate_TextChanged(object sender, EventArgs e)
+        {
+            string keyWord = txtSearchTemplate.Text.ToLower();
+            if (_PrintProductTemplateList.Count() > 0)
+            {
+                UpdateUIListBoxPrintProductTemplateList(_PrintProductTemplateList, keyWord);
+            }
+        }
+        private void TimerDateTime_Tick(object sender, EventArgs e)
+        {
+            toolStripDateTime.Text = DateTime.Now.ToString(_DateTimeFormat);
+        }
+        private void TxtPODFormat_TextChanged(object sender, EventArgs e)
+        {
+            if (_JobModel != null && radDatabase.Checked)
+            {
+                _JobModel.PODFormat = _PODFormat;
+            }
+        }
+        private void TxtDirectoryDatabse_TextChanged(object sender, EventArgs e)
+        {
+            if (_JobModel != null && radDatabase.Checked)
+            {
+                _JobModel.DirectoryDatabase = txtDirectoryDatabse.Text;
+            }
+        }
+        private void TxtStaticText_TextChanged(object sender, EventArgs e)
+        {
+            if (_JobModel != null && radStaticText.Checked)
+            {
+                _JobModel.StaticText = txtStaticText.Text;
+            }
+        }
+        private void TxtFileName_TextChanged(object sender, EventArgs e)
+        {
+            if (_JobModel != null)
+            {
+                _JobModel.FileName = txtFileName.Text;
+            }
+        }
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string keyWord = txtSearch.Text.ToLower();
+            if (_JobNameList != null)
+            {
+                listBoxJobList.Items.Clear();
+                foreach (string templateName in _JobNameList)
+                {
+                    if (templateName.ToLower().Contains(keyWord))
+                    {
+                        var jobModel = Shared.GetJob(templateName);
+                        if (jobModel != null && jobModel.JobStatus != JobStatus.Deleted)
+                            listBoxJobList.Items.Add(templateName);
+                    }
+                }
+            }
+        }
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            Exit();
+        }
+        private void FrmJob_Load(object sender, EventArgs e)
+        {
+            LoadJobNameList();
+
+            radRSeries.Checked = _JobModel.PrinterSeries;
+            radOther.Checked = !_JobModel.PrinterSeries;
+
+            if (_JobModel.JobType == JobType.AfterProduction)
+                radAfterProduction.Checked = true;
+            else if (_JobModel.JobType == JobType.OnProduction)
+                radOnProduction.Checked = true;
+            else
+                radVerifyAndPrint.Checked = true;
+
+            EnableUIPrinting();
+
+            _LabelStatusCameraList.Add(lblStatusCamera01);
+            UpdateStatusLabelCamera();
+
+            // Show icon printer status
+            _LabelStatusPrinterList.Add(lblStatusPrinter01);
+            UpdateStatusLabelPrinter();
+
+            EnableUIPrinting();
+            // Show icon sensor controller
+            UpdateUISensorControllerStatus(Shared.IsSensorControllerConnected);
+
+            tblJobType.Enabled = false;
+            UpdateUIListBoxPrintProductTemplateList(_PrintProductTemplateList);
+
+            pnlStandaloneColor.BackColor = _Standalone;
+            pnlRLinkSeriesColor.BackColor = _RLinkColor;
+        }
+        #endregion UI_Control_Event
+
+        #region Orther_Events
+        private void Shared_OnPrintingStateChange(object sender, EventArgs e)
+        {
+            EnableUIPrinting();
+        }
+        private void Shared_OnPrinterStatusChange(object sender, EventArgs e)
+        {
+            UpdateStatusLabelPrinter();
+            ObtainPrintProductTemplateList();
+        }
+        private void Shared_OnSensorControllerChangeEvent(object sender, EventArgs e)
+        {
+            UpdateUISensorControllerStatus(Shared.IsSensorControllerConnected);
+        }
+        private void Shared_OnLanguageChange(object sender, EventArgs e)
+        {
+            SetLanguage();
+        }
+        private void Shared_OnPrinterDataChange(object sender, EventArgs e)
+        {
+            if (sender is PODDataModel)
+            {
+                PODDataModel podDataModel = sender as PODDataModel;
+                try
+                {
+                    string[] pODcommand = podDataModel.Text.Split(';');
+                    PODResponseModel PODResponseModel = new PODResponseModel
+                    {
+                        Command = pODcommand[0]
+                    };
+
+                    if (PODResponseModel != null)
+                    {
+                        if (PODResponseModel.Command == "RSLI")
+                        {
+                            pODcommand = pODcommand.Skip(1).ToArray();
+                            pODcommand = pODcommand.Take(pODcommand.Count() - 1).ToArray();
+                            PODResponseModel.Template = pODcommand;
+                            if (podDataModel.RoleOfPrinter == RoleOfStation.ForProduct)
+                            {
+                                // List print template
+                                _PrintProductTemplateList = PODResponseModel.Template;
+                                UpdateUIListBoxPrintProductTemplateList(_PrintProductTemplateList);
+                            }
+                            else { }
+                        }
+                    }
+                }
+                catch (Exception) { }
+            }
+        }
+
+        //--CAMEARA--//
+        private void Shared_OnCameraStatusChange(object sender, EventArgs e)
+        {
+            UpdateStatusLabelCamera();
+        }
+        //private void DMCamera_UpdateLabelStatusEvent(object sender, EventArgs e)
+        //{
+        //    UpdateStatusLabelCamera();
+        //}
+        private void Shared_OnCameraTriggerOnChange(object sender, EventArgs e)
+        {
+            foreach (DataManSystem dataManSystem in DMCamera._DataManSystemList)
+            {
+                try
+                {
+                    dataManSystem.SendCommand("TRIGGER ON");
+                }
+                catch (Exception) { }
+            }
+        }
+        private void Shared_OnCameraTriggerOffChange(object sender, EventArgs e)
+        {
+            foreach (DataManSystem dataManSystem in DMCamera._DataManSystemList)
+            {
+                try
+                {
+                    dataManSystem.SendCommand("TRIGGER OFF");
+                }
+                catch (Exception) { }
+            }
+        }
+        private void Shared_OnCameraOutputSignalChange(object sender, EventArgs e)
+        {
+            foreach (DataManSystem dataManSystem in DMCamera._DataManSystemList)
+            {
+                try
+                {
+                    DmccResponse response = dataManSystem.SendCommand("OUTPUT.USER1");
+                }
+                catch (Exception) { }
+            }
+        }
+        //--END CAMEARA--//
+
+        private void PODController_OnPODReceiveDataEvent(object sender, EventArgs e)
+        {
+            if (sender is PODDataModel)
+            {
+                Shared.RaiseOnPrinterDataChangeEvent(sender as PODDataModel);
+            }
+        }
+        private void SensorController_OnPODReceiveMessageEvent(object sender, EventArgs e)
+        {
+            Shared.RaiseOnRepeatTCPMessageChange(sender);
+        }
+        #endregion Orther_Events
+
+        #region Utility_Function
+        private void SetLanguage()
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => SetLanguage()));
+                return;
+            }
+
+            btnSettings.Text = Lang.Settings;
+            btnExit.Text = Lang.Exit;
+            btnAbout.Text = Lang.About;
+
+            pnlJobInfomation.Text = Lang.JobDetails;
+            lblJobName.Text = Lang.FileName;
+            lblCompareType.Text = Lang.CompareType;
+            lblStaticText1.Text = Lang.StaticText;
+            lblPODFormat.Text = Lang.PODFormat;
+            lblTemplatePrint.Text = Lang.TemplateName;
+            btnNext.Text = Lang.Next;
+            lblPrinterSeries.Text = Lang.PrinterSeries;
+            lblTemplate.Text = Lang.TemplateName;
+            lblJobTypeInput.Text = Lang.JobType;
+            radAfterProduction.Text = Lang.AfterProduction;
+            radOnProduction.Text = Lang.OnProduction;
+            radVerifyAndPrint.Text = Lang.VerifyAndPrint;
+
+            lblJobType.Text = Lang.JobType;
+            lblJobStatus.Text = Lang.JobStatus;
+            //radRSeries.Text = Lang.Enable;
+            //radOther.Text = Lang.Disable;
+            //btnSave.Text = Lang.Save;
+            btnSave.Text = Lang.Save;
+            lblSupportForCamera.Text = Lang.SupportForCamera;
+            //lblJobList.Text = Lang.JobList;
+            //lblSearch.Text = Lang.Search;
+            //lblJobDetails.Text = Lang.JobDetails;
+            lblCompare.Text = Lang.CompareType;
+            lblStaticText.Text = Lang.StaticText;
+            radCanRead.Text = Lang.CanRead;
+            radStaticText.Text = Lang.StaticText;
+
+            radDatabase.Text = Lang.Database;
+            lblImportDatabase.Text = Lang.ImportDatabase;
+            lblPODFromat.Text = Lang.PODFormat;
+            //lblJobSystem.Text = Lang.JobSystem;
+            lblFileName.Text = Lang.JobList;
+
+            lblStatusCamera01.Text = Lang.CameraTMP;
+            lblStatusPrinter01.Text = Lang.Printer;
+            lblSensorControllerStatus.Text = Lang.SensorController;
+
+            lblToolStripVersion.Text = Lang.Version + ": " + Properties.Settings.Default.SoftwareVersion;
+            btnDelete.Text = Lang.Delete;
+
+            tabPage1.Text = Lang.SelectJob;
+            tabPage2.Text = Lang.CreateANewJob;
+        }
+        private void InitControls()
+        {
+#if DEBUG
+            DebugVirtual();
+#endif
+            _LabelStatusCameraList.Add(lblStatusCamera01);
+            UpdateStatusLabelCamera();
+            _LabelStatusPrinterList.Add(lblStatusPrinter01);
+            UpdateStatusLabelPrinter();
+            _NameOfJobOld = "";
+            CreateJob();
+            cboSupportForCamera.DataSource = CameraSupportNameList;
+            cboSupportForCamera.SelectedIndex = 0;
+            _TimerDateTime.Start();
+            _NameOfJobOld = "";
+            Shared.JobNameSelected = "";
+            var podText = new PODModel(0, "", PODModel.TypePOD.TEXT, "");
+            _PODList.Add(podText);
+
+            for (int index = 1; index <= 20; index++)
+            {
+                var podVCD = new PODModel(index, "", PODModel.TypePOD.FIELD, "");
+                _PODList.Add(podVCD);
+            }
+
+            MonitorCameraConnection();
+            MonitorPrinterConnection();
+            MonitorSensorControllerConnection();
+            MonitorListenerServer();
+        }
+
+      
+
+        private void InitEvents()
+        {
+            _TimerDateTime.Tick += TimerDateTime_Tick;
+            btnGennerate.Click += ActionResult;
+            radCanRead.CheckedChanged += ActionResult;
+            radCanRead.EnabledChanged += JobType_EnabledChanged;
+            radStaticText.CheckedChanged += ActionResult;
+            radStaticText.EnabledChanged += JobType_EnabledChanged;
+            radDatabase.CheckedChanged += ActionResult;
+            radDatabase.EnabledChanged += JobType_EnabledChanged;
+
+            radRSeries.CheckedChanged += ActionResult;
+            radOther.CheckedChanged += ActionResult;
+            radRSeries.CheckedChanged += RadioButton_CheckedChanged;
+            radOther.CheckedChanged += RadioButton_CheckedChanged;
+
+            radAfterProduction.CheckedChanged += RadioButton_CheckedChanged;
+            radAfterProduction.CheckedChanged += ActionResult;
+            radAfterProduction.EnabledChanged += JobType_EnabledChanged; ;
+            radOnProduction.CheckedChanged += RadioButton_CheckedChanged;
+            radOnProduction.CheckedChanged += ActionResult;
+            radOnProduction.EnabledChanged += JobType_EnabledChanged;
+            radVerifyAndPrint.CheckedChanged += RadioButton_CheckedChanged;
+            radVerifyAndPrint.CheckedChanged += ActionResult;
+            radVerifyAndPrint.EnabledChanged += JobType_EnabledChanged;
+            txtStaticText.TextChanged += TxtStaticText_TextChanged; ;
+            txtDirectoryDatabse.TextChanged += TxtDirectoryDatabse_TextChanged; ;
+            txtFileName.TextChanged += TxtFileName_TextChanged; ;
+            txtPODFormat.TextChanged += TxtPODFormat_TextChanged; ;
+
+            txtSearch.TextChanged += TxtSearch_TextChanged; ;
+            txtSearchTemplate.TextChanged += TxtSearchTemplate_TextChanged;
+
+            btnPODFormat.Click += ActionResult;
+     
+            btnSettings.Click += ActionResult;
+            listBoxJobList.SelectedIndexChanged += ActionResult;
+            listBoxPrintProductTemplate.SelectedIndexChanged += ActionResult;
+            btnRefesh.Click += ActionResult;
+            btnImportDatabase.Click += ActionResult;
+            Shared.OnLanguageChange += Shared_OnLanguageChange;
+
+            Load += FrmJob_Load;
+            tabControl1.SelectedIndexChanged += ActionResult;
+            tabPage2.Click += ActionResult;
+
+            btnExit.Click += BtnClose_Click;
+            btnNext.Click += ActionResult;
+            btnSave.Click += ActionResult;
+            btnAbout.Click += ActionResult;
+            btnDelete.Click += ActionResult;
+            btnRefeshTemplate.Click += ActionResult;
+            radCanRead.CheckedChanged += RadioButton_CheckedChanged;
+            radDatabase.CheckedChanged += RadioButton_CheckedChanged;
+            radStaticText.CheckedChanged += RadioButton_CheckedChanged;
+            BtnViewLog.Click += BtnViewLog_Click;
+
+            cboSupportForCamera.DrawMode = DrawMode.OwnerDrawVariable;
+            cboSupportForCamera.Height = 40;
+            cboSupportForCamera.DropDownHeight = 150;
+            cboSupportForCamera.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboSupportForCamera.DrawItem += ComboBoxCustom.myComboBox_DrawItem;
+            cboSupportForCamera.MeasureItem += ComboBoxCustom.cbo_MeasureItem;
+            cboSupportForCamera.SelectedIndexChanged += CboSupportForCamera_SelectedIndexChanged;
+            listBoxJobList.DrawItem += ListBoxJobList_DrawItem;
+
+            Shared.OnPrintingStateChange += Shared_OnPrintingStateChange;
+            Shared.OnPrinterStatusChange += Shared_OnPrinterStatusChange;
+            Shared.OnPrinterDataChange += Shared_OnPrinterDataChange;
+            Shared.OnLanguageChange += Shared_OnLanguageChange;
+            Shared.OnSensorControllerChangeEvent += Shared_OnSensorControllerChangeEvent;
+
+            //Camera Event
+            Shared.OnCameraStatusChange += Shared_OnCameraStatusChange;
+            Shared.OnCameraTriggerOnChange += Shared_OnCameraTriggerOnChange;
+            Shared.OnCameraTriggerOffChange += Shared_OnCameraTriggerOffChange;
+            Shared.OnCameraOutputSignalChange += Shared_OnCameraOutputSignalChange;
+            //DMCamera.UpdateLabelStatusEvent += DMCamera_UpdateLabelStatusEvent;
+
+        }
+        private void DebugVirtual()
+        {
+            BtnViewLog.Visible = true;
+        }
+        private async void MonitorListenerServer()
+        {
+            try
+            {
+                await StartListenerServer();
+            }
+            catch (Exception exx)
+            {
+                System.Windows.MessageBox.Show("ERROR: " + exx);
+            }
+        }
+        private async Task StartListenerServer()
+        {
+            StringBuilder url = new StringBuilder("http://");
+            url.Append(Shared.GetLocalIPAddress());
+            url.Append("/");
+            string[] prefixes = new string[] { url.ToString() };
+
+            var server = new CameraListenerServer(prefixes);
+            await server.StartAsync();
+        }
+        private void PrinterSupport(bool printerSub, bool isAlert = true)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => PrinterSupport(printerSub)));
+                return;
+            }
+            if (countSkipFirstAlert == 0)
+            {
+                countSkipFirstAlert++;
+                return;
+            }
+            string content = printerSub ? SupportForPrinter : Standalone;
+
+            if (isAlert) CuzAlert.Show(content, Alert.enmType.Info, new System.Drawing.Size(500, 90), new System.Drawing.Point(Location.X, Location.Y), this.Size);
+            if (printerSub)
+            {
+                radDatabase.Checked = true;
+                radCanRead.Enabled = false;
+                radStaticText.Enabled = false;
+                radDatabase.Enabled = true;
+                tblJobType.Enabled = true;
+                DatabaseChecked(true, true);
+            }
+            else
+            {
+                radCanRead.Enabled = true;
+                radCanRead.Checked = true;
+                if (_JobModel.CompareType == CompareType.Database) _JobModel.JobType = JobType.StandAlone;
+                radStaticText.Enabled = true;
+                radDatabase.Enabled = true;
+                tblJobType.Enabled = false;
+                DatabaseChecked(false, true);
+            }
+
+        }
+        private void DatabaseChecked(bool isChecked, bool isTemplate)
+        {
+            if (isChecked)
+            {
+                txtDirectoryDatabse.Enabled = true;
+                txtPODFormat.Enabled = true;
+
+                if (isTemplate)
+                {
+                    txtSearchTemplate.Enabled = true;
+                    btnRefeshTemplate.Enabled = true;
+                    listBoxPrintProductTemplate.Enabled = true;
+                    listBoxPrintProductTemplate.ClearSelected();
+                    txtSearchTemplate.BackColor = Color.White;
+                }
+
+                btnImportDatabase.Enabled = true;
+                btnPODFormat.Enabled = true;
+
+                txtDirectoryDatabse.BackColor = Color.White;
+                txtPODFormat.BackColor = Color.White;
+
+                txtStaticText.Text = "";
+                txtDirectoryDatabse.Text = "";
+                txtPODFormat.Text = "";
+            }
+            else
+            {
+                txtDirectoryDatabse.Enabled = false;
+                txtPODFormat.Enabled = false;
+
+                if (isTemplate)
+                {
+                    txtSearchTemplate.Enabled = false;
+                    btnRefeshTemplate.Enabled = false;
+                    listBoxPrintProductTemplate.Enabled = false;
+                    listBoxPrintProductTemplate.ClearSelected();
+                    txtSearchTemplate.BackColor = Color.WhiteSmoke;
+                }
+
+                btnImportDatabase.Enabled = false;
+                btnPODFormat.Enabled = false;
+
+                txtDirectoryDatabse.BackColor = Color.WhiteSmoke;
+                txtPODFormat.BackColor = Color.WhiteSmoke;
+
+                txtStaticText.Text = "";
+                txtDirectoryDatabse.Text = "";
+                txtPODFormat.Text = "";
+            }
+        }
         public void ShowForm()
         {
             this.Show();
         }
-
         private bool CheckExistTemplatePrint(string tmp)
         {
             if (_PrintProductTemplateList.Count() <= 0)
@@ -917,7 +1186,6 @@ namespace BarcodeVerificationSystem.View
             }
             return false;
         }
-
         private string GetSelectedPrintProductTemplate()
         {
             string printTemplate = "";
@@ -937,7 +1205,6 @@ namespace BarcodeVerificationSystem.View
             }
             return printTemplate;
         }
-
         private void AutoGenerateFileName()
         {
             if (InvokeRequired)
@@ -948,7 +1215,6 @@ namespace BarcodeVerificationSystem.View
             string defaultName = string.Format("{0}_{1}", DateTime.Now.ToString(Shared.Settings.JobDateTimeFormat), Shared.Settings.JobFileNameDefault);
             txtFileName.Text = defaultName;
         }
-
         private void UpdateUIClearJobInformation()
         {
             if (InvokeRequired)
@@ -969,7 +1235,6 @@ namespace BarcodeVerificationSystem.View
             listBoxJobList.Enabled = true;
             UpdateUIClearTextBoxInfo(_JobModel);
         }
-
         private string OpenDirectoryFileDatabase()
         {
             using (OpenFileDialog openFileDialog1 = new OpenFileDialog())
@@ -986,10 +1251,6 @@ namespace BarcodeVerificationSystem.View
                 return filePath;
             }
         }
-
-        /// <summary>
-        /// Create job
-        /// </summary>
         private void CreateJob()
         {
             _NameOfJobOld = "";
@@ -1005,10 +1266,6 @@ namespace BarcodeVerificationSystem.View
             _JobModel.TemplatePrint = "";
             _JobModel.JobStatus = JobStatus.NewlyCreated;
         }
-
-        /// <summary>
-        /// Open Job
-        /// </summary>
         private void OpenJob()
         {
             // Check existing processing
@@ -1028,8 +1285,6 @@ namespace BarcodeVerificationSystem.View
 
             _IsProcessing = false;
         }
-
-        // Delete Job
         private void DeleteJob()
         {
             try
@@ -1054,8 +1309,6 @@ namespace BarcodeVerificationSystem.View
                     DialogResult result = CuzMessageBox.Show(message, Lang.Confirm, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        // Perform delete Job file
-                        //Shared.DeleteJob(_JobModel);
                         // Reload Job name list
                         jobModel.JobStatus = JobStatus.Deleted;
                         string filePath = CommVariables.PathJobsApp + jobModel.FileName + Shared.Settings.JobFileExtension;
@@ -1070,11 +1323,6 @@ namespace BarcodeVerificationSystem.View
                 LoadJobNameList();
             }
         }
-        // END Delete Job
-
-
-
-        // Save Job
         private JobModel InitJobModel()
         {
             JobModel job = new JobModel();
@@ -1226,7 +1474,7 @@ namespace BarcodeVerificationSystem.View
                                     DateTime.Now.ToString("yyMMddHHmmss") + Shared.Settings.JobFileExtension;
                                 try
                                 {
-                                    System.IO.File.Move(oldJobPath, newJobPath);
+                                    File.Move(oldJobPath, newJobPath);
                                 }
                                 catch
                                 {
@@ -1315,7 +1563,6 @@ namespace BarcodeVerificationSystem.View
                 return;
             }
         }
-
         private void UpdateUIClearTextBoxInfo(JobModel jobModel)
         {
             if (InvokeRequired)
@@ -1347,9 +1594,6 @@ namespace BarcodeVerificationSystem.View
             txtJobType.BackColor = Color.White;
 
         }
-
-        // END Save Job
-        // Load list name of tempate
         private void LoadJobNameList()
         {
             // Check existing processing
@@ -1404,7 +1648,6 @@ namespace BarcodeVerificationSystem.View
             threadLoadJobNameList.IsBackground = true;
             threadLoadJobNameList.Start();
         }
-
         private void UpdateUILoadJobNameList(bool isEnable)
         {
             if (InvokeRequired)
@@ -1416,8 +1659,6 @@ namespace BarcodeVerificationSystem.View
             picLoading.Visible = !isEnable;
             listBoxJobList.Enabled = isEnable;
         }
-        // END Load list name of tempate
-
         private void UpdateUIJobInformation(JobModel jobModel)
         {
 
@@ -1456,7 +1697,7 @@ namespace BarcodeVerificationSystem.View
 
                 if (jobModel.JobType == JobType.StandAlone)
                 {
-                    if(jobModel.CompareType == CompareType.CanRead)
+                    if (jobModel.CompareType == CompareType.CanRead)
                         lblStaticTextInfo.BackColor = Color.WhiteSmoke;
                     else
                         lblStaticTextInfo.BackColor = Color.White;
@@ -1496,7 +1737,6 @@ namespace BarcodeVerificationSystem.View
                 UpdateUIClearJobInformation();
             }
         }
-
         private void EnableForCompareType(CompareType compareType)
         {
             if (InvokeRequired)
@@ -1525,8 +1765,32 @@ namespace BarcodeVerificationSystem.View
                 DatabaseChecked(true, isTemplate);
             }
         }
+        public void Exit()
+        {
+            DialogResult dialogResult = CuzMessageBox.Show(Lang.DoYouWantExitApplication, Lang.Info, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    //Save history
+                    LoggingController.SaveHistory(
+                        Lang.Exit,
+                        Lang.LogOut,
+                        Lang.LogoutSuccessfully,
+                        SecurityController.Decrypt(Shared.LoggedInUser.UserName, "rynan_encrypt_remember"),
+                        LoggingType.LogedOut);
 
-#region UpdateUI Printer 
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    throw (ex);
+                }
+            }
+        }
+        #endregion Utility_Function
+
+        #region UpdateUI Printer 
         private void UpdateStatusLabelPrinter()
         {
             if (InvokeRequired)
@@ -1541,7 +1805,6 @@ namespace BarcodeVerificationSystem.View
                 {
                     PrinterModel printerModel = Shared.Settings.PrinterList[i];
                     ToolStripLabel labelStatusPrinter = _LabelStatusPrinterList[i];
-                    //string printerName = string.Format("{0} {1}",Lang.Printer,i + 1);
 
                     if (printerModel.IsConnected)
                     {
@@ -1554,7 +1817,6 @@ namespace BarcodeVerificationSystem.View
                 }
             }
         }
-
         private void UpdateUISensorControllerStatus(bool isConnect)
         {
             if (InvokeRequired)
@@ -1571,7 +1833,6 @@ namespace BarcodeVerificationSystem.View
                 ShowLabelIcon(lblSensorControllerStatus, Lang.SensorController, Properties.Resources.icons8_sensor_30px_disconnected);
             }
         }
-
         private void ShowLabelIcon(ToolStripLabel label, String text, Image icon)
         {
             if (InvokeRequired)
@@ -1591,17 +1852,12 @@ namespace BarcodeVerificationSystem.View
             label.Text = text;
             label.Image = icon;
         }
-#endregion UpdateUI Printer
+        #endregion UpdateUI Printer
 
-#region Monitor Printer
-
-        private Thread _ThreadObtainPrintProductTemplateList;
-        private Thread _ThreadMonitorPrinter;
-        private bool _IsObtainingPrintProductTemplateList = false;
-        private string[] _PrintProductTemplateList = new string[] { };
-
+        #region Monitor Printer
         private void MonitorPrinterConnection()
         {
+
             _ThreadMonitorPrinter = new Thread(() =>
             {
                 while (true)
@@ -1625,7 +1881,7 @@ namespace BarcodeVerificationSystem.View
                                 }
                                 else
                                 {
-                                    if(podController.Port != printerModel.Port)
+                                    if (podController.Port != printerModel.Port)
                                     {
                                         podController.Port = printerModel.Port;
                                     }
@@ -1659,33 +1915,13 @@ namespace BarcodeVerificationSystem.View
 
                     Thread.Sleep(2000);
                 }
-            });
-            _ThreadMonitorPrinter.IsBackground = true;
-            _ThreadMonitorPrinter.Priority = ThreadPriority.Normal;
+            })
+            {
+                IsBackground = true,
+                Priority = ThreadPriority.Normal
+            };
             _ThreadMonitorPrinter.Start();
         }
-
-        private PODController GetPODController(string ipAddress, int port, List<PODController> podControllerList)
-        {
-            foreach (PODController podController in podControllerList)
-            {
-                if (podController.ServerIP == ipAddress)
-                {
-                    return podController;
-                }
-            }
-
-            return null;
-        }
-
-        private void PODController_OnPODReceiveDataEvent(object sender, EventArgs e)
-        {
-            if (sender is PODDataModel)
-            {
-                Shared.RaiseOnPrinterDataChangeEvent(sender as PODDataModel);
-            }
-        }
-
         private void UpdateUIListBoxPrintProductTemplateList(string[] printTemplateNames, string keyWord = "")
         {
             if (InvokeRequired)
@@ -1715,7 +1951,6 @@ namespace BarcodeVerificationSystem.View
 
             }
         }
-
         private void ObtainPrintProductTemplateList()
         {
             if (_IsObtainingPrintProductTemplateList)
@@ -1740,12 +1975,6 @@ namespace BarcodeVerificationSystem.View
                 }
             });
         }
-
-        private void Shared_OnPrintingStateChange(object sender, EventArgs e)
-        {
-            EnableUIPrinting();
-        }
-
         private void EnableUIPrinting(bool isActive = true, bool isObtain = true)
         {
             if (InvokeRequired)
@@ -1753,151 +1982,70 @@ namespace BarcodeVerificationSystem.View
                 Invoke(new Action(() => EnableUIPrinting(isActive, isObtain)));
                 return;
             }
-
             bool isEnable = Shared.Settings.IsPrinting & isActive;
-            //grbPrint.Enabled = isEnable;
             listBoxPrintProductTemplate.Enabled = isEnable;
-
             if (isEnable && isObtain)
             {
                 ObtainPrintProductTemplateList();
             }
         }
+        #endregion Monitor Printer
 
-        private void KillThreadObtainPrintProductTemplateList()
-        {
-            if (_ThreadObtainPrintProductTemplateList != null && _ThreadObtainPrintProductTemplateList.IsAlive)
-            {
-                // Release thread
-                _ThreadObtainPrintProductTemplateList.Abort();
-                _ThreadObtainPrintProductTemplateList = null;
-            }
-            _IsObtainingPrintProductTemplateList = false;
-        }
-
-#endregion Monitor Printer
-
-#region Camera Connection
-        private SynchronizationContext _SyncContext = null;
-        private EthSystemDiscoverer _EthSystemDiscoverer = null;
-        private SerSystemDiscoverer _SerSystemDiscoverer = null;
-
-        private List<object> _CameraSystemInfoList = new List<object>();
-        private List<DataManSystem> _DataManSystemList = new List<DataManSystem>();
-        private object _CurrentResultInfoSyncLock = new object();
-        //END Cognex camera
-
-        private Thread _ThreadMonitorCamera;
-        private void InitCameraVariables()
-        {
-            // The SDK may fire events from arbitrary thread context. Therefore if you want to change
-            // the state of controls or windows from any of the SDK' events, you have to use this
-            // synchronization context to execute the event handler code on the main GUI thread.
-            _SyncContext = WindowsFormsSynchronizationContext.Current;
-
-            // Create discoverers to discover ethernet and serial port systems.
-            _EthSystemDiscoverer = new EthSystemDiscoverer();
-            _SerSystemDiscoverer = new SerSystemDiscoverer();
-
-            // Subscribe to the system discoved event.
-            _EthSystemDiscoverer.SystemDiscovered += new EthSystemDiscoverer.SystemDiscoveredHandler(OnEthSystemDiscovered);
-            _SerSystemDiscoverer.SystemDiscovered += new SerSystemDiscoverer.SystemDiscoveredHandler(OnSerSystemDiscovered);
-
-            // Ask the discoverers to start discovering systems.
-            _EthSystemDiscoverer.Discover();
-            _SerSystemDiscoverer.Discover();
-        }
-
+        #region Camera Connection
         private void MonitorCameraConnection()
         {
             _ThreadMonitorCamera = new Thread(() =>
             {
-                while (true)
+                while (!_ctsCamConnToken.IsCancellationRequested)
                 {
                     foreach (CameraModel cameraModel in Shared.Settings.CameraList)
                     {
-                        if (cameraModel.IsEnable)
+                        if (cameraModel.IsEnable && !cameraModel.IsConnected)
                         {
-                            if (!cameraModel.IsConnected)
+                            switch (cameraModel.CameraType)
                             {
-                                // Try to connect the camera
-                                DeviceConnect(cameraModel.IP);
-                                // Reset counter variable
-                                cameraModel.CountTimeReconnect++;
-                                // Discover camera again after time reconnect
-                                if (cameraModel.CountTimeReconnect >= 3)
-                                {
-                                    cameraModel.CountTimeReconnect = 0;
-                                    //_CameraSystemInfoList.Clear();
-                                    if (_EthSystemDiscoverer != null && _SerSystemDiscoverer != null)
+                                case CameraType.DM: //DM Series Camera
+                                    DMCamera.Connect(cameraModel.IP);
+                                    cameraModel.CountTimeReconnect++;
+                                    if (cameraModel.CountTimeReconnect >= 3)
                                     {
-                                        _EthSystemDiscoverer.Discover();
-                                        _SerSystemDiscoverer.Discover();
+                                        cameraModel.CountTimeReconnect = 0;
+                                        if (DMCamera._EthSystemDiscoverer != null && DMCamera._SerSystemDiscoverer != null)
+                                        {
+                                            DMCamera._EthSystemDiscoverer.Discover();
+                                            DMCamera._SerSystemDiscoverer.Discover();
+                                        }
                                     }
-                                }
-                            }
-                            else
-                            {
-                                // Reset counter variable
-                                cameraModel.CountTimeReconnect = 0;
+                                    break;
+
+                                case CameraType.IS: //IS Series Camera
+                                    //ISCamera.ConnectAsync(cvsDisplayImage,cameraModel.IP,cameraModel.Port);
+                                    FirstConnection();
+                                    cameraModel.CountTimeReconnect++;
+                                    if (cameraModel.CountTimeReconnect >= 3)
+                                    {
+                                        cameraModel.CountTimeReconnect = 0;
+                                    }
+                                    break;
+
+                                case CameraType.UKN:
+
+                                    break;
                             }
                         }
+                        else
+                        {
+                            cameraModel.CountTimeReconnect = 0;
+                        }
                     }
-
-                    // Wait for camera connecting
                     Thread.Sleep(2000);
                 }
-            });
-            _ThreadMonitorCamera.IsBackground = true;
-            _ThreadMonitorCamera.Priority = ThreadPriority.Normal;
+            })
+            {
+                IsBackground = true,
+                Priority = ThreadPriority.Normal
+            };
             _ThreadMonitorCamera.Start();
-
-        }
-
-        private void Shared_OnCameraTriggerOnChange(object sender, EventArgs e)
-        {
-            foreach (DataManSystem dataManSystem in _DataManSystemList)
-            {
-                try
-                {
-                    dataManSystem.SendCommand("TRIGGER ON");
-                }
-                catch (Exception)
-                {
-                    //MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
-                }
-            }
-        }
-
-        private void Shared_OnCameraTriggerOffChange(object sender, EventArgs e)
-        {
-            foreach (DataManSystem dataManSystem in _DataManSystemList)
-            {
-                try
-                {
-                    dataManSystem.SendCommand("TRIGGER OFF");
-                }
-                catch (Exception)
-                {
-                    //MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
-                }
-            }
-            Thread.Sleep(500);
-        }
-
-        private void Shared_OnCameraOutputSignalChange(object sender, EventArgs e)
-        {
-            foreach (DataManSystem dataManSystem in _DataManSystemList)
-            {
-                try
-                {
-                    DmccResponse response = dataManSystem.SendCommand("OUTPUT.USER1");
-                }
-                catch (Exception)
-                {
-                    //MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
-                }
-            }
         }
 
         private void UpdateStatusLabelCamera()
@@ -1914,7 +2062,7 @@ namespace BarcodeVerificationSystem.View
                 {
                     CameraModel cameraModel = Shared.Settings.CameraList[i];
                     ToolStripLabel labelStatusCamera = _LabelStatusCameraList[i];
-                    //string cameraName = string.Format("{0} {1}",Lang.Camera,i + 1);
+
                     if (cameraModel.IsConnected)
                     {
                         ShowLabelIcon(labelStatusCamera, Lang.CameraTMP, Properties.Resources.icons8_camera_30px_connected);
@@ -1942,8 +2090,6 @@ namespace BarcodeVerificationSystem.View
             label.Tag = icon;
             label.ImageAlign = ContentAlignment.MiddleLeft;
             label.TextAlign = ContentAlignment.MiddleRight;
-            //label.BackColor = Color.Cyan;
-            //int gap = 5;
             int gap = 0;
             label.Text = text;
             label.Image = icon;
@@ -1952,347 +2098,9 @@ namespace BarcodeVerificationSystem.View
             label.AutoSize = false;
             label.Width = autoWidth + gap + label.Image.Width;
         }
+        #endregion Camera Connection
 
-#endregion End Camera Connection
-
-#region Cognex camera
-        private void OnEthSystemDiscovered(EthSystemDiscoverer.SystemInfo systemInfo)
-        {
-            _SyncContext.Post(
-                new SendOrPostCallback(
-                    delegate
-                    {
-                        Console.WriteLine(string.Format("IP camera: {0}", systemInfo.IPAddress.ToString()));
-                        // Check camera has exist in list
-                        CameraModel cameraModel = Shared.GetCameraModelBasedOnIPAddress(systemInfo.IPAddress.ToString());
-                        bool hasExist = CheckCameraInfoHasExist(systemInfo, _CameraSystemInfoList);
-                        // Check camera has added
-                        if (cameraModel != null && hasExist == false)
-                        {
-                            _CameraSystemInfoList.Add(systemInfo);
-                        }
-                    }),
-                    null);
-        }
-
-        private void OnSerSystemDiscovered(SerSystemDiscoverer.SystemInfo systemInfo)
-        {
-            _SyncContext.Post(
-                new SendOrPostCallback(
-                    delegate
-                    {
-                        //_CameraSystemInfoList.Add(systemInfo);
-                    }),
-                    null);
-        }
-
-        private bool CheckCameraInfoHasExist(EthSystemDiscoverer.SystemInfo cameraInfoNeedCheck, List<object> cameraSystemInfoList)
-        {
-            foreach (var systemInfo in cameraSystemInfoList)
-            {
-                if (systemInfo is EthSystemDiscoverer.SystemInfo)
-                {
-                    EthSystemDiscoverer.SystemInfo ethSystemInfo = systemInfo as EthSystemDiscoverer.SystemInfo;
-                    if (ethSystemInfo.SerialNumber == cameraInfoNeedCheck.SerialNumber)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-        private void DeviceConnect(string ipAddress)
-        {
-            try
-            {
-                foreach (var systemInfo in _CameraSystemInfoList)
-                {
-                    ISystemConnector iSysConnector = null;
-                    if (systemInfo is EthSystemDiscoverer.SystemInfo)
-                    {
-                        EthSystemDiscoverer.SystemInfo ethSystemInfo = systemInfo as EthSystemDiscoverer.SystemInfo;
-                        EthSystemConnector conn = new EthSystemConnector(ethSystemInfo.IPAddress);
-
-                        CameraModel cameraModel = Shared.GetCameraModelBasedOnIPAddress(ethSystemInfo.IPAddress.ToString());
-                        if (cameraModel != null && cameraModel.IP == ipAddress)
-                        {
-                            conn.UserName = cameraModel.UserName;
-                            conn.Password = cameraModel.Password;
-                            cameraModel.Name = ethSystemInfo.Name;
-                            cameraModel.SerialNumber = ethSystemInfo.SerialNumber;
-                        }
-                        else
-                        {
-                            continue;
-                        }
-
-                        iSysConnector = conn;
-                    }
-                    else if (systemInfo is SerSystemDiscoverer.SystemInfo)
-                    {
-                        SerSystemDiscoverer.SystemInfo ser_system_info = systemInfo as SerSystemDiscoverer.SystemInfo;
-                        SerSystemConnector conn = new SerSystemConnector(ser_system_info.PortName, ser_system_info.Baudrate);
-
-                        iSysConnector = conn;
-                    }
-
-                    //_SysConnector.Logger = new GuiLogger(tbLog, cbLoggingEnabled.Checked, ref _Closing);
-
-                    DataManSystem dataManSystem = new DataManSystem(iSysConnector);
-                    //dataManSystem.DefaultTimeout = 5000;
-                    dataManSystem.DefaultTimeout = 1000;
-
-                    // Subscribe to events that are signalled when the system is connected / disconnected.
-                    dataManSystem.SystemConnected += new SystemConnectedHandler(OnSystemConnected);
-                    dataManSystem.SystemDisconnected += new SystemDisconnectedHandler(OnSystemDisconnected);
-
-                    dataManSystem.SystemWentOnline += new SystemWentOnlineHandler(OnSystemWentOnline);
-                    dataManSystem.SystemWentOffline += new SystemWentOfflineHandler(OnSystemWentOffline);
-                    //END Subscribe to events that are signalled when the system is connected / disconnected.
-
-                    // Subscribe to events that are signalled when the deveice sends auto-responses.
-                    ResultTypes resultTypes = ResultTypes.ReadXml | ResultTypes.Image | ResultTypes.ImageGraphics;
-                    // Current error missing image in mode Multi-Read Sync when Master no read and Slave read
-                    //ResultTypes resultTypes = ResultTypes.ReadXml;
-
-                    // ResultCollector
-                    // The order of result components may not always be the same.For example sometimes the XML result arrives first, sometimes the image. This issue can be overcome by using the ResultCollector.
-                    // The user needs to specify what makes a result complete(e.g.it consists of an image, an SVG graphic and an xml read result) and subscribe to ResultCollector’s ComplexResultArrived event.
-
-                    // The ResultCollector waits for the result components. If a result is complete, a ComplexResultArrived event is fired. If a result is not complete but it times out (time out value can be set via the ResultTimeOut property) 
-                    // or the ResultCollector’s buffer is full(buffer length can be set via the ResultCacheLength property), then a PartialResultDropped event is fired. Both events provide the available result components in their event argument, 
-                    // which can be used to process the complex result (e.g.maintain result history, show the image, graphic and result string, and so on.)
-
-                    ResultCollector resultCollector = new ResultCollector(dataManSystem, resultTypes);
-                    resultCollector.ComplexResultCompleted += ResultCollector_ComplexResultCompleted;
-                    // Event for get result timeout, current event not work well (Timeout not exactly)
-                    //resultCollector.SimpleResultDropped += _ResultCollector_SimpleResultDropped;
-                    //END Subscribe to events that are signalled when the deveice sends auto-responses.
-
-                    //dataManSystem.SetKeepAliveOptions(true, 3000, 1000);
-
-                    dataManSystem.Connect();
-
-                    try
-                    {
-                        //
-                        // Summary:
-                        //     Sets which result types the SDK should handle.
-                        //
-                        // Parameters:
-                        //   resultTypes:
-                        //     The result types that the user is interested in.
-                        dataManSystem.SetResultTypes(resultTypes);
-                    }
-                    catch (Exception)
-                    {
-
-                    }
-
-                    _DataManSystemList.Add(dataManSystem);
-                }
-            }
-            catch (Exception)
-            {
-                CleanupConnection();
-            }
-        }
-
-        private void CleanupConnection()
-        {
-            foreach (DataManSystem dataManSystem in _DataManSystemList)
-            {
-                dataManSystem.Disconnect();
-                dataManSystem.SystemConnected -= OnSystemConnected;
-                dataManSystem.SystemDisconnected -= OnSystemDisconnected;
-            }
-
-            _DataManSystemList.Clear();
-            _CameraSystemInfoList.Clear();
-        }
-
-        private void OnSystemConnected(object sender, EventArgs args)
-        {
-            _SyncContext.Post(
-                delegate
-                {
-                    Console.WriteLine("OnSystemConnected");
-                    if (sender is DataManSystem)
-                    {
-                        DataManSystem dataManSystem = sender as DataManSystem;
-                        EthSystemConnector ethSystemConnector = dataManSystem.Connector as EthSystemConnector;
-                        CameraModel cameraModel = Shared.GetCameraModelBasedOnIPAddress(ethSystemConnector.Address.ToString());
-                        if (cameraModel != null)
-                        {
-                            cameraModel.IsConnected = true;
-                        }
-                    }
-                    UpdateStatusLabelCamera();
-                    Shared.RaiseOnCameraStatusChangeEvent();
-                },
-                null);
-        }
-
-        private void OnSystemDisconnected(object sender, EventArgs args)
-        {
-            _SyncContext.Post(
-                delegate
-                {
-                    Console.WriteLine("OnSystemDisconnected");
-                    if (sender is DataManSystem)
-                    {
-                        DataManSystem dataManSystem = sender as DataManSystem;
-                        EthSystemConnector ethSystemConnector = dataManSystem.Connector as EthSystemConnector;
-                        CameraModel cameraModel = Shared.GetCameraModelBasedOnIPAddress(ethSystemConnector.Address.ToString());
-                        if (cameraModel != null)
-                        {
-                            cameraModel.IsConnected = false;
-                            cameraModel.Name = "";
-                            cameraModel.SerialNumber = "";
-                        }
-                    }
-                    UpdateStatusLabelCamera();
-                    Shared.RaiseOnCameraStatusChangeEvent();
-                },
-                null);
-        }
-
-        private void OnSystemWentOnline(object sender, EventArgs args)
-        {
-            _SyncContext.Post(
-                delegate
-                {
-                    //AddListItem("System went online");
-                },
-                null);
-        }
-
-        private void OnSystemWentOffline(object sender, EventArgs args)
-        {
-            _SyncContext.Post(
-                delegate
-                {
-                    //AddListItem("System went offline");
-                },
-                null);
-        }
-
-        private void _ResultCollector_SimpleResultDropped(object sender, SimpleResult e)
-        {
-            //throw new NotImplementedException();
-            //Console.WriteLine("Nhan duoc du lieu ne!!! ResultCollector_SimpleResultDropped");
-        }
-
-        private void ResultCollector_ComplexResultCompleted(object sender, ComplexResult e)
-        {
-            _SyncContext.Post(
-                delegate
-                {
-                    ProcessComplexResultCompleted(sender, e);
-                },
-                null);
-        }
-
-        private void ProcessComplexResultCompleted(object sender, ComplexResult complexResult)
-        {
-            CameraModel cameraModel = null;
-            if (sender is ResultCollector)
-            {
-                ResultCollector resultCollector = sender as ResultCollector;
-                // Get value of a non-public member of sender object https://stackoverflow.com/questions/48328141/get-value-of-a-non-public-member-of-sender-object
-                var field = resultCollector.GetType().GetField("_dmSystem", BindingFlags.NonPublic | BindingFlags.Instance);
-                DataManSystem dataManSystem = (DataManSystem)field.GetValue(resultCollector);
-                if (dataManSystem != null)
-                {
-                    EthSystemConnector ethSystemConnector = dataManSystem.Connector as EthSystemConnector;
-                    cameraModel = Shared.GetCameraModelBasedOnIPAddress(ethSystemConnector.Address.ToString());
-                }
-            }
-
-            Image imageResult = null;
-            string strResult = "";
-            List<string> imageGraphics = new List<string>();
-            // Take a reference or copy values from the locked result info object. This is done
-            // so that the lock is used only for a short period of time.
-            lock (_CurrentResultInfoSyncLock)
-            {
-                foreach (SimpleResult simpleResult in complexResult.SimpleResults)
-                {
-                    switch (simpleResult.Id.Type)
-                    {
-                        case ResultTypes.Image:
-                            imageResult = ImageArrivedEventArgs.GetImageFromImageBytes(simpleResult.Data);
-                            break;
-
-                        case ResultTypes.ImageGraphics:
-                            imageGraphics.Add(simpleResult.GetDataAsString());
-                            break;
-
-                        case ResultTypes.ReadString:
-                            strResult = Encoding.UTF8.GetString(simpleResult.Data);
-                            break;
-
-                        case ResultTypes.ReadXml:
-                            strResult = Shared.GetReadStringFromResultXml(simpleResult.GetDataAsString());
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
-
-            //Draw image graphic result
-
-            Bitmap bitmap = new Bitmap(1024, 1024);
-            if (imageResult != null)
-            {
-                // The original bitmap with the wrong pixel format. 
-                // You can check the pixel format with originalBmp.PixelFormat
-
-                //Convert bitmap to corect pixel format
-                bitmap = ((Bitmap)imageResult).Clone(new Rectangle(0, 0, imageResult.Width, imageResult.Height), PixelFormat.Format24bppRgb);
-            }
-            else
-            {
-                using (Graphics g = Graphics.FromImage(bitmap))
-                {
-                    g.Clear(Color.White);
-                }
-            }
-
-            //Draw ROI
-            if (imageGraphics.Count > 0)
-            {
-                // From this bitmap, the graphics can be obtained, because it has the right PixelFormat
-                using (Graphics graphicsImage = Graphics.FromImage(bitmap))
-                {
-                    foreach (var graphics in imageGraphics)
-                    {
-                        ResultGraphics resultGraphics = GraphicsResultParser.Parse(graphics, new Rectangle(0, 0, bitmap.Width, bitmap.Height));
-                        ResultGraphicsRenderer.PaintResults(graphicsImage, resultGraphics);
-                    }
-                }
-            }
-            //END Draw ROI
-            //END Draw image graphic result
-
-            //Add data obtained to queue
-            DetectModel detectModel = new DetectModel();
-            detectModel.Image = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), bitmap.PixelFormat);
-            detectModel.Text = strResult;
-            if (cameraModel != null)
-            {
-                detectModel.RoleOfCamera = cameraModel.RoleOfCamera;
-            }
-
-            // Raise event camera read data
-            Shared.RaiseOnCameraReadDataChangeEvent(detectModel);
-        }
-#endregion Cognex camera
-
-#region Monitor Sensor controller
+        #region Monitor_Sensor_Controller
         private Thread _ThreadMonitorSensorController;
         private void MonitorSensorControllerConnection()
         {
@@ -2370,71 +2178,11 @@ namespace BarcodeVerificationSystem.View
             _ThreadMonitorSensorController.Priority = ThreadPriority.Normal;
             _ThreadMonitorSensorController.Start();
         }
+        #endregion Monitor_Sensor_Controller
 
-        private void SensorController_OnPODReceiveMessageEvent(object sender, EventArgs e)
+        private void connectBtn_Click(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
-            Shared.RaiseOnRepeatTCPMessageChange(sender);
-        }
-
-#endregion Monitor Sensor controller
-
-        private void SetLanguage()
-        {
-            if (this.InvokeRequired)
-            {
-                this.Invoke(new Action(() => SetLanguage()));
-                return;
-            }
-
-            btnSettings.Text = Lang.Settings;
-            btnExit.Text = Lang.Exit;
-            btnAbout.Text = Lang.About;
-
-            pnlJobInfomation.Text = Lang.JobDetails;
-            lblJobName.Text = Lang.FileName;
-            lblCompareType.Text = Lang.CompareType;
-            lblStaticText1.Text = Lang.StaticText;
-            lblPODFormat.Text = Lang.PODFormat;
-            lblTemplatePrint.Text = Lang.TemplateName;
-            btnNext.Text = Lang.Next;
-            lblPrinterSeries.Text = Lang.PrinterSeries;
-            lblTemplate.Text = Lang.TemplateName;
-            lblJobTypeInput.Text = Lang.JobType;
-            radAfterProduction.Text = Lang.AfterProduction;
-            radOnProduction.Text = Lang.OnProduction;
-            radVerifyAndPrint.Text = Lang.VerifyAndPrint;
-
-            lblJobType.Text = Lang.JobType;
-            lblJobStatus.Text = Lang.JobStatus;
-            //radRSeries.Text = Lang.Enable;
-            //radOther.Text = Lang.Disable;
-            //btnSave.Text = Lang.Save;
-            btnSave.Text = Lang.Save;
-            lblSupportForCamera.Text = Lang.SupportForCamera;
-            //lblJobList.Text = Lang.JobList;
-            //lblSearch.Text = Lang.Search;
-            //lblJobDetails.Text = Lang.JobDetails;
-            lblCompare.Text = Lang.CompareType;
-            lblStaticText.Text = Lang.StaticText;
-            radCanRead.Text = Lang.CanRead;
-            radStaticText.Text = Lang.StaticText;
-
-            radDatabase.Text = Lang.Database;
-            lblImportDatabase.Text = Lang.ImportDatabase;
-            lblPODFromat.Text = Lang.PODFormat;
-            //lblJobSystem.Text = Lang.JobSystem;
-            lblFileName.Text = Lang.JobList;
-
-            lblStatusCamera01.Text = Lang.CameraTMP;
-            lblStatusPrinter01.Text = Lang.Printer;
-            lblSensorControllerStatus.Text = Lang.SensorController;
-
-            lblToolStripVersion.Text = Lang.Version + ": " + Properties.Settings.Default.SoftwareVersion;
-            btnDelete.Text = Lang.Delete;
-
-            tabPage1.Text = Lang.SelectJob;
-            tabPage2.Text = Lang.CreateANewJob;
+            FirstConnection();
         }
     }
 }

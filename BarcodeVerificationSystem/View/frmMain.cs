@@ -22,6 +22,9 @@ using DesignUI.CuzAlert;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
 using System.Runtime.Remoting.Messaging;
+using Cognex.InSight.Web.Controls;
+using Cognex.DataMan.SDK;
+using OperationCanceledException = System.OperationCanceledException;
 
 namespace BarcodeVerificationSystem.View
 {
@@ -54,7 +57,6 @@ namespace BarcodeVerificationSystem.View
         public int TotalChecked { get { return _TotalChecked; } set { _TotalChecked = value; Invoke(new Action(() => { lblTotalCheckedValue.Text = string.Format("{0:N0}", _TotalChecked); })); } }
         public int NumberOfCheckPassed { get { return _NumberOfCheckPassed; } set { _NumberOfCheckPassed = value; Invoke(new Action(() => { lblCheckResultPassedValue.Text = string.Format("{0:N0}", _NumberOfCheckPassed); })); } }
         public int NumberOfCheckFailed { get { return _NumberOfCheckFailed; } set { _NumberOfCheckFailed = value; Invoke(new Action(() => { lblCheckResultFailedValue.Text = string.Format("{0:N0}", _NumberOfCheckFailed); })); } }
-
         public int NumberPrinted { get { return _NumberPrinted; } set { _NumberPrinted = value; Invoke(new Action(() => { lblPrintedCodeValue.Text = string.Format("{0:N0}", _NumberPrinted); })); } }
         public int ReceivedCode { get { return _ReceivedCode; } set { _ReceivedCode = value; Invoke(new Action(() => { lblReceivedValue.Text = string.Format("{0:N0}", _ReceivedCode); })); } }
         public int NumberOfSentPrinter { get { return _NumberOfSentPrinter; } set { _NumberOfSentPrinter = value; Invoke(new Action(() => { lblSentDataValue.Text = string.Format("{0:N0}", _NumberOfSentPrinter); })); } }
@@ -1669,7 +1671,7 @@ namespace BarcodeVerificationSystem.View
                     //Thread.Sleep(5);
                 }
             }
-            catch (OperationCanceledException)
+            catch (System.OperationCanceledException)
             {
                 Console.WriteLine("Thread compare was stopped!");
 
@@ -1848,7 +1850,7 @@ namespace BarcodeVerificationSystem.View
                     Thread.Sleep(5);
                 }
             }
-            catch (OperationCanceledException)
+            catch (System.OperationCanceledException)
             {
                 Console.WriteLine("Thread update printed status was stoppped!");
                 _BackupResponseCancelTokenSource?.Cancel();
@@ -1894,6 +1896,7 @@ namespace BarcodeVerificationSystem.View
                     //Get image
                     //Image image = detectModel.Image == null ? new Bitmap(100, 100) : detectModel.Image;
                     Image image = detectModel.Image ?? new Bitmap(100, 100); // MinhChau Modify 11122023
+                    CvsDisplay cvsDisplay = detectModel.CvsDisplayImage;
                     //END Draw text result to image
 
                     //Save image result(optional) - Update later
@@ -1908,11 +1911,11 @@ namespace BarcodeVerificationSystem.View
 
                     Invoke(new Action(() =>
                     {
-                        //Image preview
+                      
                         var oldImage = pictureBoxPreview.Image;
                         pictureBoxPreview.Image = image;
                         oldImage?.Dispose();
-                        //END Image preview
+                        
                     }));
 
                     strResult = new string[] { detectModel.Index + "", detectModel.Text,
@@ -2416,10 +2419,7 @@ namespace BarcodeVerificationSystem.View
 
             return checkResult;
         }
-
-       
-
-
+ 
         #endregion Operation
 
        
@@ -3052,24 +3052,14 @@ namespace BarcodeVerificationSystem.View
         #region Events Called
         private void Shared_OnCameraReadDataChange(object sender, EventArgs e)
         {
-            if (Shared.OperStatus != OperationStatus.Running && Shared.OperStatus != OperationStatus.Processing)
-            {
-                return;
-            }
+            if (Shared.OperStatus != OperationStatus.Running && Shared.OperStatus != OperationStatus.Processing) return;
 
             if (sender is DetectModel)
             {
                 DetectModel detectModel = sender as DetectModel;
-                // Check code read form camera
                 if (detectModel.RoleOfCamera == RoleOfStation.ForProduct)
                 {
-                    //Add data obtained to queue
                     _QueueBufferDataObtained.Enqueue(detectModel);
-                    //END Add data obtained to queue
-                }
-                else
-                {
-
                 }
             }
         }

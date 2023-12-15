@@ -26,7 +26,8 @@ namespace BarcodeVerificationSystem.View
             set
             {
                 _Index = value;
-                _CameraModel = Shared.Settings.CameraList.Count > _Index ? Shared.Settings.CameraList[_Index] : new CameraModel { Index = _Index };
+                _CameraModel = Shared.Settings.CameraList.Count > _Index ? 
+                    Shared.Settings.CameraList[_Index] : new CameraModel { Index = _Index };
             }
         }
         private bool _IsBinding = false;
@@ -46,6 +47,8 @@ namespace BarcodeVerificationSystem.View
             _IsBinding = true;
             txtIPAddress.Text = _CameraModel.IP;
             txtPassword.Text = _CameraModel.Password;
+            textBoxPort.Text = _CameraModel.Port;
+            comboBoxCamType.SelectedIndex = _CameraModel.CameraType == CameraType.DM ? 0 : 1;
             txtNoReadOutputString.Text = _CameraModel.NoReadOutputString;
 
             radAutoReconnectEnable.Checked = _CameraModel.AutoReconnect;
@@ -55,6 +58,7 @@ namespace BarcodeVerificationSystem.View
 
             UpdateCameraInfo();
             _IsBinding = false;
+            labelPort.Visible = textBoxPort.Visible = _CameraModel.CameraType == CameraType.IS;
         }
 
         private void Shared_OnCameraStatusChange(object sender, EventArgs e)
@@ -77,7 +81,7 @@ namespace BarcodeVerificationSystem.View
             txtIPAddress.TextChanged += AdjustData;
             txtPassword.TextChanged += AdjustData;
             txtNoReadOutputString.TextChanged += AdjustData;
-
+           
             radAutoReconnectEnable.CheckedChanged += AdjustData;
             radAutoReconnectDisable.CheckedChanged += AdjustData;
             radOutputEnable.CheckedChanged += AdjustData;
@@ -92,7 +96,11 @@ namespace BarcodeVerificationSystem.View
             Shared.OnCameraStatusChange += Shared_OnCameraStatusChange;
 
             this.Load += UcCameraSettings_Load;
+            comboBoxCamType.SelectedIndexChanged += AdjustData;
         }
+
+       
+
 
         private void UcCameraSettings_Load(object sender, EventArgs e)
         {
@@ -112,6 +120,7 @@ namespace BarcodeVerificationSystem.View
             }
             if (sender == txtIPAddress)
             {
+                _CameraModel.IsConnected = false;
                 _CameraModel.IP = txtIPAddress.Text;
             }
             else if (sender == txtPassword)
@@ -148,6 +157,23 @@ namespace BarcodeVerificationSystem.View
                 if (radOutputDisable.Checked == true)
                 {
                     _CameraModel.OutputEnable = false;
+                }
+            }
+            else if(sender == comboBoxCamType)
+            {
+                _CameraModel.IsConnected = false;
+                switch (comboBoxCamType.SelectedIndex)
+                {
+                    case 0:
+                        _CameraModel.CameraType = CameraType.DM;
+                        labelPort.Visible = textBoxPort.Visible = false;
+                        break;
+                    case 1:
+                        _CameraModel.CameraType = CameraType.IS;
+                        labelPort.Visible = textBoxPort.Visible = true;
+                        break;
+                    default:
+                        break;
                 }
             }
 

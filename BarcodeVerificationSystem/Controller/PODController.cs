@@ -301,7 +301,7 @@ namespace BarcodeVerificationSystem.Controller
             try
             {
                 //_StreamWriter.WriteLine(message);
-                _StreamWriter.Write((char)_StartPackage + message + (char)_EndPackage);
+                _StreamWriter?.Write((char)_StartPackage + message + (char)_EndPackage);
                 return true;
             }
             catch (Exception)

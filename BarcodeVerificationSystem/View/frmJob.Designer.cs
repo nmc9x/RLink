@@ -70,6 +70,7 @@
             this.btnRefesh = new DesignUI.CuzUI.CuzButton();
             this.lblStandalone = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.BtnViewLog = new DesignUI.CuzUI.CuzButton();
             this.tblCompareType = new System.Windows.Forms.TableLayoutPanel();
             this.radCanRead = new System.Windows.Forms.RadioButton();
             this.radStaticText = new System.Windows.Forms.RadioButton();
@@ -107,7 +108,6 @@
             this.txtPODFormat = new DesignUI.CuzUI.CuzTextBox();
             this.btnGennerate = new DesignUI.CuzUI.CuzButton();
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.BtnViewLog = new DesignUI.CuzUI.CuzButton();
             this.pnlMenu.SuspendLayout();
             this.statusStrip2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -659,6 +659,25 @@
             resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
             // 
+            // BtnViewLog
+            // 
+            this.BtnViewLog._BorderColor = System.Drawing.Color.Silver;
+            this.BtnViewLog._BorderRadius = 10;
+            this.BtnViewLog._BorderSize = 1;
+            this.BtnViewLog._GradientsButton = false;
+            this.BtnViewLog._Text = "";
+            this.BtnViewLog.BackColor = System.Drawing.Color.White;
+            this.BtnViewLog.BackgroundColor = System.Drawing.Color.White;
+            this.BtnViewLog.FillColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.BtnViewLog.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(165)))));
+            this.BtnViewLog.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.BtnViewLog, "BtnViewLog");
+            this.BtnViewLog.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnViewLog.Image = global::BarcodeVerificationSystem.Properties.Resources.icon_open_321;
+            this.BtnViewLog.Name = "BtnViewLog";
+            this.BtnViewLog.TextColor = System.Drawing.SystemColors.ControlText;
+            this.BtnViewLog.UseVisualStyleBackColor = false;
+            // 
             // tblCompareType
             // 
             resources.ApplyResources(this.tblCompareType, "tblCompareType");
@@ -1091,25 +1110,6 @@
             this.pnlMain.Controls.Add(this.pnlMenu);
             resources.ApplyResources(this.pnlMain, "pnlMain");
             this.pnlMain.Name = "pnlMain";
-            // 
-            // BtnViewLog
-            // 
-            this.BtnViewLog._BorderColor = System.Drawing.Color.Silver;
-            this.BtnViewLog._BorderRadius = 10;
-            this.BtnViewLog._BorderSize = 1;
-            this.BtnViewLog._GradientsButton = false;
-            this.BtnViewLog._Text = "";
-            this.BtnViewLog.BackColor = System.Drawing.Color.White;
-            this.BtnViewLog.BackgroundColor = System.Drawing.Color.White;
-            this.BtnViewLog.FillColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.BtnViewLog.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(165)))));
-            this.BtnViewLog.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.BtnViewLog, "BtnViewLog");
-            this.BtnViewLog.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtnViewLog.Image = global::BarcodeVerificationSystem.Properties.Resources.icon_open_321;
-            this.BtnViewLog.Name = "BtnViewLog";
-            this.BtnViewLog.TextColor = System.Drawing.SystemColors.ControlText;
-            this.BtnViewLog.UseVisualStyleBackColor = false;
             // 
             // frmJob
             // 

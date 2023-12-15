@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cognex.InSight.Web.Controls;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -31,5 +32,7 @@ namespace BarcodeVerificationSystem.Model
         public string ProcessingDateTime { get => _ProcessingDateTime; set => _ProcessingDateTime = value; }
         public string Text { get => _Text; set => _Text = value; }
         public RoleOfStation RoleOfCamera { get => _RoleOfCamera; set => _RoleOfCamera = value; }
+        public CvsDisplay CvsDisplayImage {get;set;}
+
     }
 }

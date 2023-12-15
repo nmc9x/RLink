@@ -47,6 +47,10 @@
             this.lblIPAddress = new System.Windows.Forms.Label();
             this.lblModel = new System.Windows.Forms.Label();
             this.txtModel = new System.Windows.Forms.TextBox();
+            this.textBoxPort = new System.Windows.Forms.TextBox();
+            this.labelPort = new System.Windows.Forms.Label();
+            this.comboBoxCamType = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.grbCamera.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -55,6 +59,10 @@
             // grbCamera
             // 
             this.grbCamera.BackColor = System.Drawing.Color.White;
+            this.grbCamera.Controls.Add(this.label1);
+            this.grbCamera.Controls.Add(this.comboBoxCamType);
+            this.grbCamera.Controls.Add(this.labelPort);
+            this.grbCamera.Controls.Add(this.textBoxPort);
             this.grbCamera.Controls.Add(this.lblOutputSignal);
             this.grbCamera.Controls.Add(this.tableLayoutPanel1);
             this.grbCamera.Controls.Add(this.txtIPAddress);
@@ -322,6 +330,47 @@
             this.txtModel.Size = new System.Drawing.Size(302, 26);
             this.txtModel.TabIndex = 19;
             // 
+            // textBoxPort
+            // 
+            this.textBoxPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPort.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBoxPort.Location = new System.Drawing.Point(674, 143);
+            this.textBoxPort.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxPort.Name = "textBoxPort";
+            this.textBoxPort.Size = new System.Drawing.Size(303, 26);
+            this.textBoxPort.TabIndex = 35;
+            // 
+            // labelPort
+            // 
+            this.labelPort.AutoSize = true;
+            this.labelPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPort.Location = new System.Drawing.Point(670, 117);
+            this.labelPort.Name = "labelPort";
+            this.labelPort.Size = new System.Drawing.Size(38, 20);
+            this.labelPort.TabIndex = 36;
+            this.labelPort.Text = "Port";
+            // 
+            // comboBoxCamType
+            // 
+            this.comboBoxCamType.FormattingEnabled = true;
+            this.comboBoxCamType.Items.AddRange(new object[] {
+            "DM Series",
+            "IS Series"});
+            this.comboBoxCamType.Location = new System.Drawing.Point(807, 223);
+            this.comboBoxCamType.Name = "comboBoxCamType";
+            this.comboBoxCamType.Size = new System.Drawing.Size(138, 28);
+            this.comboBoxCamType.TabIndex = 37;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(738, 226);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 20);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "Type";
+            // 
             // ucCameraSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -358,5 +407,9 @@
         private System.Windows.Forms.Label lblIPAddress;
         private System.Windows.Forms.Label lblModel;
         private System.Windows.Forms.TextBox txtModel;
+        private System.Windows.Forms.Label labelPort;
+        private System.Windows.Forms.TextBox textBoxPort;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBoxCamType;
     }
 }
