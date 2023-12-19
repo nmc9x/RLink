@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web.Controls\\Cognex.InSight.Web.Controls.csproj",
+      "projectUniqueName": "D:\\Program\\Rlink\\RLINK18122023\\SDK\\Cognex.InSight.Web.Controls\\Cognex.InSight.Web.Controls.csproj",
       "projectName": "Cognex.InSight.Web.Controls",
-      "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web.Controls\\Cognex.InSight.Web.Controls.csproj",
+      "projectPath": "D:\\Program\\Rlink\\RLINK18122023\\SDK\\Cognex.InSight.Web.Controls\\Cognex.InSight.Web.Controls.csproj",
       "packagesPath": "C:\\Users\\minhchau.nguyen\\.nuget\\packages\\",
-      "outputPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web.Controls\\obj\\",
+      "outputPath": "D:\\Program\\Rlink\\RLINK18122023\\SDK\\Cognex.InSight.Web.Controls\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\minhchau.nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +53,8 @@
         "net48": {
           "targetAlias": "net48",
           "projectReferences": {
-            "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj": {
-              "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj"
+            "D:\\Program\\Rlink\\RLINK18122023\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj": {
+              "projectPath": "D:\\Program\\Rlink\\RLINK18122023\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj"
             }
           }
         }

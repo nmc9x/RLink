@@ -23,14 +23,22 @@ namespace BarcodeVerificationSystem.Model
             set => _CameraType = value;
         }
 
+        //
         private string _Port = "80";
-
         public string Port
         {
             get { return _Port; }
             set { _Port = value; }
         }
+        //
+        private int _ObjectSelectNum;
+        public int ObjectSelectNum
+        {
+            get { return _ObjectSelectNum; }
+            set { _ObjectSelectNum = value; }
+        }
 
+        public bool[] IsSymbol { get; set; } = new bool[5];
 
         private int _Index = 0;
         private RoleOfStation _RoleOfCamera = RoleOfStation.ForProduct;

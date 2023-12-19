@@ -28,14 +28,14 @@ namespace BarcodeVerificationSystem.Controller.Camera
         private void InitEvent()
         {
             _InSight.ConnectedChanged += InSight_ConnectedChanged;
-            _InSight.ResultsChanged += _InSight_ResultsChangedAsync;
+           // _InSight.ResultsChanged += _InSight_ResultsChangedAsync;
         }
 
-        private async void _InSight_ResultsChangedAsync(object sender, EventArgs e)
-        {
-            Debug.WriteLine("Vao su kien");
-            await _CvsDisplay.UpdateResults();
-        }
+        //private async void _InSight_ResultsChangedAsync(object sender, EventArgs e)
+        //{
+        //    Debug.WriteLine("Vao su kien");
+        //    await _CvsDisplay.UpdateResults();
+        //}
 
         private List<ObjectResultModel> _ObjectResList = new List<ObjectResultModel>();
         List<(int, string)> _DesireDataList = new List<(int, string)>();

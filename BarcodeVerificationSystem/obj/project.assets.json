@@ -418,11 +418,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\BarcodeVerificationSystem\\BarcodeVerificationSystem.csproj",
+      "projectUniqueName": "D:\\Program\\Rlink\\RLINK18122023\\BarcodeVerificationSystem\\BarcodeVerificationSystem.csproj",
       "projectName": "BarcodeVerificationSystem",
-      "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\BarcodeVerificationSystem\\BarcodeVerificationSystem.csproj",
+      "projectPath": "D:\\Program\\Rlink\\RLINK18122023\\BarcodeVerificationSystem\\BarcodeVerificationSystem.csproj",
       "packagesPath": "C:\\Users\\minhchau.nguyen\\.nuget\\packages\\",
-      "outputPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\BarcodeVerificationSystem\\obj\\",
+      "outputPath": "D:\\Program\\Rlink\\RLINK18122023\\BarcodeVerificationSystem\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
@@ -439,20 +439,20 @@
       "frameworks": {
         "net48": {
           "projectReferences": {
-            "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\CommonVariable\\CommonVariable.csproj": {
-              "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\CommonVariable\\CommonVariable.csproj"
+            "D:\\Program\\Rlink\\RLINK18122023\\CommonVariable\\CommonVariable.csproj": {
+              "projectPath": "D:\\Program\\Rlink\\RLINK18122023\\CommonVariable\\CommonVariable.csproj"
             },
-            "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\OperationLog\\OperationLog.csproj": {
-              "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\OperationLog\\OperationLog.csproj"
+            "D:\\Program\\Rlink\\RLINK18122023\\OperationLog\\OperationLog.csproj": {
+              "projectPath": "D:\\Program\\Rlink\\RLINK18122023\\OperationLog\\OperationLog.csproj"
             },
-            "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web.Controls\\Cognex.InSight.Web.Controls.csproj": {
-              "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web.Controls\\Cognex.InSight.Web.Controls.csproj"
+            "D:\\Program\\Rlink\\RLINK18122023\\SDK\\Cognex.InSight.Web.Controls\\Cognex.InSight.Web.Controls.csproj": {
+              "projectPath": "D:\\Program\\Rlink\\RLINK18122023\\SDK\\Cognex.InSight.Web.Controls\\Cognex.InSight.Web.Controls.csproj"
             },
-            "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj": {
-              "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj"
+            "D:\\Program\\Rlink\\RLINK18122023\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj": {
+              "projectPath": "D:\\Program\\Rlink\\RLINK18122023\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj"
             },
-            "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\UILanguage\\UILanguage.csproj": {
-              "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\UILanguage\\UILanguage.csproj"
+            "D:\\Program\\Rlink\\RLINK18122023\\UILanguage\\UILanguage.csproj": {
+              "projectPath": "D:\\Program\\Rlink\\RLINK18122023\\UILanguage\\UILanguage.csproj"
             }
           }
         }

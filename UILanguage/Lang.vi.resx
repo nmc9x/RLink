@@ -880,4 +880,8 @@
     <value>Máy in không hỗ trợ Http Request, vui lòng tắt chức năng "Kiểm tra tất cả các cài đặt máy in" trong phần cài đặt</value>
     <comment>MinhChau Add 08122023</comment>
   </data>
+  <data name="NotesForSettingCam" xml:space="preserve">
+    <value>Lưu ý: đặt tên các đối tượng trên IS Camera là Object_&lt;n&gt; với n = (1,...5)</value>
+    <comment>MinhChau Add 18122023</comment>
+  </data>
 </root>

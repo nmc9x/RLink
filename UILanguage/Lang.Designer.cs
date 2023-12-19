@@ -1141,6 +1141,15 @@ namespace UILanguage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notes: please named object on ISCamera is Object_&lt;n&gt; with n = (1,...5).
+        /// </summary>
+        public static string NotesForSettingCam {
+            get {
+                return ResourceManager.GetString("NotesForSettingCam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not load database.
         /// </summary>
         public static string NotLoadDatabase {

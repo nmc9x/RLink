@@ -41,6 +41,7 @@ namespace BarcodeVerificationSystem.Controller.Camera
             _EthSystemDiscoverer.Discover();
             _SerSystemDiscoverer.Discover();
         }
+        
         public override void Connect(string ipadd, string port = null)
         {
             try
@@ -50,6 +51,7 @@ namespace BarcodeVerificationSystem.Controller.Camera
                     UpdateLabelStatusEvent?.Invoke(this, EventArgs.Empty);
                     Shared.RaiseOnCameraStatusChangeEvent();
                 }
+               
                 foreach (var systemInfo in _CameraSystemInfoList)
                 {
                     ISystemConnector iSysConnector = null;
@@ -119,6 +121,7 @@ namespace BarcodeVerificationSystem.Controller.Camera
                         if (cameraModel != null && hasExist == false)
                         {
                             _CameraSystemInfoList.Add(systemInfo);
+                           
                         }
                     }),
                     null);

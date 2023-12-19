@@ -14,8 +14,8 @@ namespace BarcodeVerificationSystem.Model
     /// </summary>
     public class ExportImageModel
     {
-        private Image _Image = null;
-        public Image Image
+        private Bitmap _Image = null;
+        public Bitmap Image
         {
             get { return _Image; }
             set { _Image = value; }
@@ -28,7 +28,7 @@ namespace BarcodeVerificationSystem.Model
             set { _Index = value; }
         }
 
-        public ExportImageModel(Image image, int index)
+        public ExportImageModel(Bitmap image, int index)
         {
             _Image = image;
             _Index = index;

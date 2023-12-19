@@ -160,6 +160,7 @@
     <Compile Include="Controller\Shared.cs" />
     <Compile Include="Controller\TouchScroll.cs" />
     <Compile Include="Controller\UserController.cs" />
+    <Compile Include="Controller\UtilityFunctions.cs" />
     <Compile Include="Model\CameraModel.cs" />
     <Compile Include="Model\DetectModel.cs" />
     <Compile Include="Model\ExportImageModel.cs" />

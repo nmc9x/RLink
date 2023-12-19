@@ -47,12 +47,11 @@ namespace Cognex.InSight.Web.Controls
             await UpdateResults();
         }
 
-        public async Task UpdateResults()
+        public async Task<string> UpdateResults()
         {
+            string url ="";
             if (_inSight == null)
-                return;
-
-            // Get the graphics that may be rendered later in the OnPaint
+                return "";
             try
             {
                 if (_inSight.LiveMode)
@@ -69,34 +68,22 @@ namespace Cognex.InSight.Web.Controls
                 _nextGraphics = new CvsCogShape[0];
                 Debug.WriteLine($"UpdateResults Exception: {ex.Message}");
             }
-
-            // Note: This event will arrive on a worker thread.
-            // Before a windows control is directly updated, invoke to the main SynchronizationContext
-            //if(picBox.IsHandleCreated)
             try
             {
-                if (picBox != null)
-                {
-
-                    picBox.Invoke((Action)delegate
+                if(picBox.IsHandleCreated)
+                    picBox?.Invoke((Action)delegate
                     {
-                        // Default image width and height in pixels for image retrieval
                         int imageWidth = 800;
                         int imageHeight = 600;
 
                         CvsCogViewPort viewPort = _inSight?.ViewPort;
                         if (viewPort != null)
                         {
-                            // Retrieve at half resolution
                             imageWidth = Math.Max(viewPort.Width / 2, 1);
                             imageHeight = Math.Max(viewPort.Height / 2, 1);
                         }
 
-                        // This will initiate the loading of the main image.
-                        // Note: The 'ready' should not be sent until the entire result has been processed.
-                        //       So, any remote resources like images should be downloaded before issuing this.
-                        //       Therefore, the LoadCompleted event will send the 'ready'.
-                        string url = _inSight.GetMainImageUrl(imageWidth, imageHeight);
+                        url = _inSight.GetMainImageUrl(imageWidth, imageHeight);
                         if (picBox.ImageLocation != url)
                         {
                             try
@@ -104,22 +91,15 @@ namespace Cognex.InSight.Web.Controls
                                 picBox.ImageLocation = url;
                                 picBox.LoadAsync(url);
                             }
-                            catch (Exception) { }
-                        }
-                        else
-                        {
-                            //Task.Run(() => SendReady());
+                            catch (Exception) 
+                            { }
                         }
                     });
-                }
+               
             }
-            catch (Exception)
-            {
-
-
-            }
-
+            catch (Exception){}
             await Task.Run(() => SendReady());
+            return url;
         }
 
         /// <summary>
@@ -308,7 +288,7 @@ namespace Cognex.InSight.Web.Controls
 
                 JToken results = _inSight.Results;
                 JToken token = results.SelectToken("queuedResult");
-                if ((token != null) && (token.Value<Boolean>() == true))
+                if ((token != null) && (token.Value<bool>() == true))
                 {
                     DisplayQueuedResultBanner(gr);
                 }

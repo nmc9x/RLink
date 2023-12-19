@@ -756,7 +756,6 @@
             this.pnlPicture._FillColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.pnlPicture._FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(165)))));
             this.pnlPicture._GradientPanel = false;
-            this.pnlPicture.Controls.Add(frmJob._CvsDisplay);
             this.pnlPicture.Controls.Add(this.pictureBoxPreview);
             this.pnlPicture.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPicture.Location = new System.Drawing.Point(4, 4);

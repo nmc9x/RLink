@@ -26,7 +26,7 @@ namespace BarcodeVerificationSystem.View
             set
             {
                 _Index = value;
-                _CameraModel = Shared.Settings.CameraList.Count > _Index ? 
+                _CameraModel = Shared.Settings.CameraList.Count > _Index ?
                     Shared.Settings.CameraList[_Index] : new CameraModel { Index = _Index };
             }
         }
@@ -34,6 +34,7 @@ namespace BarcodeVerificationSystem.View
         public ucCameraSettings()
         {
             InitializeComponent();
+           
         }
         protected override void OnHandleCreated(EventArgs e)
         {
@@ -51,6 +52,7 @@ namespace BarcodeVerificationSystem.View
             comboBoxCamType.SelectedIndex = _CameraModel.CameraType == CameraType.DM ? 0 : 1;
             txtNoReadOutputString.Text = _CameraModel.NoReadOutputString;
 
+
             radAutoReconnectEnable.Checked = _CameraModel.AutoReconnect;
             radAutoReconnectDisable.Checked = !_CameraModel.AutoReconnect;
             radOutputEnable.Checked = _CameraModel.OutputEnable;
@@ -58,9 +60,49 @@ namespace BarcodeVerificationSystem.View
 
             UpdateCameraInfo();
             _IsBinding = false;
-            labelPort.Visible = textBoxPort.Visible = _CameraModel.CameraType == CameraType.IS;
+
+            groupBoxOCR.Visible =
+            labelPort.Visible =
+            textBoxPort.Visible =
+            _CameraModel.CameraType == CameraType.IS;
+
+            labelNotesOCR.Text = Lang.NotesForSettingCam;
+
+            bool[] listBoolCheckBox = UtilityFunctions.IntToBools(_CameraModel.ObjectSelectNum, 5);
+            checkBoxObject1.Checked = listBoolCheckBox[0];
+            checkBoxObject2.Checked = listBoolCheckBox[1];
+            checkBoxObject3.Checked = listBoolCheckBox[2];
+            checkBoxObject4.Checked = listBoolCheckBox[3];
+            checkBoxObject5.Checked = listBoolCheckBox[4];
+            InitControlsAndEvents_IS();
         }
 
+        private void InitControlsAndEvents_IS()
+        {
+            radioButtonSym1.Checked = _CameraModel.IsSymbol[0];
+            radioButtonSym2.Checked = _CameraModel.IsSymbol[1];
+            radioButtonSym3.Checked = _CameraModel.IsSymbol[2];
+            radioButtonSym4.Checked = _CameraModel.IsSymbol[3];
+            radioButtonSym5.Checked = _CameraModel.IsSymbol[4];
+
+            radioButtonText1.Checked = !_CameraModel.IsSymbol[0];
+            radioButtonText2.Checked = !_CameraModel.IsSymbol[1];
+            radioButtonText3.Checked = !_CameraModel.IsSymbol[2];
+            radioButtonText4.Checked = !_CameraModel.IsSymbol[3];
+            radioButtonText5.Checked = !_CameraModel.IsSymbol[4];
+       
+            radioButtonSym1.CheckedChanged += RadioButtonRead_CheckedChanged;
+            radioButtonSym2.CheckedChanged += RadioButtonRead_CheckedChanged;
+            radioButtonSym3.CheckedChanged += RadioButtonRead_CheckedChanged;
+            radioButtonSym4.CheckedChanged += RadioButtonRead_CheckedChanged;
+            radioButtonSym5.CheckedChanged += RadioButtonRead_CheckedChanged;
+
+            radioButtonText1.CheckedChanged += RadioButtonRead_CheckedChanged;
+            radioButtonText2.CheckedChanged += RadioButtonRead_CheckedChanged;
+            radioButtonText3.CheckedChanged += RadioButtonRead_CheckedChanged;
+            radioButtonText4.CheckedChanged += RadioButtonRead_CheckedChanged;
+            radioButtonText5.CheckedChanged += RadioButtonRead_CheckedChanged;
+        }
         private void Shared_OnCameraStatusChange(object sender, EventArgs e)
         {
             UpdateCameraInfo();
@@ -81,7 +123,7 @@ namespace BarcodeVerificationSystem.View
             txtIPAddress.TextChanged += AdjustData;
             txtPassword.TextChanged += AdjustData;
             txtNoReadOutputString.TextChanged += AdjustData;
-           
+
             radAutoReconnectEnable.CheckedChanged += AdjustData;
             radAutoReconnectDisable.CheckedChanged += AdjustData;
             radOutputEnable.CheckedChanged += AdjustData;
@@ -95,19 +137,47 @@ namespace BarcodeVerificationSystem.View
             Shared.OnLanguageChange += Shared_OnLanguageChange;
             Shared.OnCameraStatusChange += Shared_OnCameraStatusChange;
 
-            this.Load += UcCameraSettings_Load;
+            Load += UcCameraSettings_Load;
             comboBoxCamType.SelectedIndexChanged += AdjustData;
+
+            // Select Object for OCR IS2800
+            checkBoxObject1.CheckedChanged += CheckBoxSelectObjectChange;
+            checkBoxObject2.CheckedChanged += CheckBoxSelectObjectChange;
+            checkBoxObject3.CheckedChanged += CheckBoxSelectObjectChange;
+            checkBoxObject4.CheckedChanged += CheckBoxSelectObjectChange;
+            checkBoxObject5.CheckedChanged += CheckBoxSelectObjectChange;
+            
+
         }
 
-       
+        private void RadioButtonRead_CheckedChanged(object sender, EventArgs e)
+        {
+            _CameraModel.IsSymbol[0] = radioButtonSym1.Checked;
+            _CameraModel.IsSymbol[1] = radioButtonSym2.Checked;
+            _CameraModel.IsSymbol[2] = radioButtonSym3.Checked;
+            _CameraModel.IsSymbol[3] = radioButtonSym4.Checked;
+            _CameraModel.IsSymbol[4] = radioButtonSym5.Checked;
+            Shared.SaveSettings();
+        } 
 
+        private void CheckBoxSelectObjectChange(object sender, EventArgs e)
+        {
+            _CameraModel.ObjectSelectNum = UtilityFunctions.BoolsToInt(new bool[] 
+            { 
+                checkBoxObject1.Checked, 
+                checkBoxObject2.Checked, 
+                checkBoxObject3.Checked, 
+                checkBoxObject4.Checked, 
+                checkBoxObject5.Checked});
+            Shared.SaveSettings();
+        }
 
         private void UcCameraSettings_Load(object sender, EventArgs e)
         {
             InitControls();
         }
 
-        private void Shared_OnLanguageChange(object sender,EventArgs e)
+        private void Shared_OnLanguageChange(object sender, EventArgs e)
         {
             SetLanguage();
         }
@@ -159,7 +229,7 @@ namespace BarcodeVerificationSystem.View
                     _CameraModel.OutputEnable = false;
                 }
             }
-            else if(sender == comboBoxCamType)
+            else if (sender == comboBoxCamType)
             {
                 _CameraModel.IsConnected = false;
                 switch (comboBoxCamType.SelectedIndex)
@@ -171,6 +241,7 @@ namespace BarcodeVerificationSystem.View
                     case 1:
                         _CameraModel.CameraType = CameraType.IS;
                         labelPort.Visible = textBoxPort.Visible = true;
+                        groupBoxOCR.Visible = true;
                         break;
                     default:
                         break;
@@ -187,10 +258,10 @@ namespace BarcodeVerificationSystem.View
                 this.Invoke(new Action(() => SetLanguage()));
                 return;
             }
-                radAutoReconnectEnable.Text =
-                radOutputEnable.Text = Lang.Enable;
-                radAutoReconnectDisable.Text =
-                radOutputDisable.Text = Lang.Disable;
+            radAutoReconnectEnable.Text =
+            radOutputEnable.Text = Lang.Enable;
+            radAutoReconnectDisable.Text =
+            radOutputDisable.Text = Lang.Disable;
 
             lblModel.Text = Lang.Model;
             lblNoReadOuputString.Text = Lang.NoReadOuputString;

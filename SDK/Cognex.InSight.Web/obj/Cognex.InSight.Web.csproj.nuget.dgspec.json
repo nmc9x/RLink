@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj": {}
+    "D:\\Program\\Rlink\\RLINK18122023\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj": {}
   },
   "projects": {
-    "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj": {
+    "D:\\Program\\Rlink\\RLINK18122023\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj",
+        "projectUniqueName": "D:\\Program\\Rlink\\RLINK18122023\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj",
         "projectName": "Cognex.InSight.Web",
-        "projectPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj",
+        "projectPath": "D:\\Program\\Rlink\\RLINK18122023\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj",
         "packagesPath": "C:\\Users\\minhchau.nguyen\\.nuget\\packages\\",
-        "outputPath": "D:\\Program\\Rlink\\231205_1659_RLink_SourceCode\\231205_1659_RLink_SourceCode\\SDK\\Cognex.InSight.Web\\obj\\",
+        "outputPath": "D:\\Program\\Rlink\\RLINK18122023\\SDK\\Cognex.InSight.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\minhchau.nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",

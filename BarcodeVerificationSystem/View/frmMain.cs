@@ -1,30 +1,28 @@
-﻿using System;
-using System.IO;
-using UILanguage;
-using System.Data;
-using System.Text;
-using System.Linq;
-using System.Drawing;
-using CommonVariable;
-using System.Threading;
-using OperationLog.Model;
-using System.Diagnostics;
-using System.Windows.Forms;
-using DesignUI.CuzMesageBox;
-using System.Threading.Tasks;
-using OperationLog.Controller;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
+﻿using BarcodeVerificationSystem.Controller;
 using BarcodeVerificationSystem.Model;
-using Timer = System.Windows.Forms.Timer;
-using BarcodeVerificationSystem.Controller;
+using CommonVariable;
 using DesignUI.CuzAlert;
-using System.Text.RegularExpressions;
+using DesignUI.CuzMesageBox;
+using OperationLog.Controller;
+using OperationLog.Model;
+using System;
 using System.Collections.Concurrent;
-using System.Runtime.Remoting.Messaging;
-using Cognex.InSight.Web.Controls;
-using Cognex.DataMan.SDK;
+using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using UILanguage;
 using OperationCanceledException = System.OperationCanceledException;
+using Timer = System.Windows.Forms.Timer;
 
 namespace BarcodeVerificationSystem.View
 {
@@ -179,7 +177,7 @@ namespace BarcodeVerificationSystem.View
         bool isDelProcessPnlMargin = false;
         public bool IsFullHD
         {
-            get =>  isFullHD;
+            get => isFullHD;
             set
             {
                 isFullHD = value;
@@ -240,9 +238,6 @@ namespace BarcodeVerificationSystem.View
         private bool _IsStopOK = false;
         private readonly Stopwatch _BigSTW = new Stopwatch();
         private string _PrintedResponseValue = "";
-
-
-
 
         public frmMain()
         {
@@ -349,7 +344,26 @@ namespace BarcodeVerificationSystem.View
 
         private void InitControls()
         {
-            this.TransparencyKey = Color.DarkKhaki;
+   
+            if (Shared.Settings.CameraList[0].CameraType == CameraType.DM) // Show Image IS Series
+            {
+                pictureBoxPreview.Visible = true;
+                if (pnlPicture.Controls.Contains(frmJob._CvsDisplay))
+                {
+                    pnlPicture.Controls.Remove(frmJob._CvsDisplay);
+                }
+            }
+
+            if (Shared.Settings.CameraList[0].CameraType == CameraType.IS) // Show Image IS Series
+            {
+                if (!pnlPicture.Controls.Contains(frmJob._CvsDisplay))
+                {
+                    pnlPicture.Controls.Add(frmJob._CvsDisplay);
+                }
+                pictureBoxPreview.Visible = false;
+            }
+
+            TransparencyKey = Color.DarkKhaki;
             SetLanguage();
             _TimerDateTime.Start();
 
@@ -371,7 +385,7 @@ namespace BarcodeVerificationSystem.View
             _LabelStatusPrinterList.Add(lblStatusPrinter01);
             UpdateStatusLabelPrinter();
 
-            
+
             UpdateUISensorControllerStatus(Shared.IsSensorControllerConnected); // Show icon sensor controller status
 
             UpdateJobInfomationInterface(); // Get Job Infor
@@ -487,6 +501,9 @@ namespace BarcodeVerificationSystem.View
             _QueueBufferPrinterResponseData.Clear();
             ReceiveResponseFromPrinterHandlerAsync();
         }
+
+
+
         private void BtnViewLog_Click(object sender, EventArgs e)
         {
             try
@@ -788,7 +805,7 @@ namespace BarcodeVerificationSystem.View
         }
 
         #region Operation
-       
+
 
         #region Testing
         private void DebugVirtual()
@@ -899,9 +916,12 @@ namespace BarcodeVerificationSystem.View
             {
                 dtm.Text = "Trigger";
 
-                var data = _PrintedCodeObtainFromFile.Find(x => x[x.Length - 1] == "Waiting");
-                PODDataModel pod2 = new PODDataModel();
-                pod2.Text = "RSFP;1/101;DATA";
+                string[] data = _PrintedCodeObtainFromFile.Find(x => x[x.Length - 1] == "Waiting");
+                PODDataModel pod2 = new PODDataModel
+                {
+                    Text = "RSFP;1/101;DATA"
+                };
+
                 if (data != null)
                 {
                     for (int i = 1; i < data.Count() - 1; i++)
@@ -1889,33 +1909,24 @@ namespace BarcodeVerificationSystem.View
 
                     // Waiting until have data
                     DetectModel detectModel = _QueueBufferDataObtainedResult.Dequeue();
-
                     if (detectModel == null) continue;
 
-                    //Draw text result to image
-                    //Get image
                     //Image image = detectModel.Image == null ? new Bitmap(100, 100) : detectModel.Image;
-                    Image image = detectModel.Image ?? new Bitmap(100, 100); // MinhChau Modify 11122023
-                    CvsDisplay cvsDisplay = detectModel.CvsDisplayImage;
-                    //END Draw text result to image
+                    var image = detectModel.Image ?? new Bitmap(100, 100); // MinhChau Modify 11122023
 
-                    //Save image result(optional) - Update later
-                    //END Save image result (optional)
                     if (Shared.Settings.ExportImageEnable && image != null)
                     {
                         if (detectModel.CompareResult != ComparisonResult.Valid)
                         {
-                            _QueueBufferBackupImage.Enqueue(new ExportImageModel(image.Clone() as Image, detectModel.Index));
+                            _QueueBufferBackupImage.Enqueue(new ExportImageModel(new Bitmap(image), detectModel.Index));
                         }
                     }
 
                     Invoke(new Action(() =>
                     {
-                      
-                        var oldImage = pictureBoxPreview.Image;
+                        Image oldImage = pictureBoxPreview.Image;
                         pictureBoxPreview.Image = image;
                         oldImage?.Dispose();
-                        
                     }));
 
                     strResult = new string[] { detectModel.Index + "", detectModel.Text,
@@ -2231,38 +2242,32 @@ namespace BarcodeVerificationSystem.View
                 // Try to create the directory.
                 Directory.CreateDirectory(Shared.Settings.ExportImagePath + "\\" + _SelectedJob.FileName);
             }
-            string fileName = "";
-            string path = "";
+
             try
             {
                 while (true)
                 {
                     // Only stop if handled all data
                     if (token.IsCancellationRequested)
+                    {
                         if (_QueueBufferBackupImage.Count() == 0)
+                        {
                             token.ThrowIfCancellationRequested();
+                        }
+                    }
 
                     ExportImageModel exportImageModel = null;
-
                     exportImageModel = _QueueBufferBackupImage.Dequeue();
 
                     if (exportImageModel != null)
                     {
-                        fileName = String.Format("\\{0}_Job_{1}_Image_{2:D7}.bmp", _ExportNamePrefix, _SelectedJob.FileName, exportImageModel.Index); //Use bmp because it is the least time consuming
-                        path = Shared.Settings.ExportImagePath + "\\" + _SelectedJob.FileName + fileName;
-
-
-                        if (exportImageModel.Image != null)
+                        string fileName = string.Format("\\{0}_Job_{1}_Image_{2:D7}.jpg", _ExportNamePrefix, _SelectedJob.FileName, exportImageModel.Index);
+                        string path = Shared.Settings.ExportImagePath + "\\" + _SelectedJob.FileName + fileName;
+                        using (exportImageModel.Image)
                         {
-                            //Save image
-                            exportImageModel.Image.Save(path);
-
-                            //Release memory
-                            exportImageModel.Image.Dispose();
-                            //END Release memory
+                            UtilityFunctions.SaveBitmap(exportImageModel.Image, path);
                         }
                     }
-
                     Thread.Sleep(5);
                 }
             }
@@ -2290,15 +2295,22 @@ namespace BarcodeVerificationSystem.View
             await Task.Run(() => StopProcess(interactOnUI, messages, isClosed, isManualClose));
         }
 
+        private bool dialogResultStopExist;
         private void StopProcess(bool interactOnUI = true, string messages = "", bool isClosed = false, bool isManualClose = false)
         {
+
             if (interactOnUI)
             {
+                if (dialogResultStopExist) { return; }
+                dialogResultStopExist = true;
                 DialogResult dialogResult = CuzMessageBox.Show(Lang.DoYouWantToStopTheSystem, Lang.Confirm, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
                 if (dialogResult != DialogResult.Yes)
                 {
+                    dialogResultStopExist = false;
                     return;
                 }
+                dialogResultStopExist = false;
                 messages = Lang.UserStoppedTheSystem;
             }
 
@@ -2313,15 +2325,15 @@ namespace BarcodeVerificationSystem.View
                 PODController podController = Shared.Settings.PrinterList.Where(p => p.RoleOfPrinter == RoleOfStation.ForProduct).FirstOrDefault().PODController;
                 if (podController != null)
                 {
-                   // podController.Send("CLPB"); //clear printer buffer 
-                   // Thread.Sleep(5);
+                    // podController.Send("CLPB"); //clear printer buffer 
+                    // Thread.Sleep(5);
                     podController.Send("STOP"); // stop printer button
                     Debug.WriteLine("STOP");
                     lock (_StopLocker)
                     {
                         _IsStopOK = false;
-                        while (!_IsStopOK) 
-                        { 
+                        while (!_IsStopOK)
+                        {
                             Monitor.Wait(_StopLocker, 5000); //Wait until there is a stop notify from the printer
                         }
                     }
@@ -2419,10 +2431,10 @@ namespace BarcodeVerificationSystem.View
 
             return checkResult;
         }
- 
+
         #endregion Operation
 
-       
+
 
         #region Jobs
         private void UpdateJobInfomationInterface()
@@ -2492,12 +2504,12 @@ namespace BarcodeVerificationSystem.View
                 {
                     _PrintedCodeObtainFromFile = databaseTsk.Result;
                     _CheckedResultCodeList = checkedResultTsk.Result;
-                   
+
                     if (_PrintedCodeObtainFromFile.Count() > 1)  // Inititalize database information
                     {
                         _DatabaseColunms = _PrintedCodeObtainFromFile[0];
                         _PrintedCodeObtainFromFile.RemoveAt(0);
-                        
+
                         if (_SelectedJob.CompareType == CompareType.Database) // Initialize compare data
                         {
                             await InitCompareDataAsync(_PrintedCodeObtainFromFile, _CheckedResultCodeList); // Waiting until initialize compare data completed
@@ -2526,11 +2538,11 @@ namespace BarcodeVerificationSystem.View
                 _CheckedResultCodeList = await InitCheckedResultDataAsync(jobModel);  // Load checked result
             }
 
-           
+
             TotalChecked = _CheckedResultCodeList.Count();
             NumberOfCheckPassed = _CheckedResultCodeList.Where(x => x[2] == "Valid").Count();
             NumberOfCheckFailed = TotalChecked - NumberOfCheckPassed;
-           
+
             InitDataGridView(dgvCheckedResult, _ColumnNames, 2);  // Implement virtual mode for DataGridView display checked results
             await Task.Delay(50);
             AutoResizeColumnWith(dgvCheckedResult, defaultRecord, 2);  // Adjust width of columns
@@ -2885,6 +2897,7 @@ namespace BarcodeVerificationSystem.View
             }
             else if (sender == btnStart)
             {
+                _ParentForm.Invoke_AutoAddSufixEvent();
                 StartProcess();
             }
             else if (sender == btnStop)
@@ -3049,6 +3062,8 @@ namespace BarcodeVerificationSystem.View
             }
         }
 
+
+
         #region Events Called
         private void Shared_OnCameraReadDataChange(object sender, EventArgs e)
         {
@@ -3056,7 +3071,7 @@ namespace BarcodeVerificationSystem.View
 
             if (sender is DetectModel)
             {
-                DetectModel detectModel = sender as DetectModel;
+                var detectModel = sender as DetectModel;
                 if (detectModel.RoleOfCamera == RoleOfStation.ForProduct)
                 {
                     _QueueBufferDataObtained.Enqueue(detectModel);
@@ -3634,7 +3649,7 @@ namespace BarcodeVerificationSystem.View
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "CSV|*.csv";
             sfd.FileName = _SelectedJob.FileName;
-            DialogResult dialogRes =  sfd.ShowDialog();
+            DialogResult dialogRes = sfd.ShowDialog();
             if (dialogRes.Equals(DialogResult.Cancel) || sfd.FileName == "")
             {
                 return;
@@ -3731,7 +3746,7 @@ namespace BarcodeVerificationSystem.View
         }
 
         #endregion Events Called
-       
+
 
         private void Shared_OnLogError(object sender, EventArgs e)
         {
@@ -4115,6 +4130,7 @@ namespace BarcodeVerificationSystem.View
             lblSentDataValue.Text = string.Format("{0:N0}", NumberOfSentPrinter);
         }
 
+        private bool isShowPopupOneTime = false;
         private void UpdateStatusLabelCamera()
         {
             if (InvokeRequired)
@@ -4137,9 +4153,20 @@ namespace BarcodeVerificationSystem.View
                     else
                     {
                         ShowLabelIcon(labelStatusCamera, Lang.CameraTMP, Properties.Resources.icons8_camera_30px_disconnected);
-                        if (!cameraModel.IsConnected)
+                        if (!cameraModel.IsConnected && !isShowPopupOneTime)
                         {
-                            CuzAlert.Show(Lang.CameraDisconnected, Alert.enmType.Warning, new Size(500, 120), new Point(Location.X, Location.Y), this.Size, true);
+                            isShowPopupOneTime = true;
+                            CuzAlert.Show(Lang.CameraDisconnected, 
+                                Alert.enmType.Warning, 
+                                new Size(500, 120), 
+                                new Point(Location.X, 
+                                Location.Y), 
+                                Size, 
+                                true);
+                        }
+                        else if(cameraModel.IsConnected)
+                        {
+                            isShowPopupOneTime = false;
                         }
                     }
                 }
@@ -4308,7 +4335,7 @@ namespace BarcodeVerificationSystem.View
 
         #endregion
 
-        
+
     }
 }
 

@@ -19,7 +19,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Management;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -78,23 +78,27 @@ namespace BarcodeVerificationSystem.View
         private static readonly Color _Standalone = Color.DarkBlue;
         private static readonly Color _RLinkColor = Color.FromArgb(0, 171, 230);
         #endregion
+        internal event EventHandler AutoAddSufixEvent;
 
         #endregion Variables Jobs
 
+       
         public frmJob()
         {
             InitializeComponent();
             _InSight = new CvsInSight();
             _CvsDisplay = new CvsDisplay();
             // Reg Event InSight Camera
-            _InSight.ConnectedChanged += _InSight_ConnectedChangedAsync;
+            _InSight.ConnectedChanged += InSight_ConnectedChanged;
             _InSight.ResultsChanged += InSight_ResultsChanged;
             _CvsDisplay.SetInSight(_InSight);
         }
 
+
         private List<ObjectResultModel> _ObjectResList = new List<ObjectResultModel>();
-        List<(int, string)> _DesireDataList = new List<(int, string)>();
+        private List<(int, string)> _DesireDataList = new List<(int, string)>();
         private string CameraData = "";
+        private CameraModel cameraModel;
         /// <summary>
         /// 
         /// </summary>
@@ -104,7 +108,6 @@ namespace BarcodeVerificationSystem.View
         {
             try
             {
-                CameraModel cameraModel = Shared.GetCameraModelBasedOnIPAddress(_InSight.RemoteIPAddress);
                 JToken tokenResults = _InSight.Results;
                 JObject objectResult = tokenResults.ToObject<JObject>();
                 JToken tokenObjectCells = objectResult["cells"];
@@ -113,16 +116,20 @@ namespace BarcodeVerificationSystem.View
                 if (objectResult != null && jsonString != "")
                 {
                     _ObjectResList = JsonConvert.DeserializeObject<List<ObjectResultModel>>(jsonString);
-                    _DesireDataList = GetDesireDataByObjectName().ToList();
+                    _DesireDataList = GetDesireDataByObjectName(cameraModel).ToList();
                     _DesireDataList.Sort();
-                    if (_DesireDataList != null)
+
+                    // Data String Concat
+                    if (_DesireDataList != null && _DesireDataList.Count>0)
                     {
                         CameraData = "";
                         int i = 0;
                         foreach ((int, string) item in _DesireDataList)
                         {
                             if (i < _DesireDataList.Count)
+                            {
                                 CameraData += item.Item2.ToString() + ";";
+                            }
                             if (i == _DesireDataList.Count - 1)
                             {
                                 CameraData = CameraData.Substring(0, CameraData.Length - 1);
@@ -130,90 +137,62 @@ namespace BarcodeVerificationSystem.View
                             i++;
                         }
                     }
+                    else
+                    {
+                        CameraData = "";
+                    }
                 }
-                await _CvsDisplay.UpdateResults();
-                DetectModel detectModel = new DetectModel
+
+                // Data Transmition via Event
+                Bitmap img = null;
+                string urlImg = await _CvsDisplay.UpdateResults();
+                if(urlImg != null)
                 {
-                    CvsDisplayImage = _CvsDisplay,
-                    Text = CameraData
+                    img = UtilityFunctions.GetImageFromUri(urlImg);
+                }
+
+                DetectModel detectModel = new DetectModel 
+                {
+                    Text = CameraData,
+                    Image = img
                 };
                 Debug.WriteLine("Data OCR: " + CameraData);
-                 detectModel.RoleOfCamera = cameraModel != null ? cameraModel.RoleOfCamera : detectModel.RoleOfCamera;
-                
+                detectModel.RoleOfCamera = cameraModel?.RoleOfCamera ?? detectModel.RoleOfCamera;
                 Shared.RaiseOnCameraReadDataChangeEvent(detectModel);
+
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            catch (Exception ex) {MessageBox.Show("Error: " + ex.Message);}
         }
 
-        private async void InSight_ResultsChanged_New(object sender, EventArgs e)
+        internal void Invoke_AutoAddSufixEvent()
         {
-            try
-            {
-                CameraModel cameraModel = Shared.GetCameraModelBasedOnIPAddress(_InSight.RemoteIPAddress);
-                JToken tokenResults = _InSight.Results;
-                JObject objectResult = tokenResults.ToObject<JObject>();
-                JToken tokenObjectCells = objectResult["cells"];
-                string jsonString = tokenObjectCells.ToString();
-
-                if (objectResult != null && jsonString != "")
-                {
-                    _ObjectResList = JsonConvert.DeserializeObject<List<ObjectResultModel>>(jsonString);
-                    _DesireDataList = GetDesireDataByObjectName().ToList();
-                    _DesireDataList.Sort();
-                    if (_DesireDataList != null)
-                    {
-                        CameraData = "";
-                        int i = 0;
-                        foreach ((int, string) item in _DesireDataList)
-                        {
-                            if (i < _DesireDataList.Count)
-                                CameraData += item.Item2.ToString() + ";";
-                            if (i == _DesireDataList.Count - 1)
-                            {
-                                CameraData = CameraData.Substring(0, CameraData.Length - 1);
-                            }
-                            i++;
-                        }
-                    }
-                }
-                Bitmap bmpResult = await _CvsDisplay.UpdateResultsOCR();
-                DetectModel detectModel = new DetectModel
-                {
-                    Image = bmpResult,
-                    Text = CameraData
-                };
-                Debug.WriteLine("Data OCR: " + CameraData);
-                detectModel.RoleOfCamera = cameraModel != null ? cameraModel.RoleOfCamera : detectModel.RoleOfCamera;
-  
-                Shared.RaiseOnCameraReadDataChangeEvent(detectModel);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            AutoAddSufixEvent.Invoke(this, EventArgs.Empty);
         }
+
         /// <summary>
         /// 
         /// </summary>
-        private string[] _ObjectName_Temp = new string[5];
-        public bool[] _IsCode = new bool[5];
+        private string[] _ObjectName_Temp = new string[5] { "Object_1", "Object_2", "Object_3", "Object_4", "Object_5" };
+        public bool[] _IsSymbol = new bool[5];
         private readonly string suf_code = ".Result00.String";
         private readonly string suf_text = ".ReadText";
-        internal void AutoAddSuffixes()
+        private bool[] _EnableObject = new bool[5];
+        private string[] _ObjectName = new string[5] { "Object_1", "Object_2", "Object_3", "Object_4", "Object_5" };
+        private readonly ObjectResultModel[] _ObjectData = new ObjectResultModel[5];
+        private const int numObject = 5;
+        internal void AutoAddSuffixes(CameraModel cameraModel)
         {
             try
             {
-                //SaveObjectToFile();
+                if (cameraModel == null) return;
+                _IsSymbol = cameraModel.IsSymbol;
                 for (int i = 0; i < 5; i++)
                 {
                     _ObjectName_Temp[i] = _ObjectName[i].Replace(suf_code, "");
                     _ObjectName_Temp[i] = _ObjectName[i].Replace(suf_text, "");
                     if (_ObjectName_Temp[i] != null)
                     {
-                        if (_IsCode[i])
+                        if (_IsSymbol[i])
                         {
                             if (_ObjectName_Temp[i].EndsWith(suf_code))
                             {
@@ -236,23 +215,18 @@ namespace BarcodeVerificationSystem.View
             }
             catch (Exception){}
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-
-        private readonly bool[] _EnableObject = new bool[5] { true, false, false, false, false };
-        private string[] _ObjectName = new string[5] { "Object_1.ReadText", "Object_2", "Object_3", "Object_4", "Object_5" };
-        private readonly ObjectResultModel[] _ObjectData = new ObjectResultModel[5];
-        private List<(int, string)> GetDesireDataByObjectName()
+        private List<(int, string)> GetDesireDataByObjectName(CameraModel cameraModel)
         {
+            if (cameraModel == null) cameraModel = Shared.GetCameraModelBasedOnIPAddress(_InSight.RemoteIPAddress);
             List<(int, string)> desireData = new List<(int, string)>();
             List<ObjectResultModel> objectResultList = new List<ObjectResultModel>();
-            for (int i = 0; i < 5; i++)
+            _EnableObject = UtilityFunctions.IntToBools(cameraModel.ObjectSelectNum, 5);
+
+            for (int i = 0; i < numObject; i++)
             {
                 if (_EnableObject[i])
                 {
-                    _ObjectData[i] = _ObjectResList.FirstOrDefault(x => x.Name != null && x.Name.Contains(_ObjectName[i]));
+                    _ObjectData[i] = _ObjectResList.FirstOrDefault(x => x.Name != null && x.Name.Contains(_ObjectName_Temp[i]));
                     if (_ObjectData[i] != null)
                     {
                         objectResultList.Add(_ObjectData[i]);
@@ -263,11 +237,12 @@ namespace BarcodeVerificationSystem.View
             return desireData;
         }
 
-        private async void _InSight_ConnectedChangedAsync(object sender, EventArgs e)
+        private async void InSight_ConnectedChanged(object sender, EventArgs e)
         {
             try
             {
-                var cameraModel = Shared.GetCameraModelBasedOnIPAddress("192.168.1.42");
+                cameraModel = Shared.GetCameraModelBasedOnIPAddress(_InSight.RemoteIPAddress);
+                await Task.Delay(500); // wait for preparing connection !
                 if (cameraModel != null)
                 {
                     if (_InSight.Connected)
@@ -281,8 +256,8 @@ namespace BarcodeVerificationSystem.View
                         cameraModel.IsConnected = false;
                         cameraModel.Name = "";
                         cameraModel.SerialNumber = "";
-                  
-                        await _InSight.Disconnect();
+                        UnsubscribeEvents();
+
                     }
                     UpdateStatusLabelCamera();
                     Shared.RaiseOnCameraStatusChangeEvent();
@@ -293,12 +268,13 @@ namespace BarcodeVerificationSystem.View
 
         private void UnsubscribeEvents()
         {
-            _InSight.ConnectedChanged -= _InSight_ConnectedChangedAsync;
-            _InSight.ResultsChanged -= InSight_ResultsChanged_New;
+            _InSight.ConnectedChanged -= InSight_ConnectedChanged;
+            _InSight.ResultsChanged -= InSight_ResultsChanged;
         }
 
-        public async void FirstConnection()
+        public async Task FirstConnection()
         {
+           
             var sessionInfo = new HmiSessionInfo();
             sessionInfo.SheetName = "Inspection";
             sessionInfo.CellNames = new string[1] { "A0:Z599" };
@@ -567,6 +543,7 @@ namespace BarcodeVerificationSystem.View
                     }
 
                 }
+               
             }
             else if (sender == btnSave)
             {
@@ -838,14 +815,25 @@ namespace BarcodeVerificationSystem.View
         //}
         private void Shared_OnCameraTriggerOnChange(object sender, EventArgs e)
         {
-            foreach (DataManSystem dataManSystem in DMCamera._DataManSystemList)
+            switch (cameraModel.CameraType)
             {
-                try
-                {
-                    dataManSystem.SendCommand("TRIGGER ON");
-                }
-                catch (Exception) { }
+                case CameraType.DM:
+                    foreach (DataManSystem dataManSystem in DMCamera._DataManSystemList)
+                    {
+                        try
+                        {
+                            dataManSystem.SendCommand("TRIGGER ON");
+                        }
+                        catch (Exception) { }
+                    }
+                    break;
+                case CameraType.IS:
+                    _ = _InSight.ManualAcquire();
+                    break;
+                default:
+                    break;
             }
+           
         }
         private void Shared_OnCameraTriggerOffChange(object sender, EventArgs e)
         {
@@ -1054,7 +1042,15 @@ namespace BarcodeVerificationSystem.View
             Shared.OnCameraOutputSignalChange += Shared_OnCameraOutputSignalChange;
             //DMCamera.UpdateLabelStatusEvent += DMCamera_UpdateLabelStatusEvent;
 
+            AutoAddSufixEvent += FrmJob_AutoAddSufixEvent;
+
         }
+
+        private void FrmJob_AutoAddSufixEvent(object sender, EventArgs e)
+        {
+            AutoAddSuffixes(cameraModel);
+        }
+
         private void DebugVirtual()
         {
             BtnViewLog.Visible = true;
@@ -1550,6 +1546,7 @@ namespace BarcodeVerificationSystem.View
 
                     PrinterSupport(_JobModel.PrinterSeries, false);
                     txtFileName.Text = "";
+                  
                 }
                 else
                 {
@@ -1994,7 +1991,7 @@ namespace BarcodeVerificationSystem.View
         #region Camera Connection
         private void MonitorCameraConnection()
         {
-            _ThreadMonitorCamera = new Thread(() =>
+            _ThreadMonitorCamera = new Thread(async () =>
             {
                 while (!_ctsCamConnToken.IsCancellationRequested)
                 {
@@ -2020,7 +2017,7 @@ namespace BarcodeVerificationSystem.View
 
                                 case CameraType.IS: //IS Series Camera
                                     //ISCamera.ConnectAsync(cvsDisplayImage,cameraModel.IP,cameraModel.Port);
-                                    FirstConnection();
+                                    await FirstConnection();
                                     cameraModel.CountTimeReconnect++;
                                     if (cameraModel.CountTimeReconnect >= 3)
                                     {

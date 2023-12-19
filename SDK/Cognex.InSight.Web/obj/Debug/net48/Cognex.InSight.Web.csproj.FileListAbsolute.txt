@@ -36,3 +36,15 @@ D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\SDK\C
 D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\SDK\Cognex.InSight.Web\bin\Debug\net48\Newtonsoft.Json.dll
 D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\SDK\Cognex.InSight.Web\bin\Debug\net48\websocket-sharp-standard.dll
 D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\SDK\Cognex.InSight.Web\obj\Debug\net48\Cognex.InSight.Web.csproj.CopyComplete
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\bin\Debug\net48\Cognex.InSight.Web.dll
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\bin\Debug\net48\Cognex.InSight.Web.pdb
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\bin\Debug\net48\Newtonsoft.Json.dll
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\bin\Debug\net48\websocket-sharp-standard.dll
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Debug\net48\Cognex.InSight.Web.csproj.AssemblyReference.cache
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Debug\net48\Cognex.InSight.Web.GeneratedMSBuildEditorConfig.editorconfig
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Debug\net48\Cognex.InSight.Web.AssemblyInfoInputs.cache
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Debug\net48\Cognex.InSight.Web.AssemblyInfo.cs
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Debug\net48\Cognex.InSight.Web.csproj.CoreCompileInputs.cache
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Debug\net48\Cognex.InSight.Web.csproj.CopyComplete
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Debug\net48\Cognex.InSight.Web.dll
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Debug\net48\Cognex.InSight.Web.pdb

@@ -886,4 +886,8 @@
     <value>Printer not support Http Request, please disable "Check All Printer Setting" in setting tab</value>
     <comment>MinhChau Add 08122023</comment>
   </data>
+  <data name="NotesForSettingCam" xml:space="preserve">
+    <value>Notes: please named object on ISCamera is Object_&lt;n&gt; with n = (1,...5)</value>
+    <comment>MinhChau Add 18122023</comment>
+  </data>
 </root>
