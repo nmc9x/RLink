@@ -17,36 +17,28 @@ namespace BarcodeVerificationSystem
 {
     static class Program
     {
+        #region Variables
         private static USBKey _USBKey = new USBKey();
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+        private static uint _HardwareIDUsing = 0;
+        private static frmWarningUSBDongleKey frmWarningKey = null;
+        #endregion
         [STAThread]
         static void Main()
         {
-            //Check application already running
-            if (AnotherInstanceExists())
+            if (AnotherInstanceExists())//Check application already running
             {
                 MessageBox.Show(Lang.ApplicationIsAlreadyRunning,Lang.Info,MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return;
             }
-            //END Check application already running
-
-            //Load settings
             Shared.LoadSettings();
-
-            // Load language
             Lang.Culture = System.Globalization.CultureInfo.CreateSpecificCulture(Shared.Settings.Language);
             // Set language default
             //Lang.Culture = System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN");
 
-            //Show splash screen
-            frmSplashScreen.ShowSplashScreen(Lang.Loading, Lang.PleaseWait);
-
-            //Get UUID of computer run this software
-            string idOfPC = FingerPrint.Value();
-
-            bool isAllow = false;
+            
+            frmSplashScreen.ShowSplashScreen(Lang.Loading, Lang.PleaseWait); //Show splash screen
+            string idOfPC = FingerPrint.Value(); //Get UUID of computer run this software
+            bool isAllow = true;
 #if DEBUG
              isAllow = true; // bypass usb key in debug mode
 #endif
@@ -58,7 +50,6 @@ namespace BarcodeVerificationSystem
             DecryptionHardwareID.DecryptFile(path1);
             foreach (HardwareIDModel id in Shared.listPCAllow)
             {
-
                 string idOfList = SecurityController.Decrypt(id.HardwareID,DecryptionHardwareID._EncyptionPassword);
                 if (idOfList.Equals(idOfPC))
                 {
@@ -67,80 +58,46 @@ namespace BarcodeVerificationSystem
                 }
             }
 
-            Shared.listPCAllow = null;
-            //Change when release
+            Shared.listPCAllow = null;  
+
             if (!isAllow)
             {
-                //MessageBox.Show("You do not have the license for this software, please contact the vendor!");
-                //return;
-                //TrangDong - Check USB Dongle key here - On May 28, 2020
-                //Initial list key
                 InitVariableUSBDongle();
-
-                //Check USB Dongle key when software statup
                 if (CheckForValidUSBDongleKey() == false)
                 {
                     ShowDialogUSBDongleKeyNotFound();
                     return;
                 }
-
-                //Check USB Dongle key when software running
-                Thread threadCheckUSBDongle = new Thread(() => CheckUSBDongleWhenRunning());
-                threadCheckUSBDongle.IsBackground = true;
-                threadCheckUSBDongle.Priority = ThreadPriority.Lowest;
+                Thread threadCheckUSBDongle = new Thread(() => CheckUSBDongleWhenRunning())
+                {
+                    IsBackground = true,
+                    Priority = ThreadPriority.Lowest
+                };
                 threadCheckUSBDongle.Start();
-
-                //END TrangDong - Check USB Dongle key here - On May 28, 2020
             }
-
-//#endif
-
-
-            //END Get UUID of computer run this software
-            //END Only allow this software to run on PCs with UUIDs in the list
 
             Application.EnableVisualStyles();
             LoggingController.LoginToAccess("_rynan_loggin_access_control_management_");
-            
-            String path = CommVariables.PathAccountsApp;
+            string path = CommVariables.PathAccountsApp;
             if (!File.Exists(path + "AccountDB.db"))
             {
                 UserController.CreateDefaultDatabase();
             }
-
-            //run login form
-            //frmLogin loginform = new frmLogin();
-            frmLoginNew loginform = new frmLoginNew();
-            loginform.TopMost = true;
-
-            //Close show splash screen
+            frmLoginNew loginform = new frmLoginNew
+            {
+                TopMost = true
+            };
             frmSplashScreen.CloseSplash();
             DialogResult result = loginform.ShowDialog();
-            
             if (result == DialogResult.OK)
             {
                 UserController.LogedInUsername = "Administrator";
-
-                //frmMain frmMain = new frmMain();
-                //frmMainAnime frmMain = new frmMainAnime();
-                //frmMainNew frmMain = new frmMainNew();
-                AppDomain currentDomain = default(AppDomain);
+                AppDomain currentDomain = default;
                 currentDomain = AppDomain.CurrentDomain;
-                // Handler for unhandled exceptions.
                 currentDomain.UnhandledException += GlobalUnhandledExceptionHandler;
-                // Handler for exceptions in threads behind forms.
-                System.Windows.Forms.Application.ThreadException += GlobalThreadExceptionHandler;
-                frmJob frmJob = new frmJob();
+                Application.ThreadException += GlobalThreadExceptionHandler;
+                FrmJob frmJob = new FrmJob();
                 Application.Run(frmJob);
-                //currentDomain.ProcessExit += (obj, e) =>
-                //{
-                //    LoggingController.SaveHistory(
-                //        Lang.Exit,
-                //        Lang.LogOut,
-                //        Lang.LogoutSuccessfully,
-                //        SecurityController.Decrypt(Shared.LoggedInUser.UserName, "rynan_encrypt_remember"),
-                //        LoggingType.LogedOut);
-                //};
             }
         }
 
@@ -148,7 +105,6 @@ namespace BarcodeVerificationSystem
         {
             Process currentRunningProcess = Process.GetCurrentProcess();
             Process[] listOfProcs = Process.GetProcessesByName(currentRunningProcess.ProcessName);
-
             foreach (Process proc in listOfProcs)
             {
                 if ((proc.MainModule.FileName == currentRunningProcess.MainModule.FileName) && (proc.Id != currentRunningProcess.Id))
@@ -163,8 +119,7 @@ namespace BarcodeVerificationSystem
         // Catching an exception
         private static void GlobalUnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs e)
         {
-            Exception ex = default(Exception);
-            ex = (Exception)e.ExceptionObject;
+            Exception ex = (Exception)e.ExceptionObject;
             var result = "";
             if (ex.InnerException != null)
             {
@@ -202,18 +157,17 @@ namespace BarcodeVerificationSystem
             }
             result = result.Replace("'", "");
             LoggingController.SaveHistory(
-                String.Format("Unhandled Exception"),
+                string.Format("Unhandled Exception"),
                 Lang.Error,
-                String.Format(result),
+                string.Format(result),
                 SecurityController.Decrypt(Shared.LoggedInUser.UserName, "rynan_encrypt_remember"),
                 LoggingType.Error);
         }
 
-        private static void GlobalThreadExceptionHandler(object sender, System.Threading.ThreadExceptionEventArgs e)
+        private static void GlobalThreadExceptionHandler(object sender, ThreadExceptionEventArgs e)
         {
-            Exception ex = default(Exception);
-            ex = (Exception)e.Exception;
-            var result = "";
+            Exception ex = e.Exception;
+            string result = "";
             if (ex.InnerException != null)
             {
                 string innerExection = "InnerException: " + ex.InnerException.InnerException + " && ";
@@ -232,7 +186,6 @@ namespace BarcodeVerificationSystem
             if (ex.StackTrace != null)
             {
                 StackTrace stackTrace = new StackTrace(ex, true);
-
                 foreach (StackFrame stackFrame in stackTrace.GetFrames())
                 {
                     string methodName = stackFrame.GetMethod().Name;
@@ -250,22 +203,19 @@ namespace BarcodeVerificationSystem
             }
             result = result.Replace("'", "");
             LoggingController.SaveHistory(
-                String.Format("Thread Exception"),
+                string.Format("Thread Exception"),
                 Lang.Error,
-                String.Format(result),
+                string.Format(result),
                 SecurityController.Decrypt(Shared.LoggedInUser.UserName, "rynan_encrypt_remember"),
                 LoggingType.Error);
         }
-        // END Reference
 
         #region USB Dongle key
-
         private static void InitVariableUSBDongle()
         {
-            //SecureDongle password of software
             _USBKey = new USBKey();
             _USBKey.USBPassword = new ushort[] { 0xAB2A, 0x9718, 0xFF56, 0x2A25 };
-            _USBKey.InputValue = new ushort[] { 0x06, 0x02, 0x08, 0x15 };//Value form 0 - 63
+            _USBKey.InputValue = new ushort[] { 0x06, 0x02, 0x08, 0x15 };
             _USBKey.ExpectedResult = CalculateValueWithFormulaDefined(_USBKey.InputValue[0], _USBKey.InputValue[1], _USBKey.InputValue[2], _USBKey.InputValue[3]);
         }
 
@@ -277,36 +227,27 @@ namespace BarcodeVerificationSystem
             ValueD = (ushort)(ValueD | ValueC);
             return new ushort[] { ValueA, ValueB, ValueC, ValueD };
         }
-
-        private static uint _HardwareIDUsing = 0;
+        
         private static bool CheckForValidUSBDongleKey()
         {
-            //Declare variable
             byte[] buffer = new byte[1024];
-            //uint[] TempHID = new uint[16];
             uint hardwareID = 0;
             ushort handle = 0;
             uint lp1 = 0;
             uint lp2 = 0;
             ulong ret = 1;
-            //SystemTime st;
-
             Securedongle.SecuredongleControl SD = new Securedongle.SecuredongleControl();
-            //Find USB Dongle
-
             ret = SD.SecureDongle((ushort)SDCmd.SD_FIND, ref handle, ref lp1, ref lp2,
                 ref _USBKey.USBPassword[0], ref _USBKey.USBPassword[1], ref _USBKey.USBPassword[2], ref _USBKey.USBPassword[3], buffer);
-            if (ret != 0)//No SecureDongle found
+            if (ret != 0)
             {
 #if DEBUG
                 Console.WriteLine("TrangNoi No SecureDongle found");
 #endif
                 return false;
             }
-
-            //Avoid user unplug USB Dongle when software running
             hardwareID = lp1;
-            if (_HardwareIDUsing == 0)//Assign hardware ID for the first use avoid user change another USB Dongle
+            if (_HardwareIDUsing == 0)
             {
                 _HardwareIDUsing = hardwareID;
             }
@@ -318,31 +259,25 @@ namespace BarcodeVerificationSystem
 #endif
                 return false;
             }
-            //END Avoid user unplug USB Dongle when software running
-
-            //Open USB Dongle, lp1 is Hardware ID read when found USB Dongle
+           
             ret = SD.SecureDongle((ushort)SDCmd.SD_OPEN, ref handle, ref hardwareID, ref lp2,
                 ref _USBKey.USBPassword[0], ref _USBKey.USBPassword[1], ref _USBKey.USBPassword[2], ref _USBKey.USBPassword[3], buffer);
-            if (ret != 0)//Open SecureDongle failed
+            if (ret != 0)
             {
                 return false;
-            }
-
-            //Check Hardware algorithm of USB Dongle Calculation 1      
-            lp1 = 0; //UAZ start position
-            lp2 = 0; //which module?
+            }   
+            lp1 = 0; 
+            lp2 = 0; 
             ushort[] inputValue = new ushort[] { _USBKey.InputValue[0], _USBKey.InputValue[1], _USBKey.InputValue[2], _USBKey.InputValue[3] };
             ret = SD.SecureDongle((ushort)SDCmd.SD_CALCULATE1, ref handle, ref lp1, ref lp2,
                 ref inputValue[0], ref inputValue[1], ref inputValue[2], ref inputValue[3], buffer);
             if (ret != 0)
             {
 #if DEBUG
-                Console.WriteLine("TrangNoi SD_CALCULATE1 fail");
+                Console.WriteLine("SD_CALCULATE1 fail");
 #endif
                 return false;
             }
-
-            //Check value after calculate formula by Hardware algorithm of USD Dongle key. The value input will change if Calculation 1 execute success
             for (int i = 0; i < inputValue.Length; i++)
             {
                 if (inputValue[i] != _USBKey.ExpectedResult[i])
@@ -350,8 +285,6 @@ namespace BarcodeVerificationSystem
                     return false;
                 }
             }
-
-            //Read User Data Zone(UDZ)
             ushort p1 = 500;  //Offset of UDZ (UDZ memory position)
             //[500] Rynan 0x54
             //[501] 0x01 Basler camera, 0x02 Cognex camera
@@ -371,19 +304,23 @@ namespace BarcodeVerificationSystem
             {
                 return false;
             }
-            //END Check OEM code
             
             // Check Cognex
             if(buffer[1] != 0x02)
             {
                 return false;
             }
-            //END Check Cognex
 
             //Close SecureDongle
-            SD.SecureDongle((ushort)SDCmd.SD_CLOSE, ref handle, ref lp1, ref lp2,
-                ref _USBKey.USBPassword[0], ref _USBKey.USBPassword[1], ref _USBKey.USBPassword[2], ref _USBKey.USBPassword[3], buffer);
-
+            SD.SecureDongle((ushort)SDCmd.SD_CLOSE,
+                ref handle, 
+                ref lp1,
+                ref lp2,
+                ref _USBKey.USBPassword[0], 
+                ref _USBKey.USBPassword[1], 
+                ref _USBKey.USBPassword[2], 
+                ref _USBKey.USBPassword[3], 
+                buffer);
             return true;
         }
 
@@ -392,19 +329,17 @@ namespace BarcodeVerificationSystem
             while (true)
             {
 #if DEBUG
-                Console.WriteLine("TrangNoi CheckUSBDongleWhenRunning");
+                Console.WriteLine("CheckUSBDongleWhenRunning");
 #endif
-                Thread.Sleep(60000);//Check again in 60 seconds. Sleep before because, checked when startup
+                Thread.Sleep(60000);
                 if (CheckForValidUSBDongleKey() == false)
                 {
                     ShowDialogUSBDongleKeyNotFound();
                     break;
                 }
-
             }
         }
 
-        private static frmWarningUSBDongleKey frmWarningKey = null;
         private static void ShowDialogUSBDongleKeyNotFound()
         {
             if (frmWarningKey == null || frmWarningKey.IsDisposed)
@@ -420,6 +355,7 @@ namespace BarcodeVerificationSystem
                 frmWarningKey.BringToFront();
             }
         }
+
         #endregion USB Dongle key
     }
 }

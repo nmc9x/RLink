@@ -84,3 +84,9 @@ D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\Commo
 D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
 D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\CommonVariable\obj\Debug\CommonVariable.dll
 D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\CommonVariable\obj\Debug\CommonVariable.pdb
+D:\Program\Rlink\RLINK18122023\CommonVariable\bin\Debug\CommonVariable.dll
+D:\Program\Rlink\RLINK18122023\CommonVariable\bin\Debug\CommonVariable.pdb
+D:\Program\Rlink\RLINK18122023\CommonVariable\obj\Debug\CommonVariable.csproj.AssemblyReference.cache
+D:\Program\Rlink\RLINK18122023\CommonVariable\obj\Debug\CommonVariable.csproj.CoreCompileInputs.cache
+D:\Program\Rlink\RLINK18122023\CommonVariable\obj\Debug\CommonVariable.dll
+D:\Program\Rlink\RLINK18122023\CommonVariable\obj\Debug\CommonVariable.pdb

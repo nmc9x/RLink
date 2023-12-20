@@ -13,7 +13,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -26,20 +25,15 @@ using Timer = System.Windows.Forms.Timer;
 
 namespace BarcodeVerificationSystem.View
 {
-    public partial class frmMain : Form
+    public partial class FrmMain : Form
     {
-        #region Variables
-        private frmJob _ParentForm = null;
+        #region VARIABLES DEFINITION
+        private readonly FrmJob _ParentForm = null;
         private JobModel _SelectedJob = new JobModel();
-
         private bool _IsPrinterDisconnectedNot = false;
+        private readonly Timer _TimerDateTime = new Timer();
+        private readonly string _DateTimeFormatTicker = "yyyy/MM/dd hh:mm:ss tt";
 
-        //Datetime clock 
-        private Timer _TimerDateTime = new Timer();
-        private string _DateTimeFormatTicker = "yyyy/MM/dd hh:mm:ss tt";
-        //END Datetime clock 
-
-        // Values
         private int _TotalCode = 0;
         private int _TotalChecked = 0;
         private int _TotalMissed = 0;
@@ -49,101 +43,60 @@ namespace BarcodeVerificationSystem.View
         private int _NumberOfCheckFailed = 0;
         private int _NumberOfSentPrinter = 0;
         private int _NumberOfDuplicate = 0;
-        private int _TotalColumns = 1;
-        private int _StartIndex = 1;
-        private int _EndIndex = 1;
+        private readonly int _TotalColumns = 1;
+        private readonly int _StartIndex = 1;
+        
         public int TotalChecked { get { return _TotalChecked; } set { _TotalChecked = value; Invoke(new Action(() => { lblTotalCheckedValue.Text = string.Format("{0:N0}", _TotalChecked); })); } }
         public int NumberOfCheckPassed { get { return _NumberOfCheckPassed; } set { _NumberOfCheckPassed = value; Invoke(new Action(() => { lblCheckResultPassedValue.Text = string.Format("{0:N0}", _NumberOfCheckPassed); })); } }
         public int NumberOfCheckFailed { get { return _NumberOfCheckFailed; } set { _NumberOfCheckFailed = value; Invoke(new Action(() => { lblCheckResultFailedValue.Text = string.Format("{0:N0}", _NumberOfCheckFailed); })); } }
         public int NumberPrinted { get { return _NumberPrinted; } set { _NumberPrinted = value; Invoke(new Action(() => { lblPrintedCodeValue.Text = string.Format("{0:N0}", _NumberPrinted); })); } }
         public int ReceivedCode { get { return _ReceivedCode; } set { _ReceivedCode = value; Invoke(new Action(() => { lblReceivedValue.Text = string.Format("{0:N0}", _ReceivedCode); })); } }
         public int NumberOfSentPrinter { get { return _NumberOfSentPrinter; } set { _NumberOfSentPrinter = value; Invoke(new Action(() => { lblSentDataValue.Text = string.Format("{0:N0}", _NumberOfSentPrinter); })); } }
-        // End values
 
-        // show max line on display dataGridViewDatabase
-
-        private int _MaxDatabaseLine = 500;
-
-        private List<ToolStripLabel> _LabelStatusCameraList = new List<ToolStripLabel>();
-        private List<ToolStripLabel> _LabelStatusPrinterList = new List<ToolStripLabel>();
-
-        #endregion Variables
-
-        readonly static object _SyncObjBufferUpdateUIPrinter = new object();
+        private readonly int _MaxDatabaseLine = 500;  // show max line on display dataGridViewDatabase
+        private readonly List<ToolStripLabel> _LabelStatusCameraList = new List<ToolStripLabel>();
+        private readonly List<ToolStripLabel> _LabelStatusPrinterList = new List<ToolStripLabel>();
+    
         readonly static object _SyncObjCodeList = new object();
         readonly static object _SyncObjCheckedResultList = new object();
-        readonly static object _SyncObjBufferDataObtained = new object();
-        readonly static object _SyncObjPODCodeList = new object();
-        readonly static object _SyncObjBufferDataObtainedResult = new object();
-        readonly static object _SyncObjBufferExportImage = new object();
-        readonly static object _SyncObjBufferExportResultFile = new object();
-        readonly static object _SyncObjBufferExportPrintedResponeseFile = new object();
-        private static object _SendLocker = new object();
-        private static object _ProgressBarLocker = new object();
-
-        private string _DateTimeFormat = "yyMMddHHmmss";
+        private readonly string _DateTimeFormat = "yyMMddHHmmss";
         private string[] _DatabaseColunms = new string[0];
-        private string[] _ColumnNames = new string[] { "Index", "ResultData", "Result", "ProcessingTime", "DateTime" };
-        private string[] defaultRecord = new string[] { "100000", "abcdefghijk123456789abcdefhgh", "Valid", "100", DateTime.Now.ToString() };
+        private readonly string[] _ColumnNames = new string[] { "Index", "ResultData", "Result", "ProcessingTime", "DateTime" };
+        private readonly string[] defaultRecord = new string[] { "100000", "abcdefghijk123456789abcdefhgh", "Valid", "100", DateTime.Now.ToString() };
 
-        #region On Production Variables
-
+    
         private bool _IsAfterProductionMode = false;
         private bool _IsOnProductionMode = false;
         private bool _IsVerifyAndPrintMode = false;
-
         private bool _IsPrintedWait = false;
-        private bool _IsSendWait = false;
         private bool _IsCheckedWait = true;
-        private bool _IsDetectWait = true;
         private bool _IsPrintedResponse = false;
-
-        private List<InitDataError> _InitDataErrorList = new List<InitDataError>();
-
+        private readonly List<InitDataError> _InitDataErrorList = new List<InitDataError>();
         private ComparisonResult _CheckedResult = ComparisonResult.Valid;
         private ComparisonResult _PrintedResult = ComparisonResult.Valid;
         private PrinterStatus _PrinterStatus = PrinterStatus.Null;
-
-        private object _PrintLocker = new object();
-        private object _ReceiveLocker = new object();
-        private object _CheckLocker = new object();
-        private object _DetectLocker = new object();
-        private object _PrintedResponseLocker = new object();
-        private object _PrinterResponseRevceiveLocker = new object();
-
-        #endregion
-
-        #region Thread
+        private readonly object _PrintLocker = new object();
+        private readonly object _ReceiveLocker = new object();
+        private readonly object _CheckLocker = new object();
+        private readonly object _PrintedResponseLocker = new object();
+  
         private Thread _ThreadPrinterResponseHandler = null;
+   
+        private readonly Queue<string> _QueueBufferPrintedResponse = new Queue<string>();
+        private readonly SynchronizedQueue<DetectModel> _QueueBufferDataObtained = new SynchronizedQueue<DetectModel>();
+        private readonly SynchronizedQueue<DetectModel> _QueueBufferDataObtainedResult = new SynchronizedQueue<DetectModel>();
+        private readonly SynchronizedQueue<string> _QueueBufferUpdateUIPrinter = new SynchronizedQueue<string>();
 
-        #endregion Thread
-
-        #region Buffer
-        private Queue<string> _QueueBufferPrintedResponse = new Queue<string>();
-        private Queue<ExportImageModel> _QueueBufferExportImage = new Queue<ExportImageModel>();
-        private Queue<ExportResultFileModel> _QueueBufferExportResultFile = new Queue<ExportResultFileModel>();
-        private Queue<ExportResultFileModel> _QueueBufferExportPrintedResponseFile = new Queue<ExportResultFileModel>();
-
-        private SynchronizedQueue<DetectModel> _QueueBufferDataObtained = new SynchronizedQueue<DetectModel>();
-        private SynchronizedQueue<DetectModel> _QueueBufferDataObtainedResult = new SynchronizedQueue<DetectModel>();
-        private SynchronizedQueue<string> _QueueBufferUpdateUIPrinter = new SynchronizedQueue<string>();
-
-        private SynchronizedQueue<ExportImageModel> _QueueBufferBackupImage = new SynchronizedQueue<ExportImageModel>();
-        private SynchronizedQueue<List<string[]>> _QueueBufferBackupPrintedCode = new SynchronizedQueue<List<string[]>>();
-        private SynchronizedQueue<List<string[]>> _QueueBufferBackupCheckedResult = new SynchronizedQueue<List<string[]>>();
-        private SynchronizedQueue<object> _QueueBufferPrinterResponseData = new SynchronizedQueue<object>();
-        private SynchronizedQueue<string[]> _QueueBufferBackupSendLog = new SynchronizedQueue<string[]>();
+        private readonly SynchronizedQueue<ExportImageModel> _QueueBufferBackupImage = new SynchronizedQueue<ExportImageModel>();
+        private readonly SynchronizedQueue<List<string[]>> _QueueBufferBackupPrintedCode = new SynchronizedQueue<List<string[]>>();
+        private readonly SynchronizedQueue<List<string[]>> _QueueBufferBackupCheckedResult = new SynchronizedQueue<List<string[]>>();
+        private readonly SynchronizedQueue<object> _QueueBufferPrinterResponseData = new SynchronizedQueue<object>();
+        private readonly SynchronizedQueue<string[]> _QueueBufferBackupSendLog = new SynchronizedQueue<string[]>();
 
         private List<string[]> _PrintedCodeObtainFromFile = new List<string[]>();
         private List<string[]> _CheckedResultCodeList = new List<string[]>();
-        //private List<string> _CodeListPODFormat = new List<string>();
-        private ConcurrentDictionary<string, CompareStatus> _CodeListPODFormat = new ConcurrentDictionary<string, CompareStatus>();
+        private readonly ConcurrentDictionary<string, CompareStatus> _CodeListPODFormat = new ConcurrentDictionary<string, CompareStatus>();
         private ConcurrentDictionary<string, int> _Emergency = new ConcurrentDictionary<string, int>();
-        private List<PODModel> _PODFormat = new List<PODModel>();
-        private List<PODModel> _PODList = new List<PODModel>();
-        #endregion Buffer
-
-        #region CancellationTokenSource
 
         private CancellationTokenSource _OperationCancelTokenSource;
         private CancellationTokenSource _UICheckedResultCancelTokenSource;
@@ -156,22 +109,19 @@ namespace BarcodeVerificationSystem.View
         private CancellationTokenSource _VirtualCTS;
         private CancellationTokenSource _BackupSendLogCancelTokenSource;
 
-        #endregion
-
-
         private frmSettings _FormSettings;
         private frmViewHistoryProgram _FormViewHistoryProgram;
         private frmPreviewDatabase _FormPreviewDatabase;
         private frmCheckedResult _FormCheckedResult;
 
         private PrinterSettingsModel _PrinterSettingsModel;
-        //Export
         private string _ExportNamePrefix = "";
-        //Prefix is datatime
-        private string _ExportCheckedResultFileName = "";
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
 
+        //ReleaseCapture extern
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
+
+        //SendMessage extern
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam); bool isFullHD = false;
         bool isDelProcessPnlMargin = false;
@@ -238,17 +188,22 @@ namespace BarcodeVerificationSystem.View
         private bool _IsStopOK = false;
         private readonly Stopwatch _BigSTW = new Stopwatch();
         private string _PrintedResponseValue = "";
+        private bool dialogResultStopExist;
+        private bool isShowPopupOneTime = false;
+        #endregion
 
-        public frmMain()
+        public FrmMain()
         {
             InitializeComponent();
         }
-        public frmMain(frmJob parentForm)
+        public FrmMain(FrmJob parentForm)
         {
             InitializeComponent();
             _ParentForm = parentForm;
-            this.WindowState = FormWindowState.Maximized;
+            WindowState = FormWindowState.Maximized;
         }
+
+        #region Inits first
         protected override void WndProc(ref Message m)
         {
             const int WM_NCCALCSIZE = 0x0083;
@@ -341,28 +296,9 @@ namespace BarcodeVerificationSystem.View
             InitControls();
             InitEvents();
         }
-
         private void InitControls()
         {
-   
-            if (Shared.Settings.CameraList[0].CameraType == CameraType.DM) // Show Image IS Series
-            {
-                pictureBoxPreview.Visible = true;
-                if (pnlPicture.Controls.Contains(frmJob._CvsDisplay))
-                {
-                    pnlPicture.Controls.Remove(frmJob._CvsDisplay);
-                }
-            }
-
-            if (Shared.Settings.CameraList[0].CameraType == CameraType.IS) // Show Image IS Series
-            {
-                if (!pnlPicture.Controls.Contains(frmJob._CvsDisplay))
-                {
-                    pnlPicture.Controls.Add(frmJob._CvsDisplay);
-                }
-                pictureBoxPreview.Visible = false;
-            }
-
+            ChangePictureCamera();
             TransparencyKey = Color.DarkKhaki;
             SetLanguage();
             _TimerDateTime.Start();
@@ -416,11 +352,7 @@ namespace BarcodeVerificationSystem.View
 #endif
 
         }
-
-
-
-
-
+        #endregion
 
         #region Event Action
         private void InitEvents()
@@ -501,9 +433,6 @@ namespace BarcodeVerificationSystem.View
             _QueueBufferPrinterResponseData.Clear();
             ReceiveResponseFromPrinterHandlerAsync();
         }
-
-
-
         private void BtnViewLog_Click(object sender, EventArgs e)
         {
             try
@@ -595,8 +524,7 @@ namespace BarcodeVerificationSystem.View
         }
         #endregion End Event Action
 
-
-
+        #region 
         private async Task<ConcurrentDictionary<string, int>> InitVNPUpdatePrintedStatusConditionBuffer()
         {
             ConcurrentDictionary<string, int> result = new ConcurrentDictionary<string, int>();
@@ -665,6 +593,9 @@ namespace BarcodeVerificationSystem.View
         {
             OnReceiveVerifyDataEvent?.Invoke(sender, EventArgs.Empty);
         }
+        #endregion
+
+        #region DataGridView
         public void InitDataGridView(DataGridView dgv, string[] columns, int imgIndex = -1, bool isPOD = false)
         {
             if (InvokeRequired)
@@ -803,6 +734,7 @@ namespace BarcodeVerificationSystem.View
 
             }
         }
+        #endregion
 
         #region Operation
 
@@ -1068,7 +1000,7 @@ namespace BarcodeVerificationSystem.View
             }
             if (_SelectedJob.JobType == JobType.VerifyAndPrint)
             {
-                _IsDetectWait = false;
+               // _IsDetectWait = false;
             }
 
             try
@@ -1167,7 +1099,7 @@ namespace BarcodeVerificationSystem.View
         }
         #endregion End Testing
 
-        //Check Cond
+        //--CONDITION CHECK--//
         private string CheckInitDataErrorAndGenerateMessage()
         {
             if (_InitDataErrorList.Count() > 0)
@@ -1278,8 +1210,6 @@ namespace BarcodeVerificationSystem.View
 
             return CheckPrinterSettings.Success;
         }
-
-
         private void StartProcess(bool interactOnUI = true)
         {
             if (Shared.OperStatus == OperationStatus.Running || Shared.OperStatus == OperationStatus.Processing)  // Avoid start more 1 time
@@ -1390,7 +1320,7 @@ namespace BarcodeVerificationSystem.View
             }
 
             _ExportNamePrefix = DateTime.Now.ToString(Shared.Settings.ExportNamePrefixFormat);
-            _ExportCheckedResultFileName = String.Format("{0}_BarcodeCheckedResult.txt", _ExportNamePrefix);
+            //_ExportCheckedResultFileName = string.Format("{0}_BarcodeCheckedResult.txt", _ExportNamePrefix);
 
             //Save history
             string fileName = DateTime.Now.ToString(_DateTimeFormat) + "_" + _SelectedJob.FileName + ".txt";
@@ -1654,7 +1584,7 @@ namespace BarcodeVerificationSystem.View
                         //Output signal - Time consuming about 11ms AMD Ryzen 3600X and Cognex DM60 connect via adapter Ugreen
                         if (Shared.Settings.OutputEnable)
                         {
-                            var outputCondition = Shared.GetCameraStatus() && detectModel.CompareResult != ComparisonResult.Valid;
+                            bool outputCondition = Shared.GetCameraStatus() && detectModel.CompareResult != ComparisonResult.Valid;
                             if (outputCondition)
                             {
                                 Shared.RaiseOnCameraOutputSignalChangeEvent();
@@ -2294,8 +2224,7 @@ namespace BarcodeVerificationSystem.View
         {
             await Task.Run(() => StopProcess(interactOnUI, messages, isClosed, isManualClose));
         }
-
-        private bool dialogResultStopExist;
+        
         private void StopProcess(bool interactOnUI = true, string messages = "", bool isClosed = false, bool isManualClose = false)
         {
 
@@ -2433,8 +2362,6 @@ namespace BarcodeVerificationSystem.View
         }
 
         #endregion Operation
-
-
 
         #region Jobs
         private void UpdateJobInfomationInterface()
@@ -2888,6 +2815,71 @@ namespace BarcodeVerificationSystem.View
 
         #endregion Jobs
 
+        #region Events Called
+        private void Shared_OnLogError(object sender, EventArgs e)
+        {
+            try
+            {
+                Exception ex = default(Exception);
+                ex = (Exception)sender;
+                var result = "";
+                if (ex.InnerException != null)
+                {
+                    string innerExection = "InnerException: " + ex.InnerException.InnerException + " && ";
+                    result += innerExection;
+                }
+                if (ex.Message != null)
+                {
+                    string errorMessage = ex.Message.Replace("\r", "").Replace("\n", "").Replace(',', '&');
+                    result += "Message: " + errorMessage;
+                }
+                if (ex.Source != null)
+                {
+                    string errorSource = ex.Source;
+                    result += " && Source: " + errorSource;
+                }
+                if (ex.StackTrace != null)
+                {
+                    StackTrace stackTrace = new StackTrace(ex, true);
+
+                    foreach (StackFrame stackFrame in stackTrace.GetFrames())
+                    {
+                        string methodName = stackFrame.GetMethod().Name;
+                        int lineNumber = stackFrame.GetFileLineNumber();
+                        if (methodName != "" && lineNumber != 0)
+                        {
+                            result += " && Method: " + methodName + " line " + lineNumber;
+                        }
+                    }
+                }
+                if (ex.TargetSite != null)
+                {
+                    string targetSite = " && TargetSite: " + ex.TargetSite.ToString() + " - " + ex.TargetSite.DeclaringType.ToString();
+                    result += targetSite;
+                }
+                result = result.Replace("'", "");
+                LoggingController.SaveHistory(
+                    String.Format("Error catch"),
+                    Lang.Error,
+                    String.Format(result),
+                    SecurityController.Decrypt(Shared.LoggedInUser.UserName, "rynan_encrypt_remember"),
+                    LoggingType.Error);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void FrmMainNew_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ReleaseResource();
+
+            if (_ParentForm != null)
+            {
+                _ParentForm.ShowForm();
+            }
+        }
 
         private void ActionChanged(object sender, EventArgs e)
         {
@@ -3062,9 +3054,6 @@ namespace BarcodeVerificationSystem.View
             }
         }
 
-
-
-        #region Events Called
         private void Shared_OnCameraReadDataChange(object sender, EventArgs e)
         {
             if (Shared.OperStatus != OperationStatus.Running && Shared.OperStatus != OperationStatus.Processing) return;
@@ -3079,16 +3068,53 @@ namespace BarcodeVerificationSystem.View
             }
         }
 
+        private void ChangePictureCamera()
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => ChangePictureCamera()));
+                return;
+            }
+            try
+            {
+                if (Shared.Settings.CameraList[0].CameraType == CameraType.DM) // Show Image IS Series
+                {
+                    pictureBoxPreview.Visible = true;
+                    if (pnlPicture.Controls.Contains(FrmJob.ISCamera._CvsDisplay))
+                    {
+                        pnlPicture.Controls.Remove(FrmJob.ISCamera._CvsDisplay);
+                    }
+                }
+
+                if (Shared.Settings.CameraList[0].CameraType == CameraType.IS) // Show Image IS Series
+                {
+                    if (!pnlPicture.Controls.Contains(FrmJob.ISCamera._CvsDisplay))
+                    {
+                        pnlPicture.Controls.Add(FrmJob.ISCamera._CvsDisplay);
+                    }
+                    pictureBoxPreview.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                MessageBox.Show(ex.Message);
+#endif
+
+            }
+           
+        }
+
         private void Shared_OnCameraStatusChange(object sender, EventArgs e)
         {
             UpdateStatusLabelCamera();
+            ChangePictureCamera();
         }
 
         private void Shared_OnPrintingStateChange(object sender, EventArgs e)
         {
 
         }
-
 
         private async void ReceiveResponseFromPrinterHandlerAsync()
         {
@@ -3142,7 +3168,7 @@ namespace BarcodeVerificationSystem.View
                                     {
                                         lock (_ReceiveLocker)
                                         {
-                                            _IsSendWait = false;
+                                           // _IsSendWait = false;
                                             Monitor.Pulse(_ReceiveLocker); // Notify that printer was received data
                                         }
                                     }
@@ -3541,7 +3567,7 @@ namespace BarcodeVerificationSystem.View
             }
             lock (_ReceiveLocker)
             {
-                _IsSendWait = false;
+                //_IsSendWait = false;
                 Monitor.Pulse(_ReceiveLocker);
             }
             lock (_CheckLocker)
@@ -3551,18 +3577,18 @@ namespace BarcodeVerificationSystem.View
             }
             lock (_ReceiveLocker)
             {
-                _IsSendWait = false;
+                //_IsSendWait = false;
                 Monitor.Pulse(_ReceiveLocker);
             }
 
             lock (_PrintLocker)
                 _IsPrintedWait = false;
-            lock (_ReceiveLocker)
-                _IsSendWait = false;
+            //lock (_ReceiveLocker)
+                //_IsSendWait = false;
             lock (_CheckLocker)
                 _IsCheckedWait = true;
-            lock (_ReceiveLocker)
-                _IsSendWait = false;
+            //lock (_ReceiveLocker)
+                //_IsSendWait = false;
         }
 
         private void KillTThreadSendPODDataToPrinter()
@@ -3747,74 +3773,7 @@ namespace BarcodeVerificationSystem.View
 
         #endregion Events Called
 
-
-        private void Shared_OnLogError(object sender, EventArgs e)
-        {
-            try
-            {
-                Exception ex = default(Exception);
-                ex = (Exception)sender;
-                var result = "";
-                if (ex.InnerException != null)
-                {
-                    string innerExection = "InnerException: " + ex.InnerException.InnerException + " && ";
-                    result += innerExection;
-                }
-                if (ex.Message != null)
-                {
-                    string errorMessage = ex.Message.Replace("\r", "").Replace("\n", "").Replace(',', '&');
-                    result += "Message: " + errorMessage;
-                }
-                if (ex.Source != null)
-                {
-                    string errorSource = ex.Source;
-                    result += " && Source: " + errorSource;
-                }
-                if (ex.StackTrace != null)
-                {
-                    StackTrace stackTrace = new StackTrace(ex, true);
-
-                    foreach (StackFrame stackFrame in stackTrace.GetFrames())
-                    {
-                        string methodName = stackFrame.GetMethod().Name;
-                        int lineNumber = stackFrame.GetFileLineNumber();
-                        if (methodName != "" && lineNumber != 0)
-                        {
-                            result += " && Method: " + methodName + " line " + lineNumber;
-                        }
-                    }
-                }
-                if (ex.TargetSite != null)
-                {
-                    string targetSite = " && TargetSite: " + ex.TargetSite.ToString() + " - " + ex.TargetSite.DeclaringType.ToString();
-                    result += targetSite;
-                }
-                result = result.Replace("'", "");
-                LoggingController.SaveHistory(
-                    String.Format("Error catch"),
-                    Lang.Error,
-                    String.Format(result),
-                    SecurityController.Decrypt(Shared.LoggedInUser.UserName, "rynan_encrypt_remember"),
-                    LoggingType.Error);
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void FrmMainNew_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            ReleaseResource();
-
-            if (_ParentForm != null)
-            {
-                _ParentForm.ShowForm();
-            }
-        }
-
-        // Procedure for UI
-        #region procedure for UI
+        #region Procedure for UI
         private void SetLanguage()
         {
             if (this.InvokeRequired)
@@ -4130,7 +4089,6 @@ namespace BarcodeVerificationSystem.View
             lblSentDataValue.Text = string.Format("{0:N0}", NumberOfSentPrinter);
         }
 
-        private bool isShowPopupOneTime = false;
         private void UpdateStatusLabelCamera()
         {
             if (InvokeRequired)
@@ -4335,7 +4293,5 @@ namespace BarcodeVerificationSystem.View
 
         #endregion
 
-
     }
 }
-

@@ -36,12 +36,15 @@ namespace BarcodeVerificationSystem.View
 
         public frmSettings()
         {
-            InitializeComponent(); 
+            InitializeComponent();
             InitControls();
             SetLanguage();
+
+        }
+        protected override void OnHandleCreated(EventArgs e)
+        {
             InitEvents();
         }
-
         private void InitControls()
         {
             _DateTimeTicker.Start();
@@ -113,7 +116,7 @@ namespace BarcodeVerificationSystem.View
             toolStripDateTime.Text = DateTime.Now.ToString(_DateTimeFormat);
         }
 
-        private void Shared_OnLanguageChange(object sender,EventArgs e)
+        private void Shared_OnLanguageChange(object sender, EventArgs e)
         {
             SetLanguage();
         }

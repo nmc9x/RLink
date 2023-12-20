@@ -28,13 +28,12 @@ namespace BarcodeVerificationSystem.Controller
         public static Bitmap GetImageFromUri(string uri)
         {
             if(uri == "") return null;
-            using (var webClient = new WebClient())
+            using (WebClient webClient = new WebClient())
             {
                 byte[] imageData = webClient.DownloadData(uri);
-
-                using (var ms = new MemoryStream(imageData))
+                using (MemoryStream ms = new MemoryStream(imageData))
                 {
-                    var image = new Bitmap(ms);
+                    Bitmap image = new Bitmap(ms);
                     return image;
                 }
             }
@@ -46,24 +45,6 @@ namespace BarcodeVerificationSystem.Controller
             {
                 Directory.CreateDirectory(directory);
             }
-            using (var memoryStream = new MemoryStream())
-            {
-                bitmap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-                memoryStream.Position = 0;
-                using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
-                {
-                    memoryStream.CopyTo(fileStream);
-                }
-            }
-        }
-        public static void SaveBitmap_Copy(Bitmap bitmap, string filePath)
-        {
-            string directory = Path.GetDirectoryName(filePath);
-            if (!Directory.Exists(directory))
-            {
-                Directory.CreateDirectory(directory);
-            }
-
             using (MemoryStream memoryStream = new MemoryStream())
             {
                 bitmap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);

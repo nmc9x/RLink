@@ -367,7 +367,7 @@ namespace BarcodeVerificationSystem.View
             if (_ObtainCodeList.Count() > 0)
             {
                 var firstRowWith = _ObtainCodeList[0];
-                frmMain.AutoResizeColumnWith(dgvDatabase, firstRowWith, _DatabaseColunms.Count - 1);
+                FrmMain.AutoResizeColumnWith(dgvDatabase, firstRowWith, _DatabaseColunms.Count - 1);
             }
 
             dgvDatabase.RowCount = _PageRows;

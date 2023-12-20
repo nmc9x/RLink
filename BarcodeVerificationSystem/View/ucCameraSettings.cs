@@ -121,6 +121,7 @@ namespace BarcodeVerificationSystem.View
         private void InitEvents()
         {
             txtIPAddress.TextChanged += AdjustData;
+            textBoxPort.TextChanged += AdjustData;
             txtPassword.TextChanged += AdjustData;
             txtNoReadOutputString.TextChanged += AdjustData;
 
@@ -129,10 +130,10 @@ namespace BarcodeVerificationSystem.View
             radOutputEnable.CheckedChanged += AdjustData;
             radOutputDisable.CheckedChanged += AdjustData;
 
-            radAutoReconnectEnable.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radAutoReconnectDisable.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radOutputEnable.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radOutputDisable.CheckedChanged += frmJob.RadioButton_CheckedChanged;
+            radAutoReconnectEnable.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
+            radAutoReconnectDisable.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
+            radOutputEnable.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
+            radOutputDisable.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
 
             Shared.OnLanguageChange += Shared_OnLanguageChange;
             Shared.OnCameraStatusChange += Shared_OnCameraStatusChange;
@@ -149,6 +150,8 @@ namespace BarcodeVerificationSystem.View
             
 
         }
+
+       
 
         private void RadioButtonRead_CheckedChanged(object sender, EventArgs e)
         {
@@ -192,6 +195,11 @@ namespace BarcodeVerificationSystem.View
             {
                 _CameraModel.IsConnected = false;
                 _CameraModel.IP = txtIPAddress.Text;
+            }
+            else if(sender == textBoxPort)
+            {
+                _CameraModel.IsConnected = false;
+                _CameraModel.Port = textBoxPort.Text;
             }
             else if (sender == txtPassword)
             {
@@ -237,6 +245,7 @@ namespace BarcodeVerificationSystem.View
                     case 0:
                         _CameraModel.CameraType = CameraType.DM;
                         labelPort.Visible = textBoxPort.Visible = false;
+                        groupBoxOCR.Visible = false;
                         break;
                     case 1:
                         _CameraModel.CameraType = CameraType.IS;

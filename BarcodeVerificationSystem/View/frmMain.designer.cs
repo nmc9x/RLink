@@ -1,6 +1,6 @@
 ﻿namespace BarcodeVerificationSystem.View
 {
-    partial class frmMain
+    partial class FrmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +39,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatusCamera01 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblStatusPrinter01 = new System.Windows.Forms.ToolStripStatusLabel();

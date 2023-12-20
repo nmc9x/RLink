@@ -213,3 +213,17 @@ D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\Opera
 D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
 D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\obj\Debug\OperationLog.dll
 D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\OperationLog\obj\Debug\OperationLog.pdb
+D:\Program\Rlink\RLINK18122023\OperationLog\bin\Debug\OperationLog.dll
+D:\Program\Rlink\RLINK18122023\OperationLog\bin\Debug\OperationLog.pdb
+D:\Program\Rlink\RLINK18122023\OperationLog\bin\Debug\CommonVariable.dll
+D:\Program\Rlink\RLINK18122023\OperationLog\bin\Debug\System.Data.SQLite.dll
+D:\Program\Rlink\RLINK18122023\OperationLog\bin\Debug\System.Data.SQLite.EF6.dll
+D:\Program\Rlink\RLINK18122023\OperationLog\bin\Debug\System.Data.SQLite.Linq.dll
+D:\Program\Rlink\RLINK18122023\OperationLog\bin\Debug\CommonVariable.pdb
+D:\Program\Rlink\RLINK18122023\OperationLog\obj\Debug\OperationLog.csproj.AssemblyReference.cache
+D:\Program\Rlink\RLINK18122023\OperationLog\obj\Debug\OperationLog.Properties.Resources.resources
+D:\Program\Rlink\RLINK18122023\OperationLog\obj\Debug\OperationLog.csproj.GenerateResource.cache
+D:\Program\Rlink\RLINK18122023\OperationLog\obj\Debug\OperationLog.csproj.CoreCompileInputs.cache
+D:\Program\Rlink\RLINK18122023\OperationLog\obj\Debug\OperationLog.csproj.CopyComplete
+D:\Program\Rlink\RLINK18122023\OperationLog\obj\Debug\OperationLog.dll
+D:\Program\Rlink\RLINK18122023\OperationLog\obj\Debug\OperationLog.pdb

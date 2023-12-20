@@ -67,10 +67,10 @@ namespace BarcodeVerificationSystem.View
             radUnsuported.CheckedChanged += AdjustData;
             radSupported.CheckedChanged += AdjustData;
             btnSetupPrinter.Click += AdjustData;
-            radNewPODProtocol.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radOldPODProtocol.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radUnsuported.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radSupported.CheckedChanged += frmJob.RadioButton_CheckedChanged;
+            radNewPODProtocol.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
+            radOldPODProtocol.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
+            radUnsuported.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
+            radSupported.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
 
             Shared.OnLanguageChange += Shared_OnLanguageChange;
             Shared.OnReceiveResponsePrinter += Shared_OnReceiveResponsePrinter;

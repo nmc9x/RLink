@@ -11,3 +11,15 @@ C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.We
 C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.csproj.CopyComplete
 C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.dll
 C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.pdb
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\bin\Release\net48\Cognex.InSight.Web.dll
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\bin\Release\net48\Cognex.InSight.Web.pdb
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\bin\Release\net48\Newtonsoft.Json.dll
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\bin\Release\net48\websocket-sharp-standard.dll
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.csproj.AssemblyReference.cache
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.GeneratedMSBuildEditorConfig.editorconfig
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.AssemblyInfoInputs.cache
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.AssemblyInfo.cs
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.csproj.CoreCompileInputs.cache
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.csproj.CopyComplete
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.dll
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.pdb

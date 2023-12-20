@@ -141,3 +141,14 @@ D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\UILan
 D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\UILanguage\obj\Release\vi\UILanguage.resources.dll
 D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\UILanguage\obj\Release\UILanguage.dll
 D:\Program\Rlink\231205_1659_RLink_SourceCode\231205_1659_RLink_SourceCode\UILanguage\obj\Release\UILanguage.pdb
+D:\Program\Rlink\RLINK18122023\UILanguage\bin\Release\UILanguage.dll
+D:\Program\Rlink\RLINK18122023\UILanguage\bin\Release\UILanguage.pdb
+D:\Program\Rlink\RLINK18122023\UILanguage\bin\Release\vi\UILanguage.resources.dll
+D:\Program\Rlink\RLINK18122023\UILanguage\obj\Release\UILanguage.csproj.AssemblyReference.cache
+D:\Program\Rlink\RLINK18122023\UILanguage\obj\Release\UILanguage.Lang.resources
+D:\Program\Rlink\RLINK18122023\UILanguage\obj\Release\UILanguage.Lang.vi.resources
+D:\Program\Rlink\RLINK18122023\UILanguage\obj\Release\UILanguage.csproj.GenerateResource.cache
+D:\Program\Rlink\RLINK18122023\UILanguage\obj\Release\UILanguage.csproj.CoreCompileInputs.cache
+D:\Program\Rlink\RLINK18122023\UILanguage\obj\Release\vi\UILanguage.resources.dll
+D:\Program\Rlink\RLINK18122023\UILanguage\obj\Release\UILanguage.dll
+D:\Program\Rlink\RLINK18122023\UILanguage\obj\Release\UILanguage.pdb

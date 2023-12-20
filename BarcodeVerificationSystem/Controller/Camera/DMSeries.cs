@@ -6,8 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace BarcodeVerificationSystem.Controller.Camera
@@ -41,14 +43,14 @@ namespace BarcodeVerificationSystem.Controller.Camera
             _EthSystemDiscoverer.Discover();
             _SerSystemDiscoverer.Discover();
         }
-        
         public override void Connect(string ipadd, string port = null)
         {
             try
             {
                 if(_CameraSystemInfoList.Count<= 0) 
                 {
-                    UpdateLabelStatusEvent?.Invoke(this, EventArgs.Empty);
+                    CameraModel cameraModel = Shared.Settings.CameraList.FirstOrDefault();
+                    cameraModel.IsConnected = false;
                     Shared.RaiseOnCameraStatusChangeEvent();
                 }
                
@@ -302,15 +304,13 @@ namespace BarcodeVerificationSystem.Controller.Camera
             }
             DetectModel detectModel = new DetectModel();
             detectModel.Image = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), bitmap.PixelFormat);
-            detectModel.Text = strResult;
+            detectModel.Text = Regex.Replace(strResult, @"\r\n", ";");
             if (cameraModel != null)
             {
                 detectModel.RoleOfCamera = cameraModel.RoleOfCamera;
             }
             Shared.RaiseOnCameraReadDataChangeEvent(detectModel);
         }
-
-        
         #endregion Cognex_Camera
     }
 }

@@ -20,7 +20,7 @@ namespace BarcodeVerificationSystem.View
 {
     public partial class frmCheckedResult : Form
     {
-        public frmMain _frmParent = null;
+        public FrmMain _frmParent = null;
         private Thread _ThreadUpdateCheckedResult;
         public int _TotalColumns = 0;
         public List<string[]> _CheckedResult = new List<string[]>();
@@ -577,7 +577,7 @@ namespace BarcodeVerificationSystem.View
                 }
             }
 
-            frmMain.AutoResizeColumnWith(dgvCheckedResult, defaultRecord, 2);
+            FrmMain.AutoResizeColumnWith(dgvCheckedResult, defaultRecord, 2);
             dgvCheckedResult.RowCount = _PageRows;
             dgvCheckedResult.VirtualMode = true;
         }

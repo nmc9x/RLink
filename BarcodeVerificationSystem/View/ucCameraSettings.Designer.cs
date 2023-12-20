@@ -29,8 +29,30 @@
         private void InitializeComponent()
         {
             this.grbCamera = new System.Windows.Forms.GroupBox();
+            this.groupBoxOCR = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.radioButtonSym5 = new System.Windows.Forms.RadioButton();
+            this.radioButtonText5 = new System.Windows.Forms.RadioButton();
+            this.checkBoxObject5 = new System.Windows.Forms.CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radioButtonSym4 = new System.Windows.Forms.RadioButton();
+            this.radioButtonText4 = new System.Windows.Forms.RadioButton();
+            this.checkBoxObject4 = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioButtonSym3 = new System.Windows.Forms.RadioButton();
+            this.radioButtonText3 = new System.Windows.Forms.RadioButton();
+            this.checkBoxObject3 = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonSym2 = new System.Windows.Forms.RadioButton();
+            this.radioButtonText2 = new System.Windows.Forms.RadioButton();
+            this.checkBoxObject2 = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButtonSym1 = new System.Windows.Forms.RadioButton();
+            this.radioButtonText1 = new System.Windows.Forms.RadioButton();
+            this.checkBoxObject1 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxCamType = new System.Windows.Forms.ComboBox();
+            this.labelNotesOCR = new System.Windows.Forms.Label();
             this.labelPort = new System.Windows.Forms.Label();
             this.textBoxPort = new System.Windows.Forms.TextBox();
             this.lblOutputSignal = new System.Windows.Forms.Label();
@@ -51,38 +73,16 @@
             this.lblIPAddress = new System.Windows.Forms.Label();
             this.lblModel = new System.Windows.Forms.Label();
             this.txtModel = new System.Windows.Forms.TextBox();
-            this.checkBoxObject1 = new System.Windows.Forms.CheckBox();
-            this.groupBoxOCR = new System.Windows.Forms.GroupBox();
-            this.labelNotesOCR = new System.Windows.Forms.Label();
-            this.radioButtonSym1 = new System.Windows.Forms.RadioButton();
-            this.radioButtonText1 = new System.Windows.Forms.RadioButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButtonSym2 = new System.Windows.Forms.RadioButton();
-            this.radioButtonText2 = new System.Windows.Forms.RadioButton();
-            this.checkBoxObject2 = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButtonSym3 = new System.Windows.Forms.RadioButton();
-            this.radioButtonText3 = new System.Windows.Forms.RadioButton();
-            this.checkBoxObject3 = new System.Windows.Forms.CheckBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.radioButtonSym4 = new System.Windows.Forms.RadioButton();
-            this.radioButtonText4 = new System.Windows.Forms.RadioButton();
-            this.checkBoxObject4 = new System.Windows.Forms.CheckBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.radioButtonSym5 = new System.Windows.Forms.RadioButton();
-            this.radioButtonText5 = new System.Windows.Forms.RadioButton();
-            this.checkBoxObject5 = new System.Windows.Forms.CheckBox();
             this.grbCamera.SuspendLayout();
+            this.groupBoxOCR.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.groupBoxOCR.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbCamera
@@ -91,7 +91,6 @@
             this.grbCamera.Controls.Add(this.groupBoxOCR);
             this.grbCamera.Controls.Add(this.label1);
             this.grbCamera.Controls.Add(this.comboBoxCamType);
-            this.grbCamera.Controls.Add(this.labelNotesOCR);
             this.grbCamera.Controls.Add(this.labelPort);
             this.grbCamera.Controls.Add(this.textBoxPort);
             this.grbCamera.Controls.Add(this.lblOutputSignal);
@@ -118,6 +117,251 @@
             this.grbCamera.TabStop = false;
             this.grbCamera.Text = "Camera";
             // 
+            // groupBoxOCR
+            // 
+            this.groupBoxOCR.Controls.Add(this.groupBox5);
+            this.groupBoxOCR.Controls.Add(this.groupBox4);
+            this.groupBoxOCR.Controls.Add(this.groupBox3);
+            this.groupBoxOCR.Controls.Add(this.labelNotesOCR);
+            this.groupBoxOCR.Controls.Add(this.groupBox1);
+            this.groupBoxOCR.Controls.Add(this.groupBox2);
+            this.groupBoxOCR.Location = new System.Drawing.Point(21, 245);
+            this.groupBoxOCR.Name = "groupBoxOCR";
+            this.groupBoxOCR.Size = new System.Drawing.Size(956, 202);
+            this.groupBoxOCR.TabIndex = 45;
+            this.groupBoxOCR.TabStop = false;
+            this.groupBoxOCR.Text = "OCR Settings";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.radioButtonSym5);
+            this.groupBox5.Controls.Add(this.radioButtonText5);
+            this.groupBox5.Controls.Add(this.checkBoxObject5);
+            this.groupBox5.Location = new System.Drawing.Point(800, 25);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(135, 125);
+            this.groupBox5.TabIndex = 54;
+            this.groupBox5.TabStop = false;
+            // 
+            // radioButtonSym5
+            // 
+            this.radioButtonSym5.AutoSize = true;
+            this.radioButtonSym5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonSym5.Location = new System.Drawing.Point(7, 68);
+            this.radioButtonSym5.Name = "radioButtonSym5";
+            this.radioButtonSym5.Size = new System.Drawing.Size(122, 24);
+            this.radioButtonSym5.TabIndex = 51;
+            this.radioButtonSym5.TabStop = true;
+            this.radioButtonSym5.Text = "Symbol Read";
+            this.radioButtonSym5.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonText5
+            // 
+            this.radioButtonText5.AutoSize = true;
+            this.radioButtonText5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonText5.Location = new System.Drawing.Point(7, 98);
+            this.radioButtonText5.Name = "radioButtonText5";
+            this.radioButtonText5.Size = new System.Drawing.Size(100, 24);
+            this.radioButtonText5.TabIndex = 52;
+            this.radioButtonText5.TabStop = true;
+            this.radioButtonText5.Text = "Text Read";
+            this.radioButtonText5.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxObject5
+            // 
+            this.checkBoxObject5.AutoSize = true;
+            this.checkBoxObject5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxObject5.Location = new System.Drawing.Point(7, 26);
+            this.checkBoxObject5.Name = "checkBoxObject5";
+            this.checkBoxObject5.Size = new System.Drawing.Size(92, 24);
+            this.checkBoxObject5.TabIndex = 40;
+            this.checkBoxObject5.Text = "Object_5";
+            this.checkBoxObject5.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.radioButtonSym4);
+            this.groupBox4.Controls.Add(this.radioButtonText4);
+            this.groupBox4.Controls.Add(this.checkBoxObject4);
+            this.groupBox4.Location = new System.Drawing.Point(604, 25);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(135, 125);
+            this.groupBox4.TabIndex = 55;
+            this.groupBox4.TabStop = false;
+            // 
+            // radioButtonSym4
+            // 
+            this.radioButtonSym4.AutoSize = true;
+            this.radioButtonSym4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonSym4.Location = new System.Drawing.Point(7, 68);
+            this.radioButtonSym4.Name = "radioButtonSym4";
+            this.radioButtonSym4.Size = new System.Drawing.Size(122, 24);
+            this.radioButtonSym4.TabIndex = 51;
+            this.radioButtonSym4.TabStop = true;
+            this.radioButtonSym4.Text = "Symbol Read";
+            this.radioButtonSym4.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonText4
+            // 
+            this.radioButtonText4.AutoSize = true;
+            this.radioButtonText4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonText4.Location = new System.Drawing.Point(7, 98);
+            this.radioButtonText4.Name = "radioButtonText4";
+            this.radioButtonText4.Size = new System.Drawing.Size(100, 24);
+            this.radioButtonText4.TabIndex = 52;
+            this.radioButtonText4.TabStop = true;
+            this.radioButtonText4.Text = "Text Read";
+            this.radioButtonText4.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxObject4
+            // 
+            this.checkBoxObject4.AutoSize = true;
+            this.checkBoxObject4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxObject4.Location = new System.Drawing.Point(7, 26);
+            this.checkBoxObject4.Name = "checkBoxObject4";
+            this.checkBoxObject4.Size = new System.Drawing.Size(92, 24);
+            this.checkBoxObject4.TabIndex = 40;
+            this.checkBoxObject4.Text = "Object_4";
+            this.checkBoxObject4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.radioButtonSym3);
+            this.groupBox3.Controls.Add(this.radioButtonText3);
+            this.groupBox3.Controls.Add(this.checkBoxObject3);
+            this.groupBox3.Location = new System.Drawing.Point(408, 25);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(135, 125);
+            this.groupBox3.TabIndex = 54;
+            this.groupBox3.TabStop = false;
+            // 
+            // radioButtonSym3
+            // 
+            this.radioButtonSym3.AutoSize = true;
+            this.radioButtonSym3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonSym3.Location = new System.Drawing.Point(7, 68);
+            this.radioButtonSym3.Name = "radioButtonSym3";
+            this.radioButtonSym3.Size = new System.Drawing.Size(122, 24);
+            this.radioButtonSym3.TabIndex = 51;
+            this.radioButtonSym3.TabStop = true;
+            this.radioButtonSym3.Text = "Symbol Read";
+            this.radioButtonSym3.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonText3
+            // 
+            this.radioButtonText3.AutoSize = true;
+            this.radioButtonText3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonText3.Location = new System.Drawing.Point(7, 98);
+            this.radioButtonText3.Name = "radioButtonText3";
+            this.radioButtonText3.Size = new System.Drawing.Size(100, 24);
+            this.radioButtonText3.TabIndex = 52;
+            this.radioButtonText3.TabStop = true;
+            this.radioButtonText3.Text = "Text Read";
+            this.radioButtonText3.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxObject3
+            // 
+            this.checkBoxObject3.AutoSize = true;
+            this.checkBoxObject3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxObject3.Location = new System.Drawing.Point(7, 26);
+            this.checkBoxObject3.Name = "checkBoxObject3";
+            this.checkBoxObject3.Size = new System.Drawing.Size(92, 24);
+            this.checkBoxObject3.TabIndex = 40;
+            this.checkBoxObject3.Text = "Object_3";
+            this.checkBoxObject3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButtonSym2);
+            this.groupBox1.Controls.Add(this.radioButtonText2);
+            this.groupBox1.Controls.Add(this.checkBoxObject2);
+            this.groupBox1.Location = new System.Drawing.Point(212, 25);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(135, 125);
+            this.groupBox1.TabIndex = 54;
+            this.groupBox1.TabStop = false;
+            // 
+            // radioButtonSym2
+            // 
+            this.radioButtonSym2.AutoSize = true;
+            this.radioButtonSym2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonSym2.Location = new System.Drawing.Point(7, 68);
+            this.radioButtonSym2.Name = "radioButtonSym2";
+            this.radioButtonSym2.Size = new System.Drawing.Size(122, 24);
+            this.radioButtonSym2.TabIndex = 51;
+            this.radioButtonSym2.TabStop = true;
+            this.radioButtonSym2.Text = "Symbol Read";
+            this.radioButtonSym2.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonText2
+            // 
+            this.radioButtonText2.AutoSize = true;
+            this.radioButtonText2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonText2.Location = new System.Drawing.Point(7, 98);
+            this.radioButtonText2.Name = "radioButtonText2";
+            this.radioButtonText2.Size = new System.Drawing.Size(100, 24);
+            this.radioButtonText2.TabIndex = 52;
+            this.radioButtonText2.TabStop = true;
+            this.radioButtonText2.Text = "Text Read";
+            this.radioButtonText2.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxObject2
+            // 
+            this.checkBoxObject2.AutoSize = true;
+            this.checkBoxObject2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxObject2.Location = new System.Drawing.Point(7, 26);
+            this.checkBoxObject2.Name = "checkBoxObject2";
+            this.checkBoxObject2.Size = new System.Drawing.Size(92, 24);
+            this.checkBoxObject2.TabIndex = 40;
+            this.checkBoxObject2.Text = "Object_2";
+            this.checkBoxObject2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButtonSym1);
+            this.groupBox2.Controls.Add(this.radioButtonText1);
+            this.groupBox2.Controls.Add(this.checkBoxObject1);
+            this.groupBox2.Location = new System.Drawing.Point(16, 25);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(135, 125);
+            this.groupBox2.TabIndex = 53;
+            this.groupBox2.TabStop = false;
+            // 
+            // radioButtonSym1
+            // 
+            this.radioButtonSym1.AutoSize = true;
+            this.radioButtonSym1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonSym1.Location = new System.Drawing.Point(7, 68);
+            this.radioButtonSym1.Name = "radioButtonSym1";
+            this.radioButtonSym1.Size = new System.Drawing.Size(122, 24);
+            this.radioButtonSym1.TabIndex = 51;
+            this.radioButtonSym1.TabStop = true;
+            this.radioButtonSym1.Text = "Symbol Read";
+            this.radioButtonSym1.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonText1
+            // 
+            this.radioButtonText1.AutoSize = true;
+            this.radioButtonText1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonText1.Location = new System.Drawing.Point(7, 98);
+            this.radioButtonText1.Name = "radioButtonText1";
+            this.radioButtonText1.Size = new System.Drawing.Size(100, 24);
+            this.radioButtonText1.TabIndex = 52;
+            this.radioButtonText1.TabStop = true;
+            this.radioButtonText1.Text = "Text Read";
+            this.radioButtonText1.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxObject1
+            // 
+            this.checkBoxObject1.AutoSize = true;
+            this.checkBoxObject1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxObject1.Location = new System.Drawing.Point(7, 26);
+            this.checkBoxObject1.Name = "checkBoxObject1";
+            this.checkBoxObject1.Size = new System.Drawing.Size(92, 24);
+            this.checkBoxObject1.TabIndex = 40;
+            this.checkBoxObject1.Text = "Object_1";
+            this.checkBoxObject1.UseVisualStyleBackColor = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -139,6 +383,16 @@
             this.comboBoxCamType.Name = "comboBoxCamType";
             this.comboBoxCamType.Size = new System.Drawing.Size(138, 28);
             this.comboBoxCamType.TabIndex = 37;
+            // 
+            // labelNotesOCR
+            // 
+            this.labelNotesOCR.AutoSize = true;
+            this.labelNotesOCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNotesOCR.Location = new System.Drawing.Point(12, 166);
+            this.labelNotesOCR.Name = "labelNotesOCR";
+            this.labelNotesOCR.Size = new System.Drawing.Size(59, 20);
+            this.labelNotesOCR.TabIndex = 45;
+            this.labelNotesOCR.Text = "Notes: ";
             // 
             // labelPort
             // 
@@ -164,7 +418,7 @@
             // 
             this.lblOutputSignal.AutoSize = true;
             this.lblOutputSignal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOutputSignal.Location = new System.Drawing.Point(18, 421);
+            this.lblOutputSignal.Location = new System.Drawing.Point(33, 459);
             this.lblOutputSignal.Name = "lblOutputSignal";
             this.lblOutputSignal.Size = new System.Drawing.Size(103, 20);
             this.lblOutputSignal.TabIndex = 34;
@@ -180,7 +434,7 @@
             this.tableLayoutPanel1.Controls.Add(this.radOutputEnable, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.radOutputDisable, 1, 0);
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(22, 449);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(148, 450);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -248,7 +502,7 @@
             // 
             this.lblAutoReconnect.AutoSize = true;
             this.lblAutoReconnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAutoReconnect.Location = new System.Drawing.Point(375, 421);
+            this.lblAutoReconnect.Location = new System.Drawing.Point(511, 459);
             this.lblAutoReconnect.Name = "lblAutoReconnect";
             this.lblAutoReconnect.Size = new System.Drawing.Size(118, 20);
             this.lblAutoReconnect.TabIndex = 30;
@@ -264,7 +518,7 @@
             this.tableLayoutPanel2.Controls.Add(this.radAutoReconnectEnable, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.radAutoReconnectDisable, 1, 0);
             this.tableLayoutPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(379, 449);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(647, 450);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -403,260 +657,6 @@
             this.txtModel.Size = new System.Drawing.Size(302, 26);
             this.txtModel.TabIndex = 19;
             // 
-            // checkBoxObject1
-            // 
-            this.checkBoxObject1.AutoSize = true;
-            this.checkBoxObject1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxObject1.Location = new System.Drawing.Point(7, 26);
-            this.checkBoxObject1.Name = "checkBoxObject1";
-            this.checkBoxObject1.Size = new System.Drawing.Size(92, 24);
-            this.checkBoxObject1.TabIndex = 40;
-            this.checkBoxObject1.Text = "Object_1";
-            this.checkBoxObject1.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxOCR
-            // 
-            this.groupBoxOCR.Controls.Add(this.groupBox5);
-            this.groupBoxOCR.Controls.Add(this.groupBox4);
-            this.groupBoxOCR.Controls.Add(this.groupBox3);
-            this.groupBoxOCR.Controls.Add(this.groupBox1);
-            this.groupBoxOCR.Controls.Add(this.groupBox2);
-            this.groupBoxOCR.Location = new System.Drawing.Point(21, 245);
-            this.groupBoxOCR.Name = "groupBoxOCR";
-            this.groupBoxOCR.Size = new System.Drawing.Size(956, 173);
-            this.groupBoxOCR.TabIndex = 45;
-            this.groupBoxOCR.TabStop = false;
-            this.groupBoxOCR.Text = "OCR Settings";
-            // 
-            // labelNotesOCR
-            // 
-            this.labelNotesOCR.AutoSize = true;
-            this.labelNotesOCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNotesOCR.Location = new System.Drawing.Point(722, 436);
-            this.labelNotesOCR.Name = "labelNotesOCR";
-            this.labelNotesOCR.Size = new System.Drawing.Size(59, 20);
-            this.labelNotesOCR.TabIndex = 45;
-            this.labelNotesOCR.Text = "Notes: ";
-            // 
-            // radioButtonSym1
-            // 
-            this.radioButtonSym1.AutoSize = true;
-            this.radioButtonSym1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonSym1.Location = new System.Drawing.Point(7, 68);
-            this.radioButtonSym1.Name = "radioButtonSym1";
-            this.radioButtonSym1.Size = new System.Drawing.Size(122, 24);
-            this.radioButtonSym1.TabIndex = 51;
-            this.radioButtonSym1.TabStop = true;
-            this.radioButtonSym1.Text = "Symbol Read";
-            this.radioButtonSym1.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonText1
-            // 
-            this.radioButtonText1.AutoSize = true;
-            this.radioButtonText1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonText1.Location = new System.Drawing.Point(7, 98);
-            this.radioButtonText1.Name = "radioButtonText1";
-            this.radioButtonText1.Size = new System.Drawing.Size(100, 24);
-            this.radioButtonText1.TabIndex = 52;
-            this.radioButtonText1.TabStop = true;
-            this.radioButtonText1.Text = "Text Read";
-            this.radioButtonText1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.radioButtonSym1);
-            this.groupBox2.Controls.Add(this.radioButtonText1);
-            this.groupBox2.Controls.Add(this.checkBoxObject1);
-            this.groupBox2.Location = new System.Drawing.Point(16, 25);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(135, 125);
-            this.groupBox2.TabIndex = 53;
-            this.groupBox2.TabStop = false;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.radioButtonSym2);
-            this.groupBox1.Controls.Add(this.radioButtonText2);
-            this.groupBox1.Controls.Add(this.checkBoxObject2);
-            this.groupBox1.Location = new System.Drawing.Point(212, 25);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(135, 125);
-            this.groupBox1.TabIndex = 54;
-            this.groupBox1.TabStop = false;
-            // 
-            // radioButtonSym2
-            // 
-            this.radioButtonSym2.AutoSize = true;
-            this.radioButtonSym2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonSym2.Location = new System.Drawing.Point(7, 68);
-            this.radioButtonSym2.Name = "radioButtonSym2";
-            this.radioButtonSym2.Size = new System.Drawing.Size(122, 24);
-            this.radioButtonSym2.TabIndex = 51;
-            this.radioButtonSym2.TabStop = true;
-            this.radioButtonSym2.Text = "Symbol Read";
-            this.radioButtonSym2.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonText2
-            // 
-            this.radioButtonText2.AutoSize = true;
-            this.radioButtonText2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonText2.Location = new System.Drawing.Point(7, 98);
-            this.radioButtonText2.Name = "radioButtonText2";
-            this.radioButtonText2.Size = new System.Drawing.Size(100, 24);
-            this.radioButtonText2.TabIndex = 52;
-            this.radioButtonText2.TabStop = true;
-            this.radioButtonText2.Text = "Text Read";
-            this.radioButtonText2.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxObject2
-            // 
-            this.checkBoxObject2.AutoSize = true;
-            this.checkBoxObject2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxObject2.Location = new System.Drawing.Point(7, 26);
-            this.checkBoxObject2.Name = "checkBoxObject2";
-            this.checkBoxObject2.Size = new System.Drawing.Size(92, 24);
-            this.checkBoxObject2.TabIndex = 40;
-            this.checkBoxObject2.Text = "Object_2";
-            this.checkBoxObject2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.radioButtonSym3);
-            this.groupBox3.Controls.Add(this.radioButtonText3);
-            this.groupBox3.Controls.Add(this.checkBoxObject3);
-            this.groupBox3.Location = new System.Drawing.Point(408, 25);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(135, 125);
-            this.groupBox3.TabIndex = 54;
-            this.groupBox3.TabStop = false;
-            // 
-            // radioButtonSym3
-            // 
-            this.radioButtonSym3.AutoSize = true;
-            this.radioButtonSym3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonSym3.Location = new System.Drawing.Point(7, 68);
-            this.radioButtonSym3.Name = "radioButtonSym3";
-            this.radioButtonSym3.Size = new System.Drawing.Size(122, 24);
-            this.radioButtonSym3.TabIndex = 51;
-            this.radioButtonSym3.TabStop = true;
-            this.radioButtonSym3.Text = "Symbol Read";
-            this.radioButtonSym3.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonText3
-            // 
-            this.radioButtonText3.AutoSize = true;
-            this.radioButtonText3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonText3.Location = new System.Drawing.Point(7, 98);
-            this.radioButtonText3.Name = "radioButtonText3";
-            this.radioButtonText3.Size = new System.Drawing.Size(100, 24);
-            this.radioButtonText3.TabIndex = 52;
-            this.radioButtonText3.TabStop = true;
-            this.radioButtonText3.Text = "Text Read";
-            this.radioButtonText3.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxObject3
-            // 
-            this.checkBoxObject3.AutoSize = true;
-            this.checkBoxObject3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxObject3.Location = new System.Drawing.Point(7, 26);
-            this.checkBoxObject3.Name = "checkBoxObject3";
-            this.checkBoxObject3.Size = new System.Drawing.Size(92, 24);
-            this.checkBoxObject3.TabIndex = 40;
-            this.checkBoxObject3.Text = "Object_3";
-            this.checkBoxObject3.UseVisualStyleBackColor = true;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.radioButtonSym4);
-            this.groupBox4.Controls.Add(this.radioButtonText4);
-            this.groupBox4.Controls.Add(this.checkBoxObject4);
-            this.groupBox4.Location = new System.Drawing.Point(604, 25);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(135, 125);
-            this.groupBox4.TabIndex = 55;
-            this.groupBox4.TabStop = false;
-            // 
-            // radioButtonSym4
-            // 
-            this.radioButtonSym4.AutoSize = true;
-            this.radioButtonSym4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonSym4.Location = new System.Drawing.Point(7, 68);
-            this.radioButtonSym4.Name = "radioButtonSym4";
-            this.radioButtonSym4.Size = new System.Drawing.Size(122, 24);
-            this.radioButtonSym4.TabIndex = 51;
-            this.radioButtonSym4.TabStop = true;
-            this.radioButtonSym4.Text = "Symbol Read";
-            this.radioButtonSym4.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonText4
-            // 
-            this.radioButtonText4.AutoSize = true;
-            this.radioButtonText4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonText4.Location = new System.Drawing.Point(7, 98);
-            this.radioButtonText4.Name = "radioButtonText4";
-            this.radioButtonText4.Size = new System.Drawing.Size(100, 24);
-            this.radioButtonText4.TabIndex = 52;
-            this.radioButtonText4.TabStop = true;
-            this.radioButtonText4.Text = "Text Read";
-            this.radioButtonText4.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxObject4
-            // 
-            this.checkBoxObject4.AutoSize = true;
-            this.checkBoxObject4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxObject4.Location = new System.Drawing.Point(7, 26);
-            this.checkBoxObject4.Name = "checkBoxObject4";
-            this.checkBoxObject4.Size = new System.Drawing.Size(92, 24);
-            this.checkBoxObject4.TabIndex = 40;
-            this.checkBoxObject4.Text = "Object_4";
-            this.checkBoxObject4.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.radioButtonSym5);
-            this.groupBox5.Controls.Add(this.radioButtonText5);
-            this.groupBox5.Controls.Add(this.checkBoxObject5);
-            this.groupBox5.Location = new System.Drawing.Point(800, 25);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(135, 125);
-            this.groupBox5.TabIndex = 54;
-            this.groupBox5.TabStop = false;
-            // 
-            // radioButtonSym5
-            // 
-            this.radioButtonSym5.AutoSize = true;
-            this.radioButtonSym5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonSym5.Location = new System.Drawing.Point(7, 68);
-            this.radioButtonSym5.Name = "radioButtonSym5";
-            this.radioButtonSym5.Size = new System.Drawing.Size(122, 24);
-            this.radioButtonSym5.TabIndex = 51;
-            this.radioButtonSym5.TabStop = true;
-            this.radioButtonSym5.Text = "Symbol Read";
-            this.radioButtonSym5.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonText5
-            // 
-            this.radioButtonText5.AutoSize = true;
-            this.radioButtonText5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonText5.Location = new System.Drawing.Point(7, 98);
-            this.radioButtonText5.Name = "radioButtonText5";
-            this.radioButtonText5.Size = new System.Drawing.Size(100, 24);
-            this.radioButtonText5.TabIndex = 52;
-            this.radioButtonText5.TabStop = true;
-            this.radioButtonText5.Text = "Text Read";
-            this.radioButtonText5.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxObject5
-            // 
-            this.checkBoxObject5.AutoSize = true;
-            this.checkBoxObject5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxObject5.Location = new System.Drawing.Point(7, 26);
-            this.checkBoxObject5.Name = "checkBoxObject5";
-            this.checkBoxObject5.Size = new System.Drawing.Size(92, 24);
-            this.checkBoxObject5.TabIndex = 40;
-            this.checkBoxObject5.Text = "Object_5";
-            this.checkBoxObject5.UseVisualStyleBackColor = true;
-            // 
             // ucCameraSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -666,19 +666,20 @@
             this.Size = new System.Drawing.Size(990, 500);
             this.grbCamera.ResumeLayout(false);
             this.grbCamera.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.groupBoxOCR.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.groupBoxOCR.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

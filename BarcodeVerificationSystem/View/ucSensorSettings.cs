@@ -47,8 +47,8 @@ namespace BarcodeVerificationSystem.View
             radSensorControllerEnable.CheckedChanged += AdjustData;
             radSensorControllerDisable.CheckedChanged += AdjustData;
 
-            radSensorControllerEnable.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radSensorControllerDisable.CheckedChanged += frmJob.RadioButton_CheckedChanged;
+            radSensorControllerEnable.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
+            radSensorControllerDisable.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
 
             txtSensorControllerIP.TextChanged += AdjustData;
             numSensorControllerPort.ValueChanged += AdjustData;

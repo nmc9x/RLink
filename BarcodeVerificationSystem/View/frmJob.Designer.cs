@@ -1,6 +1,6 @@
 ﻿namespace BarcodeVerificationSystem.View
 {
-    partial class frmJob
+    partial class FrmJob
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmJob));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmJob));
             this.DragControl = new DesignUI.CuzUI.CuzDragControl();
             this.pnlMenu = new DesignUI.CuzUI.CuzPanel();
             this.btnAbout = new FontAwesome.Sharp.IconButton();

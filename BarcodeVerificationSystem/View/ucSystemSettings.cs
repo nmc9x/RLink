@@ -102,8 +102,8 @@ namespace BarcodeVerificationSystem.View
             radEnableImageExport.CheckedChanged += AdjustData;
             radDisableImageExport.CheckedChanged += AdjustData;
 
-            radEnableImageExport.CheckedChanged += frmJob.RadioButton_CheckedChanged; // Add by Thong Thach 23/03/23
-            radDisableImageExport.CheckedChanged += frmJob.RadioButton_CheckedChanged; // Add by Thong Thach 23/03/23
+            radEnableImageExport.CheckedChanged += FrmJob.RadioButton_CheckedChanged; // Add by Thong Thach 23/03/23
+            radDisableImageExport.CheckedChanged += FrmJob.RadioButton_CheckedChanged; // Add by Thong Thach 23/03/23
 
             txtImageExportPath.TextChanged += AdjustData;
             radEnableOutput.CheckedChanged += AdjustData;
@@ -113,12 +113,12 @@ namespace BarcodeVerificationSystem.View
             radBasic.CheckedChanged += AdjustData;
             radCompare.CheckedChanged += AdjustData;
 
-            radEnableOutput.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radDisableOutput.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radEnableTotalCode.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radEnableTotalPassed.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radBasic.CheckedChanged += frmJob.RadioButton_CheckedChanged;
-            radCompare.CheckedChanged += frmJob.RadioButton_CheckedChanged;
+            radEnableOutput.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
+            radDisableOutput.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
+            radEnableTotalCode.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
+            radEnableTotalPassed.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
+            radBasic.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
+            radCompare.CheckedChanged += FrmJob.RadioButton_CheckedChanged;
 
             cboLanguages.SelectedIndexChanged += AdjustData;
             txtJobDateTimeFormat.TextChanged += AdjustData;

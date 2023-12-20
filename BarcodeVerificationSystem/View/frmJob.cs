@@ -2,14 +2,9 @@
 using BarcodeVerificationSystem.Controller.Camera;
 using BarcodeVerificationSystem.Model;
 using Cognex.DataMan.SDK;
-using Cognex.InSight.Remoting.Serialization;
-using Cognex.InSight.Web;
-using Cognex.InSight.Web.Controls;
 using CommonVariable;
 using DesignUI.CuzAlert;
 using DesignUI.CuzMesageBox;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using OperationLog.Controller;
 using OperationLog.Model;
 using System;
@@ -19,7 +14,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,15 +23,12 @@ using Timer = System.Windows.Forms.Timer;
 
 namespace BarcodeVerificationSystem.View
 {
-    public partial class frmJob : Form
+    public partial class FrmJob : Form
     {
         #region Variables Jobs
         private readonly DMSeries DMCamera = new DMSeries(); // MinhChau Add 11122023
-        //private static  ISSeries ISCamera = new ISSeries(); // MinhChau Add 11122023
-        private CvsInSight _InSight;
-        public static CvsDisplay _CvsDisplay;
+        public static  ISSeries ISCamera = new ISSeries(); // MinhChau Add 11122023
 
-        #region MyRegion
         private readonly Timer _TimerDateTime = new Timer();
         private readonly string _DateTimeFormat = "yyyy/MM/dd hh:mm:ss tt";
         public double _NumberTotalsCode = 0;
@@ -52,19 +43,12 @@ namespace BarcodeVerificationSystem.View
         private readonly List<ToolStripLabel> _LabelStatusPrinterList = new List<ToolStripLabel>();
         private frmSettings _FormSettings;
         private JobModel _JobModel = null;
-        private frmMain _FormMainPC = null;
+        private FrmMain _FormMainPC = null;
 
         private Thread _ThreadMonitorPrinter;
         private readonly bool _IsObtainingPrintProductTemplateList = false;
         private string[] _PrintProductTemplateList = new string[] { };
         private Thread _ThreadMonitorCamera;
-        private Thread _ThreadMonitorCameraIs;
-
-        private static readonly CancellationTokenSource _ctsThreadConnectDM = new CancellationTokenSource();
-        private readonly CancellationToken _ctsCamConnToken = _ctsThreadConnectDM.Token;
-
-        private static readonly CancellationTokenSource _ctsThreadConnectIS = new CancellationTokenSource();
-        private readonly CancellationToken _ctsIsToken = _ctsThreadConnectIS.Token;
 
         // private string[] _PrinterSeries = new string[] { "RYNAN R10", "RYNAN R20", "RYNAN B1040", "RYNAN R40", "RYNAN R60", "Standalone" };
 
@@ -77,213 +61,15 @@ namespace BarcodeVerificationSystem.View
         };
         private static readonly Color _Standalone = Color.DarkBlue;
         private static readonly Color _RLinkColor = Color.FromArgb(0, 171, 230);
-        #endregion
         internal event EventHandler AutoAddSufixEvent;
-
+        private Thread _ThreadMonitorSensorController;
+        public bool[] _IsSymbol = new bool[5];
         #endregion Variables Jobs
 
-       
-        public frmJob()
+        public FrmJob()
         {
             InitializeComponent();
-            _InSight = new CvsInSight();
-            _CvsDisplay = new CvsDisplay();
-            // Reg Event InSight Camera
-            _InSight.ConnectedChanged += InSight_ConnectedChanged;
-            _InSight.ResultsChanged += InSight_ResultsChanged;
-            _CvsDisplay.SetInSight(_InSight);
         }
-
-
-        private List<ObjectResultModel> _ObjectResList = new List<ObjectResultModel>();
-        private List<(int, string)> _DesireDataList = new List<(int, string)>();
-        private string CameraData = "";
-        private CameraModel cameraModel;
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void InSight_ResultsChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                JToken tokenResults = _InSight.Results;
-                JObject objectResult = tokenResults.ToObject<JObject>();
-                JToken tokenObjectCells = objectResult["cells"];
-                string jsonString = tokenObjectCells.ToString();
-
-                if (objectResult != null && jsonString != "")
-                {
-                    _ObjectResList = JsonConvert.DeserializeObject<List<ObjectResultModel>>(jsonString);
-                    _DesireDataList = GetDesireDataByObjectName(cameraModel).ToList();
-                    _DesireDataList.Sort();
-
-                    // Data String Concat
-                    if (_DesireDataList != null && _DesireDataList.Count>0)
-                    {
-                        CameraData = "";
-                        int i = 0;
-                        foreach ((int, string) item in _DesireDataList)
-                        {
-                            if (i < _DesireDataList.Count)
-                            {
-                                CameraData += item.Item2.ToString() + ";";
-                            }
-                            if (i == _DesireDataList.Count - 1)
-                            {
-                                CameraData = CameraData.Substring(0, CameraData.Length - 1);
-                            }
-                            i++;
-                        }
-                    }
-                    else
-                    {
-                        CameraData = "";
-                    }
-                }
-
-                // Data Transmition via Event
-                Bitmap img = null;
-                string urlImg = await _CvsDisplay.UpdateResults();
-                if(urlImg != null)
-                {
-                    img = UtilityFunctions.GetImageFromUri(urlImg);
-                }
-
-                DetectModel detectModel = new DetectModel 
-                {
-                    Text = CameraData,
-                    Image = img
-                };
-                Debug.WriteLine("Data OCR: " + CameraData);
-                detectModel.RoleOfCamera = cameraModel?.RoleOfCamera ?? detectModel.RoleOfCamera;
-                Shared.RaiseOnCameraReadDataChangeEvent(detectModel);
-
-            }
-            catch (Exception ex) {MessageBox.Show("Error: " + ex.Message);}
-        }
-
-        internal void Invoke_AutoAddSufixEvent()
-        {
-            AutoAddSufixEvent.Invoke(this, EventArgs.Empty);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private string[] _ObjectName_Temp = new string[5] { "Object_1", "Object_2", "Object_3", "Object_4", "Object_5" };
-        public bool[] _IsSymbol = new bool[5];
-        private readonly string suf_code = ".Result00.String";
-        private readonly string suf_text = ".ReadText";
-        private bool[] _EnableObject = new bool[5];
-        private string[] _ObjectName = new string[5] { "Object_1", "Object_2", "Object_3", "Object_4", "Object_5" };
-        private readonly ObjectResultModel[] _ObjectData = new ObjectResultModel[5];
-        private const int numObject = 5;
-        internal void AutoAddSuffixes(CameraModel cameraModel)
-        {
-            try
-            {
-                if (cameraModel == null) return;
-                _IsSymbol = cameraModel.IsSymbol;
-                for (int i = 0; i < 5; i++)
-                {
-                    _ObjectName_Temp[i] = _ObjectName[i].Replace(suf_code, "");
-                    _ObjectName_Temp[i] = _ObjectName[i].Replace(suf_text, "");
-                    if (_ObjectName_Temp[i] != null)
-                    {
-                        if (_IsSymbol[i])
-                        {
-                            if (_ObjectName_Temp[i].EndsWith(suf_code))
-                            {
-                                int suffixPosition = _ObjectName_Temp[i].LastIndexOf(suf_code);  // If already exists, update only the non-suffix part
-                                _ObjectName_Temp[i] = _ObjectName_Temp[i].Substring(0, suffixPosition);
-                            }
-                            _ObjectName_Temp[i] += suf_code;
-                        }
-                        else
-                        {
-                            if (_ObjectName_Temp[i].EndsWith(suf_text))
-                            {
-                                int suffixPosition = _ObjectName_Temp[i].LastIndexOf(suf_text);  // If already exists, update only the non-suffix part
-                                _ObjectName_Temp[i] = _ObjectName_Temp[i].Substring(0, suffixPosition);
-                            }
-                            _ObjectName_Temp[i] += suf_text;
-                        }
-                    }
-                }
-            }
-            catch (Exception){}
-        }
-        private List<(int, string)> GetDesireDataByObjectName(CameraModel cameraModel)
-        {
-            if (cameraModel == null) cameraModel = Shared.GetCameraModelBasedOnIPAddress(_InSight.RemoteIPAddress);
-            List<(int, string)> desireData = new List<(int, string)>();
-            List<ObjectResultModel> objectResultList = new List<ObjectResultModel>();
-            _EnableObject = UtilityFunctions.IntToBools(cameraModel.ObjectSelectNum, 5);
-
-            for (int i = 0; i < numObject; i++)
-            {
-                if (_EnableObject[i])
-                {
-                    _ObjectData[i] = _ObjectResList.FirstOrDefault(x => x.Name != null && x.Name.Contains(_ObjectName_Temp[i]));
-                    if (_ObjectData[i] != null)
-                    {
-                        objectResultList.Add(_ObjectData[i]);
-                        desireData.Add((i, _ObjectData[i].Data.ToString()));
-                    }
-                }
-            }
-            return desireData;
-        }
-
-        private async void InSight_ConnectedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                cameraModel = Shared.GetCameraModelBasedOnIPAddress(_InSight.RemoteIPAddress);
-                await Task.Delay(500); // wait for preparing connection !
-                if (cameraModel != null)
-                {
-                    if (_InSight.Connected)
-                    {
-                        cameraModel.IsConnected = true;
-                        cameraModel.Name = _InSight.CameraInfo.ModelNumber;
-                        cameraModel.SerialNumber = _InSight.CameraInfo.SerialNumber;
-                    }
-                    else
-                    {
-                        cameraModel.IsConnected = false;
-                        cameraModel.Name = "";
-                        cameraModel.SerialNumber = "";
-                        UnsubscribeEvents();
-
-                    }
-                    UpdateStatusLabelCamera();
-                    Shared.RaiseOnCameraStatusChangeEvent();
-                }
-            }
-            catch (Exception) { }
-        }
-
-        private void UnsubscribeEvents()
-        {
-            _InSight.ConnectedChanged -= InSight_ConnectedChanged;
-            _InSight.ResultsChanged -= InSight_ResultsChanged;
-        }
-
-        public async Task FirstConnection()
-        {
-           
-            var sessionInfo = new HmiSessionInfo();
-            sessionInfo.SheetName = "Inspection";
-            sessionInfo.CellNames = new string[1] { "A0:Z599" };
-            sessionInfo.EnableQueuedResults = true; 
-            sessionInfo.IncludeCustomView = true;
-            await _InSight.Connect("192.168.1.42", "admin", "", sessionInfo);
-            await _CvsDisplay.OnConnected();
-        }
-
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
@@ -528,7 +314,7 @@ namespace BarcodeVerificationSystem.View
                     _FormMainPC?.Dispose();
                     if (_FormMainPC == null || _FormMainPC.IsDisposed)
                     {
-                        _FormMainPC = new frmMain(this);
+                        _FormMainPC = new FrmMain(this);
                         _FormMainPC.Show();
                     }
                     else
@@ -807,15 +593,12 @@ namespace BarcodeVerificationSystem.View
         //--CAMEARA--//
         private void Shared_OnCameraStatusChange(object sender, EventArgs e)
         {
+            
             UpdateStatusLabelCamera();
         }
-        //private void DMCamera_UpdateLabelStatusEvent(object sender, EventArgs e)
-        //{
-        //    UpdateStatusLabelCamera();
-        //}
         private void Shared_OnCameraTriggerOnChange(object sender, EventArgs e)
         {
-            switch (cameraModel.CameraType)
+            switch (ISCamera._CameraModel.CameraType)
             {
                 case CameraType.DM:
                     foreach (DataManSystem dataManSystem in DMCamera._DataManSystemList)
@@ -828,7 +611,7 @@ namespace BarcodeVerificationSystem.View
                     }
                     break;
                 case CameraType.IS:
-                    _ = _InSight.ManualAcquire();
+                    _ = ISCamera._InSight.ManualAcquire();
                     break;
                 default:
                     break;
@@ -960,9 +743,6 @@ namespace BarcodeVerificationSystem.View
             MonitorSensorControllerConnection();
             MonitorListenerServer();
         }
-
-      
-
         private void InitEvents()
         {
             _TimerDateTime.Tick += TimerDateTime_Tick;
@@ -1040,17 +820,19 @@ namespace BarcodeVerificationSystem.View
             Shared.OnCameraTriggerOnChange += Shared_OnCameraTriggerOnChange;
             Shared.OnCameraTriggerOffChange += Shared_OnCameraTriggerOffChange;
             Shared.OnCameraOutputSignalChange += Shared_OnCameraOutputSignalChange;
-            //DMCamera.UpdateLabelStatusEvent += DMCamera_UpdateLabelStatusEvent;
-
             AutoAddSufixEvent += FrmJob_AutoAddSufixEvent;
+            DMCamera.UpdateLabelStatusEvent += UpdateLabelStatusEvent;
+            ISCamera.UpdateLabelStatusEvent += UpdateLabelStatusEvent;
 
         }
-
+        private void UpdateLabelStatusEvent(object sender, EventArgs e)
+        {
+           // UpdateStatusLabelCamera(); //spare
+        }
         private void FrmJob_AutoAddSufixEvent(object sender, EventArgs e)
         {
-            AutoAddSuffixes(cameraModel);
+           ISCamera.AutoAddSuffixes(ISCamera._CameraModel);
         }
-
         private void DebugVirtual()
         {
             BtnViewLog.Visible = true;
@@ -1530,7 +1312,7 @@ namespace BarcodeVerificationSystem.View
                     _FormMainPC?.Dispose();
                     if (_FormMainPC == null || _FormMainPC.IsDisposed)
                     {
-                        _FormMainPC = new frmMain(this);
+                        _FormMainPC = new FrmMain(this);
                         _FormMainPC.Show();
                     }
                     else
@@ -1785,6 +1567,11 @@ namespace BarcodeVerificationSystem.View
                 }
             }
         }
+        internal void Invoke_AutoAddSufixEvent()
+        {
+            AutoAddSufixEvent.Invoke(this, EventArgs.Empty);
+        }
+
         #endregion Utility_Function
 
         #region UpdateUI Printer 
@@ -1993,7 +1780,7 @@ namespace BarcodeVerificationSystem.View
         {
             _ThreadMonitorCamera = new Thread(async () =>
             {
-                while (!_ctsCamConnToken.IsCancellationRequested)
+                while (true)
                 {
                     foreach (CameraModel cameraModel in Shared.Settings.CameraList)
                     {
@@ -2016,15 +1803,13 @@ namespace BarcodeVerificationSystem.View
                                     break;
 
                                 case CameraType.IS: //IS Series Camera
-                                    //ISCamera.ConnectAsync(cvsDisplayImage,cameraModel.IP,cameraModel.Port);
-                                    await FirstConnection();
+                                    await ISCamera.FirstConnection();
                                     cameraModel.CountTimeReconnect++;
                                     if (cameraModel.CountTimeReconnect >= 3)
                                     {
                                         cameraModel.CountTimeReconnect = 0;
                                     }
                                     break;
-
                                 case CameraType.UKN:
 
                                     break;
@@ -2044,9 +1829,9 @@ namespace BarcodeVerificationSystem.View
             };
             _ThreadMonitorCamera.Start();
         }
-
         private void UpdateStatusLabelCamera()
         {
+
             if (InvokeRequired)
             {
                 Invoke(new Action(() => UpdateStatusLabelCamera()));
@@ -2054,24 +1839,29 @@ namespace BarcodeVerificationSystem.View
             }
 
             for (int i = 0; i < Shared.Settings.CameraList.Count; i++)
-            {
-                if (i < _LabelStatusCameraList.Count)
                 {
-                    CameraModel cameraModel = Shared.Settings.CameraList[i];
-                    ToolStripLabel labelStatusCamera = _LabelStatusCameraList[i];
+                    if (i < _LabelStatusCameraList.Count)
+                    {
+                        CameraModel cameraModel = Shared.Settings.CameraList[i];
+                        ToolStripLabel labelStatusCamera = _LabelStatusCameraList[i];
 
-                    if (cameraModel.IsConnected)
-                    {
-                        ShowLabelIcon(labelStatusCamera, Lang.CameraTMP, Properties.Resources.icons8_camera_30px_connected);
-                    }
-                    else
-                    {
-                        ShowLabelIcon(labelStatusCamera, Lang.CameraTMP, Properties.Resources.icons8_camera_30px_disconnected);
+                        if (cameraModel.IsConnected)
+                        {
+                            ShowLabelIcon(labelStatusCamera, Lang.CameraTMP, Properties.Resources.icons8_camera_30px_connected);
+                        }
+                        else
+                        {
+                            ShowLabelIcon(labelStatusCamera, Lang.CameraTMP, Properties.Resources.icons8_camera_30px_disconnected);
+                        }
                     }
                 }
-            }
+
+    
+           
+
+           
         }
-        private void ShowLabelIcon(Label label, String text, Image icon)
+        private void ShowLabelIcon(Label label, string text, Image icon)
         {
             if (InvokeRequired)
             {
@@ -2098,7 +1888,6 @@ namespace BarcodeVerificationSystem.View
         #endregion Camera Connection
 
         #region Monitor_Sensor_Controller
-        private Thread _ThreadMonitorSensorController;
         private void MonitorSensorControllerConnection()
         {
             _ThreadMonitorSensorController = new Thread(() =>
@@ -2176,10 +1965,5 @@ namespace BarcodeVerificationSystem.View
             _ThreadMonitorSensorController.Start();
         }
         #endregion Monitor_Sensor_Controller
-
-        private void connectBtn_Click(object sender, EventArgs e)
-        {
-            FirstConnection();
-        }
     }
 }
