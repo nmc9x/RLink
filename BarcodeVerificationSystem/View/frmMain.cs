@@ -3070,6 +3070,7 @@ namespace BarcodeVerificationSystem.View
 
         private void ChangePictureCamera()
         {
+            Cognex.InSight.Web.Controls.CvsDisplay cvsDsp = _ParentForm.ISCamera._CvsDisplay;
             if (InvokeRequired)
             {
                 Invoke(new Action(() => ChangePictureCamera()));
@@ -3080,17 +3081,17 @@ namespace BarcodeVerificationSystem.View
                 if (Shared.Settings.CameraList[0].CameraType == CameraType.DM) // Show Image IS Series
                 {
                     pictureBoxPreview.Visible = true;
-                    if (pnlPicture.Controls.Contains(FrmJob.ISCamera._CvsDisplay))
+                    if (pnlPicture.Controls.Contains(cvsDsp))
                     {
-                        pnlPicture.Controls.Remove(FrmJob.ISCamera._CvsDisplay);
+                        pnlPicture.Controls.Remove(cvsDsp);
                     }
                 }
 
                 if (Shared.Settings.CameraList[0].CameraType == CameraType.IS) // Show Image IS Series
                 {
-                    if (!pnlPicture.Controls.Contains(FrmJob.ISCamera._CvsDisplay))
+                    if (!pnlPicture.Controls.Contains(cvsDsp))
                     {
-                        pnlPicture.Controls.Add(FrmJob.ISCamera._CvsDisplay);
+                        pnlPicture.Controls.Add(cvsDsp);
                     }
                     pictureBoxPreview.Visible = false;
                 }

@@ -539,6 +539,7 @@ namespace BarcodeVerificationSystem.View
                 try
                 {
                     string cell = "";
+                    if (_CodeListFromFile.Count <= 0) return;
                     if (dgv.Columns.Count < _CodeListFromFile[0].Length && e.ColumnIndex != 0)
                     {
                         var row = _CodeListFromFile[e.RowIndex];

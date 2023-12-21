@@ -26,8 +26,8 @@ namespace BarcodeVerificationSystem.View
     public partial class FrmJob : Form
     {
         #region Variables Jobs
-        private readonly DMSeries DMCamera = new DMSeries(); // MinhChau Add 11122023
-        public static  ISSeries ISCamera = new ISSeries(); // MinhChau Add 11122023
+        private readonly DMSeries DMCamera = new DMSeries(); 
+        public readonly  ISSeries ISCamera = new ISSeries(); 
 
         private readonly Timer _TimerDateTime = new Timer();
         private readonly string _DateTimeFormat = "yyyy/MM/dd hh:mm:ss tt";
@@ -724,8 +724,9 @@ namespace BarcodeVerificationSystem.View
             UpdateStatusLabelPrinter();
             _NameOfJobOld = "";
             CreateJob();
+            cboSupportForCamera.Enabled = false;
             cboSupportForCamera.DataSource = CameraSupportNameList;
-            cboSupportForCamera.SelectedIndex = 0;
+            cboSupportForCamera.SelectedIndex = Shared.Settings.CameraList.FirstOrDefault().CameraType == CameraType.DM ? 0 : 1;
             _TimerDateTime.Start();
             _NameOfJobOld = "";
             Shared.JobNameSelected = "";
@@ -740,8 +741,8 @@ namespace BarcodeVerificationSystem.View
 
             MonitorCameraConnection();
             MonitorPrinterConnection();
-            MonitorSensorControllerConnection();
-            MonitorListenerServer();
+           MonitorSensorControllerConnection();
+          MonitorListenerServer();
         }
         private void InitEvents()
         {

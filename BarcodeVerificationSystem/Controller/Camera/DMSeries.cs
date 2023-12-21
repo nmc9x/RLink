@@ -304,7 +304,7 @@ namespace BarcodeVerificationSystem.Controller.Camera
             }
             DetectModel detectModel = new DetectModel();
             detectModel.Image = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), bitmap.PixelFormat);
-            detectModel.Text = Regex.Replace(strResult, @"\r\n", ";");
+            detectModel.Text = Regex.Replace(strResult, @"\r\n", ";"); // split object by symbol ";"
             if (cameraModel != null)
             {
                 detectModel.RoleOfCamera = cameraModel.RoleOfCamera;

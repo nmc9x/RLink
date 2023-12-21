@@ -1,0 +1,11 @@
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web.Controls\obj\Debug\net451\Cognex.InSight.Web.Controls.csproj.AssemblyReference.cache
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web.Controls\obj\Debug\net451\Cognex.InSight.Web.Controls.CvsCustomViewSettingsDialog.resources
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web.Controls\obj\Debug\net451\Cognex.InSight.Web.Controls.CvsDisplay.resources
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web.Controls\obj\Debug\net451\Cognex.InSight.Web.Controls.CvsFilmstrip.resources
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web.Controls\obj\Debug\net451\Cognex.InSight.Web.Controls.CvsSpreadsheet.resources
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web.Controls\obj\Debug\net451\Cognex.InSight.Web.Controls.InSightDialog.resources
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web.Controls\obj\Debug\net451\Cognex.InSight.Web.Controls.csproj.GenerateResource.cache
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web.Controls\obj\Debug\net451\Cognex.InSight.Web.Controls.GeneratedMSBuildEditorConfig.editorconfig
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web.Controls\obj\Debug\net451\Cognex.InSight.Web.Controls.AssemblyInfoInputs.cache
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web.Controls\obj\Debug\net451\Cognex.InSight.Web.Controls.AssemblyInfo.cs
+D:\Program\Rlink\RLINK18122023\SDK\Cognex.InSight.Web.Controls\obj\Debug\net451\Cognex.InSight.Web.Controls.csproj.CoreCompileInputs.cache

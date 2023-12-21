@@ -26,6 +26,7 @@ namespace BarcodeVerificationSystem.Controller
         {
             try
             {
+                if(!File.Exists(inputFile)) { return; }
                 string password = _EncrytionFilePassword;
 
                 byte[] key = CreateKey(password);
