@@ -26,6 +26,50 @@ namespace BarcodeVerificationSystem.Controller
         {
             try
             {
+                string password = _EncrytionFilePassword;
+
+                byte[] key = CreateKey(password);
+
+                FileStream fsCrypt = new FileStream(inputFile, FileMode.Open);
+
+                RijndaelManaged RMCrypto = new RijndaelManaged();
+                RMCrypto.BlockSize = 256;
+                RMCrypto.KeySize = 256;
+                RMCrypto.IV = key;
+                RMCrypto.Key = key;
+
+                using (var cs = new CryptoStream(fsCrypt, RMCrypto.CreateDecryptor(), CryptoStreamMode.Read))
+                {
+                    using (var reader = new StreamReader(cs))
+                    {
+                        List<string> hardwareIDList = new List<string>();
+
+                        while (!reader.EndOfStream)
+                        {
+                            var line = reader.ReadLine();
+
+                            hardwareIDList.Add(string.Concat(line));
+                        }
+
+                        foreach (string hw in hardwareIDList)
+                        {
+                            HardwareIDModel hardwareID = new HardwareIDModel();
+                            hardwareID.HardwareID = hw;
+                            Shared.listPCAllow.Add(hardwareID);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+
+        }
+        public static void DecryptFile_OLD(string inputFile)
+        {
+            try
+            {
                 if(!File.Exists(inputFile)) { return; }
                 string password = _EncrytionFilePassword;
 
@@ -54,8 +98,8 @@ namespace BarcodeVerificationSystem.Controller
                         foreach (string hw in hardwareIDList)
                         {
                             HardwareIDModel hardwareID = new HardwareIDModel();
-                            //string a = SecurityController.Decrypt(hw,_EncyptionPassword);
-                            //Console.WriteLine(a);
+                            string a = SecurityController.Decrypt(hw, _EncyptionPassword);
+                            Console.WriteLine(a);
                             hardwareID.HardwareID = hw;
                             Shared.listPCAllow.Add(hardwareID);
                         }

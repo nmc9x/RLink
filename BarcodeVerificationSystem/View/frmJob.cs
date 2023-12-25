@@ -26,6 +26,7 @@ namespace BarcodeVerificationSystem.View
     public partial class FrmJob : Form
     {
         #region Variables Jobs
+
         private readonly DMSeries DMCamera = new DMSeries(); 
         public readonly  ISSeries ISCamera = new ISSeries(); 
 
@@ -39,8 +40,10 @@ namespace BarcodeVerificationSystem.View
         private List<PODModel> _PODFormat = new List<PODModel>();
         private readonly List<PODModel> _PODList = new List<PODModel>();
         private List<string> _JobNameList = null;
+
         private readonly List<ToolStripLabel> _LabelStatusCameraList = new List<ToolStripLabel>();
         private readonly List<ToolStripLabel> _LabelStatusPrinterList = new List<ToolStripLabel>();
+
         private frmSettings _FormSettings;
         private JobModel _JobModel = null;
         private FrmMain _FormMainPC = null;
@@ -563,7 +566,7 @@ namespace BarcodeVerificationSystem.View
                 PODDataModel podDataModel = sender as PODDataModel;
                 try
                 {
-                    string[] pODcommand = podDataModel.Text.Split(';');
+                    string[] pODcommand = podDataModel.Text.Split(';',','); // Prioritize these two characters
                     PODResponseModel PODResponseModel = new PODResponseModel
                     {
                         Command = pODcommand[0]
@@ -590,7 +593,7 @@ namespace BarcodeVerificationSystem.View
             }
         }
 
-        //--CAMEARA--//
+        //--CAMEARA EVENTS--//
         private void Shared_OnCameraStatusChange(object sender, EventArgs e)
         {
             
@@ -850,7 +853,7 @@ namespace BarcodeVerificationSystem.View
             }
         }
         private async Task StartListenerServer()
-        {
+         {
             StringBuilder url = new StringBuilder("http://");
             url.Append(Shared.GetLocalIPAddress());
             url.Append("/");
