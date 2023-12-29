@@ -1,35 +1,25 @@
 ﻿using BarcodeVerificationSystem.Controller;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UILanguage;
 
 namespace BarcodeVerificationSystem.View
 {
-    public partial class frmChangePassword : Form
+    public partial class FrmChangePassword : Form
     {
-        public frmChangePassword()
+        public FrmChangePassword()
         {
             InitializeComponent();
-
             InitControl();
             InitEvents();
-            //Comment for edit user interface
             SetLanguage();
         }
 
         private void SetLanguage()
         {
-            if (this.InvokeRequired)
+            if (InvokeRequired)
             {
-                this.Invoke(new Action(() => SetLanguage()));
+                Invoke(new Action(() => SetLanguage()));
                 return;
             }
             lblCurrentPassword.Text = Lang.CurrentPassword;
@@ -47,8 +37,8 @@ namespace BarcodeVerificationSystem.View
 
         public void InitEvents()
         {
-            btnCancel.Click += buttonClicked;
-            btnOK.Click += buttonClicked;
+            btnCancel.Click += ButtonClicked;
+            btnOK.Click += ButtonClicked;
             Shared.OnLanguageChange += Shared_OnLanguageChange;
         }
 
@@ -57,7 +47,7 @@ namespace BarcodeVerificationSystem.View
             SetLanguage();
         }
 
-        private void buttonClicked(object sender, EventArgs e)
+        private void ButtonClicked(object sender, EventArgs e)
         {
             if (sender == btnCancel)
             {
@@ -72,9 +62,8 @@ namespace BarcodeVerificationSystem.View
 
         private void ProcessChangePassword()
         {
-            //check current password
-            String oldPassword = txtCurrentPassword.Text;
-            String userName = SecurityController.Decrypt(Shared.LoggedInUser.UserName, "rynan_encrypt_remember");
+            string oldPassword = txtCurrentPassword.Text;
+            _ = SecurityController.Decrypt(Shared.LoggedInUser.UserName, "rynan_encrypt_remember");
             if (UserController.CheckCorrectPassword(oldPassword) == false)
             {
                 lblMessage.Text = Lang.InvalidPassword;
@@ -83,7 +72,7 @@ namespace BarcodeVerificationSystem.View
             }
 
             //check password length
-            String newPass = txtNewPassword.Text;
+            string newPass = txtNewPassword.Text;
             if (newPass.Length < 6)
             {
                 lblMessage.Text = Lang.PasswordAtLeast6Character;
@@ -92,7 +81,7 @@ namespace BarcodeVerificationSystem.View
             }
 
             //check re-type password
-            String retypePass = txtRetypePassword.Text;
+            string retypePass = txtRetypePassword.Text;
             if (retypePass != newPass)
             {
                 lblMessage.Text = Lang.PasswordNotMatch;

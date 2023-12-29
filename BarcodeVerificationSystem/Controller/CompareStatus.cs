@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BarcodeVerificationSystem.Controller
 {
@@ -23,7 +19,10 @@ namespace BarcodeVerificationSystem.Controller
         }
 
         public int Index { get; set; }
+
         public bool Status { get; set; }
+
         public List<int> DuplicateId { get; set; }
+
     }
 }

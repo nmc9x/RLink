@@ -29,3 +29,6 @@
 * Version 1.0.6 (December 05, 2023) Build 20231205 1618
 - Change change date time format name of backup file
 - Add reprint confirm box
+
+* Version 1.0.7 (December 27, 2023) Build 20231227 0835
+- 

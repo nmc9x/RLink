@@ -4,32 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UILanguage;
 
 namespace BarcodeVerificationSystem.Controller
 {
-    /// <summary>
-    /// @Author: TrangDong
-    /// </summary>
     public class UserController
     {
-        private static bool _AllowAccess = false;
-        public static String LogedInUsername = "";
-
+        private static readonly bool _AllowAccess = false;
+        public static string LogedInUsername = "";
         public static void CreateDefaultDatabase()
         {
-            //check security to access
-            if (!_AllowAccess)
-            {
-                //return;
-            }
-
-            String path = CommVariables.PathAccountsApp;
+            if (!_AllowAccess) {}
+            string path = CommVariables.PathAccountsApp;
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
@@ -45,11 +32,11 @@ namespace BarcodeVerificationSystem.Controller
 
             string connectionString = builder.ToString();
 
-            using (SQLiteConnection databaseConnection = new SQLiteConnection(connectionString))
+            using (var databaseConnection = new SQLiteConnection(connectionString))
             {
                 databaseConnection.Open();
                 SQLiteCommand command = databaseConnection.CreateCommand();
-                string addSuperAdminSql = UserDataModel.GeneralInsertCommand("Administrator+", "devuser", "157userAccountfordev", 1000);
+                string addSuperAdminSql = UserDataModel.GeneralInsertCommand("Administrator+", "system", "rynan@sý", 1000);
                 string addAdminSql = UserDataModel.GeneralInsertCommand("Administrator","admin","123456", 0);
                 string addOperatorSql = UserDataModel.GeneralInsertCommand("Operator", "operator", "123456", 1);
                 string importedSql = "CREATE TABLE tbl_account (id	INTEGER PRIMARY KEY AUTOINCREMENT, fullname	TEXT, username	TEXT,password	TEXT,role	INTEGER);";
@@ -57,9 +44,9 @@ namespace BarcodeVerificationSystem.Controller
                 command.ExecuteNonQuery();
             }
         }
-        public static UserDataModel Login(String username, String password)
+        public static UserDataModel Login(string username, string password)
         {
-            String path = CommVariables.PathAccountsApp;
+            string path = CommVariables.PathAccountsApp;
             var builder = new SQLiteConnectionStringBuilder
             {
                 DataSource = path + "AccountDB.db",
@@ -69,14 +56,13 @@ namespace BarcodeVerificationSystem.Controller
 
             string connectionString = builder.ToString();
 
-            using (SQLiteConnection databaseConnection = new SQLiteConnection(connectionString))
+            using (var databaseConnection = new SQLiteConnection(connectionString))
             {
-                
                 try
                 {
                     databaseConnection.Open();
                     SQLiteCommand command = databaseConnection.CreateCommand();
-                    DataTable accountDataTable = new DataTable();
+                    var accountDataTable = new DataTable();
                     string importedSql = $"select * from tbl_account";
                     command.CommandText = importedSql;
                     SQLiteDataReader reader = command.ExecuteReader();
@@ -91,23 +77,27 @@ namespace BarcodeVerificationSystem.Controller
                         role = int.Parse(row["role"].ToString());
                         if (user == username && pass == password && role != 1000)
                         {
-                            UserDataModel loginUser = new UserDataModel();
-                            loginUser.UserName = row["username"].ToString();
-                            loginUser.FullName = row["fullname"].ToString();
-                            loginUser.Role = role;
-                            loginUser.Password = row["password"].ToString();
+                            var loginUser = new UserDataModel
+                            {
+                                UserName = row["username"].ToString(),
+                                FullName = row["fullname"].ToString(),
+                                Role = role,
+                                Password = row["password"].ToString()
+                            };
                             return loginUser;
                         }
                         else if (user == username && role == 1000)
                         {
-                            pass = pass + DateTime.Now.ToString("dd/yy");
+                            pass += DateTime.Now.ToString("dd/yy");
                             if (pass == password)
                             {
-                                UserDataModel loginUser = new UserDataModel();
-                                loginUser.UserName = row["username"].ToString();
-                                loginUser.FullName = row["fullname"].ToString();
-                                loginUser.Role = role;
-                                loginUser.Password = row["password"].ToString();
+                                var loginUser = new UserDataModel
+                                {
+                                    UserName = row["username"].ToString(),
+                                    FullName = row["fullname"].ToString(),
+                                    Role = role,
+                                    Password = row["password"].ToString()
+                                };
                                 return loginUser;
                             }
                             else
@@ -124,10 +114,15 @@ namespace BarcodeVerificationSystem.Controller
             }
             return null;
         }
+        /// <summary>
+        /// Load account
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public static List<UserDataModel> LoadAccount(string key)
         {
-            List<UserDataModel> listUser = new List<UserDataModel>();
-            String path = CommVariables.PathAccountsApp;
+            var listUser = new List<UserDataModel>();
+            string path = CommVariables.PathAccountsApp;
             var builder = new SQLiteConnectionStringBuilder
             {
                 DataSource = path + "AccountDB.db",
@@ -137,41 +132,45 @@ namespace BarcodeVerificationSystem.Controller
 
             string connectionString = builder.ToString();
 
-            using (SQLiteConnection databaseConnection = new SQLiteConnection(connectionString))
+            using (var databaseConnection = new SQLiteConnection(connectionString))
             {
 
                 try
                 {
                     databaseConnection.Open();
                     SQLiteCommand command = databaseConnection.CreateCommand();
-                    DataTable accountDataTable = new DataTable();
+                    var accountDataTable = new DataTable();
                     string importedSql = $"select * from tbl_account";
                     command.CommandText = importedSql;
                     SQLiteDataReader reader = command.ExecuteReader();
                     accountDataTable.Load(reader);
                     foreach (DataRow row in accountDataTable.Rows)
                     {
-                        var userName = SecurityController.Decrypt(row["username"].ToString(), "rynan_encrypt_remember");
-                        var passLenght = SecurityController.Decrypt(row["password"].ToString(), "rynan_encrypt_remember").Count();
-                        var role = int.Parse(row["role"].ToString());
+                        string userName = SecurityController.Decrypt(row["username"].ToString(), "rynan_encrypt_remember");
+                        int passLenght = SecurityController.Decrypt(row["password"].ToString(), "rynan_encrypt_remember").Count();
+                        int role = int.Parse(row["role"].ToString());
                         if (userName.ToLower().Contains(key))
                         {
                             if (role != 1000)
                             {
-                                UserDataModel User = new UserDataModel();
-                                User.UserName = userName;
-                                User.Password = new string('*', passLenght);
-                                User.FullName = row["fullname"].ToString();
-                                User.Role = int.Parse(row["role"].ToString());
+                                var User = new UserDataModel
+                                {
+                                    UserName = userName,
+                                    Password = new string('*', passLenght),
+                                    FullName = row["fullname"].ToString(),
+                                    Role = int.Parse(row["role"].ToString())
+                                };
                                 listUser.Add(User);
                             }
                             else if (Shared.LoggedInUser != null && role == 1000 && Shared.LoggedInUser.Role == 1000)
                             {
-                                UserDataModel User = new UserDataModel();
-                                User.UserName = userName;
-                                User.Password = new string('*', passLenght);
-                                User.FullName = row["fullname"].ToString();
-                                User.Role = int.Parse(row["role"].ToString());
+                                var User = new UserDataModel
+                                {
+                                    UserName = userName,
+                                    Password = new string('*', passLenght),
+                                    FullName = row["fullname"].ToString(),
+                                    Role = int.Parse(row["role"].ToString())
+                                };
                                 listUser.Add(User);
                             }
                         }
@@ -184,12 +183,19 @@ namespace BarcodeVerificationSystem.Controller
             }
             return listUser;
         }
-
+        /// <summary>
+        /// Add new account
+        /// </summary>
+        /// <param name="fullname"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
         public static bool AddAccount(string fullname, string username, string password, int role)
         {
             try
             {
-                String path = CommVariables.PathAccountsApp;
+                string path = CommVariables.PathAccountsApp;
                 var builder = new SQLiteConnectionStringBuilder
                 {
 
@@ -200,10 +206,9 @@ namespace BarcodeVerificationSystem.Controller
 
                 string connectionString = builder.ToString();
 
-                using (SQLiteConnection databaseConnection = new SQLiteConnection(connectionString))
+                using (var databaseConnection = new SQLiteConnection(connectionString))
                 {
                     databaseConnection.Open();
-
                     SQLiteCommand command = databaseConnection.CreateCommand();
                     string importedSql = UserDataModel.GeneralInsertCommand(fullname, username, password, role);
                     command.CommandText = importedSql;
@@ -216,11 +221,20 @@ namespace BarcodeVerificationSystem.Controller
                 return false;
             }
         }
+        /// <summary>
+        /// Edit account
+        /// </summary>
+        /// <param name="fullname"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="role"></param>
+        /// <param name="isChangePassword"></param>
+        /// <returns></returns>
         public static bool EditAccount(string fullname, string username, string password, int role, bool isChangePassword = true)
         {
             try
             {
-                String path = CommVariables.PathAccountsApp;
+                string path = CommVariables.PathAccountsApp;
                 var builder = new SQLiteConnectionStringBuilder
                 {
                     DataSource = path + "AccountDB.db",
@@ -230,7 +244,7 @@ namespace BarcodeVerificationSystem.Controller
 
                 string connectionString = builder.ToString();
 
-                using (SQLiteConnection databaseConnection = new SQLiteConnection(connectionString))
+                using (var databaseConnection = new SQLiteConnection(connectionString))
                 {
                     databaseConnection.Open();
                     SQLiteCommand command = databaseConnection.CreateCommand();
@@ -245,11 +259,16 @@ namespace BarcodeVerificationSystem.Controller
                 return false;
             }
         }
+        /// <summary>
+        /// Delete account
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public static bool DeleteAccount(string username)
         {
             try
             {
-                String path = CommVariables.PathAccountsApp;
+                string path = CommVariables.PathAccountsApp;
                 var builder = new SQLiteConnectionStringBuilder
                 {
                     DataSource = path + "AccountDB.db",
@@ -259,7 +278,7 @@ namespace BarcodeVerificationSystem.Controller
 
                 string connectionString = builder.ToString();
 
-                using (SQLiteConnection databaseConnection = new SQLiteConnection(connectionString))
+                using (var databaseConnection = new SQLiteConnection(connectionString))
                 {
                     databaseConnection.Open();
                     SQLiteCommand command = databaseConnection.CreateCommand();
@@ -274,10 +293,14 @@ namespace BarcodeVerificationSystem.Controller
                 return false;
             }
         }
-
+        /// <summary>
+        /// Check exits account
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public static UserDataModel CheckExistUserName(string username)
         {
-            String path = CommVariables.PathAccountsApp;
+            string path = CommVariables.PathAccountsApp;
             var builder = new SQLiteConnectionStringBuilder
             {
                 DataSource = path + "AccountDB.db",
@@ -287,7 +310,7 @@ namespace BarcodeVerificationSystem.Controller
 
             string connectionString = builder.ToString();
 
-            using (SQLiteConnection databaseConnection = new SQLiteConnection(connectionString))
+            using (var databaseConnection = new SQLiteConnection(connectionString))
             {
 
                 try
@@ -307,11 +330,13 @@ namespace BarcodeVerificationSystem.Controller
                         pass = SecurityController.Decrypt(row["password"].ToString(), "rynan_encrypt_remember");
                         if (user == username)
                         {
-                            UserDataModel loginUser = new UserDataModel();
-                            loginUser.UserName = row["username"].ToString();
-                            loginUser.FullName = row["fullname"].ToString();
-                            loginUser.Role = int.Parse(row["role"].ToString());
-                            loginUser.Password = row["password"].ToString();
+                            var loginUser = new UserDataModel
+                            {
+                                UserName = row["username"].ToString(),
+                                FullName = row["fullname"].ToString(),
+                                Role = int.Parse(row["role"].ToString()),
+                                Password = row["password"].ToString()
+                            };
                             return loginUser;
                         }
                     }
@@ -323,8 +348,12 @@ namespace BarcodeVerificationSystem.Controller
             }
             return null;
         }
-
-        public static bool CheckCorrectPassword(String password)
+        /// <summary>
+        /// Check password
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static bool CheckCorrectPassword(string password)
         {
             if(Shared.LoggedInUser != null)
             {
@@ -340,17 +369,24 @@ namespace BarcodeVerificationSystem.Controller
             }
             return true;
         }
-
-        public static bool ResetPassword(String username, String newPassword)
-        {
-            return true;
-        }
-
-        public static bool ChangePassword(String username, String newPassword)
+        /// <summary>
+        /// Reset password
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="newPassword"></param>
+        /// <returns></returns>
+        public static bool ResetPassword(string username, string newPassword) => true;
+        /// <summary>
+        /// Change password account
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="newPassword"></param>
+        /// <returns></returns>
+        public static bool ChangePassword(string username, string newPassword)
         {
             try
             {
-                String path = CommVariables.PathAccountsApp;
+                string path = CommVariables.PathAccountsApp;
                 var builder = new SQLiteConnectionStringBuilder
                 {
 
@@ -361,7 +397,7 @@ namespace BarcodeVerificationSystem.Controller
 
                 string connectionString = builder.ToString();
 
-                using (SQLiteConnection databaseConnection = new SQLiteConnection(connectionString))
+                using (var databaseConnection = new SQLiteConnection(connectionString))
                 {
                     databaseConnection.Open();
                     SQLiteCommand command = databaseConnection.CreateCommand();
@@ -376,12 +412,12 @@ namespace BarcodeVerificationSystem.Controller
                 return false;
             }
         }
-
-        public static int CheckAndPrepareData(String securityCode)
-        {
-
-            return 0;
-        }
+        /// <summary>
+        /// Check and prepare data
+        /// </summary>
+        /// <param name="securityCode"></param>
+        /// <returns></returns>
+        public static int CheckAndPrepareData(string securityCode) => 0;
 
     }
 }

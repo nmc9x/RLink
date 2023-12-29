@@ -3,29 +3,25 @@ using BarcodeVerificationSystem.Model;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using UILanguage;
 
 namespace BarcodeVerificationSystem.View
 {
-    public partial class frmManageAccount : Form
+    public partial class FrmManageAccount : Form
     {
-        // Display and value list for role comboxox
-        List<Role> listRole = new List<Role>() {
+        readonly List<Role> listRole = new List<Role>() {
                 new Role() { RoleName = "Administrator", Value = 0 },
-                new Role() { RoleName = "Operator", Value = 1 }
+                new Role() { RoleName = "Operator", Value = 1 },
+                new Role() { RoleName = "System", Value = 2 }
             };
 
         private Thread _ThreadLoadData = null;
         private bool _IsCreate = false;
         private bool _IsEdit = false;
-
-        // Columns of account datagridview
-        string[] _ColumnNamesAccountList = new string[] { Lang.FullnameColum, Lang.UsernameColumn, Lang.PasswordColumn, Lang.RoleColumn};
-
-        public frmManageAccount()
+        readonly string[] _ColumnNamesAccountList = new string[] { Lang.FullnameColum, Lang.UsernameColumn, Lang.PasswordColumn, Lang.RoleColumn};
+        public FrmManageAccount()
         {
             InitializeComponent();
         }
@@ -40,12 +36,11 @@ namespace BarcodeVerificationSystem.View
 
         private void SetLanguage()
         {
-            if (this.InvokeRequired)
+            if (InvokeRequired)
             {
-                this.Invoke(new Action(() => SetLanguage()));
+                Invoke(new Action(() => SetLanguage()));
                 return;
             }
-
             lbFullname.Text = Lang.Fullname;
             lbUsername.Text = Lang.Username;
             lbPassword.Text = Lang.Password;
@@ -58,42 +53,32 @@ namespace BarcodeVerificationSystem.View
 
         public void InitControlls()
         {
-            // Set up role combobox
             cbxRole.DataSource = listRole;
             cbxRole.DisplayMember = "RoleName";
             cbxRole.ValueMember = "Value";
 
             btnSave.Enabled = false;
 
-            // set up password char of password textbox
-            // Initial account list table
             dgvAccount.VirtualMode = false;
             dgvAccount.AllowUserToAddRows = false;
             dgvAccount.AutoGenerateColumns = false;
             dgvAccount.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvAccount.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular);
 
-            // Assign column name to table
             int tableCodeProductListWidth = dgvAccount.Width - 39;//39 is width of column index
             for (int index = 0; index < _ColumnNamesAccountList.Length; index++)
             {
-                DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
-                col.HeaderText = _ColumnNamesAccountList[index];
-                col.Name = _ColumnNamesAccountList[index].Trim();
-                //// Set the DataPropertyName foreach column
-                //if (index == 0)
-                //    col.DataPropertyName = "FullName";
-                //if (index == 1)
-                //    col.DataPropertyName = "UserName";
-                //if (index == 2)
-                //    col.DataPropertyName = "Password";
-                //if (index == 3)
-                //    col.DataPropertyName = "RoleName";
+                DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = _ColumnNamesAccountList[index],
+                    Name = _ColumnNamesAccountList[index].Trim()
+                };
+
                 if (index == 0)
                 {
                     col.Width = (int)(0.75 * tableCodeProductListWidth);
                 }
-                //END Set the DataPropertyName foreach column
+        
                 dgvAccount.Columns.Add(col);
             }
             dgvAccount.RowTemplate.Height = 35;
@@ -123,10 +108,8 @@ namespace BarcodeVerificationSystem.View
             dgvAccount.BorderStyle = BorderStyle.None;
 
             Graphics g = dgvAccount.CreateGraphics();
-
             Rectangle rect = new Rectangle(0, 40, dgvAccount.Width, 1);
             g.DrawRectangle(Pens.Red, rect);
-            // Load data for account datagridview
             LoadAccount();
             EnableUITextbox();
         }
@@ -151,8 +134,8 @@ namespace BarcodeVerificationSystem.View
             e.Graphics.FillRectangle(SystemBrushes.ScrollBar, rect);
             if (e.RowIndex != -1)
             {
-                RectangleF originalClip = e.Graphics.ClipBounds;
-                Rectangle rowRectangle = this.dgvAccount.GetRowDisplayRectangle(e.RowIndex, true);
+                _ = e.Graphics.ClipBounds;
+                Rectangle rowRectangle = dgvAccount.GetRowDisplayRectangle(e.RowIndex, true);
                 e.Graphics.FillRectangle(SystemBrushes.ScrollBar, new Rectangle(rowRectangle.X, rowRectangle.Y, rowRectangle.Width, 1));
             }
         }
@@ -171,6 +154,7 @@ namespace BarcodeVerificationSystem.View
 
         private void ActionChanged(object sender, EventArgs e)
         {
+            //Add
             if (sender == btnAdd)
             {
                 _IsCreate = true;
@@ -178,12 +162,14 @@ namespace BarcodeVerificationSystem.View
                 EnableUITextbox(true);
                 EnableUIAddEdit();
             }
+            //Edit
             else if (sender == btnEdit)
             {
                 _IsEdit = true;
                 EnableUITextbox(true);
                 EnableUIAddEdit();
             }
+            //Delete
             else if (sender == btnDelete)
             {
                 if (_IsCreate || _IsEdit)
@@ -207,7 +193,6 @@ namespace BarcodeVerificationSystem.View
             }
             else if (sender == dgvAccount)
             {
-                // fill select item on datagridview to text box
                 if (dgvAccount.CurrentRow != null)
                 {
                     txtFullName.Text = dgvAccount.CurrentRow.Cells[Lang.FullnameColum].Value.ToString();
@@ -220,7 +205,6 @@ namespace BarcodeVerificationSystem.View
             }
             else if (sender == btnSave)
             {
-                // Check text box
                 if (!CheckTextBox())
                 {
                     return;
@@ -240,9 +224,9 @@ namespace BarcodeVerificationSystem.View
             }
         }
 
+
         List<UserDataModel> _ListUser = new List<UserDataModel>();
 
-        // Load data for account datagridview
         public void LoadAccount(string key = "")
         {
             dgvAccount.Rows.Clear();
@@ -259,7 +243,7 @@ namespace BarcodeVerificationSystem.View
                     {
                         for (int index = 0; index < count; index++)
                         {
-                            user = new string[] { String.Format(_ListUser[index].FullName), _ListUser[index].UserName,
+                            user = new string[] { string.Format(_ListUser[index].FullName), _ListUser[index].UserName,
                             _ListUser[index].Password, _ListUser[index].RoleName.ToString()};
                             dgvAccount.Invoke(new Action(() =>
                             {
@@ -267,25 +251,22 @@ namespace BarcodeVerificationSystem.View
                             }));
                         }
                     }
-
                     Invoke(new Action(() =>
                     {
                         dgvAccount.ClearSelection();
                     }));
                     Thread.Sleep(20);
-                });
-                _ThreadLoadData.IsBackground = true;
+                })
+                {
+                    IsBackground = true
+                };
                 _ThreadLoadData.Start();
             }
         }
-        // END Load data for account datagridview
 
         private void AddUser()
         {
-            // Get selected value of role combobox
             int role = int.Parse(cbxRole.SelectedValue.ToString());
-            // END
-            // Check exist user
             if (UserController.CheckExistUserName(txtUserName.Text) != null)
             {
                 MessageBox.Show(Lang.UsernameExist, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -297,7 +278,6 @@ namespace BarcodeVerificationSystem.View
                     MessageBox.Show(Lang.PasswordAtLeast6Character, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                // Add account to database
                 if (UserController.AddAccount(txtFullName.Text, txtUserName.Text, txtPassword.Text, role))
                 {
                     MessageBox.Show(Lang.AddAccountSuccess, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -319,8 +299,7 @@ namespace BarcodeVerificationSystem.View
 
         private void DeleteUser()
         {
-            // get exist user account
-            UserDataModel userData = UserController.CheckExistUserName(txtUserName.Text);
+            var userData = UserController.CheckExistUserName(txtUserName.Text);
             if (userData == null)
             {
                 MessageBox.Show(Lang.UsernameExist, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -328,14 +307,12 @@ namespace BarcodeVerificationSystem.View
             else
             {
                 string userName = txtUserName.Text;
-                // prevent delete or edit default account
-                if (userName == "Administrator" || userName == "Operator")
+                if (userName == "admin" || userName == "operator")
                 {
                     MessageBox.Show(Lang.DefaultAccountEdited, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
 
-                // Delete account
                 if (UserController.DeleteAccount(userData.UserName))
                 {
                     MessageBox.Show(Lang.DeleteAccountSuccess, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -350,6 +327,7 @@ namespace BarcodeVerificationSystem.View
                 }
             }
         }
+
         private void EditUser()
         {
             UserDataModel userData = UserController.CheckExistUserName(txtUserName.Text);
@@ -359,9 +337,7 @@ namespace BarcodeVerificationSystem.View
             }
             else
             {
-                // get user name
                 string userName = txtUserName.Text;
-                // prevent delete or edit default account
                 if (userName == "Administrator" || userName == "Operator")
                 {
                     MessageBox.Show(Lang.DefaultAccountEdited, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -373,10 +349,9 @@ namespace BarcodeVerificationSystem.View
                     MessageBox.Show(Lang.UsernameExist, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                // get role value
+
                 int role = int.Parse(cbxRole.SelectedValue.ToString());
 
-                // Edit account
                 if (UserController.EditAccount(txtFullName.Text, userData.UserName, txtPassword.Text, role))
                 {
                     MessageBox.Show(Lang.EditAccountSuccess, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -403,7 +378,6 @@ namespace BarcodeVerificationSystem.View
             }
         }
 
-        // Clear text box
         public void ClearTextBox()
         {
             txtFind.Text = "";
@@ -412,44 +386,36 @@ namespace BarcodeVerificationSystem.View
             txtRetypePassword.Text = "";
             txtUserName.Text = "";
         }
-        // END Clear text box
 
-        // Check text box
         public bool CheckTextBox()
         {
             if (txtFullName.Text == "")
             {
                 MessageBox.Show(lbFullname.Text + Lang.TextboxEmpty, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //lblMessage.Text = lbRetypePasword.Text + Lang.TextboxEmpty;
                 return false;
             }
             if (txtPassword.Text == "")
             {
                 MessageBox.Show(lbPassword.Text + Lang.TextboxEmpty, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //lblMessage.Text = lbRetypePasword.Text + Lang.TextboxEmpty;
                 return false;
             }
             if (txtRetypePassword.Text == "")
             {
                 MessageBox.Show(lbRetypePasword.Text + Lang.TextboxEmpty, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //lblMessage.Text = lbRetypePasword.Text + Lang.TextboxEmpty;
                 return false;
             }
             if (txtUserName.Text == "")
             {
                 MessageBox.Show(lbUsername.Text + Lang.TextboxEmpty, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //lblMessage.Text = lbRetypePasword.Text + Lang.TextboxEmpty;
                 return false;
             }
             if (txtPassword.Text != txtRetypePassword.Text)
             {
                 MessageBox.Show(Lang.PasswordNotMatch, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //lblMessage.Text = Lang.PasswordNotMatch;
                 return false;
             }
             return true;
         }
-        // END Check text box
 
         private void EnableUITextbox(bool isEnable = false)
         {
@@ -474,7 +440,7 @@ namespace BarcodeVerificationSystem.View
                 btnEdit.Enabled = false;
                 btnDelete.Enabled = true;
                 btnSave.Enabled = true;
-                btnDelete.Image = BarcodeVerificationSystem.Properties.Resources.icon_failed_181;
+                btnDelete.Image = Properties.Resources.icon_failed_181;
                 dgvAccount.Enabled = false;
             }
             else

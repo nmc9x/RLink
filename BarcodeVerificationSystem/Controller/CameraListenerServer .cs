@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BarcodeVerificationSystem.Controller;
+using Newtonsoft.Json;
+using Security;
+using System;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using BarcodeVerificationSystem.Controller;
-using Newtonsoft.Json;
-using Security;
 
 namespace BarcodeVerificationSystem
 {
@@ -26,7 +24,6 @@ namespace BarcodeVerificationSystem
             listener = new HttpListener();
             foreach (string prefix in prefixes)
                 listener.Prefixes.Add(prefix);
-
         }
 
         public async Task StartAsync()
@@ -35,19 +32,14 @@ namespace BarcodeVerificationSystem
             do
             {
                 try
-                {
-                    //Console.WriteLine($"{DateTime.Now.ToLongTimeString()} : waiting a client connect");
-                    
+                { 
                     HttpListenerContext context = await listener.GetContextAsync();
                     await ProcessRequest(context);
-
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
-                //Console.WriteLine("...");
-
             }
             while (listener.IsListening);
         }
@@ -56,11 +48,8 @@ namespace BarcodeVerificationSystem
         {
             HttpListenerRequest request = context.Request;
             HttpListenerResponse response = context.Response;
-            Console.WriteLine($"{request.HttpMethod} {request.RawUrl} {request.Url.AbsolutePath}");
-            
-            var outputstream = response.OutputStream;
-            
-            var url = request.Url.AbsolutePath + request.Url.Query;
+            Stream outputstream = response.OutputStream;
+            string url = request.Url.AbsolutePath + request.Url.Query;
             switch (url)
             {
                 case "/stop":
@@ -75,13 +64,13 @@ namespace BarcodeVerificationSystem
                         response.Headers.Add("Content-Type", "application/json");
                        var cameraBoxInfo = new ResponseGetInfoModel
                         {
-                            success = "true",
-                            message = "Get printer info successful",
+                            Success = "true",
+                            Message = "Get printer info successful",
                             data = new GetInfoDataResponseModel
                             {
-                                model = Properties.Settings.Default.SoftwareModel,
-                                uuid = FingerPrint.Value(),
-                                software = Properties.Settings.Default.SoftwareVersion,
+                                Model = Properties.Settings.Default.SoftwareModel,
+                                Uuid = FingerPrint.Value(),
+                                Software = Properties.Settings.Default.SoftwareVersion,
                                 // 0 Undefine
                                 // 1 - Start
                                 // 2 - stop
@@ -89,12 +78,12 @@ namespace BarcodeVerificationSystem
                                 // 4 - Resumer
                                 // 5 - reset default
                                 // 6 - Waiting data
-                                printStatus = (int)Shared.OperStatus,
-                                printerName = "My RLink"
+                                PrintStatus = (int)Shared.OperStatus,
+                                PrinterName = "My RLink"
                             }
                         };
                         string jsonstring = JsonConvert.SerializeObject(cameraBoxInfo);
-                        byte[] buffer = System.Text.Encoding.UTF8.GetBytes(jsonstring);
+                        byte[] buffer = Encoding.UTF8.GetBytes(jsonstring);
                         response.ContentLength64 = buffer.Length;
                         await outputstream.WriteAsync(buffer, 0, buffer.Length);
 
@@ -104,7 +93,7 @@ namespace BarcodeVerificationSystem
                 default:
                     {
                         response.StatusCode = (int)HttpStatusCode.NotFound;
-                        byte[] buffer = System.Text.Encoding.UTF8.GetBytes("NOT FOUND!");
+                        byte[] buffer = Encoding.UTF8.GetBytes("NOT FOUND!");
                         response.ContentLength64 = buffer.Length;
                         await outputstream.WriteAsync(buffer, 0, buffer.Length);
                     }

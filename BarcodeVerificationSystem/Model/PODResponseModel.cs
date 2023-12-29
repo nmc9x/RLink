@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace BarcodeVerificationSystem.Model
 {
-    /// <summary>
-    /// @Author: TrangDong
-    /// @Email: trang.dong@rynantech.com
-    /// @Date created: July 22, 2020
-    /// </summary>
-    [DataContract]//For serialization and deserialization
+
+    [DataContract]
     public class PODResponseModel
     {
         [DataMember(Name = "command")]

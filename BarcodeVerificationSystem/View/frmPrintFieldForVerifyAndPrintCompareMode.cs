@@ -2,27 +2,21 @@
 using BarcodeVerificationSystem.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UILanguage;
 
 namespace BarcodeVerificationSystem.View
 {
-    public partial class frmPrintFieldForVerifyAndPrintCompareMode : Form
+    public partial class FrmPrintFieldForVerifyAndPrintCompareMode : Form
     {
         public List<PODModel> _PODFormat = new List<PODModel>();
         public List<PODModel> _PODList = new List<PODModel>();
-        public frmPrintFieldForVerifyAndPrintCompareMode()
+        public FrmPrintFieldForVerifyAndPrintCompareMode()
         {
             InitializeComponent();
         }
 
-        private void frmPODFormat_Load(object sender, EventArgs e)
+        private void FrmPODFormat_Load(object sender, EventArgs e)
         {
             InitControl();
             InitEvent();
@@ -31,9 +25,9 @@ namespace BarcodeVerificationSystem.View
 
         private void SetLanguage()
         {
-            if (this.InvokeRequired)
+            if (InvokeRequired)
             {
-                this.Invoke(new Action(() => SetLanguage()));
+                Invoke(new Action(() => SetLanguage()));
                 return;
             }
             lblFormName.Text = Lang.SelectPrintField;
@@ -58,7 +52,7 @@ namespace BarcodeVerificationSystem.View
             {
                 for (int index = 1; index <= 20; index++)
                 {
-                    PODModel podVCD = new PODModel(index, "", PODModel.TypePOD.FIELD, "");
+                    var podVCD = new PODModel(index, "", PODModel.TypePOD.FIELD, "");
                     _PODFormat.Add(podVCD);
                     listBoxPODLeft.Items.Add(podVCD);
                 }
@@ -105,7 +99,7 @@ namespace BarcodeVerificationSystem.View
             }
 
             int index = listBoxPODRight.Items.IndexOf(listBoxPODRight.SelectedItem);
-            PODModel podTMP = (PODModel)listBoxPODRight.Items[index];
+            var podTMP = (PODModel)listBoxPODRight.Items[index];
         }
 
         private void Shared_OnLanguageChange(object sender, EventArgs e)
@@ -116,9 +110,9 @@ namespace BarcodeVerificationSystem.View
         private void FrmPODFormat_FormClosing(object sender, FormClosingEventArgs e)
         {
             _PODFormat.Clear();
-            foreach (var item in listBoxPODRight.Items)
+            foreach (object item in listBoxPODRight.Items)
             {
-                PODModel podTmp = (PODModel)item;
+                var podTmp = (PODModel)item;
                 _PODFormat.Add(podTmp);
             }
             DialogResult = DialogResult.OK;
@@ -150,8 +144,7 @@ namespace BarcodeVerificationSystem.View
                 {
                     return;
                 }
-                //PODModel podTmp = ((PODModel)(listBoxPODLeft.SelectedItem));
-                //listBoxPODRight.Items.Add(podTmp.Clone());
+               
                 AddingField();
                 Sample();
             }
@@ -173,9 +166,9 @@ namespace BarcodeVerificationSystem.View
             else if (sender == btnSave)
             {
                 _PODFormat.Clear();
-                foreach (var item in listBoxPODRight.Items)
+                foreach (object item in listBoxPODRight.Items)
                 {
-                    PODModel podTmp = (PODModel)item;
+                    var podTmp = (PODModel)item;
                     if (podTmp.Type == PODModel.TypePOD.TEXT)
                     {
                         podTmp.Value = txtPrintFields.Text;
@@ -203,9 +196,9 @@ namespace BarcodeVerificationSystem.View
         {
             try
             {
-                PODModel podTmp = ((PODModel)(listBoxPODLeft.SelectedItem));
+                var podTmp = ((PODModel)(listBoxPODLeft.SelectedItem));
                 bool checkExist = false;
-                foreach (var item in listBoxPODRight.Items)
+                foreach (object item in listBoxPODRight.Items)
                 {
                     var podItem = (PODModel)(item);
                     if (podItem.Index == podTmp.Index)
@@ -224,7 +217,7 @@ namespace BarcodeVerificationSystem.View
                     {
                         for (int i = 0; i < listBoxPODRight.Items.Count; i++)
                         {
-                            var item = listBoxPODRight.Items[i];
+                            object item = listBoxPODRight.Items[i];
                             var podItem = (PODModel)(item);
 
                             if (podItem.Index == podTmp.Index + 1)
@@ -234,7 +227,7 @@ namespace BarcodeVerificationSystem.View
                             }
                         }
 
-                        var lastItem = listBoxPODRight.Items[listBoxPODRight.Items.Count - 1];
+                        object lastItem = listBoxPODRight.Items[listBoxPODRight.Items.Count - 1];
                         var lastPodItem = (PODModel)(lastItem);
                         if (lastPodItem.Index > podTmp.Index)
                         {
@@ -256,9 +249,9 @@ namespace BarcodeVerificationSystem.View
         private void Sample()
         {
             txtPrintFields.Text = "";
-            foreach (var item in listBoxPODRight.Items)
+            foreach (object item in listBoxPODRight.Items)
             {
-                PODModel podTmp = (PODModel)item;
+                var podTmp = (PODModel)item;
                 txtPrintFields.Text += podTmp.ToString();
             }
         }

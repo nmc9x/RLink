@@ -1,6 +1,6 @@
 ﻿namespace BarcodeVerificationSystem.View
 {
-    partial class frmPODFormat
+    partial class FrmPODFormat
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPODFormat));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPODFormat));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -625,7 +625,7 @@
             this.Name = "frmPODFormat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POD Format";
-            this.Load += new System.EventHandler(this.frmPODFormat_Load);
+            this.Load += new System.EventHandler(this.FrmPODFormat_Load);
             this.pnlDrag.ResumeLayout(false);
             this.pnlDrag.PerformLayout();
             this.pnlDisplay.ResumeLayout(false);

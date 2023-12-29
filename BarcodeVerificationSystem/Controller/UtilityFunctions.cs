@@ -1,6 +1,11 @@
-﻿using System.Drawing;
+﻿using CommonVariable;
+using Microsoft.Win32;
+using System.Diagnostics;
+using System;
+using System.Drawing;
 using System.IO;
 using System.Net;
+using System.Windows.Forms;
 
 namespace BarcodeVerificationSystem.Controller
 {
@@ -16,6 +21,7 @@ namespace BarcodeVerificationSystem.Controller
             }
             return value;
         }
+
         public static bool[] IntToBools(int value, int numBools)
         {
             bool[] bools = new bool[numBools];
@@ -25,19 +31,21 @@ namespace BarcodeVerificationSystem.Controller
             }
             return bools;
         }
+
         public static Bitmap GetImageFromUri(string uri)
         {
             if(uri == "") return null;
-            using (WebClient webClient = new WebClient())
+            using (var webClient = new WebClient())
             {
                 byte[] imageData = webClient.DownloadData(uri);
-                using (MemoryStream ms = new MemoryStream(imageData))
+                using (var ms = new MemoryStream(imageData))
                 {
-                    Bitmap image = new Bitmap(ms);
+                    var image = new Bitmap(ms);
                     return image;
                 }
             }
         }
+
         public static void SaveBitmap(Bitmap bitmap, string filePath)
         {
             string directory = Path.GetDirectoryName(filePath);
@@ -45,15 +53,43 @@ namespace BarcodeVerificationSystem.Controller
             {
                 Directory.CreateDirectory(directory);
             }
-            using (MemoryStream memoryStream = new MemoryStream())
+            using (var memoryStream = new MemoryStream())
             {
                 bitmap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
                 memoryStream.Position = 0;
-                using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
                 {
                     memoryStream.CopyTo(fileStream);
                 }
             }
+        }
+
+        public static void SaveKeyToRegistry(string idPC)
+        {
+            string registryPath = @"SOFTWARE\RLinkHelpFolder";
+            var key = Registry.LocalMachine.OpenSubKey(registryPath, true) ?? Registry.LocalMachine.CreateSubKey(registryPath);
+            key.SetValue("IDPC", idPC);
+            key.Close();
+        }
+
+        public static void OpenDialog(string dirPath)
+        {
+            try
+            {
+                using (var openFileDialog = new System.Windows.Forms.OpenFileDialog())
+                {
+                    openFileDialog.InitialDirectory = dirPath;
+                    openFileDialog.Filter = "Image files (*.bmp)|*.bmp";
+                    openFileDialog.FilterIndex = 0;
+                    openFileDialog.Multiselect = true;
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string selectedFile = openFileDialog.FileName;
+                        Process.Start("notepad.exe", selectedFile);
+                    }
+                }
+            }
+            catch (Exception) { }
         }
     }
 }

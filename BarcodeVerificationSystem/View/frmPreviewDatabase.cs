@@ -1,14 +1,9 @@
 ﻿using BarcodeVerificationSystem.Controller;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +11,7 @@ using UILanguage;
 
 namespace BarcodeVerificationSystem.View
 {
-    public partial class frmPreviewDatabase : Form
+    public partial class FrmPreviewDatabase : Form
     {
         private const int CS_DropShadow = 0x00020000;
         protected override CreateParams CreateParams
@@ -28,19 +23,17 @@ namespace BarcodeVerificationSystem.View
                 return createParams;
             }
         }
-        
         public int _TotalColumns = 0;
         public List<string[]> _ObtainCodeList = new List<string[]>();
         public List<string> _DatabaseColunms = new List<string>();
         public int _Totals = 0;
         public int _NumberPrinted = 0;
-        //Paging dataGridview
+
         private int _CurrentPage = 1;
         private int _PagesCount = 1;
-        private int _PageRows = 5000;
-        // END
+        private readonly int _PageRows = 5000;
 
-        public frmPreviewDatabase()
+        public FrmPreviewDatabase()
         {
             InitializeComponent();
         }
@@ -55,8 +48,7 @@ namespace BarcodeVerificationSystem.View
 
         private void SetLangguage()
         {
-            //lblDatabase.Text = Lang.previewdatabase;
-            this.Text = Lang.previewdatabase;
+            Text = Lang.previewdatabase;
             lblFormName.Text = Lang.previewdatabase.ToUpper();
             lblPagePerTotals.Text = $"{Lang.Page} {_CurrentPage} {Lang.Per} {_PagesCount} ({_SearchResultList.Count()} {Lang.Items})";
             lblGoToPage.Text = Lang.GoToPage;
@@ -88,14 +80,13 @@ namespace BarcodeVerificationSystem.View
             Number3.Click += ToolStripButtonClick;
             Number4.Click += ToolStripButtonClick;
             Number5.Click += ToolStripButtonClick;
-            //toolStripPaging.Click += ToolStripButtonClick;
 
             comboBox1.DrawMode = DrawMode.OwnerDrawVariable;
             comboBox1.Height = 30;
             comboBox1.DropDownHeight = 300;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.DrawItem += ComboBoxCustom.myComboBox_DrawItem;
-            comboBox1.MeasureItem += ComboBoxCustom.cbo_MeasureItem;
+            comboBox1.DrawItem += ComboBoxCustom.MyComboBox_DrawItem;
+            comboBox1.MeasureItem += ComboBoxCustom.Cbo_MeasureItem;
 
             btnSearch.Click += ActionResult;
             btnRefeshDatabase.Click += ActionResult;
@@ -154,9 +145,10 @@ namespace BarcodeVerificationSystem.View
                 GetNeededDataToUpdateAsync();
             }
         }
+
         private void ToolStripButtonClick(object sender, EventArgs e)
         {
-            Button ToolStripButton = ((Button)sender);
+            var ToolStripButton = ((Button)sender);
             if (sender == btnBack)
             {
                 _CurrentPage--;
@@ -194,9 +186,8 @@ namespace BarcodeVerificationSystem.View
 
         private void RefreshPagination()
         {
-            Button[] items = new Button[] { Number1, Number2, Number3, Number4, Number5 };
-            //pageStartIndex contains the first button number of pagination.
-            int pageStartIndex = 1;
+           var items = new Button[] { Number1, Number2, Number3, Number4, Number5 };
+           int pageStartIndex = 1;
 
             if (_PagesCount > 5 && _CurrentPage > 2)
                 pageStartIndex = _CurrentPage - 2;
@@ -215,10 +206,8 @@ namespace BarcodeVerificationSystem.View
                 else
                 {
                     items[i - pageStartIndex].Enabled = true;
-                    //Changing the page numbers
                     items[i - pageStartIndex].Text = i.ToString(CultureInfo.InvariantCulture);
 
-                    //Setting the Appearance of the page number buttons
                     if (i == _CurrentPage)
                     {
                         items[i - pageStartIndex].BackColor = Color.Black;
@@ -239,7 +228,6 @@ namespace BarcodeVerificationSystem.View
             }
             else
             {
-                //Enabling or Disalbing pagination first, last, previous , next buttons
                 if (_CurrentPage == 1)
                     btnBack.Enabled = btnFirst.Enabled = false;
                 else
@@ -275,6 +263,7 @@ namespace BarcodeVerificationSystem.View
             btnRefeshDatabase.Enabled = isEnable;
             txtSearchDatabase.Enabled = isEnable;
         }
+
         private void AssignColumnNameToTable(List<string> values, int imgIndex)
         {
             if (InvokeRequired)
@@ -337,9 +326,11 @@ namespace BarcodeVerificationSystem.View
                 {
                     if (index == imgIndex && imgIndex != -1)
                     {
-                        DataGridViewImageColumn col = new DataGridViewImageColumn();
-                        col.HeaderText = columns[index];
-                        col.Name = columns[index].Trim();
+                        var col = new DataGridViewImageColumn
+                        {
+                            HeaderText = columns[index],
+                            Name = columns[index].Trim()
+                        };
                         col.DefaultCellStyle.NullValue = null;
                         col.SortMode = DataGridViewColumnSortMode.NotSortable;
                         Size textSize = TextRenderer.MeasureText(col.HeaderText, dgvDatabase.Font);
@@ -350,10 +341,12 @@ namespace BarcodeVerificationSystem.View
                     }
                     else
                     {
-                        DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
-                        col.HeaderText = columns[index];
-                        col.Name = columns[index].Trim();
-                        col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                        var col = new DataGridViewTextBoxColumn
+                        {
+                            HeaderText = columns[index],
+                            Name = columns[index].Trim(),
+                            SortMode = DataGridViewColumnSortMode.NotSortable
+                        };
                         Size textSize = TextRenderer.MeasureText(col.HeaderText, dgvDatabase.Font);
                         col.Width = textSize.Width + 25;
                         col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -373,7 +366,8 @@ namespace BarcodeVerificationSystem.View
             dgvDatabase.RowCount = _PageRows;
         }
 
-        private List<int> _SearchResultList = new List<int>();
+
+        private readonly List<int> _SearchResultList = new List<int>();
 
         CancellationTokenSource _UpdateUICST;
 
@@ -403,7 +397,7 @@ namespace BarcodeVerificationSystem.View
             try
             {
                 _UpdateUICST = new CancellationTokenSource();
-                var token = _UpdateUICST.Token;
+                CancellationToken token = _UpdateUICST.Token;
 
                 for (int i = 0; i < _ObtainCodeList.Count(); i++)
                 {

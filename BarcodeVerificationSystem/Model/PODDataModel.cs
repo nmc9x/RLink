@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BarcodeVerificationSystem.Model
+﻿namespace BarcodeVerificationSystem.Model
 {
-    /// <summary>
-    /// @Author: DungLe 
-    /// @Email: dung.le@rynantech.com
-    /// @Date create: October, 17 2022
-    /// </summary>
     public class PODDataModel
     {
         private string _IP = "";

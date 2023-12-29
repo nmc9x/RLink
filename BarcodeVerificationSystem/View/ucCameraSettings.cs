@@ -1,22 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using BarcodeVerificationSystem.Controller;
-using UILanguage;
+﻿using BarcodeVerificationSystem.Controller;
 using BarcodeVerificationSystem.Model;
+using System;
+using System.Windows.Forms;
+using UILanguage;
 
 namespace BarcodeVerificationSystem.View
 {
-    /// <summary>
-    /// @Author: Dung Le
-    /// </summary>
-    public partial class ucCameraSettings : UserControl
+    public partial class UcCameraSettings : UserControl
     {
         private CameraModel _CameraModel;
         private int _Index = 0;
@@ -31,11 +21,13 @@ namespace BarcodeVerificationSystem.View
             }
         }
         private bool _IsBinding = false;
-        public ucCameraSettings()
+
+        public UcCameraSettings()
         {
             InitializeComponent();
            
         }
+
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
@@ -103,6 +95,7 @@ namespace BarcodeVerificationSystem.View
             radioButtonText4.CheckedChanged += RadioButtonRead_CheckedChanged;
             radioButtonText5.CheckedChanged += RadioButtonRead_CheckedChanged;
         }
+
         private void Shared_OnCameraStatusChange(object sender, EventArgs e)
         {
             UpdateCameraInfo();
@@ -118,6 +111,7 @@ namespace BarcodeVerificationSystem.View
             txtModel.Text = _CameraModel.Name;
             txtSerialNumber.Text = _CameraModel.SerialNumber;
         }
+
         private void InitEvents()
         {
             txtIPAddress.TextChanged += AdjustData;
@@ -141,17 +135,12 @@ namespace BarcodeVerificationSystem.View
             Load += UcCameraSettings_Load;
             comboBoxCamType.SelectedIndexChanged += AdjustData;
 
-            // Select Object for OCR IS2800
             checkBoxObject1.CheckedChanged += CheckBoxSelectObjectChange;
             checkBoxObject2.CheckedChanged += CheckBoxSelectObjectChange;
             checkBoxObject3.CheckedChanged += CheckBoxSelectObjectChange;
             checkBoxObject4.CheckedChanged += CheckBoxSelectObjectChange;
             checkBoxObject5.CheckedChanged += CheckBoxSelectObjectChange;
-            
-
         }
-
-       
 
         private void RadioButtonRead_CheckedChanged(object sender, EventArgs e)
         {
@@ -256,22 +245,20 @@ namespace BarcodeVerificationSystem.View
                         break;
                 }
             }
-
-            //Save to file
             Shared.SaveSettings();
         }
+
         private void SetLanguage()
         {
-            if (this.InvokeRequired)
+            if (InvokeRequired)
             {
-                this.Invoke(new Action(() => SetLanguage()));
+                Invoke(new Action(() => SetLanguage()));
                 return;
             }
             radAutoReconnectEnable.Text =
             radOutputEnable.Text = Lang.Enable;
             radAutoReconnectDisable.Text =
             radOutputDisable.Text = Lang.Disable;
-
             lblModel.Text = Lang.Model;
             lblNoReadOuputString.Text = Lang.NoReadOuputString;
             lblAutoReconnect.Text = Lang.AutoReconnect;

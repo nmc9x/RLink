@@ -2,25 +2,19 @@
 using BarcodeVerificationSystem.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UILanguage;
 
 namespace BarcodeVerificationSystem.View
 {
-    public partial class frmSettings : Form
+    public partial class FrmSettings : Form
     {
         #region Properties
-        private List<ToolStripLabel> _LabelStatusCameraList = new List<ToolStripLabel>();
-        private List<ToolStripLabel> _LabelStatusPrinterList = new List<ToolStripLabel>();
-        private Timer _DateTimeTicker = new Timer();
-        private string _DateTimeFormat = "yyyy/MM/dd hh:mm:ss tt";
+        private readonly List<ToolStripLabel> _LabelStatusCameraList = new List<ToolStripLabel>();
+        private readonly List<ToolStripLabel> _LabelStatusPrinterList = new List<ToolStripLabel>();
+        private readonly Timer _DateTimeTicker = new Timer();
+        private readonly string _DateTimeFormat = "yyyy/MM/dd hh:mm:ss tt";
         private const int CS_DropShadow = 0x00020000;
         protected override CreateParams CreateParams
         {
@@ -34,7 +28,7 @@ namespace BarcodeVerificationSystem.View
 
         #endregion Properties
 
-        public frmSettings()
+        public FrmSettings()
         {
             InitializeComponent();
             InitControls();
@@ -61,7 +55,7 @@ namespace BarcodeVerificationSystem.View
 
             //Initial tab settings
             tabPageSystemSettings.Controls.Clear();
-            ucSystemSettings ucSystemSettings = new ucSystemSettings();
+            UcSystemSettings ucSystemSettings = new UcSystemSettings();
             ucSystemSettings.Dock = DockStyle.Fill;
             tabPageSystemSettings.Controls.Add(ucSystemSettings);
             //END Initial tab settings
@@ -70,7 +64,7 @@ namespace BarcodeVerificationSystem.View
             tabPageCameraSettings.Controls.Clear();
             for (int i = 0; i < Shared.Settings.CameraList.Count; i++)
             {
-                ucCameraSettings ucCameraSettings = new ucCameraSettings
+                UcCameraSettings ucCameraSettings = new UcCameraSettings
                 {
                     Index = Shared.Settings.CameraList[i].Index,
                     Dock = DockStyle.Top
@@ -84,7 +78,7 @@ namespace BarcodeVerificationSystem.View
             tabPagePrinterSettings.Controls.Clear();
             for (int i = 0; i < Shared.Settings.PrinterList.Count; i++)
             {
-                ucPrinterSettings ucPrinterSettings = new ucPrinterSettings
+                UcPrinterSettings ucPrinterSettings = new UcPrinterSettings
                 {
                     Index = Shared.Settings.PrinterList[i].Index,
                     Dock = DockStyle.Top
@@ -96,12 +90,11 @@ namespace BarcodeVerificationSystem.View
 
             //Initial tab camera settings
             tabPageSensorController.Controls.Clear();
-            ucSensorSettings ucSensorSettings = new ucSensorSettings();
+            UcSensorSettings ucSensorSettings = new UcSensorSettings();
             ucSensorSettings.Dock = DockStyle.Fill;
             tabPageSensorController.Controls.Add(ucSensorSettings);
             //END Initial tab camera settings
         }
-
         private void InitEvents()
         {
             Shared.OnLanguageChange += Shared_OnLanguageChange;
@@ -111,16 +104,29 @@ namespace BarcodeVerificationSystem.View
             _DateTimeTicker.Tick += TimerDateTime_Tick;
         }
 
+        /// <summary>
+        /// Update current time delay check
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimerDateTime_Tick(object sender, EventArgs e)
         {
             toolStripDateTime.Text = DateTime.Now.ToString(_DateTimeFormat);
         }
 
+        /// <summary>
+        /// Invoke language change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Shared_OnLanguageChange(object sender, EventArgs e)
         {
             SetLanguage();
         }
 
+        /// <summary>
+        /// Set user interface language
+        /// </summary>
         private void SetLanguage()
         {
             if (this.InvokeRequired)
@@ -138,18 +144,40 @@ namespace BarcodeVerificationSystem.View
             lblStatusCamera01.Text = Lang.CameraTMP;
             lblStatusPrinter01.Text = Lang.Printer;
         }
+
+        /// <summary>
+        /// Invoke printer status change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Shared_OnPrinterStatusChange(object sender, EventArgs e)
         {
             UpdateStatusLabelPrinter();
         }
+
+        /// <summary>
+        /// Invoke camera status change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Shared_OnCameraStatusChange(object sender, EventArgs e)
         {
             UpdateStatusLabelCamera();
         }
+
+        /// <summary>
+        /// Invoke sensor status change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Shared_OnSensorControllerChangeEvent(object sender, EventArgs e)
         {
             UpdateUISensorControllerStatus(Shared.IsSensorControllerConnected);
         }
+
+        /// <summary>
+        ///  Update Camera connection status icon for connect (green), disconnect (red)
+        /// </summary>
         private void UpdateStatusLabelCamera()
         {
             if (InvokeRequired)
@@ -198,6 +226,9 @@ namespace BarcodeVerificationSystem.View
             label.Image = icon;
         }
 
+        /// <summary>
+        /// Update Printer connection status icon for connect (green), disconnect (red)
+        /// </summary>
         private void UpdateStatusLabelPrinter()
         {
             if (InvokeRequired)
@@ -225,6 +256,10 @@ namespace BarcodeVerificationSystem.View
             }
         }
 
+        /// <summary>
+        /// Update Sensor connection status icon for connect (green), disconnect (red)
+        /// </summary>
+        /// <param name="isConnect"></param>
         private void UpdateUISensorControllerStatus(bool isConnect)
         {
             if (InvokeRequired)

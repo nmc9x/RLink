@@ -27,19 +27,16 @@ namespace BarcodeVerificationSystem.Controller
         private Thread _ThreadReceiveData = null;
         public event EventHandler OnPODReceiveMessageEvent;
         public event EventHandler OnPODReceiveDataEvent;
-
         public string ServerIP
         {
             get { return _ServerIP; }
             set { _ServerIP = value; Disconnect(); }
         }
-
         public int Port
         {
             get { return _Port; }
             set { _Port = value; Disconnect(); }
         }
-
         public RoleOfStation RoleOfPrinter
         {
             get { return _RoleOfPrinter; }
@@ -68,7 +65,7 @@ namespace BarcodeVerificationSystem.Controller
             try
             {
                 _TcpClient = new TcpClient();
-                Task task = _TcpClient.ConnectAsync(_ServerIP, _Port);
+                var task = _TcpClient.ConnectAsync(_ServerIP, _Port);
                 task.Wait(_TimeOutOfConnection);
                 if (!task.IsCompleted)
                 {
@@ -199,7 +196,7 @@ namespace BarcodeVerificationSystem.Controller
                                 }
                             }
                             string dataRead = Encoding.ASCII.GetString(bytes, 0, counter);
-                            Console.WriteLine("Received: {0}", dataRead);
+                           // Console.WriteLine("Received: {0}", dataRead);
                             RaiseOnPODReceiveMessageEvent(dataRead);
                             RaiseOnPODReceiveDataEventEvent(new PODDataModel { IP = _ServerIP, Port = _Port, RoleOfPrinter = _RoleOfPrinter, Text = dataRead });
                             if (counter == 0)
@@ -222,7 +219,7 @@ namespace BarcodeVerificationSystem.Controller
                 {
                     try
                     {
-                        StringBuilder currentLine = new StringBuilder();
+                        var currentLine = new StringBuilder();
                         int code;
                         char charRead;
                         while ((code = _StreamReader.Read()) >= 0)
@@ -239,7 +236,7 @@ namespace BarcodeVerificationSystem.Controller
                             }
                         }
                         string dataRead = currentLine.ToString();
-                        Console.WriteLine("Receive data: {0}", dataRead);
+                       // Console.WriteLine("Receive data: {0}", dataRead);
                         RaiseOnPODReceiveMessageEvent(dataRead);
                         RaiseOnPODReceiveDataEventEvent(new PODDataModel { IP = _ServerIP, Port = _Port, RoleOfPrinter = _RoleOfPrinter, Text = dataRead });
                         if (dataRead != null && dataRead == "")

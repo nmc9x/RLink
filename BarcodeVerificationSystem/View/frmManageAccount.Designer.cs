@@ -1,6 +1,6 @@
 ﻿namespace BarcodeVerificationSystem.View
 {
-    partial class frmManageAccount
+    partial class FrmManageAccount
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageAccount));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManageAccount));
             this.lbUsername = new System.Windows.Forms.Label();
             this.lbRole = new System.Windows.Forms.Label();
             this.lbRetypePasword = new System.Windows.Forms.Label();

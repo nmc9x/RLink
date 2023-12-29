@@ -27,8 +27,13 @@ namespace BarcodeVerificationSystem.View
     {
         #region Variables Jobs
 
-        private readonly DMSeries DMCamera = new DMSeries(); 
-        public readonly  ISSeries ISCamera = new ISSeries(); 
+        private readonly DMSeries DMCamera = new DMSeries();
+        public readonly ISSeries ISCamera = new ISSeries();
+
+        internal bool isShowPopupDisConOneTime = false;
+        internal bool isShowPopupDupDbOneTime = false;
+        internal bool isShowPopupDisPrinterOneTime = false;
+        internal bool isShowPopupFalseInitDataOneTime = false;
 
         private readonly Timer _TimerDateTime = new Timer();
         private readonly string _DateTimeFormat = "yyyy/MM/dd hh:mm:ss tt";
@@ -44,7 +49,7 @@ namespace BarcodeVerificationSystem.View
         private readonly List<ToolStripLabel> _LabelStatusCameraList = new List<ToolStripLabel>();
         private readonly List<ToolStripLabel> _LabelStatusPrinterList = new List<ToolStripLabel>();
 
-        private frmSettings _FormSettings;
+        private FrmSettings _FormSettings;
         private JobModel _JobModel = null;
         private FrmMain _FormMainPC = null;
 
@@ -73,6 +78,7 @@ namespace BarcodeVerificationSystem.View
         {
             InitializeComponent();
         }
+
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
@@ -81,7 +87,7 @@ namespace BarcodeVerificationSystem.View
             InitEvents();
             SetLanguage();
         }
-      
+
         #region UI_Control_Event
         private void ActionResult(object sender, EventArgs e)
         {
@@ -89,7 +95,6 @@ namespace BarcodeVerificationSystem.View
             {
                 return;
             }
-
             if (sender == tabControl1)
             {
                 Shared.JobNameSelected = "";
@@ -205,17 +210,14 @@ namespace BarcodeVerificationSystem.View
                     CuzMessageBox.Show(Lang.PleaseSelectTheDatabaseFileFirst, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-
-                // Create and show dialog POD format form base on default POD format list
-                using (frmPODFormat frmPODFormat = new frmPODFormat())
+                using (var frmPODFormat = new FrmPODFormat())  // Create and show dialog POD format form base on default POD format list
                 {
-                    frmPODFormat._DirectoryDatabase = txtDirectoryDatabse.Text;
+                    FrmPODFormat._DirectoryDatabase = txtDirectoryDatabse.Text;
                     txtPODFormat.Text = "";
                     frmPODFormat.ShowDialog();
                     if (frmPODFormat.DialogResult == DialogResult.OK)
                     {
-                        // Get POD format from POD format form
-                        _PODFormat = frmPODFormat._PODFormat;
+                        _PODFormat = FrmPODFormat._PODFormat; // Get POD format from POD format form
                         if (_PODFormat.Count > 0)
                         {
                             foreach (PODModel item in _PODFormat)
@@ -223,9 +225,8 @@ namespace BarcodeVerificationSystem.View
                                 txtPODFormat.Text += item.ToStringSample();
                             }
                         }
-
                         _NumberTotalsCode = frmPODFormat._NumberTotalsCode;
-                        // END Get POD format from POD format form
+
                     }
                 }
             }
@@ -244,7 +245,7 @@ namespace BarcodeVerificationSystem.View
             {
                 if (_FormSettings == null || _FormSettings.IsDisposed)
                 {
-                    _FormSettings = new frmSettings();
+                    _FormSettings = new FrmSettings();
                     _FormSettings.Show();
                 }
                 else
@@ -275,64 +276,67 @@ namespace BarcodeVerificationSystem.View
             }
             else if (sender == btnNext)
             {
-                if (Shared.JobNameSelected == "")
+                try
                 {
-                    JobModel jobModel = Shared.GetJob(txtFileName.Text + Shared.Settings.JobFileExtension);
-                    if (jobModel == null && txtFileName.Text != "")
+                    if (Shared.JobNameSelected == "")
                     {
-                        CuzMessageBox.Show(Lang.PleaseSaveTheWorkYouJustEntered, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
-                    }
-                    CuzMessageBox.Show(Lang.PleaseChooseAJobOrCreateANewOne, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    if (_JobModel != null && _JobModel.CompareType == CompareType.Database && !CheckExistTemplatePrint(_JobModel.TemplatePrint) && _JobModel.PrinterSeries)
-                    {
-                        CuzMessageBox.Show(Lang.CheckExistTemplatePrinter, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
-                    }
-
-                    if (Shared.Settings.PrinterList.FirstOrDefault().CheckAllPrinterSettings && _JobModel.CompareType == CompareType.Database && _JobModel.PrinterSeries)
-                    {
-                        PrinterSettingsModel printerSettingsModel = Shared.GetSettingsPrinter();
-                        if (printerSettingsModel.IsSupportHttpRequest)
+                        JobModel jobModel = Shared.GetJob(txtFileName.Text + Shared.Settings.JobFileExtension);
+                        if (jobModel == null && txtFileName.Text != "")
                         {
-                            if (printerSettingsModel.PodDataType != 1)
-                            {
-                                CuzMessageBox.Show(Lang.DataTypeMustBeRAWData, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                return;
-                            }
-                        }
-                        else
-                        {
-                            CuzMessageBox.Show(Lang.PrinterNotSupportHttpRequest, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CuzMessageBox.Show(Lang.PleaseSaveTheWorkYouJustEntered, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
                         }
-
-                    }
-
-                    this.Hide();
-
-                    _FormMainPC?.Dispose();
-                    if (_FormMainPC == null || _FormMainPC.IsDisposed)
-                    {
-                        _FormMainPC = new FrmMain(this);
-                        _FormMainPC.Show();
+                        CuzMessageBox.Show(Lang.PleaseChooseAJobOrCreateANewOne, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        if (_FormMainPC.WindowState == FormWindowState.Minimized)
+                        if (_JobModel != null && _JobModel.CompareType == CompareType.Database && !CheckExistTemplatePrint(_JobModel.TemplatePrint) && _JobModel.PrinterSeries)
                         {
-                            _FormMainPC.WindowState = FormWindowState.Normal;
+                            CuzMessageBox.Show(Lang.CheckExistTemplatePrinter, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
                         }
 
-                        _FormMainPC.Focus();
-                        _FormMainPC.BringToFront();
-                    }
+                        if (Shared.Settings.PrinterList.FirstOrDefault().CheckAllPrinterSettings && _JobModel.CompareType == CompareType.Database && _JobModel.PrinterSeries)
+                        {
+                            PrinterSettingsModel printerSettingsModel = Shared.GetSettingsPrinter();
+                            if (printerSettingsModel.IsSupportHttpRequest)
+                            {
+                                if (printerSettingsModel.PodDataType != 1)
+                                {
+                                    CuzMessageBox.Show(Lang.DataTypeMustBeRAWData, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                CuzMessageBox.Show(Lang.PrinterNotSupportHttpRequest, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return;
+                            }
 
+                        }
+
+                        Hide();
+
+                        _FormMainPC?.Dispose();
+                        if (_FormMainPC == null || _FormMainPC.IsDisposed)
+                        {
+                            _FormMainPC = new FrmMain(this);
+                            _FormMainPC.Show();
+                        }
+                        else
+                        {
+                            if (_FormMainPC.WindowState == FormWindowState.Minimized)
+                            {
+                                _FormMainPC.WindowState = FormWindowState.Normal;
+                            }
+
+                            _FormMainPC.Focus();
+                            _FormMainPC.BringToFront();
+                        }
+
+                    }
                 }
-               
+                catch (Exception) { }
             }
             else if (sender == btnSave)
             {
@@ -347,7 +351,7 @@ namespace BarcodeVerificationSystem.View
             }
             else if (sender == btnAbout)
             {
-                frmAbout about = new frmAbout();
+                var about = new FrmAbout();
                 about.ShowDialog();
             }
             else if (sender == btnDelete)
@@ -361,9 +365,9 @@ namespace BarcodeVerificationSystem.View
                 UpdateUIListBoxPrintProductTemplateList(_PrintProductTemplateList);
             }
         }
+
         public static void RadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            //Color.FromArgb(210, 232, 255)
             if (sender is RadioButton radioButton)
             {
                 if (radioButton.Enabled)
@@ -372,6 +376,7 @@ namespace BarcodeVerificationSystem.View
                 }
             }
         }
+
         private void CboSupportForCamera_SelectedIndexChanged(object sender, EventArgs e)
         {
             var cbbSupportCam = (ComboBox)sender;
@@ -387,15 +392,15 @@ namespace BarcodeVerificationSystem.View
                     break;
             }
         }
+
         private void BtnViewLog_Click(object sender, EventArgs e)
         {
             try
             {
-                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                using (var openFileDialog = new OpenFileDialog())
                 {
                     openFileDialog.InitialDirectory = CommVariables.PathProgramDataApp;
                     openFileDialog.Filter = "Text files (*.txt)|*.txt|Job files (*.rvis)|*.rvis|Database files (*.db)|*.db|csv files (*.csv)|*.csv|All files (*.*)|*.*";
-                    //openFileDialog.RestoreDirectory = true;
                     openFileDialog.FilterIndex = 5;
                     openFileDialog.Multiselect = true;
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -408,12 +413,13 @@ namespace BarcodeVerificationSystem.View
             catch (Exception) { }
 
         }
+
         private void ListBoxJobList_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index == -1 || (sender as ListBox).Items.Count == 0) return;
             try
             {
-                var job = Shared.GetJob((sender as ListBox).Items[e.Index].ToString());
+                JobModel job = Shared.GetJob((sender as ListBox).Items[e.Index].ToString());
                 Rectangle headItemRect = new Rectangle(0, e.Bounds.Y + 4, 8, e.Bounds.Height - 10);
                 using (Brush brush = new SolidBrush(_Standalone))
                     if (!job.PrinterSeries)
@@ -421,9 +427,9 @@ namespace BarcodeVerificationSystem.View
             }
             catch
             {
-
             }
         }
+
         private void JobType_EnabledChanged(object sender, EventArgs e)
         {
             if (sender is RadioButton radioButton)
@@ -445,6 +451,7 @@ namespace BarcodeVerificationSystem.View
                 }
             }
         }
+
         private void TxtSearchTemplate_TextChanged(object sender, EventArgs e)
         {
             string keyWord = txtSearchTemplate.Text.ToLower();
@@ -453,10 +460,12 @@ namespace BarcodeVerificationSystem.View
                 UpdateUIListBoxPrintProductTemplateList(_PrintProductTemplateList, keyWord);
             }
         }
+
         private void TimerDateTime_Tick(object sender, EventArgs e)
         {
             toolStripDateTime.Text = DateTime.Now.ToString(_DateTimeFormat);
         }
+
         private void TxtPODFormat_TextChanged(object sender, EventArgs e)
         {
             if (_JobModel != null && radDatabase.Checked)
@@ -464,6 +473,7 @@ namespace BarcodeVerificationSystem.View
                 _JobModel.PODFormat = _PODFormat;
             }
         }
+
         private void TxtDirectoryDatabse_TextChanged(object sender, EventArgs e)
         {
             if (_JobModel != null && radDatabase.Checked)
@@ -471,6 +481,7 @@ namespace BarcodeVerificationSystem.View
                 _JobModel.DirectoryDatabase = txtDirectoryDatabse.Text;
             }
         }
+
         private void TxtStaticText_TextChanged(object sender, EventArgs e)
         {
             if (_JobModel != null && radStaticText.Checked)
@@ -478,6 +489,7 @@ namespace BarcodeVerificationSystem.View
                 _JobModel.StaticText = txtStaticText.Text;
             }
         }
+
         private void TxtFileName_TextChanged(object sender, EventArgs e)
         {
             if (_JobModel != null)
@@ -485,6 +497,7 @@ namespace BarcodeVerificationSystem.View
                 _JobModel.FileName = txtFileName.Text;
             }
         }
+
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
             string keyWord = txtSearch.Text.ToLower();
@@ -495,13 +508,14 @@ namespace BarcodeVerificationSystem.View
                 {
                     if (templateName.ToLower().Contains(keyWord))
                     {
-                        var jobModel = Shared.GetJob(templateName);
+                        JobModel jobModel = Shared.GetJob(templateName);
                         if (jobModel != null && jobModel.JobStatus != JobStatus.Deleted)
                             listBoxJobList.Items.Add(templateName);
                     }
                 }
             }
         }
+
         private void BtnClose_Click(object sender, EventArgs e)
         {
             Exit();
@@ -539,6 +553,7 @@ namespace BarcodeVerificationSystem.View
             pnlStandaloneColor.BackColor = _Standalone;
             pnlRLinkSeriesColor.BackColor = _RLinkColor;
         }
+
         #endregion UI_Control_Event
 
         #region Orther_Events
@@ -546,15 +561,18 @@ namespace BarcodeVerificationSystem.View
         {
             EnableUIPrinting();
         }
+
         private void Shared_OnPrinterStatusChange(object sender, EventArgs e)
         {
             UpdateStatusLabelPrinter();
             ObtainPrintProductTemplateList();
         }
+
         private void Shared_OnSensorControllerChangeEvent(object sender, EventArgs e)
         {
             UpdateUISensorControllerStatus(Shared.IsSensorControllerConnected);
         }
+
         private void Shared_OnLanguageChange(object sender, EventArgs e)
         {
             SetLanguage();
@@ -563,11 +581,11 @@ namespace BarcodeVerificationSystem.View
         {
             if (sender is PODDataModel)
             {
-                PODDataModel podDataModel = sender as PODDataModel;
+                var podDataModel = sender as PODDataModel;
                 try
                 {
-                    string[] pODcommand = podDataModel.Text.Split(';',','); // Prioritize these two characters
-                    PODResponseModel PODResponseModel = new PODResponseModel
+                    string[] pODcommand = podDataModel.Text.Split(';', ','); // Prioritize these two characters
+                    var PODResponseModel = new PODResponseModel
                     {
                         Command = pODcommand[0]
                     };
@@ -581,8 +599,7 @@ namespace BarcodeVerificationSystem.View
                             PODResponseModel.Template = pODcommand;
                             if (podDataModel.RoleOfPrinter == RoleOfStation.ForProduct)
                             {
-                                // List print template
-                                _PrintProductTemplateList = PODResponseModel.Template;
+                                _PrintProductTemplateList = PODResponseModel.Template;      // List print template 
                                 UpdateUIListBoxPrintProductTemplateList(_PrintProductTemplateList);
                             }
                             else { }
@@ -593,12 +610,13 @@ namespace BarcodeVerificationSystem.View
             }
         }
 
+
         //--CAMEARA EVENTS--//
         private void Shared_OnCameraStatusChange(object sender, EventArgs e)
         {
-            
             UpdateStatusLabelCamera();
         }
+
         private void Shared_OnCameraTriggerOnChange(object sender, EventArgs e)
         {
             switch (ISCamera._CameraModel.CameraType)
@@ -619,8 +637,9 @@ namespace BarcodeVerificationSystem.View
                 default:
                     break;
             }
-           
+
         }
+
         private void Shared_OnCameraTriggerOffChange(object sender, EventArgs e)
         {
             foreach (DataManSystem dataManSystem in DMCamera._DataManSystemList)
@@ -632,6 +651,7 @@ namespace BarcodeVerificationSystem.View
                 catch (Exception) { }
             }
         }
+
         private void Shared_OnCameraOutputSignalChange(object sender, EventArgs e)
         {
             foreach (DataManSystem dataManSystem in DMCamera._DataManSystemList)
@@ -643,7 +663,7 @@ namespace BarcodeVerificationSystem.View
                 catch (Exception) { }
             }
         }
-        //--END CAMEARA--//
+        //--END CAMEARA EVENTS--//
 
         private void PODController_OnPODReceiveDataEvent(object sender, EventArgs e)
         {
@@ -652,10 +672,12 @@ namespace BarcodeVerificationSystem.View
                 Shared.RaiseOnPrinterDataChangeEvent(sender as PODDataModel);
             }
         }
+
         private void SensorController_OnPODReceiveMessageEvent(object sender, EventArgs e)
         {
             Shared.RaiseOnRepeatTCPMessageChange(sender);
         }
+
         #endregion Orther_Events
 
         #region Utility_Function
@@ -666,7 +688,6 @@ namespace BarcodeVerificationSystem.View
                 Invoke(new Action(() => SetLanguage()));
                 return;
             }
-
             btnSettings.Text = Lang.Settings;
             btnExit.Text = Lang.Exit;
             btnAbout.Text = Lang.About;
@@ -687,14 +708,8 @@ namespace BarcodeVerificationSystem.View
 
             lblJobType.Text = Lang.JobType;
             lblJobStatus.Text = Lang.JobStatus;
-            //radRSeries.Text = Lang.Enable;
-            //radOther.Text = Lang.Disable;
-            //btnSave.Text = Lang.Save;
             btnSave.Text = Lang.Save;
             lblSupportForCamera.Text = Lang.SupportForCamera;
-            //lblJobList.Text = Lang.JobList;
-            //lblSearch.Text = Lang.Search;
-            //lblJobDetails.Text = Lang.JobDetails;
             lblCompare.Text = Lang.CompareType;
             lblStaticText.Text = Lang.StaticText;
             radCanRead.Text = Lang.CanRead;
@@ -703,7 +718,6 @@ namespace BarcodeVerificationSystem.View
             radDatabase.Text = Lang.Database;
             lblImportDatabase.Text = Lang.ImportDatabase;
             lblPODFromat.Text = Lang.PODFormat;
-            //lblJobSystem.Text = Lang.JobSystem;
             lblFileName.Text = Lang.JobList;
 
             lblStatusCamera01.Text = Lang.CameraTMP;
@@ -716,6 +730,7 @@ namespace BarcodeVerificationSystem.View
             tabPage1.Text = Lang.SelectJob;
             tabPage2.Text = Lang.CreateANewJob;
         }
+
         private void InitControls()
         {
 #if DEBUG
@@ -744,9 +759,10 @@ namespace BarcodeVerificationSystem.View
 
             MonitorCameraConnection();
             MonitorPrinterConnection();
-           MonitorSensorControllerConnection();
-          MonitorListenerServer();
+            MonitorSensorControllerConnection();
+            MonitorListenerServer();
         }
+
         private void InitEvents()
         {
             _TimerDateTime.Tick += TimerDateTime_Tick;
@@ -781,7 +797,7 @@ namespace BarcodeVerificationSystem.View
             txtSearchTemplate.TextChanged += TxtSearchTemplate_TextChanged;
 
             btnPODFormat.Click += ActionResult;
-     
+
             btnSettings.Click += ActionResult;
             listBoxJobList.SelectedIndexChanged += ActionResult;
             listBoxPrintProductTemplate.SelectedIndexChanged += ActionResult;
@@ -808,8 +824,8 @@ namespace BarcodeVerificationSystem.View
             cboSupportForCamera.Height = 40;
             cboSupportForCamera.DropDownHeight = 150;
             cboSupportForCamera.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboSupportForCamera.DrawItem += ComboBoxCustom.myComboBox_DrawItem;
-            cboSupportForCamera.MeasureItem += ComboBoxCustom.cbo_MeasureItem;
+            cboSupportForCamera.DrawItem += ComboBoxCustom.MyComboBox_DrawItem;
+            cboSupportForCamera.MeasureItem += ComboBoxCustom.Cbo_MeasureItem;
             cboSupportForCamera.SelectedIndexChanged += CboSupportForCamera_SelectedIndexChanged;
             listBoxJobList.DrawItem += ListBoxJobList_DrawItem;
 
@@ -829,18 +845,22 @@ namespace BarcodeVerificationSystem.View
             ISCamera.UpdateLabelStatusEvent += UpdateLabelStatusEvent;
 
         }
+
         private void UpdateLabelStatusEvent(object sender, EventArgs e)
         {
-           // UpdateStatusLabelCamera(); //spare
+            // UpdateStatusLabelCamera(); //spare
         }
+
         private void FrmJob_AutoAddSufixEvent(object sender, EventArgs e)
         {
-           ISCamera.AutoAddSuffixes(ISCamera._CameraModel);
+            ISCamera.AutoAddSuffixes(ISCamera._CameraModel);
         }
+
         private void DebugVirtual()
         {
             BtnViewLog.Visible = true;
         }
+
         private async void MonitorListenerServer()
         {
             try
@@ -852,9 +872,10 @@ namespace BarcodeVerificationSystem.View
                 System.Windows.MessageBox.Show("ERROR: " + exx);
             }
         }
+
         private async Task StartListenerServer()
-         {
-            StringBuilder url = new StringBuilder("http://");
+        {
+            var url = new StringBuilder("http://");
             url.Append(Shared.GetLocalIPAddress());
             url.Append("/");
             string[] prefixes = new string[] { url.ToString() };
@@ -862,6 +883,7 @@ namespace BarcodeVerificationSystem.View
             var server = new CameraListenerServer(prefixes);
             await server.StartAsync();
         }
+
         private void PrinterSupport(bool printerSub, bool isAlert = true)
         {
             if (InvokeRequired)
@@ -876,7 +898,7 @@ namespace BarcodeVerificationSystem.View
             }
             string content = printerSub ? SupportForPrinter : Standalone;
 
-            if (isAlert) CuzAlert.Show(content, Alert.enmType.Info, new System.Drawing.Size(500, 90), new System.Drawing.Point(Location.X, Location.Y), this.Size);
+            if (isAlert) CuzAlert.Show(content, Alert.enmType.Info, new Size(500, 90), new Point(Location.X, Location.Y), Size);
             if (printerSub)
             {
                 radDatabase.Checked = true;
@@ -898,6 +920,7 @@ namespace BarcodeVerificationSystem.View
             }
 
         }
+
         private void DatabaseChecked(bool isChecked, bool isTemplate)
         {
             if (isChecked)
@@ -949,10 +972,12 @@ namespace BarcodeVerificationSystem.View
                 txtPODFormat.Text = "";
             }
         }
+
         public void ShowForm()
         {
-            this.Show();
+            Show();
         }
+
         private bool CheckExistTemplatePrint(string tmp)
         {
             if (_PrintProductTemplateList.Count() <= 0)
@@ -968,6 +993,7 @@ namespace BarcodeVerificationSystem.View
             }
             return false;
         }
+
         private string GetSelectedPrintProductTemplate()
         {
             string printTemplate = "";
@@ -979,7 +1005,7 @@ namespace BarcodeVerificationSystem.View
 
             if (selectedItem != null && selectedItem is ItemCustomModel)
             {
-                ItemCustomModel itemCustomModel = selectedItem as ItemCustomModel;
+                var itemCustomModel = selectedItem as ItemCustomModel;
                 if (_PrintProductTemplateList != null && itemCustomModel.Value >= 0 && itemCustomModel.Value < _PrintProductTemplateList.Count())
                 {
                     printTemplate = _PrintProductTemplateList[itemCustomModel.Value];
@@ -987,6 +1013,7 @@ namespace BarcodeVerificationSystem.View
             }
             return printTemplate;
         }
+
         private void AutoGenerateFileName()
         {
             if (InvokeRequired)
@@ -997,6 +1024,7 @@ namespace BarcodeVerificationSystem.View
             string defaultName = string.Format("{0}_{1}", DateTime.Now.ToString(Shared.Settings.JobDateTimeFormat), Shared.Settings.JobFileNameDefault);
             txtFileName.Text = defaultName;
         }
+
         private void UpdateUIClearJobInformation()
         {
             if (InvokeRequired)
@@ -1017,9 +1045,10 @@ namespace BarcodeVerificationSystem.View
             listBoxJobList.Enabled = true;
             UpdateUIClearTextBoxInfo(_JobModel);
         }
+
         private string OpenDirectoryFileDatabase()
         {
-            using (OpenFileDialog openFileDialog1 = new OpenFileDialog())
+            using (var openFileDialog1 = new OpenFileDialog())
             {
                 string filePath = "";
                 openFileDialog1.Filter = "Database files (*.csv, *.txt)|*.csv;*.txt";
@@ -1033,52 +1062,51 @@ namespace BarcodeVerificationSystem.View
                 return filePath;
             }
         }
+
         private void CreateJob()
         {
             _NameOfJobOld = "";
-            _JobModel = new JobModel();
-            _JobModel.CompareType = CompareType.CanRead;
-            _JobModel.StaticText = "";
-            _JobModel.DirectoryDatabase = "";
-            _JobModel.PODFormat = _PODFormat;
-            _JobModel.FileName = "";
-            _JobModel.UserCreate = Shared.LoggedInUser.FullName;
-            _JobModel.AutoLoad = true;
+            _JobModel = new JobModel
+            {
+                CompareType = CompareType.CanRead,
+                StaticText = "",
+                DirectoryDatabase = "",
+                PODFormat = _PODFormat,
+                FileName = "",
+                UserCreate = Shared.LoggedInUser.FullName,
+                AutoLoad = true
+            };
             _JobModel.PrinterSeries = _JobModel.PrinterSeries;
             _JobModel.TemplatePrint = "";
             _JobModel.JobStatus = JobStatus.NewlyCreated;
         }
+
         private void OpenJob()
         {
-            // Check existing processing
-            if (_IsProcessing || listBoxJobList.SelectedItem == null)
+            if (_IsProcessing || listBoxJobList.SelectedItem == null)  // Check existing processing
             {
                 return;
             }
             _IsProcessing = true;
-
-            // Get Job name with extension
-            _NameOfJobOld = listBoxJobList.SelectedItem.ToString();
-
-            // Open Job file
-            Shared.JobNameSelected = _NameOfJobOld;
+            _NameOfJobOld = listBoxJobList.SelectedItem.ToString(); // Get Job name with extension
+            Shared.JobNameSelected = _NameOfJobOld;  // Open Job file
             _JobModel = Shared.GetJob(_NameOfJobOld);
             UpdateUIJobInformation(_JobModel);
-
             _IsProcessing = false;
         }
+
         private void DeleteJob()
         {
             try
             {
                 if (_NameOfJobOld != "")
                 {
-                    var jobModel = Shared.GetJob(_NameOfJobOld);
+                    JobModel jobModel = Shared.GetJob(_NameOfJobOld);
 
-                    var permission = !(Shared.LoggedInUser.Role == 1);
+                    bool permission = !(Shared.LoggedInUser.Role == 1);
                     if (!permission)
                     {
-                        var isNewCreate = jobModel.JobStatus == JobStatus.NewlyCreated;
+                        bool isNewCreate = jobModel.JobStatus == JobStatus.NewlyCreated;
                         if (!isNewCreate)
                         {
                             string warningMsg = Lang.YouDoNotHavePermission;
@@ -1091,8 +1119,7 @@ namespace BarcodeVerificationSystem.View
                     DialogResult result = CuzMessageBox.Show(message, Lang.Confirm, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        // Reload Job name list
-                        jobModel.JobStatus = JobStatus.Deleted;
+                        jobModel.JobStatus = JobStatus.Deleted; // Reload Job name list
                         string filePath = CommVariables.PathJobsApp + jobModel.FileName + Shared.Settings.JobFileExtension;
                         jobModel.SaveFile(filePath);
                     }
@@ -1105,11 +1132,11 @@ namespace BarcodeVerificationSystem.View
                 LoadJobNameList();
             }
         }
+
         private JobModel InitJobModel()
         {
-            JobModel job = new JobModel();
-
-            var isRSeries = radRSeries.Checked;
+            var job = new JobModel();
+            bool isRSeries = radRSeries.Checked;
             job.PrinterSeries = isRSeries;
             job.FileName = txtFileName.Text;
             if (isRSeries)
@@ -1163,16 +1190,15 @@ namespace BarcodeVerificationSystem.View
 
             return job;
         }
+
         private void SaveJob()
         {
             try
             {
                 _JobModel = InitJobModel();
-                // Check current Job has null
-                if (_JobModel != null)
+                if (_JobModel != null)   // Check current Job has null
                 {
-                    // Check Job name is empty
-                    string JobName = _JobModel.FileName;
+                    string JobName = _JobModel.FileName;  // Check Job name is empty
                     if (JobName == "")
                     {
                         CuzMessageBox.Show(Lang.PleaseInputJobName, Lang.Confirm, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1183,15 +1209,15 @@ namespace BarcodeVerificationSystem.View
                     {
                         if (_JobModel.CompareType == CompareType.Database)
                         {
-                            // Check Database
-                            string databasePath = _JobModel.DirectoryDatabase;
+
+                            string databasePath = _JobModel.DirectoryDatabase;  // Check Database
                             if (_JobModel.CompareType == CompareType.Database && databasePath == "")
                             {
                                 CuzMessageBox.Show(Lang.PleaseSelectDatabasePath, Lang.Confirm, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 return;
                             }
-                            // Check POD format
-                            string podFormat = _JobModel.PODFormat.ToString();
+
+                            string podFormat = _JobModel.PODFormat.ToString();   // Check POD format
 
                             if (_JobModel.CompareType == CompareType.Database && podFormat == "" || txtPODFormat.Text == "")
                             {
@@ -1210,15 +1236,15 @@ namespace BarcodeVerificationSystem.View
                     {
                         if (_JobModel.CompareType == CompareType.Database)
                         {
-                            // Check Database
-                            string databasePath = _JobModel.DirectoryDatabase;
+
+                            string databasePath = _JobModel.DirectoryDatabase;  // Check Database
                             if (_JobModel.CompareType == CompareType.Database && databasePath == "")
                             {
                                 CuzMessageBox.Show(Lang.PleaseSelectDatabasePath, Lang.Confirm, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 return;
                             }
-                            // Check POD format
-                            string podFormat = _JobModel.PODFormat.ToString();
+
+                            string podFormat = _JobModel.PODFormat.ToString();  // Check POD format
 
                             if (_JobModel.CompareType == CompareType.Database && podFormat == "" || txtPODFormat.Text == "")
                             {
@@ -1243,10 +1269,10 @@ namespace BarcodeVerificationSystem.View
                         }
                     }
 
-                    // Check Job name has exist and confirm replace
-                    if (Shared.CheckJobHasExist(JobName))
+
+                    if (Shared.CheckJobHasExist(JobName))  // Check Job name has exist and confirm replace
                     {
-                        var tmpJob = Shared.GetJob(JobName + Shared.Settings.JobFileExtension);
+                        JobModel tmpJob = Shared.GetJob(JobName + Shared.Settings.JobFileExtension);
                         if (tmpJob != null)
                         {
                             if (tmpJob.JobStatus == JobStatus.Deleted)
@@ -1270,7 +1296,6 @@ namespace BarcodeVerificationSystem.View
                                 if (result == DialogResult.Yes)
                                 {
                                     // Continue execute code below
-
                                 }
                                 else
                                 {
@@ -1282,11 +1307,10 @@ namespace BarcodeVerificationSystem.View
 
                     if (JobName != "")
                     {
-                        // Perform delete Job file
-                        Shared.DeleteJob(_JobModel);
+                        Shared.DeleteJob(_JobModel);  // Perform delete Job file
                     }
-                    // Save Job
-                    string filePath = CommVariables.PathJobsApp + _JobModel.FileName + Shared.Settings.JobFileExtension;
+
+                    string filePath = CommVariables.PathJobsApp + _JobModel.FileName + Shared.Settings.JobFileExtension; // Save Job
                     _JobModel.SaveFile(filePath);
                     // END Save Job
                     // Reload Job name list
@@ -1312,7 +1336,7 @@ namespace BarcodeVerificationSystem.View
                         }
                     }
 
-                    this.Hide();
+                    Hide();
                     _FormMainPC?.Dispose();
                     if (_FormMainPC == null || _FormMainPC.IsDisposed)
                     {
@@ -1332,7 +1356,7 @@ namespace BarcodeVerificationSystem.View
 
                     PrinterSupport(_JobModel.PrinterSeries, false);
                     txtFileName.Text = "";
-                  
+
                 }
                 else
                 {
@@ -1346,6 +1370,7 @@ namespace BarcodeVerificationSystem.View
                 return;
             }
         }
+
         private void UpdateUIClearTextBoxInfo(JobModel jobModel)
         {
             if (InvokeRequired)
@@ -1377,9 +1402,10 @@ namespace BarcodeVerificationSystem.View
             txtJobType.BackColor = Color.White;
 
         }
+
         private void LoadJobNameList()
         {
-            // Check existing processing
+
             if (_IsProcessing)
             {
                 return;
@@ -1391,28 +1417,28 @@ namespace BarcodeVerificationSystem.View
             Thread threadLoadJobNameList = new Thread(() =>
             {
                 _IsProcessing = true;
-                // Update user interface
+
                 _NameOfJobOld = "";
                 UpdateUIClearJobInformation();
                 UpdateUILoadJobNameList(false);
 
-                // Clear list box of Job name
+
                 Invoke(new Action(() =>
                 {
                     listBoxJobList.Items.Clear();
                 }));
 
-                // Get Job name list
+
                 _JobNameList = null;
                 _JobNameList = Shared.GetJobNameList();
-                //Update Job name list to user interface
+
                 Invoke(new Action(() =>
                 {
                     if (_JobNameList != null)
                     {
                         foreach (string JobName in _JobNameList)
                         {
-                            var jobModel = Shared.GetJob(JobName);
+                            JobModel jobModel = Shared.GetJob(JobName);
                             if (jobModel != null && jobModel.JobStatus != JobStatus.Deleted)
                                 listBoxJobList.Items.Add(JobName);
                         }
@@ -1425,12 +1451,13 @@ namespace BarcodeVerificationSystem.View
                 {
                     picLoading.Visible = true;
                 }));
-                // Update user interface
+
                 UpdateUILoadJobNameList(true);
             });
             threadLoadJobNameList.IsBackground = true;
             threadLoadJobNameList.Start();
         }
+
         private void UpdateUILoadJobNameList(bool isEnable)
         {
             if (InvokeRequired)
@@ -1442,6 +1469,7 @@ namespace BarcodeVerificationSystem.View
             picLoading.Visible = !isEnable;
             listBoxJobList.Enabled = isEnable;
         }
+
         private void UpdateUIJobInformation(JobModel jobModel)
         {
 
@@ -1501,8 +1529,7 @@ namespace BarcodeVerificationSystem.View
                     txtJobType.BackColor = Color.White;
                 }
 
-                //txtDirectoryDatabseInfo.Text = jobModel.DirectoryDatabase;
-                foreach (var item in jobModel.PODFormat)
+                foreach (PODModel item in jobModel.PODFormat)
                 {
                     if (item.Type == PODModel.TypePOD.FIELD)
                         pODFormat += item.ToString();
@@ -1520,6 +1547,7 @@ namespace BarcodeVerificationSystem.View
                 UpdateUIClearJobInformation();
             }
         }
+
         private void EnableForCompareType(CompareType compareType)
         {
             if (InvokeRequired)
@@ -1527,8 +1555,7 @@ namespace BarcodeVerificationSystem.View
                 Invoke(new Action(() => EnableForCompareType(compareType)));
                 return;
             }
-
-            var isTemplate = radRSeries.Checked;
+            bool isTemplate = radRSeries.Checked;
             if (compareType == CompareType.CanRead)
             {
                 txtStaticText.ReadOnly = true;
@@ -1548,6 +1575,7 @@ namespace BarcodeVerificationSystem.View
                 DatabaseChecked(true, isTemplate);
             }
         }
+
         public void Exit()
         {
             DialogResult dialogResult = CuzMessageBox.Show(Lang.DoYouWantExitApplication, Lang.Info, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -1555,22 +1583,22 @@ namespace BarcodeVerificationSystem.View
             {
                 try
                 {
-                    //Save history
-                    LoggingController.SaveHistory(
+                    LoggingController.SaveHistory(  //Save history
                         Lang.Exit,
                         Lang.LogOut,
                         Lang.LogoutSuccessfully,
                         SecurityController.Decrypt(Shared.LoggedInUser.UserName, "rynan_encrypt_remember"),
                         LoggingType.LogedOut);
 
-                    this.Close();
+                    Close();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    throw (ex);
+
                 }
             }
         }
+
         internal void Invoke_AutoAddSufixEvent()
         {
             AutoAddSufixEvent.Invoke(this, EventArgs.Empty);
@@ -1605,6 +1633,7 @@ namespace BarcodeVerificationSystem.View
                 }
             }
         }
+
         private void UpdateUISensorControllerStatus(bool isConnect)
         {
             if (InvokeRequired)
@@ -1621,7 +1650,8 @@ namespace BarcodeVerificationSystem.View
                 ShowLabelIcon(lblSensorControllerStatus, Lang.SensorController, Properties.Resources.icons8_sensor_30px_disconnected);
             }
         }
-        private void ShowLabelIcon(ToolStripLabel label, String text, Image icon)
+
+        private void ShowLabelIcon(ToolStripLabel label, string text, Image icon)
         {
             if (InvokeRequired)
             {
@@ -1640,12 +1670,12 @@ namespace BarcodeVerificationSystem.View
             label.Text = text;
             label.Image = icon;
         }
+
         #endregion UpdateUI Printer
 
         #region Monitor Printer
         private void MonitorPrinterConnection()
         {
-
             _ThreadMonitorPrinter = new Thread(() =>
             {
                 while (true)
@@ -1657,8 +1687,7 @@ namespace BarcodeVerificationSystem.View
                             PrinterModel printerModel = Shared.Settings.PrinterList[i];
                             if (printerModel.IsEnable)
                             {
-                                // Get controller has exist if not exist then add new controller
-                                PODController podController = printerModel.PODController;
+                                PODController podController = printerModel.PODController; // Get controller has exist if not exist then add new controller
                                 if (podController == null)
                                 {
                                     podController = new PODController(printerModel.IP, printerModel.Port, printerModel.RoleOfPrinter, 1000, 1000, printerModel.IsVersion);
@@ -1678,15 +1707,12 @@ namespace BarcodeVerificationSystem.View
                                         podController.ServerIP = printerModel.IP;
                                     }
                                 }
-
-                                //Console.WriteLine("POD status: {0}", podController.IsConnected());
-                                var isConnected = podController.IsConnected();
+                                bool isConnected = podController.IsConnected();
                                 if (isConnected == false)
-                                {   // Disconnect and connect again
+                                {
                                     podController.Disconnect();
                                     podController.Connect();
                                 }
-
                                 if (isConnected != printerModel.IsConnected)
                                 {
                                     printerModel.IsConnected = podController.IsConnected();
@@ -1710,6 +1736,7 @@ namespace BarcodeVerificationSystem.View
             };
             _ThreadMonitorPrinter.Start();
         }
+
         private void UpdateUIListBoxPrintProductTemplateList(string[] printTemplateNames, string keyWord = "")
         {
             if (InvokeRequired)
@@ -1731,7 +1758,7 @@ namespace BarcodeVerificationSystem.View
                 {
                     if (printTemplateName.ToLower().Contains(keyWord))
                     {
-                        ItemCustomModel obj = new ItemCustomModel(printTemplateName, itemIndex);
+                        var obj = new ItemCustomModel(printTemplateName, itemIndex);
                         listBoxPrintProductTemplate.Items.Add(obj);
                     }
                     itemIndex++;
@@ -1739,6 +1766,7 @@ namespace BarcodeVerificationSystem.View
 
             }
         }
+
         private void ObtainPrintProductTemplateList()
         {
             if (_IsObtainingPrintProductTemplateList)
@@ -1756,13 +1784,13 @@ namespace BarcodeVerificationSystem.View
 
                 if (podController != null)
                 {
-                    // Send command request list print template
-                    podController.Send("RQLI");
+                    podController.Send("RQLI"); // send command request template list
                     Task.Delay(5);
                     UpdateUIListBoxPrintProductTemplateList(_PrintProductTemplateList);
                 }
             });
         }
+
         private void EnableUIPrinting(bool isActive = true, bool isObtain = true)
         {
             if (InvokeRequired)
@@ -1777,6 +1805,7 @@ namespace BarcodeVerificationSystem.View
                 ObtainPrintProductTemplateList();
             }
         }
+
         #endregion Monitor Printer
 
         #region Camera Connection
@@ -1833,38 +1862,32 @@ namespace BarcodeVerificationSystem.View
             };
             _ThreadMonitorCamera.Start();
         }
+
         private void UpdateStatusLabelCamera()
         {
-
             if (InvokeRequired)
             {
                 Invoke(new Action(() => UpdateStatusLabelCamera()));
                 return;
             }
-
             for (int i = 0; i < Shared.Settings.CameraList.Count; i++)
+            {
+                if (i < _LabelStatusCameraList.Count)
                 {
-                    if (i < _LabelStatusCameraList.Count)
+                    CameraModel cameraModel = Shared.Settings.CameraList[i];
+                    ToolStripLabel labelStatusCamera = _LabelStatusCameraList[i];
+                    if (cameraModel.IsConnected)
                     {
-                        CameraModel cameraModel = Shared.Settings.CameraList[i];
-                        ToolStripLabel labelStatusCamera = _LabelStatusCameraList[i];
-
-                        if (cameraModel.IsConnected)
-                        {
-                            ShowLabelIcon(labelStatusCamera, Lang.CameraTMP, Properties.Resources.icons8_camera_30px_connected);
-                        }
-                        else
-                        {
-                            ShowLabelIcon(labelStatusCamera, Lang.CameraTMP, Properties.Resources.icons8_camera_30px_disconnected);
-                        }
+                        ShowLabelIcon(labelStatusCamera, Lang.CameraTMP, Properties.Resources.icons8_camera_30px_connected);
+                    }
+                    else
+                    {
+                        ShowLabelIcon(labelStatusCamera, Lang.CameraTMP, Properties.Resources.icons8_camera_30px_disconnected);
                     }
                 }
-
-    
-           
-
-           
+            }
         }
+
         private void ShowLabelIcon(Label label, string text, Image icon)
         {
             if (InvokeRequired)
@@ -1903,24 +1926,21 @@ namespace BarcodeVerificationSystem.View
                     {
                         if (Shared.Settings.SensorControllerEnable)
                         {
-                            // Check controller has exist if not exist then add new controller
                             if (Shared.SensorController == null || counter >= 3)
                             {
                                 Shared.SensorController = null;
                                 Shared.SensorController = new PODController(Shared.Settings.SensorControllerIP, Shared.Settings.SensorControllerPort, 1000, 1000);
                                 Shared.SensorController.Connect();
-
                                 Shared.SensorController.OnPODReceiveMessageEvent -= SensorController_OnPODReceiveMessageEvent;
                                 Shared.SensorController.OnPODReceiveMessageEvent += SensorController_OnPODReceiveMessageEvent;
-                                // Reset counter
                                 counter = 0;
                             }
                             else
                             {
-                                var checkIP = Shared.SensorController.ServerIP == Shared.Settings.SensorControllerIP;
+                                bool checkIP = Shared.SensorController.ServerIP == Shared.Settings.SensorControllerIP;
                                 if (checkIP)
                                 {
-                                    var checkPort = Shared.SensorController.Port == Shared.Settings.SensorControllerPort;
+                                    bool checkPort = Shared.SensorController.Port == Shared.Settings.SensorControllerPort;
                                     if (!checkPort)
                                     {
                                         Shared.SensorController.Disconnect();
@@ -1935,14 +1955,12 @@ namespace BarcodeVerificationSystem.View
                             }
                             if (Shared.SensorController.IsConnected() == false)
                             {
-                                //Disconnect and connect again
                                 Shared.SensorController.Disconnect();
                                 Shared.SensorController.Connect();
                                 counter++;
                             }
                             else
                             {
-                                // Reset counter
                                 counter = 0;
                             }
 
@@ -1950,7 +1968,6 @@ namespace BarcodeVerificationSystem.View
                             {
                                 Shared.IsSensorControllerConnected = Shared.SensorController.IsConnected();
                                 UpdateUISensorControllerStatus(Shared.IsSensorControllerConnected);
-
                                 Shared.RaiseSensorControllerChangeEvent();
 
                                 if (Shared.IsSensorControllerConnected)
@@ -1963,11 +1980,14 @@ namespace BarcodeVerificationSystem.View
                     catch (Exception) { }
                     Thread.Sleep(2000);
                 }
-            });
-            _ThreadMonitorSensorController.IsBackground = true;
-            _ThreadMonitorSensorController.Priority = ThreadPriority.Normal;
+            })
+            {
+                IsBackground = true,
+                Priority = ThreadPriority.Normal
+            };
             _ThreadMonitorSensorController.Start();
         }
+
         #endregion Monitor_Sensor_Controller
     }
 }

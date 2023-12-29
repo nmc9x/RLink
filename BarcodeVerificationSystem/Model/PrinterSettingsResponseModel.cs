@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
 namespace BarcodeVerificationSystem.Model
 {
@@ -11,10 +6,10 @@ namespace BarcodeVerificationSystem.Model
     public class PrinterSettingsResponseModel
     {
         [DataMember(Name = "success")]
-        public bool success { get; set; }
+        public bool Success { get; set; }
         [DataMember(Name = "data")]
         public PrinterSettingsModel data { get; set; }
         [DataMember(Name ="code")]
-        public string code { get; set; }
+        public string Code { get; set; }
     }
 }

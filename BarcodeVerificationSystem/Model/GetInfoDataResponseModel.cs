@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
 namespace BarcodeVerificationSystem
 {
@@ -11,32 +6,32 @@ namespace BarcodeVerificationSystem
     public class GetInfoDataResponseModel
     {
         [DataMember(Name = "model")]
-        public string model { get; set; }
+        public string Model { get; set; }
         [DataMember(Name = "headNumber")]
-        public string headNumber { get; set; }
+        public string HeadNumber { get; set; }
         [DataMember(Name = "software")]
-        public string software { get; set; }
+        public string Software { get; set; }
         [DataMember(Name = "buildDate")]
-        public string buildDate { get; set; }
+        public string BuildDate { get; set; }
         [DataMember(Name = "buildTime")]
-        public string buildTime { get; set; }
+        public string BuildTime { get; set; }
         [DataMember(Name = "activeExtFunc")]
-        public string activeExtFunc { get; set; }
+        public string ActiveExtFunc { get; set; }
         [DataMember(Name = "kernelVersion")]
-        public string kernelVersion { get; set; }
+        public string KernelVersion { get; set; }
         [DataMember(Name = "firmware")]
-        public string firmware { get; set; }
+        public string Firmware { get; set; }
         [DataMember(Name = "hardware")]
-        public string hardware { get; set; }
+        public string Hardware { get; set; }
         [DataMember(Name = "serialNumber")]
-        public string serialNumber { get; set; }
+        public string SerialNumber { get; set; }
         [DataMember(Name = "uuid")]
-        public string uuid { get; set; }
+        public string Uuid { get; set; }
         [DataMember(Name = "dateActive")]
-        public string dateActive { get; set; }
+        public string DateActive { get; set; }
         [DataMember(Name = "printStatus")]
-        public int printStatus { get; set; }
+        public int PrintStatus { get; set; }
         [DataMember(Name = "printerName")]
-        public string printerName { get; set; }
+        public string PrinterName { get; set; }
     }
 }

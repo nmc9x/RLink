@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BarcodeVerificationSystem.Controller;
+using System;
 using System.Windows.Forms;
-using BarcodeVerificationSystem.Controller;
 using UILanguage;
-using System.Threading;
 
 namespace BarcodeVerificationSystem.View
 {
-    public partial class ucSensorSettings : UserControl
+    public partial class UcSensorSettings : UserControl
     {
         private bool _IsBinding = false;
-        public ucSensorSettings()
+
+        public UcSensorSettings()
         {
             InitializeComponent();
         }
+
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
@@ -80,6 +74,7 @@ namespace BarcodeVerificationSystem.View
         {
             SetLanguage();
         }
+
         private void Shared_OnRepeatTCPMessageChange(object sender,EventArgs e)
         {
             if (InvokeRequired)
@@ -87,10 +82,10 @@ namespace BarcodeVerificationSystem.View
                 Invoke(new Action(() => Shared_OnRepeatTCPMessageChange(sender,e)));
                 return;
             }
-            //throw new NotImplementedException();
+
             if (sender is string)
             {
-                string message = sender as string;
+                var message = sender as string;
                 richTXTContentResponse.Text = richTXTContentResponse.Text.Insert(0,DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + ": " + message + "\n");
                 try
                 {
@@ -103,6 +98,7 @@ namespace BarcodeVerificationSystem.View
                 }
             }
         }
+
         private void SetLanguage()
         {
             if (InvokeRequired)
@@ -111,7 +107,6 @@ namespace BarcodeVerificationSystem.View
                 return;
             }
             grbSensorController.Text = Lang.SensorController;
-            //lblOperation.Text = Lang.;
             lblSensorControllerIP.Text = Lang.IPAddress;
             lblSensorControllerPort.Text = Lang.Port;
             radSensorControllerEnable.Text = Lang.Enable;
@@ -177,10 +172,9 @@ namespace BarcodeVerificationSystem.View
                 richTXTContentResponse.Clear();
                 Shared.SendSettingToSensorController();
             }
-
-            // Save to file
             Shared.SaveSettings();
         }
+
         private void EnableSensorController(bool isEnable)
         {
             if (InvokeRequired)

@@ -20,91 +20,107 @@ namespace BarcodeVerificationSystem
         #region Variables
         private static USBKey _USBKey = new USBKey();
         private static uint _HardwareIDUsing = 0;
-        private static frmWarningUSBDongleKey frmWarningKey = null;
+        private static FrmWarningUSBDongleKey frmWarningKey = null;
         #endregion
+ 
         [STAThread]
         static void Main()
         {
-            if (AnotherInstanceExists())//Check application already running
+            try
             {
-                MessageBox.Show(Lang.ApplicationIsAlreadyRunning,Lang.Info,MessageBoxButtons.OK,MessageBoxIcon.Information);
-                return;
-            }
-            Shared.LoadSettings();
-            Lang.Culture = System.Globalization.CultureInfo.CreateSpecificCulture(Shared.Settings.Language);
-            // Set language default
-            //Lang.Culture = System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN");
+                if (AnotherInstanceExists())
+                {
+                    MessageBox.Show(Lang.ApplicationIsAlreadyRunning, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
-            
-            frmSplashScreen.ShowSplashScreen(Lang.Loading, Lang.PleaseWait); //Show splash screen
-            string idOfPC = FingerPrint.Value(); //Get UUID of computer run this software
-            bool isAllow = true;
+                Shared.LoadSettings();
+
+                Lang.Culture = System.Globalization.CultureInfo.CreateSpecificCulture(Shared.Settings.Language); // Set init language
+                FrmSplashScreen.ShowSplashScreen(Lang.Loading, Lang.PleaseWait); //Show splash screen
+
+                bool isAllow = true; // true for bypass donglekey usb
+
+                try
+                {
+                    string idOfPC = FingerPrint.Value(); //Get UUID of computer run this software
+                    UtilityFunctions.SaveKeyToRegistry(idOfPC);
 #if DEBUG
              isAllow = true; // bypass usb key in debug mode
 #endif
-            string path1 = CommVariables.PathAllowPC + "RConfig.dat";
-            if (!Directory.Exists(CommVariables.PathAllowPC))
-            {
-                Directory.CreateDirectory(CommVariables.PathAllowPC);
-            }
-            DecryptionHardwareID.DecryptFile(path1);
-            foreach (HardwareIDModel id in Shared.listPCAllow)
-            {
-                string idOfList = SecurityController.Decrypt(id.HardwareID,DecryptionHardwareID._EncyptionPassword);
-                if (idOfList.Equals(idOfPC))
-                {
-                    isAllow = true;
-                    break;
-                }
-            }
+                    string path1 = CommVariables.PathAllowPC + "RConfig.dat";
 
-            Shared.listPCAllow = null;  
+                    if (!Directory.Exists(CommVariables.PathAllowPC))
+                    {
+                        Directory.CreateDirectory(CommVariables.PathAllowPC);
+                    }
 
-            if (!isAllow)
-            {
-                InitVariableUSBDongle();
-                if (CheckForValidUSBDongleKey() == false)
-                {
-                    ShowDialogUSBDongleKeyNotFound();
-                    return;
+                    DecryptionHardwareID.DecryptFile(path1);
+
+                    foreach (HardwareIDModel id in Shared.listPCAllow)
+                    {
+                        string idOfList = SecurityController.Decrypt(id.HardwareID, DecryptionHardwareID._EncyptionPassword);
+                        if (idOfList.Equals(idOfPC))
+                        {
+                            isAllow = true;
+                            break;
+                        }
+                    }
+
+                    Shared.listPCAllow = null;
                 }
-                Thread threadCheckUSBDongle = new Thread(() => CheckUSBDongleWhenRunning())
+                catch (Exception) {}
+               
+                if (!isAllow)
                 {
-                    IsBackground = true,
-                    Priority = ThreadPriority.Lowest
+                    InitVariableUSBDongle();
+                    if (CheckForValidUSBDongleKey() == false)
+                    {
+                        ShowDialogUSBDongleKeyNotFound();
+                        return;
+                    }
+                    Thread threadCheckUSBDongle = new Thread(() => CheckUSBDongleWhenRunning())
+                    {
+                        IsBackground = true,
+                        Priority = ThreadPriority.Lowest
+                    };
+                    threadCheckUSBDongle.Start();
+                }
+
+                Application.EnableVisualStyles();
+                LoggingController.LoginToAccess("_rynan_loggin_access_control_management_");
+                string path = CommVariables.PathAccountsApp;
+                if (!File.Exists(path + "AccountDB.db"))
+                {
+                    UserController.CreateDefaultDatabase();
+                }
+
+                var loginform = new FrmLoginNew
+                {
+                    TopMost = true
                 };
-                threadCheckUSBDongle.Start();
-            }
 
-            Application.EnableVisualStyles();
-            LoggingController.LoginToAccess("_rynan_loggin_access_control_management_");
-            string path = CommVariables.PathAccountsApp;
-            if (!File.Exists(path + "AccountDB.db"))
-            {
-                UserController.CreateDefaultDatabase();
+                FrmSplashScreen.CloseSplash();
+                DialogResult result = loginform.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    UserController.LogedInUsername = "Administrator";
+                    AppDomain currentDomain = default;
+                    currentDomain = AppDomain.CurrentDomain;
+                    currentDomain.UnhandledException += GlobalUnhandledExceptionHandler;
+                    Application.ThreadException += GlobalThreadExceptionHandler;
+                    FrmJob frmJob = new FrmJob();
+                    Application.Run(frmJob);
+                }
             }
-            frmLoginNew loginform = new frmLoginNew
-            {
-                TopMost = true
-            };
-            frmSplashScreen.CloseSplash();
-            DialogResult result = loginform.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                UserController.LogedInUsername = "Administrator";
-                AppDomain currentDomain = default;
-                currentDomain = AppDomain.CurrentDomain;
-                currentDomain.UnhandledException += GlobalUnhandledExceptionHandler;
-                Application.ThreadException += GlobalThreadExceptionHandler;
-                FrmJob frmJob = new FrmJob();
-                Application.Run(frmJob);
-            }
+            catch (Exception){}
         }
+        #region UtilityFunction
 
         public static bool AnotherInstanceExists()
         {
-            Process currentRunningProcess = Process.GetCurrentProcess();
-            Process[] listOfProcs = Process.GetProcessesByName(currentRunningProcess.ProcessName);
+            var currentRunningProcess = Process.GetCurrentProcess();
+            var listOfProcs = Process.GetProcessesByName(currentRunningProcess.ProcessName);
             foreach (Process proc in listOfProcs)
             {
                 if ((proc.MainModule.FileName == currentRunningProcess.MainModule.FileName) && (proc.Id != currentRunningProcess.Id))
@@ -115,11 +131,9 @@ namespace BarcodeVerificationSystem
             return false;
         }
 
-        // Reffernce: https://stackoverflow.com/questions/10202987/in-c-sharp-how-to-collect-stack-trace-of-program-crash
-        // Catching an exception
         private static void GlobalUnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs e)
         {
-            Exception ex = (Exception)e.ExceptionObject;
+            var ex = (Exception)e.ExceptionObject;
             var result = "";
             if (ex.InnerException != null)
             {
@@ -138,8 +152,7 @@ namespace BarcodeVerificationSystem
             }
             if (ex.StackTrace != null)
             {
-                StackTrace stackTrace = new StackTrace(ex, true);
-
+                var stackTrace = new StackTrace(ex, true);
                 foreach (StackFrame stackFrame in stackTrace.GetFrames())
                 {
                     string methodName = stackFrame.GetMethod().Name;
@@ -185,7 +198,7 @@ namespace BarcodeVerificationSystem
             }
             if (ex.StackTrace != null)
             {
-                StackTrace stackTrace = new StackTrace(ex, true);
+                var stackTrace = new StackTrace(ex, true);
                 foreach (StackFrame stackFrame in stackTrace.GetFrames())
                 {
                     string methodName = stackFrame.GetMethod().Name;
@@ -213,9 +226,11 @@ namespace BarcodeVerificationSystem
         #region USB Dongle key
         private static void InitVariableUSBDongle()
         {
-            _USBKey = new USBKey();
-            _USBKey.USBPassword = new ushort[] { 0xAB2A, 0x9718, 0xFF56, 0x2A25 };
-            _USBKey.InputValue = new ushort[] { 0x06, 0x02, 0x08, 0x15 };
+            _USBKey = new USBKey
+            {
+                USBPassword = new ushort[] { 0xAB2A, 0x9718, 0xFF56, 0x2A25 },
+                InputValue = new ushort[] { 0x06, 0x02, 0x08, 0x15 }
+            };
             _USBKey.ExpectedResult = CalculateValueWithFormulaDefined(_USBKey.InputValue[0], _USBKey.InputValue[1], _USBKey.InputValue[2], _USBKey.InputValue[3]);
         }
 
@@ -290,7 +305,7 @@ namespace BarcodeVerificationSystem
             //[501] 0x01 Basler camera, 0x02 Cognex camera
             //[502] support level
             //[503] 
-            ushort p2 = 4;//length
+            ushort p2 = 4;
             ushort p3 = 0;
             ushort p4 = 0;
             ret = SD.SecureDongle((ushort)SDCmd.SD_READ, ref handle, ref hardwareID, ref lp2, ref p1, ref p2, ref p3, ref p4, buffer);
@@ -344,7 +359,7 @@ namespace BarcodeVerificationSystem
         {
             if (frmWarningKey == null || frmWarningKey.IsDisposed)
             {
-                frmWarningKey = new frmWarningUSBDongleKey();
+                frmWarningKey = new FrmWarningUSBDongleKey();
                 frmWarningKey.Focus();
                 frmWarningKey.BringToFront();
                 frmWarningKey.TopMost = true; 
@@ -357,5 +372,6 @@ namespace BarcodeVerificationSystem
         }
 
         #endregion USB Dongle key
+        #endregion
     }
 }

@@ -19,14 +19,14 @@ using UILanguage;
 
 namespace BarcodeVerificationSystem.View
 {
-    public partial class frmLoginNew : Form
+    public partial class FrmLoginNew : Form
     {
         private bool _IsBinding = false;
         private bool _IsProcessing = false;
         private string _RememberPath = "";
         private Thread _ThreadLogin;
 
-        public frmLoginNew()
+        public FrmLoginNew()
         {
             InitializeComponent();
         }
@@ -34,7 +34,6 @@ namespace BarcodeVerificationSystem.View
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
-
             InitControl();
             InitEvent();
             SetLanguage();
@@ -51,13 +50,11 @@ namespace BarcodeVerificationSystem.View
                 Directory.CreateDirectory(_RememberPath);
             }
             _RememberPath += "remember.dat";
-
-            // Load remember file
             try
             {
                 if (File.Exists(_RememberPath))
                 {
-                    String[] texts = File.ReadAllLines(_RememberPath);
+                    string[] texts = File.ReadAllLines(_RememberPath);
                     txtUsername.Text = SecurityController.Decrypt(texts[0], "rynan_encrypt_remember");
                     txtPassword.Text = SecurityController.Decrypt(texts[1], "rynan_encrypt_remember");
                     chbRememberPassword.Checked = true;
@@ -71,7 +68,6 @@ namespace BarcodeVerificationSystem.View
         private void InitEvent()
         {
             btnLogin.Click += ActionChanged;
-            //btnCancel.Click += ActionChanged;
             Shared.OnLanguageChange += Shared_OnLanguageChange;
         }
         
@@ -97,11 +93,8 @@ namespace BarcodeVerificationSystem.View
                     Login(txtUsername.Text, txtPassword.Text, chbRememberPassword.Checked);
                 }
             }
-            //else if(sender == btnCancel)
-            //{
-            //    this.Close();
-            //}
         }
+
         private void Login(string username, string password, bool isRemenber)
         {
             if (_IsProcessing)
@@ -124,16 +117,15 @@ namespace BarcodeVerificationSystem.View
                 {
                     if (isRemenber)
                     {
-                        // Do remember
                         try
                         {
                             if (File.Exists(_RememberPath))
                             {
                                 File.Delete(_RememberPath);
                             }
-                            String ecryptUsername = SecurityController.Encrypt(txtUsername.Text, "rynan_encrypt_remember");
-                            String ecryptPassword = SecurityController.Encrypt(txtPassword.Text, "rynan_encrypt_remember");
-                            String[] content = { ecryptUsername, ecryptPassword };
+                            string ecryptUsername = SecurityController.Encrypt(txtUsername.Text, "rynan_encrypt_remember");
+                            string ecryptPassword = SecurityController.Encrypt(txtPassword.Text, "rynan_encrypt_remember");
+                            string[] content = { ecryptUsername, ecryptPassword };
                             File.WriteAllLines(_RememberPath, content);
                         }
                         catch
@@ -141,7 +133,6 @@ namespace BarcodeVerificationSystem.View
                     }
                     else
                     {
-                        // Remove remember
                         if (File.Exists(_RememberPath))
                         {
                             File.Delete(_RememberPath);
@@ -151,7 +142,6 @@ namespace BarcodeVerificationSystem.View
                     ActivationStatus activationStatus = Shared.LoginLocal(username, password);
                     if (activationStatus == ActivationStatus.Successful)
                     {
-                        // Save history
                         LoggingController.SaveHistory("Login success",
                             "Login",
                             "Login success: " + username,
@@ -160,15 +150,12 @@ namespace BarcodeVerificationSystem.View
 
                         Invoke(new Action(() =>
                         {
-                            // Close login form
                             DialogResult = DialogResult.OK;
                         }));
                     }
                     else
                     {
                         UpdateMessageLabel(true, false, Lang.UsernameOrPasswordIsIncorrect);
-
-                        //save history
                         LoggingController.SaveHistory("Login error",
                             "Login",
                             "Password incorrect!",
@@ -178,9 +165,11 @@ namespace BarcodeVerificationSystem.View
                 }
 
                 _IsProcessing = false;
-            });
-            _ThreadLogin.IsBackground = true;
-            _ThreadLogin.Priority = ThreadPriority.Normal;
+            })
+            {
+                IsBackground = true,
+                Priority = ThreadPriority.Normal
+            };
             _ThreadLogin.Start();
         }
 
@@ -188,12 +177,12 @@ namespace BarcodeVerificationSystem.View
         {
             if (_ThreadLogin != null && _ThreadLogin.IsAlive)
             {
-                // Release thread
                 _ThreadLogin.Abort();
                 _ThreadLogin = null;
             }
             _IsProcessing = false;
         }
+
         private void UpdateMessageLabel(bool isVisible, bool isNormalState, string message)
         {
             if (InvokeRequired)
@@ -218,11 +207,12 @@ namespace BarcodeVerificationSystem.View
             chbRememberPassword.Enabled = isVisible;
             btnLogin.Enabled = isVisible;
         }
+
         private void SetLanguage()
         {
-            if (this.InvokeRequired)
+            if (InvokeRequired)
             {
-                this.Invoke(new Action(() => SetLanguage()));
+                Invoke(new Action(() => SetLanguage()));
                 return;
             }
             lblLogIn.Text = Lang.Login.ToUpper();
@@ -231,7 +221,6 @@ namespace BarcodeVerificationSystem.View
             chbRememberPassword.Text = Lang.RememberPassword;
             lblMessage.Text = Lang.UsernameOrPasswordIsIncorrect;
             btnLogin.Text = Lang.Login.ToUpper();
-            //btnCancel.Text = Lang.Exit.ToUpper();
         }
     }
 }

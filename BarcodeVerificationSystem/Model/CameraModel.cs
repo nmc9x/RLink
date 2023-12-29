@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace BarcodeVerificationSystem.Model
 {
-    /// <summary>
-    /// @Author: DungLe
-    /// @Email: dung.le@rynantech.com
-    /// @Date created: October 17, 2022
-    /// </summary>
     [Serializable]
     public class CameraModel
     {
@@ -23,7 +13,6 @@ namespace BarcodeVerificationSystem.Model
             set => _CameraType = value;
         }
 
-        //
         private string _Port = "80";
         public string Port
         {
@@ -53,13 +42,13 @@ namespace BarcodeVerificationSystem.Model
         private string _SerialNumber = "";
         private bool _IsConnected = false;
         private int _CountTimeReconnect = 0;
-        [XmlIgnore] // Not save value to xml
+        [XmlIgnore] 
         public string Name { get => _Name; set => _Name = value; }
-        [XmlIgnore] // Not save value to xml
+        [XmlIgnore] 
         public string SerialNumber { get => _SerialNumber; set => _SerialNumber = value; }
-        [XmlIgnore] // Not save value to xml
+        [XmlIgnore] 
         public bool IsConnected { get => _IsConnected; set => _IsConnected = value; }
-        [XmlIgnore] // Not save value to xml
+        [XmlIgnore]
         public int CountTimeReconnect { get => _CountTimeReconnect; set => _CountTimeReconnect = value; }
         public int Index { get => _Index; set => _Index = value; }
         public RoleOfStation RoleOfCamera { get => _RoleOfCamera; set => _RoleOfCamera = value; }

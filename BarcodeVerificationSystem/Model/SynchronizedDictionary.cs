@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BarcodeVerificationSystem.Model
 {
     public class SynchronizedDictonary<T, Y>
     {
-        object obj = new object();
-        Dictionary<T, Y> data = new Dictionary<T, Y>();
+        readonly object obj = new object();
+        readonly Dictionary<T, Y> data = new Dictionary<T, Y>();
 
         public Y GetValue(T t)
         {
@@ -21,7 +17,7 @@ namespace BarcodeVerificationSystem.Model
                 }
                 else
                 {
-                    return default(Y);
+                    return default;
                 }
             }
         }

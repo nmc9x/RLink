@@ -14,6 +14,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -53,7 +54,7 @@ namespace BarcodeVerificationSystem.View
         public int ReceivedCode { get { return _ReceivedCode; } set { _ReceivedCode = value; Invoke(new Action(() => { lblReceivedValue.Text = string.Format("{0:N0}", _ReceivedCode); })); } }
         public int NumberOfSentPrinter { get { return _NumberOfSentPrinter; } set { _NumberOfSentPrinter = value; Invoke(new Action(() => { lblSentDataValue.Text = string.Format("{0:N0}", _NumberOfSentPrinter); })); } }
 
-        private readonly int _MaxDatabaseLine = 500;  // show max line on display dataGridViewDatabase
+        private readonly int _MaxDatabaseLine = 500; 
         private readonly List<ToolStripLabel> _LabelStatusCameraList = new List<ToolStripLabel>();
         private readonly List<ToolStripLabel> _LabelStatusPrinterList = new List<ToolStripLabel>();
     
@@ -109,10 +110,10 @@ namespace BarcodeVerificationSystem.View
         private CancellationTokenSource _VirtualCTS;
         private CancellationTokenSource _BackupSendLogCancelTokenSource;
 
-        private frmSettings _FormSettings;
-        private frmViewHistoryProgram _FormViewHistoryProgram;
-        private frmPreviewDatabase _FormPreviewDatabase;
-        private frmCheckedResult _FormCheckedResult;
+        private FrmSettings _FormSettings;
+        private FrmViewHistoryProgram _FormViewHistoryProgram;
+        private FrmPreviewDatabase _FormPreviewDatabase;
+        private FrmCheckedResult _FormCheckedResult;
 
         private PrinterSettingsModel _PrinterSettingsModel;
         private string _ExportNamePrefix = "";
@@ -123,7 +124,7 @@ namespace BarcodeVerificationSystem.View
 
         //SendMessage extern
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam); bool isFullHD = false;
+        private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam); bool isFullHD = false;
         bool isDelProcessPnlMargin = false;
         public bool IsFullHD
         {
@@ -142,7 +143,7 @@ namespace BarcodeVerificationSystem.View
                     tableLayoutPanel1.ColumnStyles[0].Width = 50;
                     tableLayoutPanel1.ColumnStyles[1].SizeType = SizeType.Percent;
                     tableLayoutPanel1.ColumnStyles[1].Width = 50;
-                    var pad = pnlVerificationProcess.Margin;
+                    Padding pad = pnlVerificationProcess.Margin;
                     pad.Right += !isDelProcessPnlMargin ? 11 : 0;
                     pnlVerificationProcess.Margin = pad;
                     isDelProcessPnlMargin = true;
@@ -189,13 +190,13 @@ namespace BarcodeVerificationSystem.View
         private readonly Stopwatch _BigSTW = new Stopwatch();
         private string _PrintedResponseValue = "";
         private bool dialogResultStopExist;
-        private bool isShowPopupOneTime = false;
         #endregion
 
         public FrmMain()
         {
             InitializeComponent();
         }
+
         public FrmMain(FrmJob parentForm)
         {
             InitializeComponent();
@@ -286,18 +287,22 @@ namespace BarcodeVerificationSystem.View
             }
             base.WndProc(ref m);
         }
+
         protected override void SetBoundsCore(int x, int y, int width, int height, BoundsSpecified specified)
         {
             base.SetBoundsCore(RestoreBounds.Left, RestoreBounds.Top, RestoreBounds.Width, RestoreBounds.Height, BoundsSpecified.All);
         }
+
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
             InitControls();
             InitEvents();
         }
+
         private void InitControls()
         {
+            txtStatusResult.ReadOnly = true;    
             ChangePictureCamera();
             TransparencyKey = Color.DarkKhaki;
             SetLanguage();
@@ -357,9 +362,7 @@ namespace BarcodeVerificationSystem.View
         #region Event Action
         private void InitEvents()
         {
-            // View Log 
             btnViewLog.Click += BtnViewLog_Click;
-
             _TimerDateTime.Tick += TimerDateTime_Tick;
             btnStart.Click += ActionChanged;
             btnStop.Click += ActionChanged;
@@ -395,11 +398,10 @@ namespace BarcodeVerificationSystem.View
             btnExport.Click += ActionChanged;
             FormClosing += FrmMainNew_FormClosing;
 
-            //menu
             mnManage.Click += ActionChanged;
             mnChangePassword.Click += ActionChanged;
             mnLogOut.Click += ActionChanged;
-            //menu
+
             Shared.OnCameraStatusChange += Shared_OnCameraStatusChange;
             Shared.OnCameraReadDataChange += Shared_OnCameraReadDataChange;
             Shared.OnPrinterDataChange += Shared_OnPrinterDataChange;
@@ -408,19 +410,19 @@ namespace BarcodeVerificationSystem.View
             Shared.OnLanguageChange += Shared_OnLanguageChange;
             Shared.OnSensorControllerChangeEvent += Shared_OnSensorControllerChangeEvent;
             Shared.OnVerifyAndPrindSendDataMethod += Shared_OnVerifyAndPrindSendDataMethod;
-            this.OnReceiveVerifyDataEvent += SendVerifiedDataToPrinter;
+            OnReceiveVerifyDataEvent += SendVerifiedDataToPrinter;
             Shared.OnLogError += Shared_OnLogError;
 
-            this.Resize += (obj, e) =>
+            Resize += (obj, e) =>
             {
-                if (this.Size.Width < 1800 && this.Size.Height < 900)
+                if (Size.Width < 1800 && Size.Height < 900)
                 {
                     if (IsFullHD)
                     {
                         IsFullHD = false;
                     }
                 }
-                else if (this.Size.Width >= 1800 && this.Size.Height >= 900)
+                else if (Size.Width >= 1800 && Size.Height >= 900)
                 {
                     if (!IsFullHD)
                     {
@@ -433,15 +435,15 @@ namespace BarcodeVerificationSystem.View
             _QueueBufferPrinterResponseData.Clear();
             ReceiveResponseFromPrinterHandlerAsync();
         }
+
         private void BtnViewLog_Click(object sender, EventArgs e)
         {
             try
             {
-                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                using (var openFileDialog = new OpenFileDialog())
                 {
                     openFileDialog.InitialDirectory = CommVariables.PathProgramDataApp;
                     openFileDialog.Filter = "Text files (*.txt)|*.txt|Job files (*.rvis)|*.rvis|Database files (*.db)|*.db|csv files (*.csv)|*.csv|All files (*.*)|*.*";
-                    //openFileDialog.RestoreDirectory = true;
                     openFileDialog.FilterIndex = 5;
                     openFileDialog.Multiselect = true;
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -453,6 +455,7 @@ namespace BarcodeVerificationSystem.View
             }
             catch (Exception) { }
         }
+
         private void PnlMenu_DoubleClick(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Maximized)
@@ -464,45 +467,44 @@ namespace BarcodeVerificationSystem.View
                 WindowState = FormWindowState.Maximized;
             }
         }
+
         private void TimerDateTime_Tick(object sender, EventArgs e)
         {
             toolStripDateTime.Text = DateTime.Now.ToString(_DateTimeFormatTicker);
         }
+
         private void BtnTrigger_MouseDown(object sender, MouseEventArgs e)
         {
             Shared.RaiseOnCameraTriggerOnChangeEvent();
         }
+
         private void BtnTrigger_MouseUp(object sender, MouseEventArgs e)
         {
             Shared.RaiseOnCameraTriggerOffChangeEvent();
         }
+
         private async void Shared_OnVerifyAndPrindSendDataMethod(object sender, EventArgs e)
         {
             if (Shared.Settings.VerifyAndPrintBasicSentMethod) return;
-
             EnableUIComponentWhenLoadData(false);
             _Emergency.Clear();
             _Emergency = await InitVNPUpdatePrintedStatusConditionBuffer();
-
             EnableUIComponentWhenLoadData(true);
         }
+
         private void SendVerifiedDataToPrinter(object sender, EventArgs e)
         {
             string command = "DATA;";
             string[] arr = sender as string[];
-            // Basic
             if (Shared.Settings.VerifyAndPrintBasicSentMethod)
                 command += arr[1] == null ? Shared.Settings.FailedDataSentToPrinter : arr[1];
-            // Field
             else
             {
-                // All field
                 if (Shared.Settings.PrintFieldForVerifyAndPrint.Count() == 0)
                 {
                     command += string.Join(";", arr.Take(arr.Length - 1).Skip(1)
                         .Select(x => x == null ? Shared.Settings.FailedDataSentToPrinter : x));
                 }
-                // Specific field
                 else
                 {
                     command += string.Join(";", Shared.Settings.PrintFieldForVerifyAndPrint
@@ -527,14 +529,11 @@ namespace BarcodeVerificationSystem.View
         #region 
         private async Task<ConcurrentDictionary<string, int>> InitVNPUpdatePrintedStatusConditionBuffer()
         {
-            ConcurrentDictionary<string, int> result = new ConcurrentDictionary<string, int>();
-            // Use a HashSet instead of a List
-            HashSet<string> _CheckedResultCodeSet = new HashSet<string>();
-
-            // Populate the HashSet with the second element of each array
-            var validCond = ComparisonResult.Valid.ToString();
-            var columnCount = _ColumnNames.Length;
-            foreach (var array in _CheckedResultCodeList)
+            var result = new ConcurrentDictionary<string, int>();
+            var _CheckedResultCodeSet = new HashSet<string>();
+            string validCond = ComparisonResult.Valid.ToString();
+            int columnCount = _ColumnNames.Length;
+            foreach (string[] array in _CheckedResultCodeList)
             {
                 if (columnCount == array.Length && array[2] == validCond)
                 {
@@ -549,7 +548,7 @@ namespace BarcodeVerificationSystem.View
                 {
                     string[] row = _PrintedCodeObtainFromFile[index].ToArray();
                     string data = "";
-                    foreach (var item in _SelectedJob.PODFormat)
+                    foreach (PODModel item in _SelectedJob.PODFormat)
                     {
                         if (item.Type == PODModel.TypePOD.DATETIME)
                         {
@@ -565,7 +564,6 @@ namespace BarcodeVerificationSystem.View
                         }
                     }
 
-                    // Use Contains instead of FindIndex
                     if (!_CheckedResultCodeSet.Contains(data))
                     {
                         if (_IsVerifyAndPrintMode)
@@ -573,7 +571,7 @@ namespace BarcodeVerificationSystem.View
                             string tmp = "";
                             for (int i = 1; i < row.Length - 1; i++)
                             {
-                                var tmpPOD = Shared.Settings.PrintFieldForVerifyAndPrint.Find(x => x.Index == i);
+                                PODModel tmpPOD = Shared.Settings.PrintFieldForVerifyAndPrint.Find(x => x.Index == i);
                                 if (tmpPOD != null)
                                 {
                                     tmp += row[tmpPOD.Index];
@@ -605,7 +603,6 @@ namespace BarcodeVerificationSystem.View
             }
 
             if (columns.Length == 0) return;
-
             dgv.Columns.Clear();
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
 
@@ -616,9 +613,11 @@ namespace BarcodeVerificationSystem.View
             {
                 if (index == imgIndex && imgIndex != -1)
                 {
-                    DataGridViewImageColumn col = new DataGridViewImageColumn();
-                    col.HeaderText = columns[index];
-                    col.Name = columns[index].Trim();
+                    var col = new DataGridViewImageColumn
+                    {
+                        HeaderText = columns[index],
+                        Name = columns[index].Trim()
+                    };
                     col.DefaultCellStyle.NullValue = null;
                     col.SortMode = DataGridViewColumnSortMode.NotSortable;
                     Size textSize = TextRenderer.MeasureText(col.HeaderText, dgv.Font);
@@ -629,10 +628,12 @@ namespace BarcodeVerificationSystem.View
                 }
                 else
                 {
-                    DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
-                    col.HeaderText = columns[index];
-                    col.Name = columns[index].Trim();
-                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                    var col = new DataGridViewTextBoxColumn
+                    {
+                        HeaderText = columns[index],
+                        Name = columns[index].Trim(),
+                        SortMode = DataGridViewColumnSortMode.NotSortable
+                    };
                     Size textSize = TextRenderer.MeasureText(col.HeaderText, dgv.Font);
                     col.Width = textSize.Width + 25;
                     col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -654,6 +655,7 @@ namespace BarcodeVerificationSystem.View
             dgv.VirtualMode = true;
             dgv.RowCount = _MaxDatabaseLine;
         }
+
         private void Database_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
         {
             try
@@ -670,20 +672,20 @@ namespace BarcodeVerificationSystem.View
                     switch (_PrintedCodeObtainFromFile[correspondingIndex][e.ColumnIndex])
                     {
                         case "Printed":
-                            e.Value = BarcodeVerificationSystem.Properties.Resources.icons8_done_24px_result;
+                            e.Value = Properties.Resources.icons8_done_24px_result;
                             break;
                         case "Waiting":
-                            e.Value = BarcodeVerificationSystem.Properties.Resources.icons8_in_progress_20px_4;
+                            e.Value = Properties.Resources.icons8_in_progress_20px_4;
                             break;
                         case "Sent":
-                            e.Value = BarcodeVerificationSystem.Properties.Resources.icons8_in_progress_20px_4;
+                            e.Value = Properties.Resources.icons8_in_progress_20px_4;
                             break;
                         case "Reprint":
-                            e.Value = BarcodeVerificationSystem.Properties.Resources.icons8_done_24px_result;
+                            e.Value = Properties.Resources.icons8_done_24px_result;
                             break;
                         case "Duplicate":
                             (sender as DataGridView).Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Red;
-                            e.Value = BarcodeVerificationSystem.Properties.Resources.icon_check_241;
+                            e.Value = Properties.Resources.icon_check_241;
                             break;
                     }
                 }
@@ -693,6 +695,7 @@ namespace BarcodeVerificationSystem.View
 
             }
         }
+
         private void CheckedResult_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
         {
             try
@@ -1134,6 +1137,7 @@ namespace BarcodeVerificationSystem.View
 
             return "";
         }
+
         private CheckCondition CheckAllTheConditions()
         {
             // Check camera connection - Uncomment when release - Update later
@@ -1171,6 +1175,7 @@ namespace BarcodeVerificationSystem.View
 
             return CheckCondition.Success;
         }
+
         private CheckPrinterSettings CheckAllSettingsPrinter()
         {
             if (Shared.Settings.PrinterList.FirstOrDefault().CheckAllPrinterSettings)
@@ -1210,13 +1215,13 @@ namespace BarcodeVerificationSystem.View
 
             return CheckPrinterSettings.Success;
         }
+
         private void StartProcess(bool interactOnUI = true)
         {
             if (Shared.OperStatus == OperationStatus.Running || Shared.OperStatus == OperationStatus.Processing)  // Avoid start more 1 time
             {
                 return;
             }
-
             string checkInitDataMessage = "";
             checkInitDataMessage = CheckInitDataErrorAndGenerateMessage();
             if (checkInitDataMessage != "")
@@ -1224,7 +1229,7 @@ namespace BarcodeVerificationSystem.View
                 DialogResult dialogResult = CuzMessageBox.Show(checkInitDataMessage, Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            var isDatabaseDeny = _SelectedJob.CompareType == CompareType.Database && _TotalCode == 0;
+            bool isDatabaseDeny = _SelectedJob.CompareType == CompareType.Database && _TotalCode == 0;
             if (isDatabaseDeny)
             {
                 CuzMessageBox.Show(Lang.DatabaseDoesNotExist, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1235,7 +1240,6 @@ namespace BarcodeVerificationSystem.View
             {
                 if (interactOnUI)
                 {
-                    //Show dialog waring
                     if (checkCondition == CheckCondition.NoJobsSelected)
                     {
                         CuzMessageBox.Show(Lang.PleaseSeletedJobForTheSystem, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1272,12 +1276,11 @@ namespace BarcodeVerificationSystem.View
                     {
                         CuzMessageBox.Show(Lang.SomePrintParametersAreMissing, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    //END Show dialog waring
                 }
                 return;
             }
 
-            var isNeedToCheckPrinter = _SelectedJob.PrinterSeries && _SelectedJob.CompareType == CompareType.Database;
+            bool isNeedToCheckPrinter = _SelectedJob.PrinterSeries && _SelectedJob.CompareType == CompareType.Database;
             CheckPrinterSettings checkPrinterSettings = CheckAllSettingsPrinter();
 
             if (checkPrinterSettings != CheckPrinterSettings.Success && isNeedToCheckPrinter) // If occur error setting printer
@@ -1314,22 +1317,17 @@ namespace BarcodeVerificationSystem.View
 
             if (_PrinterStatus != PrinterStatus.Stop && Shared.Settings.PrinterList.FirstOrDefault().CheckAllPrinterSettings && isNeedToCheckPrinter)
             {
-                //The printer is in an abnormal state, please check again!
                 CuzMessageBox.Show(Lang.ThePrinterIsInAnAbnormalStatePleaseCheckAgain + $" ({_PrinterStatus.ToString().ToUpper()})", Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             _ExportNamePrefix = DateTime.Now.ToString(Shared.Settings.ExportNamePrefixFormat);
-            //_ExportCheckedResultFileName = string.Format("{0}_BarcodeCheckedResult.txt", _ExportNamePrefix);
-
-            //Save history
             string fileName = DateTime.Now.ToString(_DateTimeFormat) + "_" + _SelectedJob.FileName + ".txt";
-            var startIndex = _PrintedCodeObtainFromFile.FindIndex(x => x[x.Length - 1] == "Waiting") + 1;
-
+            int startIndex = _PrintedCodeObtainFromFile.FindIndex(x => x[x.Length - 1] == "Waiting") + 1;
             LoggingController.SaveHistory(
-                String.Format("{0}: {1}; {2}: {3} - Job: {4}", Lang.StartIndex, startIndex, Lang.EndIndex, _TotalCode, _SelectedJob.FileName),
+                string.Format("{0}: {1}; {2}: {3} - Job: {4}", Lang.StartIndex, startIndex, Lang.EndIndex, _TotalCode, _SelectedJob.FileName),
                 Lang.Start,
-                String.Format("{0}: {1}", Lang.ResultFile, fileName),
+                string.Format("{0}: {1}", Lang.ResultFile, fileName),
                 SecurityController.Decrypt(Shared.LoggedInUser.UserName, "rynan_encrypt_remember"),
                 LoggingType.Started);
 
@@ -1337,24 +1335,18 @@ namespace BarcodeVerificationSystem.View
 
             if (Shared.Settings.IsPrinting && _SelectedJob.CompareType == CompareType.Database && _SelectedJob.PrinterSeries)
             {
-                // If has printing then wait printer running
                 Shared.OperStatus = OperationStatus.Processing;
-
                 foreach (PODController podController in Shared.Settings.PrinterList.Select(x => x.PODController))
-                {
-                    // Stop print
+                { 
                     podController.Send("STOP");
                     Thread.Sleep(5);
                     podController.Send("CLPB");
-
                     string templateName = "";
                     if (podController.RoleOfPrinter == RoleOfStation.ForProduct)
                     {
-                        // Get template name
                         templateName = _SelectedJob.TemplatePrint;
                     }
                     Thread.Sleep(50);
-                    // Start print
                     string startPrintCommand = string.Format("STAR;{0};1;1;true", templateName);
                     podController.Send(startPrintCommand);
                 }
@@ -1364,13 +1356,11 @@ namespace BarcodeVerificationSystem.View
                 Shared.OperStatus = OperationStatus.Running;
             }
 
-            var isNonePrinted = _SelectedJob.CompareType == CompareType.CanRead || _SelectedJob.CompareType == CompareType.StaticText;
-
+            bool isNonePrinted = _SelectedJob.CompareType == CompareType.CanRead || _SelectedJob.CompareType == CompareType.StaticText;
             _SelectedJob.JobStatus = JobStatus.Unfinished;
             string filePath = CommVariables.PathJobsApp + _SelectedJob.FileName + Shared.Settings.JobFileExtension;
             _SelectedJob.SaveFile(filePath);
-
-            // Init new token to able cancel all operatons
+           
             _OperationCancelTokenSource = new CancellationTokenSource();
             _UICheckedResultCancelTokenSource = new CancellationTokenSource();
             _UIPrintedResponseCancelTokenSource = new CancellationTokenSource();
@@ -1411,10 +1401,11 @@ namespace BarcodeVerificationSystem.View
         {
             await Task.Run(() => { Compare(token); });
         }
+
         private void Compare(CancellationToken token)
         {
             Debug.WriteLine("Compare thread working on thread " + Environment.CurrentManagedThreadId);
-            int currentCheckedIndex = -1; // Be use if verify and print function is enable
+            int currentCheckedIndex = -1; 
             string staticText = "";
 
             if (_SelectedJob.CompareType == CompareType.StaticText)
@@ -1425,13 +1416,13 @@ namespace BarcodeVerificationSystem.View
                 }));
             }
 
-            var isAutoComplete = _SelectedJob.CompareType == CompareType.Database; // Need to auto stop proccess when compare type is database
-            var isReprint = _SelectedJob.CompareType == CompareType.Database && _SelectedJob.JobType == JobType.AfterProduction && _TotalMissed > 0 && Shared.Settings.TotalCheckEnable;
-            var isDBStandalone = _SelectedJob.CompareType == CompareType.Database && _SelectedJob.JobType == JobType.StandAlone;
-            var reprintStopCond = TotalChecked + _TotalMissed - _NumberOfDuplicate;
-            var stopCond = _TotalCode - _NumberOfDuplicate;
-            var isOneMore = false;
-            var isComplete = false;
+            bool isAutoComplete = _SelectedJob.CompareType == CompareType.Database;
+            bool isReprint = _SelectedJob.CompareType == CompareType.Database && _SelectedJob.JobType == JobType.AfterProduction && _TotalMissed > 0 && Shared.Settings.TotalCheckEnable;
+            bool isDBStandalone = _SelectedJob.CompareType == CompareType.Database && _SelectedJob.JobType == JobType.StandAlone;
+            int reprintStopCond = TotalChecked + _TotalMissed - _NumberOfDuplicate;
+            int stopCond = _TotalCode - _NumberOfDuplicate;
+            bool isOneMore = false;
+            bool isComplete = false;
             try
             {
                 while (true)
@@ -1448,7 +1439,7 @@ namespace BarcodeVerificationSystem.View
                             continue;
                         }
 
-                        if (isAutoComplete) // check if auto complete
+                        if (isAutoComplete)
                         {
                             bool completeCondition = false;
 
@@ -1474,7 +1465,7 @@ namespace BarcodeVerificationSystem.View
                                 stopNumber--;
                             }
 
-                            if (!isReprint) // mode  != VerifyAndPrint and mode != Reprint
+                            if (!isReprint)
                             {
                                 completeCondition = Shared.OperStatus != OperationStatus.Stopped && stopNumber >= stopCond;
                             }
@@ -1492,12 +1483,11 @@ namespace BarcodeVerificationSystem.View
                         }
                     }
 
-                    DetectModel detectModel = _QueueBufferDataObtained.Dequeue(); // Waiting until have data to dequeue
+                    DetectModel detectModel = _QueueBufferDataObtained.Dequeue(); 
                     int compareIndex = _StartIndex + TotalChecked;
                     if (detectModel != null)
                     {
-                        Stopwatch measureTime = Stopwatch.StartNew();
-                        // Check compareType: Can read, Static text, database
+                        var measureTime = Stopwatch.StartNew();
                         if (_SelectedJob.CompareType == CompareType.CanRead)
                         {
                             detectModel.CompareResult = CanreadCompare(detectModel.Text);
@@ -1508,14 +1498,13 @@ namespace BarcodeVerificationSystem.View
                         }
                         else if (_SelectedJob.CompareType == CompareType.Database)
                         {
-                            // Need to check printed response from printer job type is on production
-                            var isNeedToCheckPrintedResponse = true;
+                            bool isNeedToCheckPrintedResponse = true;
                             if (_IsOnProductionMode)
                             {
                                 lock (_PrintedResponseLocker)
                                 {
                                     isNeedToCheckPrintedResponse = _IsPrintedResponse;
-                                    _IsPrintedResponse = false; // Notify that have a printed response
+                                    _IsPrintedResponse = false; 
                                 }
                             }
 
@@ -1525,23 +1514,21 @@ namespace BarcodeVerificationSystem.View
                             }
                             else
                             {
-                                // Veridy barcode
                                 detectModel.CompareResult = DatabaseCompare(detectModel.Text, ref currentCheckedIndex);
-
                                 if (_IsOnProductionMode)
                                 {
-                                    lock (_CheckLocker) // Notify that code is check
+                                    lock (_CheckLocker) 
                                     {
-                                        _CheckedResult = detectModel.CompareResult; // Assign result of current check
+                                        _CheckedResult = detectModel.CompareResult; 
                                         _IsCheckedWait = false;
                                         Monitor.PulseAll(_CheckLocker);
                                     }
                                 }
                             }
 
-                            if (_IsVerifyAndPrintMode) // Verify and print function: send data to printer if detectModel is passed - Add by Thong Thach 23/03/23
+                            if (_IsVerifyAndPrintMode)
                             {
-                                var verifyAndPrintCondition = Shared.GetPrinterStatus();
+                                bool verifyAndPrintCondition = Shared.GetPrinterStatus();
                                 if (verifyAndPrintCondition)
                                 {
                                     string[] arr = new string[0];
@@ -1574,14 +1561,12 @@ namespace BarcodeVerificationSystem.View
                                             arr = new string[3];
                                         }
                                     }
-
                                     RaiseOnReceiveVerifyDataEvent(arr);
                                     currentCheckedIndex = -1;
                                 }
                             }
                         }
 
-                        //Output signal - Time consuming about 11ms AMD Ryzen 3600X and Cognex DM60 connect via adapter Ugreen
                         if (Shared.Settings.OutputEnable)
                         {
                             bool outputCondition = Shared.GetCameraStatus() && detectModel.CompareResult != ComparisonResult.Valid;
@@ -1590,7 +1575,6 @@ namespace BarcodeVerificationSystem.View
                                 Shared.RaiseOnCameraOutputSignalChangeEvent();
                             }
                         }
-                        //END Output signal
 
                         measureTime.Stop();
 
@@ -1608,33 +1592,24 @@ namespace BarcodeVerificationSystem.View
                         detectModel.CompareTime = measureTime.ElapsedMilliseconds;
                         detectModel.ProcessingDateTime = DateTime.Now.ToString(Shared.Settings.DateTimeFormatOfResult);
 
-                        // Send printed response manual for Database - Standalone mode
                         if (isDBStandalone)
                         {
                             if (detectModel.CompareResult == ComparisonResult.Valid)
                                 _QueueBufferUpdateUIPrinter.Enqueue(detectModel.Text);
                         }
-
                         _QueueBufferDataObtainedResult.Enqueue(detectModel);
                     }
-
-                    //Thread.Sleep(5);
                 }
             }
-            catch (System.OperationCanceledException)
+            catch (OperationCanceledException)
             {
-                Console.WriteLine("Thread compare was stopped!");
-
-                // Stop anorther operation thread after compare thread stop
                 _UICheckedResultCancelTokenSource?.Cancel();
                 _QueueBufferDataObtainedResult.Enqueue(null);
-
                 Thread.Sleep(200);
                 UpdateStopUI();
             }
             catch (Exception ex)
             {
-                // Catch Error - Add by ThongThach 05/12/2023
                 Console.WriteLine("Thread compare was error!");
                 Thread.Sleep(200);
                 StopProcessAsync(false, Lang.HandleError, false, true);
@@ -2166,10 +2141,8 @@ namespace BarcodeVerificationSystem.View
 
         private void NewExportImageToFile(CancellationToken token)
         {
-            // Determine whether the directory exists.
             if (!Directory.Exists(Shared.Settings.ExportImagePath + "\\" + _SelectedJob.FileName))
             {
-                // Try to create the directory.
                 Directory.CreateDirectory(Shared.Settings.ExportImagePath + "\\" + _SelectedJob.FileName);
             }
 
@@ -2177,7 +2150,6 @@ namespace BarcodeVerificationSystem.View
             {
                 while (true)
                 {
-                    // Only stop if handled all data
                     if (token.IsCancellationRequested)
                     {
                         if (_QueueBufferBackupImage.Count() == 0)
@@ -2191,7 +2163,8 @@ namespace BarcodeVerificationSystem.View
 
                     if (exportImageModel != null)
                     {
-                        string fileName = string.Format("\\{0}_Job_{1}_Image_{2:D7}.jpg", _ExportNamePrefix, _SelectedJob.FileName, exportImageModel.Index);
+                        string fileName = string.Format("\\{0}_Job_{1}_Image_{2:D7}.bmp", _ExportNamePrefix, _SelectedJob.FileName, exportImageModel.Index);
+                        if (Shared.Settings.ExportImagePath == null) Shared.Settings.ExportImagePath = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
                         string path = Shared.Settings.ExportImagePath + "\\" + _SelectedJob.FileName + fileName;
                         using (exportImageModel.Image)
                         {
@@ -2207,7 +2180,6 @@ namespace BarcodeVerificationSystem.View
             }
             catch (Exception ex)
             {
-                // Catch Error - Add by ThongThach 05/12/2023
                 Console.WriteLine("Thread backup image was error!");
                 KillAllProccessThread();
                 StopProcessAsync(false, Lang.HandleError, false, true);
@@ -2218,8 +2190,6 @@ namespace BarcodeVerificationSystem.View
 
         #endregion End ExportFile
 
-
-
         private async void StopProcessAsync(bool interactOnUI = true, string messages = "", bool isClosed = false, bool isManualClose = false)
         {
             await Task.Run(() => StopProcess(interactOnUI, messages, isClosed, isManualClose));
@@ -2227,13 +2197,12 @@ namespace BarcodeVerificationSystem.View
         
         private void StopProcess(bool interactOnUI = true, string messages = "", bool isClosed = false, bool isManualClose = false)
         {
-
             if (interactOnUI)
             {
                 if (dialogResultStopExist) { return; }
                 dialogResultStopExist = true;
                 DialogResult dialogResult = CuzMessageBox.Show(Lang.DoYouWantToStopTheSystem, Lang.Confirm, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
+                
                 if (dialogResult != DialogResult.Yes)
                 {
                     dialogResultStopExist = false;
@@ -2243,35 +2212,30 @@ namespace BarcodeVerificationSystem.View
                 messages = Lang.UserStoppedTheSystem;
             }
 
-            // Stop send data to printer thread
             _VirtualCTS?.Cancel();
             KillTThreadSendPODDataToPrinter();
             _QueueBufferPrinterResponseData.Clear();
 
-            // Stop print
             if (Shared.Settings.IsPrinting && _SelectedJob.PrinterSeries)
             {
                 PODController podController = Shared.Settings.PrinterList.Where(p => p.RoleOfPrinter == RoleOfStation.ForProduct).FirstOrDefault().PODController;
                 if (podController != null)
                 {
-                    // podController.Send("CLPB"); //clear printer buffer 
-                    // Thread.Sleep(5);
-                    podController.Send("STOP"); // stop printer button
-                    Debug.WriteLine("STOP");
+                    podController.Send("STOP");
                     lock (_StopLocker)
                     {
                         _IsStopOK = false;
-                        while (!_IsStopOK)
+                        int countTimeout = 0;
+                        while (!_IsStopOK && countTimeout < 5)
                         {
-                            Monitor.Wait(_StopLocker, 5000); //Wait until there is a stop notify from the printer
+                            Monitor.Wait(_StopLocker,1000); //Wait until there is a stop notify from the printer
+                            countTimeout++;
                         }
                     }
                 }
             }
-
             _TotalMissed = 0;
 
-            // Stop thread
             _UIPrintedResponseCancelTokenSource?.Cancel();
             _OperationCancelTokenSource?.Cancel();
             _QueueBufferDataObtained.Enqueue(null);
@@ -2279,22 +2243,17 @@ namespace BarcodeVerificationSystem.View
             Shared.OperStatus = OperationStatus.Stopped;
             Shared.RaiseOnOperationStatusChangeEvent(Shared.OperStatus);
 
-            // Save history
-            var fileName = "";
+            string fileName = "";
             if (_SelectedJob.CheckedResultPath != "")
             {
                 fileName = _SelectedJob.CheckedResultPath;
             }
-
-            // Save history
             LoggingController.SaveHistory(
-                String.Format("{0}: {1}", Lang.TotalChecked, TotalChecked),
+                string.Format("{0}: {1}", Lang.TotalChecked, TotalChecked),
                 messages,
-                String.Format("{0}: {1}", Lang.ResultFile, fileName),
+                string.Format("{0}: {1}", Lang.ResultFile, fileName),
                 SecurityController.Decrypt(Shared.LoggedInUser.UserName, "rynan_encrypt_remember"),
                 LoggingType.Stopped);
-
-            // Update job status
             if (_SelectedJob.CompareType == CompareType.Database)
             {
                 var completeNum = 0;
@@ -2312,9 +2271,8 @@ namespace BarcodeVerificationSystem.View
                 DialogResult dialogResult = CuzMessageBox.Show(messages, Lang.Info, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (dialogResult == DialogResult.OK && isClosed)
                 {
-                    //Close();
+                  
                 }
-
                 NumberOfSentPrinter = 0;
                 ReceivedCode = 0;
             }
@@ -2419,6 +2377,7 @@ namespace BarcodeVerificationSystem.View
                 checkInitDataMessage = CheckInitDataErrorAndGenerateMessage();
                 if (checkInitDataMessage != "")
                 {
+                    
                     foreach (string value in checkInitDataMessage.Split('\n'))
                     {
                         if (value != "")
@@ -2429,6 +2388,7 @@ namespace BarcodeVerificationSystem.View
                 }
                 else
                 {
+                    
                     _PrintedCodeObtainFromFile = databaseTsk.Result;
                     _CheckedResultCodeList = checkedResultTsk.Result;
 
@@ -2454,9 +2414,11 @@ namespace BarcodeVerificationSystem.View
 
                         if (_NumberOfDuplicate > 0)
                         {
+                           
                             txtStaticText.Text = $"{_TotalCode} ({_NumberOfDuplicate} Duplicate)";
-                            CuzAlert.Show(Lang.DuplicateDataMessage.Replace("NN", "" + _NumberOfDuplicate) + Lang.PODFormat, Alert.enmType.Warning, new Size(500, 120), new Point(Location.X, Location.Y), this.Size, true);
+                            CuzAlert.Show(Lang.DuplicateDataMessage.Replace("NN", "" + _NumberOfDuplicate) + Lang.PODFormat, Alert.enmType.Warning, new Size(500, 120), new Point(Location.X, Location.Y), Size, true);
                         }
+                      
                     }
                 }
             }
@@ -2780,7 +2742,7 @@ namespace BarcodeVerificationSystem.View
             Debug.WriteLine(_BigSTW.ElapsedMilliseconds + " InitCompareData completed, it took " + stw.ElapsedMilliseconds);
         }
 
-        // Get the right valua base on checked result column name - Create by Thong Thach 2023/08/31
+        
         private string[] GetTheRightString(string[] line)
         {
             var code = new string[_ColumnNames.Length];
@@ -2794,7 +2756,7 @@ namespace BarcodeVerificationSystem.View
             return code;
         }
 
-        // Get compare string value by POD format list aka compare format - Create bt Thong Thach 2023/09/06
+       
         public string GetCompareDataByPODFormat(string[] values, List<PODModel> podFormat, int addingIndex = 0)
         {
             if (values.Length == 0) return "";
@@ -2873,19 +2835,16 @@ namespace BarcodeVerificationSystem.View
 
         private void FrmMainNew_FormClosing(object sender, FormClosingEventArgs e)
         {
+            _ParentForm.isShowPopupDisConOneTime = false;
             ReleaseResource();
-
-            if (_ParentForm != null)
-            {
-                _ParentForm.ShowForm();
-            }
+            _ParentForm?.ShowForm();
         }
 
         private void ActionChanged(object sender, EventArgs e)
         {
             if (sender == btnJob)
             {
-                this.Close();
+                Close();
             }
             else if (sender == btnStart)
             {
@@ -2907,12 +2866,14 @@ namespace BarcodeVerificationSystem.View
 
                 if (_FormPreviewDatabase == null || _FormPreviewDatabase.IsDisposed)
                 {
-                    _FormPreviewDatabase = new frmPreviewDatabase();
-                    _FormPreviewDatabase._DatabaseColunms = new List<string>(_DatabaseColunms);
-                    _FormPreviewDatabase._ObtainCodeList = _PrintedCodeObtainFromFile.ToList();
-                    _FormPreviewDatabase._TotalColumns = _TotalColumns;
-                    _FormPreviewDatabase._Totals = _TotalCode;
-                    _FormPreviewDatabase._NumberPrinted = NumberPrinted;
+                    _FormPreviewDatabase = new FrmPreviewDatabase
+                    {
+                        _DatabaseColunms = new List<string>(_DatabaseColunms),
+                        _ObtainCodeList = _PrintedCodeObtainFromFile.ToList(),
+                        _TotalColumns = _TotalColumns,
+                        _Totals = _TotalCode,
+                        _NumberPrinted = NumberPrinted
+                    };
                     _FormPreviewDatabase.Show();
                 }
                 else
@@ -2929,22 +2890,24 @@ namespace BarcodeVerificationSystem.View
             {
                 if (_FormCheckedResult == null || _FormCheckedResult.IsDisposed)
                 {
-                    _FormCheckedResult = new frmCheckedResult();
-                    _FormCheckedResult._IsAfterProduction = _IsAfterProductionMode;
-                    _FormCheckedResult._IsRSeries = _SelectedJob.PrinterSeries;
-                    _FormCheckedResult._ColumnNames = _ColumnNames.ToList();
-                    _FormCheckedResult._CheckedResult = _CheckedResultCodeList.ToList();
-                    _FormCheckedResult._CheckedData = _CodeListPODFormat;
-                    _FormCheckedResult._CodeData = _PrintedCodeObtainFromFile.ToList();
-                    _FormCheckedResult._TotalColumns = _ColumnNames.Count();
-                    _FormCheckedResult._TotalCode = _TotalCode;
-                    _FormCheckedResult._NumberOfPrinted = NumberPrinted;
-                    _FormCheckedResult._TotalChecked = TotalChecked;
-                    _FormCheckedResult._NumberOfCheckedPassed = NumberOfCheckPassed;
-                    _FormCheckedResult._NumberOfCheckedFailed = (TotalChecked - NumberOfCheckPassed);
-                    _FormCheckedResult._JobName = _SelectedJob.FileName;
-                    _FormCheckedResult._PODFormat = _SelectedJob.PODFormat;
-                    _FormCheckedResult._frmParent = this;
+                    _FormCheckedResult = new FrmCheckedResult
+                    {
+                        _IsAfterProduction = _IsAfterProductionMode,
+                        _IsRSeries = _SelectedJob.PrinterSeries,
+                        _ColumnNames = _ColumnNames.ToList(),
+                        _CheckedResult = _CheckedResultCodeList.ToList(),
+                        _CheckedData = _CodeListPODFormat,
+                        _CodeData = _PrintedCodeObtainFromFile.ToList(),
+                        _TotalColumns = _ColumnNames.Count(),
+                        _TotalCode = _TotalCode,
+                        _NumberOfPrinted = NumberPrinted,
+                        _TotalChecked = TotalChecked,
+                        _NumberOfCheckedPassed = NumberOfCheckPassed,
+                        _NumberOfCheckedFailed = (TotalChecked - NumberOfCheckPassed),
+                        _JobName = _SelectedJob.FileName,
+                        _PODFormat = _SelectedJob.PODFormat,
+                        _frmParent = this
+                    };
                     // fillValue = 0: Load all
                     // fillValue = 1: Load passed result
                     // fillValue > 1: Load failed
@@ -2978,7 +2941,6 @@ namespace BarcodeVerificationSystem.View
                         {
                             _FormCheckedResult._FillValue = "All";
                         }
-
                         _FormCheckedResult.Reload();
                         _FormCheckedResult.BringToFront();
                         _FormCheckedResult.Focus();
@@ -2990,7 +2952,7 @@ namespace BarcodeVerificationSystem.View
             {
                 if (_FormViewHistoryProgram == null || _FormViewHistoryProgram.IsDisposed)
                 {
-                    _FormViewHistoryProgram = new frmViewHistoryProgram("_rynan_loggin_access_control_management_");
+                    _FormViewHistoryProgram = new FrmViewHistoryProgram("_rynan_loggin_access_control_management_");
                     _FormViewHistoryProgram.Show();
                 }
                 else
@@ -2999,7 +2961,6 @@ namespace BarcodeVerificationSystem.View
                     {
                         _FormViewHistoryProgram.WindowState = FormWindowState.Normal;
                     }
-
                     _FormViewHistoryProgram.Focus();
                     _FormViewHistoryProgram.BringToFront();
                 }
@@ -3008,7 +2969,7 @@ namespace BarcodeVerificationSystem.View
             {
                 if (_FormSettings == null || _FormSettings.IsDisposed)
                 {
-                    _FormSettings = new frmSettings();
+                    _FormSettings = new FrmSettings();
                     _FormSettings.Show();
                 }
                 else
@@ -3032,12 +2993,12 @@ namespace BarcodeVerificationSystem.View
             }
             else if (sender == mnManage)
             {
-                frmManageAccount form = new frmManageAccount();
-                DialogResult result = form.ShowDialog();
+                FrmManageAccount form = new FrmManageAccount();
+                _ = form.ShowDialog();
             }
             else if (sender == mnChangePassword)
             {
-                frmChangePassword frmChangePassword = new frmChangePassword();
+                FrmChangePassword frmChangePassword = new FrmChangePassword();
                 frmChangePassword.ShowDialog();
             }
             else if (sender == mnLogOut)
@@ -3101,7 +3062,6 @@ namespace BarcodeVerificationSystem.View
 #if DEBUG
                 MessageBox.Show(ex.Message);
 #endif
-
             }
            
         }
@@ -3153,10 +3113,11 @@ namespace BarcodeVerificationSystem.View
                     if (sender is PODDataModel)
                     {
                         PODDataModel podDataModel = sender as PODDataModel;
-                        //Shared.RaiseOnReceiveResponsePrinter(podDataModel.Text);
                         string[] pODcommand = podDataModel.Text.Split(';');
-                        PODResponseModel PODResponseModel = new PODResponseModel();
-                        PODResponseModel.Command = pODcommand[0];
+                        PODResponseModel PODResponseModel = new PODResponseModel
+                        {
+                            Command = pODcommand[0]
+                        };
 
                         if (PODResponseModel != null)
                         {
@@ -3169,7 +3130,6 @@ namespace BarcodeVerificationSystem.View
                                     {
                                         lock (_ReceiveLocker)
                                         {
-                                           // _IsSendWait = false;
                                             Monitor.Pulse(_ReceiveLocker); // Notify that printer was received data
                                         }
                                     }
@@ -3208,7 +3168,6 @@ namespace BarcodeVerificationSystem.View
 
                                 //Receive data: RSFP;1/101;DATA; check.pvcfc.com.vn/?id=L927GCCR72;L927GCCR72;0;0;1
                                 pODcommand = pODcommand.Skip(3).ToArray();
-                                //221031
                                 string printedResult = "";
                                 if (_SelectedJob.JobType == JobType.VerifyAndPrint)
                                 {
@@ -4090,6 +4049,7 @@ namespace BarcodeVerificationSystem.View
             lblSentDataValue.Text = string.Format("{0:N0}", NumberOfSentPrinter);
         }
 
+        
         private void UpdateStatusLabelCamera()
         {
             if (InvokeRequired)
@@ -4112,27 +4072,28 @@ namespace BarcodeVerificationSystem.View
                     else
                     {
                         ShowLabelIcon(labelStatusCamera, Lang.CameraTMP, Properties.Resources.icons8_camera_30px_disconnected);
-                        if (!cameraModel.IsConnected && !isShowPopupOneTime)
+                        if (!cameraModel.IsConnected && !_ParentForm.isShowPopupDisConOneTime)
                         {
-                            isShowPopupOneTime = true;
-                            CuzAlert.Show(Lang.CameraDisconnected, 
+                            _ParentForm.isShowPopupDisConOneTime = true;
+                            CuzAlert.Show(Lang.CameraDisconnected,
                                 Alert.enmType.Warning, 
                                 new Size(500, 120), 
                                 new Point(Location.X, 
                                 Location.Y), 
                                 Size, 
-                                true);
+                                false);
+           
                         }
-                        else if(cameraModel.IsConnected)
+                        else if (cameraModel.IsConnected)
                         {
-                            isShowPopupOneTime = false;
+                            _ParentForm.isShowPopupDisConOneTime = false;
                         }
                     }
                 }
             }
         }
 
-        private void ShowLabelIcon(ToolStripLabel label, String text, Image icon)
+        private void ShowLabelIcon(ToolStripLabel label, string text, Image icon)
         {
             if (InvokeRequired)
             {
@@ -4167,8 +4128,7 @@ namespace BarcodeVerificationSystem.View
                 {
                     PrinterModel printerModel = Shared.Settings.PrinterList[i];
                     ToolStripLabel labelStatusPrinter = _LabelStatusPrinterList[i];
-                    //string printerName = string.Format("{0} {1}",Lang.Printer,i + 1);
-
+                 
                     if (printerModel.IsConnected)
                     {
                         ShowLabelIcon(labelStatusPrinter, Lang.Printer, Properties.Resources.icons8_printer_30px_connected);
@@ -4180,6 +4140,7 @@ namespace BarcodeVerificationSystem.View
                         {
                             CuzAlert.Show(Lang.PrinterDisconnected, Alert.enmType.Warning, new Size(500, 120), new Point(Location.X, Location.Y), this.Size, true);
                         }
+                        
                     }
                 }
             }
@@ -4210,7 +4171,6 @@ namespace BarcodeVerificationSystem.View
                 return;
             }
             bool isEnable = false;
-            //if (operationStatus == OperationStatus.Running)
             if (operationStatus != OperationStatus.Stopped)
             {
                 isEnable = false;
@@ -4276,19 +4236,9 @@ namespace BarcodeVerificationSystem.View
 
         private void ProcessUserAccess()
         {
-            if (Shared.LoggedInUser == null)
-            {
-                //process logout on ui
-                //hide menu change password and logout
-            }
-            else if (Shared.LoggedInUser.Role == 0)
-            {
-
-            }
-            else if (Shared.LoggedInUser.Role == 1)
-            {
-
-            }
+            if (Shared.LoggedInUser == null){}
+            else if (Shared.LoggedInUser.Role == 0){}
+            else if (Shared.LoggedInUser.Role == 1){}
         }
         #endregion Update UI 
 

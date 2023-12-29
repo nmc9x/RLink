@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace BarcodeVerificationSystem.Controller
@@ -69,13 +64,8 @@ namespace BarcodeVerificationSystem.Controller
             }
         }
 
-        private static Color _AferProductionColor = Color.FromArgb(0, 171, 230);
-        private static Color _OnProductionColor = Color.FromArgb(62, 151, 149);
-        private static Color _VerifyAndPrintColor = Color.DarkBlue;
-        private static Color _CanreadColor = Color.IndianRed;
-        private static Color _StaticTextColor = Color.LightGray;
-        private static Color _Standalone = Color.DarkBlue;
-        private static Color _RLinkColor = Color.FromArgb(0, 171, 230);
+        private static readonly Color _Standalone = Color.DarkBlue;
+        private static readonly Color _RLinkColor = Color.FromArgb(0, 171, 230);
 
         public static void ListBoxColor_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -86,14 +76,11 @@ namespace BarcodeVerificationSystem.Controller
             try
             {
                 e.DrawBackground();
-
                 Rectangle fullItemRect = new Rectangle(10, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
                 Rectangle headItemRect = new Rectangle(0, e.Bounds.Y + 5, 8, e.Bounds.Height - 10);
-
-                var job = Shared.GetJob((sender as ListBox).Items[e.Index].ToString());
-
+                Model.JobModel job = Shared.GetJob((sender as ListBox).Items[e.Index].ToString());
                 using (var sf = new StringFormat { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Center })
-                using (SolidBrush headItemBrush = new SolidBrush(FindColor(job)))
+                using (var headItemBrush = new SolidBrush(FindColor(job)))
                 using (Brush brush = ((e.State & DrawItemState.Selected) == DrawItemState.Selected) ? Brushes.White : new SolidBrush(SystemColors.WindowFrame))
                 {
                     if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
@@ -122,18 +109,7 @@ namespace BarcodeVerificationSystem.Controller
 
         private static Color FindColor(Model.JobModel job)
         {
-            Color cl = _CanreadColor;
-            //if (job.CompareType == Model.CompareType.CanRead)
-            //    cl = _CanreadColor;
-            //else if (job.CompareType == Model.CompareType.StaticText)
-            //    cl = _StaticTextColor;
-            //else if (job.CompareType == Model.CompareType.Database && job.JobType == Model.JobType.StandAlone)
-            //    cl = _Standalone;
-            //else
-            //{
-            //    cl = job.JobType == Model.JobType.AfterProduction ? _AferProductionColor : (job.JobType == Model.JobType.OnProduction ? _OnProductionColor : _VerifyAndPrintColor);
-            //}
-            cl = job.JobType == Model.JobType.StandAlone ? _Standalone : _RLinkColor;
+            Color cl = job.JobType == Model.JobType.StandAlone ? _Standalone : _RLinkColor;
             return cl;
         }
     }

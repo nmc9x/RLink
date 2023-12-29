@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
 namespace BarcodeVerificationSystem.Model
 {
@@ -11,20 +6,20 @@ namespace BarcodeVerificationSystem.Model
     public class PrinterSettingsModel
     {
         [DataMember(Name = "podMode")]
-        public int PodMode { get; set; } // 0 print all, 1 print last, 2 print last and repeat
+        public int PodMode { get; set; } 
         [DataMember(Name = "podDataType")]
-        public int PodDataType { get; set; }// 0 json, 1 Raw data, 2 Customise
+        public int PodDataType { get; set; }
         [DataMember(Name = "monitorResponse")]
-        public int MonitorResponse { get; set; } // 0 Timed Interval, 1 Each print
+        public int MonitorResponse { get; set; } 
         [DataMember(Name= "enablePOD")]
-        public bool EnablePOD { get; set; } // Enable POD
+        public bool EnablePOD { get; set; }
         [DataMember(Name = "responsePODData")]
-        public bool ResponsePODData { get; set; } // Response POD data
+        public bool ResponsePODData { get; set; } 
         [DataMember(Name = "responsePODCommand")]
-        public bool ResponsePODCommand { get; set; } // Response POD commnand
+        public bool ResponsePODCommand { get; set; } 
         [DataMember(Name = "enableMonitor")]
-        public bool EnableMonitor { get; set; } // Enable monitor
-        [DataMember(Name = "isSupportHttpRequest")] // MinhChau Add 08122023
+        public bool EnableMonitor { get; set; } 
+        [DataMember(Name = "isSupportHttpRequest")] 
         public bool IsSupportHttpRequest { get; set; }
     }
 }

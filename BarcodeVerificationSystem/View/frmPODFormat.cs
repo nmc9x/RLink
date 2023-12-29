@@ -2,43 +2,39 @@
 using BarcodeVerificationSystem.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UILanguage;
 
 namespace BarcodeVerificationSystem.View
 {
-    public partial class frmPODFormat : Form
+    public partial class FrmPODFormat : Form
     {
         public static List<PODModel> _PODFormat = new List<PODModel>();
         public static List<PODModel> _PODList = new List<PODModel>();
         public static string _DirectoryDatabase = "";
         public static bool _IsComparision = true;
-        private char splitCharDatabase = (_DirectoryDatabase.EndsWith(".txt")) ? '\t' : ',';
         private Thread _ThreadReadDatabaseFromFile;
         private Thread _ThreadUpdateDataGridView;
         private Thread _ThreadCreatePreviewVerifyData;
 
         private List<string> _DatabaseColunms = new List<string>();
-        private List<string> _VerifyData = new List<string>();
-        private List<string[]> _CodeListFromFile = new List<string[]>();
-
+        private readonly List<string> _VerifyData = new List<string>();
+        private readonly List<string[]> _CodeListFromFile = new List<string[]>();
         public double _NumberTotalsCode = 0;
-        public frmPODFormat()
+
+        public FrmPODFormat()
         {
             InitializeComponent();
         }
 
-        private void frmPODFormat_Load(object sender, EventArgs e)
+        private void FrmPODFormat_Load(object sender, EventArgs e)
         {
             InitControl();
             InitEvent();
@@ -47,28 +43,22 @@ namespace BarcodeVerificationSystem.View
 
         private void SetLanguage()
         {
-            if (this.InvokeRequired)
+            if (InvokeRequired)
             {
-                this.Invoke(new Action(() => SetLanguage()));
+                Invoke(new Action(() => SetLanguage()));
                 return;
             }
             if (_IsComparision)
             {
                 lblPODlist.Text = Lang.PODList;
                 lblPODformat.Text = Lang.PODFormat;
-                //lblDisplay.Text = Lang.Display;
                 lblSample.Text = Lang.Sample;
                 lblText.Text = Lang.Text;
                 btnSave.Text = Lang.OK;
-                //btnCancel.Text = Lang.Cancel;
                 lblFormName.Text = Lang.PODFormat;
                 btnPreviewComparison.Text = Lang.PreviewComparisonData;
                 btnPreviewDatabase.Text = Lang.previewdatabase;
                 lblPreview.Text = Lang.previewdatabase;
-            }
-            else
-            {
-
             }
         }
         
@@ -92,7 +82,6 @@ namespace BarcodeVerificationSystem.View
             listBoxPODRight.BorderStyle = BorderStyle.None;
 
             UpdateFiledsByNumberColumn();
-            //UpdateDataGridView();
         }
 
         private void UpdateFiledsByNumberColumn()
@@ -101,17 +90,17 @@ namespace BarcodeVerificationSystem.View
             {
                 try
                 {
-                    var splitter = _DirectoryDatabase.EndsWith(".csv") ? new Regex(@",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))") : new Regex(@"[\t]");
-                    var tmp = File.ReadLines(_DirectoryDatabase).FirstOrDefault();
-                    var lineContent = splitter.Split(tmp).Select(x => Csv.Unescape(x)).ToArray();
-                    PODModel modelText = new PODModel
+                    Regex splitter = _DirectoryDatabase.EndsWith(".csv") ? new Regex(@",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))") : new Regex(@"[\t]");
+                    string tmp = File.ReadLines(_DirectoryDatabase).FirstOrDefault();
+                    string[] lineContent = splitter.Split(tmp).Select(x => Csv.Unescape(x)).ToArray();
+                    var modelText = new PODModel
                     {
                         Type = PODModel.TypePOD.TEXT
                     };
                     listBoxPODLeft.Items.Add(modelText);
                     for (int index = 0; index < lineContent.Count(); index++)
                     {
-                        PODModel pod = new PODModel
+                        var pod = new PODModel
                         {
                             Index = index + 1,
                             Type = PODModel.TypePOD.FIELD,
@@ -135,31 +124,30 @@ namespace BarcodeVerificationSystem.View
             btnDown.Click += ActionChanged;
             btnClear.Click += ActionChanged;
             btnSave.Click += ActionChanged;
-            //btnCancel.Click += ActionChanged;
             listBoxPODLeft.DoubleClick += ActionChanged;
             listBoxPODRight.DoubleClick += ActionChanged;
             listBoxPODRight.SelectedIndexChanged += ListBoxPODRight_SelectedIndexChanged;
             txtText.TextChanged += ActionChanged;
             Shared.OnLanguageChange += Shared_OnLanguageChange;
-            this.FormClosing += FrmPODFormat_FormClosing;
+            FormClosing += FrmPODFormat_FormClosing;
             btnPreviewComparison.Click += (s, e) =>
             {
                 Invoke(new Action(() =>
                 {
                     lblPreview.Text = Lang.PreviewComparisonData;
                 }));
-                var dataColumn = "";
+                string dataColumn = "";
                 _PODFormat.Clear();
                 foreach (var item in listBoxPODRight.Items)
                 {
                     _PODFormat.Add((PODModel)item);
                 }
                 dataColumn = string.Join("", _PODFormat.Select(x => x.ToStringSample()));
-                var columns = new string[] { "Index", dataColumn };
+                string[] columns = new string[] { "Index", dataColumn };
                 if (_PODFormat.Count() > 0)
                 {
                     AdjustDataGridViewColumn(dgvSampleData, columns);
-                    var newColumn = new string[] { "Index", "IndexPlus" };
+                    string[] newColumn = new string[] { "Index", "IndexPlus" };
                     DataGridViewCustom.AutoResizeColumnWith(dgvSampleData, newColumn);
                 }
             };
@@ -176,7 +164,6 @@ namespace BarcodeVerificationSystem.View
                     DataGridViewCustom.AutoResizeColumnWith(dgvSampleData, _DatabaseColunms.ToArray());
                 else
                     DataGridViewCustom.AutoResizeColumnWith(dgvSampleData, _CodeListFromFile[0]);
-                //UpdateDataGridView();
             };
         }
 
@@ -190,7 +177,7 @@ namespace BarcodeVerificationSystem.View
             }
 
             int index = listBoxPODRight.Items.IndexOf(listBoxPODRight.SelectedItem);
-            PODModel podTMP = (PODModel)listBoxPODRight.Items[index];
+            var podTMP = (PODModel)listBoxPODRight.Items[index];
             if (podTMP.Type == PODModel.TypePOD.TEXT)
             {
                 txtText.Enabled = true;
@@ -228,7 +215,7 @@ namespace BarcodeVerificationSystem.View
 
                 foreach (var item in listBoxPODRight.Items)
                 {
-                    PODModel podTmp = (PODModel)item;
+                    var podTmp = (PODModel)item;
                     _PODFormat.Add(podTmp);
                 }
                 DialogResult = DialogResult.OK;
@@ -248,7 +235,7 @@ namespace BarcodeVerificationSystem.View
                     return;
                 }
 
-                PODModel podTmp = ((PODModel)(listBoxPODLeft.SelectedItem));
+                var podTmp = ((PODModel)(listBoxPODLeft.SelectedItem));
                 listBoxPODRight.Items.Add(podTmp.Clone());
                 Sample();
             }
@@ -267,7 +254,7 @@ namespace BarcodeVerificationSystem.View
                 {
                     return;
                 }
-                PODModel podTmp = ((PODModel)(listBoxPODLeft.SelectedItem));
+                var podTmp = ((PODModel)(listBoxPODLeft.SelectedItem));
                 listBoxPODRight.Items.Add(podTmp.Clone());
                 Sample();
             }
@@ -287,7 +274,7 @@ namespace BarcodeVerificationSystem.View
                     return;
                 }
                 int index = listBoxPODRight.Items.IndexOf(listBoxPODRight.SelectedItem);
-                PODModel podTMP = (PODModel)listBoxPODRight.Items[index];
+                var podTMP = (PODModel)listBoxPODRight.Items[index];
                 if (index > 0)
                 {
                     listBoxPODRight.Items.RemoveAt(index);
@@ -303,7 +290,7 @@ namespace BarcodeVerificationSystem.View
                     return;
                 }
                 int index = listBoxPODRight.Items.IndexOf(listBoxPODRight.SelectedItem);
-                PODModel podTMP = (PODModel)listBoxPODRight.Items[index];
+                var podTMP = (PODModel)listBoxPODRight.Items[index];
                 if (index < listBoxPODRight.Items.Count - 1)
                 {
                     listBoxPODRight.Items.RemoveAt(index);
@@ -323,7 +310,7 @@ namespace BarcodeVerificationSystem.View
                 _PODFormat.Clear();
                 foreach (var item in listBoxPODRight.Items)
                 {
-                    PODModel podTmp = (PODModel)item;
+                    var podTmp = (PODModel)item;
                     if (podTmp.Type == PODModel.TypePOD.TEXT)
                     {
                         podTmp.Value = txtText.Text;
@@ -341,7 +328,7 @@ namespace BarcodeVerificationSystem.View
                 if (txtText.Text != "")
                 {
                     int index = listBoxPODRight.Items.IndexOf(listBoxPODRight.SelectedItem);
-                    PODModel podTMP = (PODModel)listBoxPODRight.Items[index];
+                    var podTMP = (PODModel)listBoxPODRight.Items[index];
                     podTMP.Value = txtText.Text;
                     Sample();
                 }
@@ -353,7 +340,7 @@ namespace BarcodeVerificationSystem.View
             txtSample.Text = "";
             foreach (var item in listBoxPODRight.Items)
             {
-                PODModel podTmp = (PODModel)item;
+                var podTmp = (PODModel)item;
                 txtSample.Text += podTmp.ToStringSample();
             }
         }
@@ -361,9 +348,9 @@ namespace BarcodeVerificationSystem.View
         private void PreviewVerifyData()
         {
             _PODFormat.Clear();
-            foreach (var listboxRightItems in listBoxPODRight.Items)
+            foreach (object listboxRightItems in listBoxPODRight.Items)
             {
-                PODModel podTmp = (PODModel)listboxRightItems;
+                var podTmp = (PODModel)listboxRightItems;
                 _PODFormat.Add(podTmp);
             }
             _VerifyData.Clear();
@@ -374,7 +361,7 @@ namespace BarcodeVerificationSystem.View
                 {
                     if (_PODFormat.Count > 0)
                     {
-                        foreach (var item in _CodeListFromFile)
+                        foreach (string[] item in _CodeListFromFile)
                         {
                             string data = "";
                             foreach (var model in _PODFormat)
@@ -403,7 +390,7 @@ namespace BarcodeVerificationSystem.View
             _CodeListFromFile.Clear();
             foreach (var listboxRightItems in listBoxPODRight.Items)
             {
-                PODModel podTmp = (PODModel)listboxRightItems;
+                var podTmp = (PODModel)listboxRightItems;
                 _PODFormat.Add(podTmp);
             }
             KillThreadReadDatabaseFromFile();
@@ -432,9 +419,7 @@ namespace BarcodeVerificationSystem.View
                                     {
                                         break;
                                     }
-                                    // ignore empty line 16/11/2023 by Thong Thach
-                                    //if (line.Count == 1 && line[0] == "") continue;
-
+                                   
                                     _DatabaseColunms = line.ToList();
                                     _DatabaseColunms.Insert(0, "Index");
                                     Invoke(new Action(() =>
@@ -450,13 +435,13 @@ namespace BarcodeVerificationSystem.View
 
                                     if (lineCounter <= 500)
                                     {
-                                        var line = splitter.Split(reader.ReadLine()).Select(x => Csv.Unescape(x)).ToList();
+                                        List<string> line = splitter.Split(reader.ReadLine()).Select(x => Csv.Unescape(x)).ToList();
                                         if (line == null)
                                         {
                                             break;
                                         }
-                                        // Create code data base on first line of file aka database columns - Edit by Thong Thach 2023/09/09
-                                        var code = new string[columnCount];
+
+                                        string[] code = new string[columnCount];
                                         code[0] = "" + lineCounter;
                                         for (int i = 1; i < code.Length; i++)
                                         {
@@ -501,9 +486,11 @@ namespace BarcodeVerificationSystem.View
                 {
 
                 }
-            });
-            _ThreadReadDatabaseFromFile.IsBackground = true;
-            _ThreadReadDatabaseFromFile.Priority = ThreadPriority.Highest;
+            })
+            {
+                IsBackground = true,
+                Priority = ThreadPriority.Highest
+            };
             _ThreadReadDatabaseFromFile.Start();
         }
 
@@ -515,6 +502,7 @@ namespace BarcodeVerificationSystem.View
                 _ThreadUpdateDataGridView = null;
             }
         }
+
         private void KillThreadReadDatabaseFromFile()
         {
             if(_ThreadReadDatabaseFromFile!=null && _ThreadReadDatabaseFromFile.IsAlive)
@@ -523,6 +511,7 @@ namespace BarcodeVerificationSystem.View
                 _ThreadReadDatabaseFromFile = null;
             }
         }
+
         private void KillThreadCreatePreviewVerifyData()
         {
             if(_ThreadCreatePreviewVerifyData!=null && _ThreadCreatePreviewVerifyData.IsAlive)
@@ -531,6 +520,7 @@ namespace BarcodeVerificationSystem.View
                 _ThreadCreatePreviewVerifyData = null;
             }
         }
+
         public void InitDataGridView(DataGridView dgv, string[] columns)
         {
             dgv.CellValueNeeded += (obj, e) =>
@@ -542,8 +532,8 @@ namespace BarcodeVerificationSystem.View
                     if (_CodeListFromFile.Count <= 0) return;
                     if (dgv.Columns.Count < _CodeListFromFile[0].Length && e.ColumnIndex != 0)
                     {
-                        var row = _CodeListFromFile[e.RowIndex];
-                        foreach (var item in _PODFormat)
+                        string[] row = _CodeListFromFile[e.RowIndex];
+                        foreach (PODModel item in _PODFormat)
                         {
                             if (item.Type == PODModel.TypePOD.DATETIME)
                             {
@@ -583,10 +573,12 @@ namespace BarcodeVerificationSystem.View
                 int tableCodeProductListWidth = dgv.Width - 39;
                 for (int index = 0; index < columns.Length; index++)
                 {
-                    DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
-                    col.HeaderText = (index != 0) ? columns[index] + " - Field" + (index) : columns[index];
-                    col.Name = columns[index].Trim();
-                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                    var col = new DataGridViewTextBoxColumn
+                    {
+                        HeaderText = (index != 0) ? columns[index] + " - Field" + (index) : columns[index],
+                        Name = columns[index].Trim(),
+                        SortMode = DataGridViewColumnSortMode.NotSortable
+                    };
                     if (index == 0)
                     {
                         col.Width = (int)(0.75 * tableCodeProductListWidth);
@@ -618,7 +610,7 @@ namespace BarcodeVerificationSystem.View
                 int tableCodeProductListWidth = dgv.Width - 39;
                 for (int index = 0; index < columns.Length; index++)
                 {
-                    DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
+                    var col = new DataGridViewTextBoxColumn();
                     if (index > 0)
                     {
                         col.HeaderText = (index != 0 && columns.Count() - 1 != index) ? columns[index] + " - Field" + (index) : columns[index];

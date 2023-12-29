@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using BarcodeVerificationSystem.Controller;
-using UILanguage;
+﻿using BarcodeVerificationSystem.Controller;
 using BarcodeVerificationSystem.Model;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+using UILanguage;
 
 namespace BarcodeVerificationSystem.View
 {
-    public partial class ucSystemSettings : UserControl
+    public partial class UcSystemSettings : UserControl
     {
         private bool _IsBinding = false;
-        private String[] _ListLanguages = { "en-US", "vi-VN" };
-        public ucSystemSettings()
+        private readonly string[] _ListLanguages = { "en-US", "vi-VN" };
+
+        public UcSystemSettings()
         {
             InitializeComponent();
         }
+
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
@@ -31,29 +28,19 @@ namespace BarcodeVerificationSystem.View
         private void InitControls()
         {
             _IsBinding = true;
-            //Checked result
             txtCheckedResultPath.Text = Shared.Settings.ExportCheckedResultPath;
             txtDataCheckedFileName.Text = Shared.Settings.DataCheckedFileName;
-            //END Checked result
 
-            //Image export
             radEnableImageExport.Checked = Shared.Settings.ExportImageEnable;
             radDisableImageExport.Checked = !Shared.Settings.ExportImageEnable;
             txtImageExportPath.Text = Shared.Settings.ExportImagePath;
             EnableExportImageUI(Shared.Settings.ExportImageEnable);
-            //END Image export
 
-            //Output
             radEnableOutput.Checked = Shared.Settings.OutputEnable;
             radDisableOutput.Checked = !Shared.Settings.OutputEnable;
-            //END Output
 
-            //Stop process condition
             radEnableTotalCode.Checked = Shared.Settings.TotalCheckEnable;
             radEnableTotalPassed.Checked = !Shared.Settings.TotalCheckEnable;
-            //END
-
-            //Verify and print sent method
             radBasic.Checked = Shared.Settings.VerifyAndPrintBasicSentMethod;
             radCompare.Checked = !Shared.Settings.VerifyAndPrintBasicSentMethod;
             txtFailedREdit.Text = Shared.Settings.FailedDataSentToPrinter;
@@ -69,10 +56,7 @@ namespace BarcodeVerificationSystem.View
                 txtPrintField.Enabled = true;
                 btnSelectPrintField.Enabled = true;
             }
-            //END Verify and print
 
-            // Language
-            // List language http://cldr.unicode.org/index/downloads/cldr-1-8
             cboLanguages.Items.Add("English"); //Tiếng anh
             cboLanguages.Items.Add("Vietnamese [Tiếng Việt]"); //Tiếng việt
             //cboLanguage.Items.Add("German [Deutsch]"); //Tiếng đức
@@ -88,7 +72,6 @@ namespace BarcodeVerificationSystem.View
                     cboLanguages.SelectedIndex = i;
                 }
             }
-            // END Language
 
             txtJobDateTimeFormat.Text = Shared.Settings.JobDateTimeFormat;
             txtJobFileName.Text = Shared.Settings.JobFileNameDefault;
@@ -129,7 +112,7 @@ namespace BarcodeVerificationSystem.View
             btnDefaultFailedR.Click += AdjustData;
             btnSelectPrintField.Click += AdjustData;
             Shared.OnLanguageChange += Shared_OnLanguageChange;
-            this.Load += UcSystemSettings_Load;
+            Load += UcSystemSettings_Load;
 
             btnBrowserImageExportPath.Click += AdjustData;
 
@@ -137,8 +120,8 @@ namespace BarcodeVerificationSystem.View
             cboLanguages.Height = 40;
             cboLanguages.DropDownHeight = 100;
             cboLanguages.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboLanguages.DrawItem += ComboBoxCustom.myComboBox_DrawItem;
-            cboLanguages.MeasureItem += ComboBoxCustom.cbo_MeasureItem;
+            cboLanguages.DrawItem += ComboBoxCustom.MyComboBox_DrawItem;
+            cboLanguages.MeasureItem += ComboBoxCustom.Cbo_MeasureItem;
         }
 
         private void UcSystemSettings_Load(object sender, EventArgs e)
@@ -155,9 +138,9 @@ namespace BarcodeVerificationSystem.View
 
         private void SetLanguage()
         {
-            if (this.InvokeRequired)
+            if (InvokeRequired)
             {
-                this.Invoke(new Action(() => SetLanguage()));
+                Invoke(new Action(() => SetLanguage()));
                 return;
             }
             grbExportCheckedResult.Text = Lang.CheckedResult1;
@@ -173,13 +156,10 @@ namespace BarcodeVerificationSystem.View
             lblImageExportWarning.ForeColor = Color.FromArgb(255, 128, 0);
             lblImageExportWarning.Text = Lang.TheImageExportFunction;
             lblDataCheckedFileName.Text = Lang.DataCheckedFileName;
-
             btnGenerateDataCheckedFileName.Text = Lang.Generate;
             btnDefaultFailedR.Text = Lang.Default;
             grbLanguage.Text = Lang.Language;
             grbOutput.Text = Lang.OutputSignal;
-            //lblOutputSignal.Text = Lang.Output;
-
             grbJobFormat.Text = Lang.JobFormat;
             lblJobDatetimeFormat.Text = Lang.DateTimeFormat;
             lblJobFileName.Text = Lang.FileName;
@@ -250,20 +230,14 @@ namespace BarcodeVerificationSystem.View
             }
             else if (sender == btnSelectPrintField)
             {
-                // Create and show dialog POD format form base on default POD format list
-                frmPrintFieldForVerifyAndPrintCompareMode frmPODFormat = new frmPrintFieldForVerifyAndPrintCompareMode();
-                //frmPrintFieldForVerifyAndPrintCompareMode._PODFormat = _PODList.Select(item => (PODModel)item.Clone()).ToList();
+                FrmPrintFieldForVerifyAndPrintCompareMode frmPODFormat = new FrmPrintFieldForVerifyAndPrintCompareMode();
                 frmPODFormat.ShowDialog();
-                // END Create and show dialog POD format form base on default POD format list
-
                 txtPrintField.Text = "";
                 if (frmPODFormat.DialogResult == DialogResult.OK)
                 {
-                    //Get POD format from POD format form
-                    var _PODFormat = frmPODFormat._PODFormat;
+                    List<PODModel> _PODFormat = frmPODFormat._PODFormat;
                     Shared.Settings.PrintFieldForVerifyAndPrint = _PODFormat;
                     UpdateTXTPrinField(_PODFormat);
-                    //END Get POD format from POD format form
                 }
                 else
                 {
@@ -328,11 +302,11 @@ namespace BarcodeVerificationSystem.View
             }
             else if (sender == btnBrowserImageExportPath)
             {
-                var folderPath = Shared.Settings.ExportImagePath = OpenDirectoryFileDatabase();
+                var folderPath = Shared.Settings.ExportImagePath;// = OpenDirectoryFileDatabase();
+                UtilityFunctions.OpenDialog(folderPath);
                 if (folderPath != null && folderPath != "")
                     txtImageExportPath.Text = folderPath;
             }
-            // Save to file
             Shared.SaveSettings();
         }
 

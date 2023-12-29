@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
 namespace BarcodeVerificationSystem
 {
@@ -11,9 +6,9 @@ namespace BarcodeVerificationSystem
     public class ResponseGetInfoModel
     {
         [DataMember(Name = "success")]
-        public string success { get; set; }
+        public string Success { get; set; }
         [DataMember(Name = "message")]
-        public string message { get; set; }
+        public string Message { get; set; }
         [DataMember(Name = "data")]
         public GetInfoDataResponseModel data { get; set; }
 

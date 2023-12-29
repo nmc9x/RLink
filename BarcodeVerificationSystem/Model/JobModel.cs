@@ -1,10 +1,6 @@
-﻿using BarcodeVerificationSystem.Controller;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -49,12 +45,11 @@ namespace BarcodeVerificationSystem.Model
 
 
         #region Methods
-        public void SaveFile(String fileName)
+        public void SaveFile(string fileName)
         {
             try
             {
                 var xs = new XmlSerializer(typeof(JobModel));
-
                 using (TextWriter sw = new StreamWriter(fileName))
                 {
                     xs.Serialize(sw,this);
@@ -70,10 +65,9 @@ namespace BarcodeVerificationSystem.Model
             {
                 JobModel info = null;
                 var xs = new XmlSerializer(typeof(JobModel));
-
                 using (var sr = new StreamReader(fileName))
                 {
-                    XmlReader xr = XmlReader.Create(sr);
+                    var xr = XmlReader.Create(sr);
                     info = (JobModel)xs.Deserialize(xr);
                 }
 

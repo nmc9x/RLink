@@ -1,6 +1,6 @@
 ﻿namespace BarcodeVerificationSystem.View
 {
-    partial class frmSplashScreen
+    partial class FrmSplashScreen
     {
         /// <summary>
         /// Required designer variable.

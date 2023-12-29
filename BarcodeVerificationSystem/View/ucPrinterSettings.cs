@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using BarcodeVerificationSystem.Controller;
-using UILanguage;
+﻿using BarcodeVerificationSystem.Controller;
 using BarcodeVerificationSystem.Model;
+using System;
+using System.Windows.Forms;
+using UILanguage;
 
 namespace BarcodeVerificationSystem.View
 {
-    /// <summary>
-    /// @Author: Dung Le
-    /// </summary>
-    public partial class ucPrinterSettings : UserControl
+
+    public partial class UcPrinterSettings : UserControl
     {
         private PrinterModel _PrinterModel;
         private int _Index = 0;
@@ -31,10 +22,11 @@ namespace BarcodeVerificationSystem.View
         }
         private bool _IsBinding = false;
 
-        public ucPrinterSettings()
+        public UcPrinterSettings()
         {
             InitializeComponent();
         }
+
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
@@ -50,7 +42,6 @@ namespace BarcodeVerificationSystem.View
             lblPODProtocol.Visible = false;
             radNewPODProtocol.Checked = _PrinterModel.IsVersion;
             radOldPODProtocol.Checked = !_PrinterModel.IsVersion;
-
             radSupported.Checked = _PrinterModel.CheckAllPrinterSettings;
             radUnsuported.Checked = !_PrinterModel.CheckAllPrinterSettings;
             numPortRemote.Value = _PrinterModel.NumPortRemote;
@@ -74,7 +65,7 @@ namespace BarcodeVerificationSystem.View
 
             Shared.OnLanguageChange += Shared_OnLanguageChange;
             Shared.OnReceiveResponsePrinter += Shared_OnReceiveResponsePrinter;
-            this.Load += UcPrinterSettings_Load;
+            Load += UcPrinterSettings_Load;
         }
 
         private void UcPrinterSettings_Load(object sender, EventArgs e)
@@ -91,9 +82,7 @@ namespace BarcodeVerificationSystem.View
             }
             if (sender is string)
             {
-                string message = sender as string;
-                //listBoxContentResponsePrinter.Items.Add(DateTime.Now.ToString("yyyy/MM/dd_hh:mm:ss") + "_" + message);
-                //listBoxContentResponsePrinter.SelectedIndex = listBoxContentResponsePrinter.Items.Count - 1;
+                var message = sender as string;
             }
         }
 
@@ -106,7 +95,7 @@ namespace BarcodeVerificationSystem.View
         {
             if (InvokeRequired)
             {
-                this.Invoke(new Action(() => SetLanguage()));
+                Invoke(new Action(() => SetLanguage()));
                 return;
             }
             lblIPrinterIP.Text = Lang.IPAddress;
@@ -115,9 +104,7 @@ namespace BarcodeVerificationSystem.View
             radOldPODProtocol.Text = Lang.OldVersion;
             radNewPODProtocol.Text = Lang.NewVersion;
             grbPrinter.Text = Lang.Printer;
-            //lblResponsePrinter.Text = Lang.ResponseContent;
             lblPortRemote.Text = Lang.PrinterRemotePort;
-            //lblSetupPrinter.Text = Lang.AdvancedPrinterSettings;
             btnSetupPrinter.Text = Lang.AdvancedPrinterSettings;
             lblPODChangedWarning.Text = Lang.PODChangedWarning;
             lblPrinterOperSys.Text = Lang.CheckAllPrinterSettings;
@@ -133,29 +120,23 @@ namespace BarcodeVerificationSystem.View
             }
             if(sender == txtPrinterIP)
             {
-                var checkExist = Shared.Settings.PrinterList.Find(x => x.IP == _PrinterModel.IP);
+                PrinterModel checkExist = Shared.Settings.PrinterList.Find(x => x.IP == _PrinterModel.IP);
                 if (checkExist != null)
                 {
                     checkExist.IP = txtPrinterIP.Text;
-                    var checkExistPOD = Shared.PODControllerList.Find(x => x.ServerIP == _PrinterModel.IP);
-                    if (checkExistPOD != null)
-                    {
-                        checkExistPOD.Disconnect();
-                    }
+                    PODController checkExistPOD = Shared.PODControllerList.Find(x => x.ServerIP == _PrinterModel.IP);
+                    checkExistPOD?.Disconnect();
                 }
                 _PrinterModel.IP = txtPrinterIP.Text;
             }
             else if(sender == numPrinterPort)
             {
-                var checkExist = Shared.Settings.PrinterList.Find(x => x.IP == _PrinterModel.IP);
+                PrinterModel checkExist = Shared.Settings.PrinterList.Find(x => x.IP == _PrinterModel.IP);
                 if (checkExist != null)
                 {
                     checkExist.Port = (int)numPrinterPort.Value;
                     var checkExistPOD = Shared.PODControllerList.Find(x => x.ServerIP == _PrinterModel.IP);
-                    if (checkExistPOD != null)
-                    {
-                        checkExistPOD.Disconnect();
-                    }
+                    checkExistPOD?.Disconnect();
                 }
                 _PrinterModel.Port = (int)numPrinterPort.Value;
             }
@@ -175,10 +156,11 @@ namespace BarcodeVerificationSystem.View
             }
             else if(sender == btnSetupPrinter)
             {
-                frmRemotePrinter remotePrinter = new frmRemotePrinter();
-
-                remotePrinter.IPAddress = txtPrinterIP.Text;
-                remotePrinter.Port = (int)numPortRemote.Value;
+                var remotePrinter = new FrmRemotePrinter
+                {
+                    IPAddress = txtPrinterIP.Text,
+                    Port = (int)numPortRemote.Value
+                };
                 remotePrinter.ShowDialog();
             }
             else if(sender == numPortRemote)
@@ -199,7 +181,6 @@ namespace BarcodeVerificationSystem.View
                     _PrinterModel.CheckAllPrinterSettings = false;
                 }
             }
-            // Save to file
             Shared.SaveSettings();
         }
     }

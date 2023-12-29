@@ -3,14 +3,11 @@ using BarcodeVerificationSystem.Model;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,7 +15,7 @@ using UILanguage;
 
 namespace BarcodeVerificationSystem.View
 {
-    public partial class frmCheckedResult : Form
+    public partial class FrmCheckedResult : Form
     {
         public FrmMain _frmParent = null;
         private Thread _ThreadUpdateCheckedResult;
@@ -44,8 +41,8 @@ namespace BarcodeVerificationSystem.View
         //Paging dataGridview
         private int _CurrentPage = 1;
         private int _PagesCount = 1;
-        private int _PageRows = 5000;
-        private string[] _FilterFailed = new string[] { "All", "Valid", "Invalided", "Duplicated", "Null", "Unknown/Missed", "Failed" };
+        private readonly int _PageRows = 5000;
+        private readonly string[] _FilterFailed = new string[] { "All", "Valid", "Invalided", "Duplicated", "Null", "Unknown/Missed", "Failed" };
         // END
 
         private const int CS_DropShadow = 0x00020000;
@@ -59,7 +56,7 @@ namespace BarcodeVerificationSystem.View
             }
         }
 
-        public frmCheckedResult()
+        public FrmCheckedResult()
         {
             InitializeComponent();
         }
@@ -123,8 +120,8 @@ namespace BarcodeVerificationSystem.View
             cbxFilter.Height = 40;
             cbxFilter.DropDownHeight = 150;
             cbxFilter.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbxFilter.DrawItem += ComboBoxCustom.myComboBox_DrawItem;
-            cbxFilter.MeasureItem += ComboBoxCustom.cbo_MeasureItem;
+            cbxFilter.DrawItem += ComboBoxCustom.MyComboBox_DrawItem;
+            cbxFilter.MeasureItem += ComboBoxCustom.Cbo_MeasureItem;
 
             btnFirst.Click += ToolStripButtonClick;
             btnBack.Click += ToolStripButtonClick;
@@ -146,7 +143,7 @@ namespace BarcodeVerificationSystem.View
             Shared.OnLanguageChange += Shared_OnLanguageChange;
 
             //dgvCheckedResult.RowPostPaint += DataGridViewDatabase_RowPostPaint;
-            this.Load += FrmCheckedResult_Load;
+            Load += FrmCheckedResult_Load;
             comboBox1.SelectedValueChanged += (s, e) =>
             {
                 _CurrentPage = (int)comboBox1.SelectedIndex + 1;
@@ -191,10 +188,10 @@ namespace BarcodeVerificationSystem.View
                     Directory.CreateDirectory(folderPath);
                 }
 
-                DirectoryInfo dir = new DirectoryInfo(folderPath);
-                string strFileNameExtension = String.Format("*{0}", "bmp");
+                var dir = new DirectoryInfo(folderPath);
+                string strFileNameExtension = string.Format("*{0}", "bmp");
                 FileInfo[] files = dir.GetFiles(strFileNameExtension); //Getting Text files
-                List<string> result = new List<string>();
+                var result = new List<string>();
                 foreach (FileInfo file in files)
                 {
                     result.Add(file.Name);
@@ -254,7 +251,7 @@ namespace BarcodeVerificationSystem.View
 
         private void ToolStripButtonClick(object sender, EventArgs e)
         {
-            Button ToolStripButton = ((Button)sender);
+            var ToolStripButton = ((Button)sender);
             if (sender == btnBack)
             {
                 _CurrentPage--;
@@ -291,7 +288,7 @@ namespace BarcodeVerificationSystem.View
 
         private void RefreshPagination()
         {
-            Button[] items = new Button[] { Number1, Number2, Number3, Number4, Number5 };
+           var items = new Button[] { Number1, Number2, Number3, Number4, Number5 };
             //pageStartIndex contains the first button number of pagination.
             int pageStartIndex = 1;
 
@@ -391,11 +388,11 @@ namespace BarcodeVerificationSystem.View
                 Invoke(new Action(() => AssignColumnNameToTable(values)));
                 return;
             }
-            var columns = values.ToArray();
+            string[] columns = values.ToArray();
             dgvCheckedResult.Columns.Clear();
             dgvCheckedResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
 
-            var selectedIndex = -1;
+            int selectedIndex = -1;
             dgvCheckedResult.CellClick += (obj, e) =>
             {
                 if (e.RowIndex == -1) return;
@@ -419,7 +416,7 @@ namespace BarcodeVerificationSystem.View
                     string cell = "";
                     int lineIndex = e.RowIndex + (_CurrentPage - 1) * _PageRows;
                     if (searchResultLinesCount == 0 || searchResultLinesCount <= lineIndex) return;
-                    var codeIndex = _SearchResultList[lineIndex];
+                    int codeIndex = _SearchResultList[lineIndex];
                     if (cbxFilter.Text == "Unknown/Missed")
                     {
                         if (e.ColumnIndex == 0)
@@ -453,7 +450,7 @@ namespace BarcodeVerificationSystem.View
                     {
                         if (e.ColumnIndex == 1)
                         {
-                            var dataValue = cell == "" ? Lang.CannotDetect : cell;
+                            string dataValue = cell == "" ? Lang.CannotDetect : cell;
                             e.Value = dataValue;
                         }
                         else
@@ -463,33 +460,33 @@ namespace BarcodeVerificationSystem.View
                     {
                         if (cell == ComparisonResult.Valid.ToString())
                         {
-                            e.Value = BarcodeVerificationSystem.Properties.Resources.icons8_done_24px_result;
+                            e.Value = Properties.Resources.icons8_done_24px_result;
                         }
                         else
                         {
                             if (cell == ComparisonResult.Duplicated.ToString())
                             {
-                                e.Value = BarcodeVerificationSystem.Properties.Resources.icon_Duplicated_Barcode;
+                                e.Value = Properties.Resources.icon_Duplicated_Barcode;
                             }
                             else if (cell == ComparisonResult.Missed.ToString())
                             {
-                                e.Value = BarcodeVerificationSystem.Properties.Resources.icon_Missed_Barcode;
+                                e.Value = Properties.Resources.icon_Missed_Barcode;
                             }
                             else if (cell == ComparisonResult.Null.ToString())
                             {
-                                e.Value = BarcodeVerificationSystem.Properties.Resources.icon_CantDetect_Barcode;
+                                e.Value = Properties.Resources.icon_CantDetect_Barcode;
                             }
                             else
                             {
-                                e.Value = BarcodeVerificationSystem.Properties.Resources.icons8_multiply_20px;
+                                e.Value = Properties.Resources.icons8_multiply_20px;
                             }
 
                             if (dgvCheckedResult.Rows[e.RowIndex].Selected == true)
                             {
                                 dgvCheckedResult.Rows[e.RowIndex].Height = 106;
-                                var txt = string.Format("{0:D7}", dgvCheckedResult.Rows[e.RowIndex].Cells[0].Value.ToString()).Split(',');
+                                string[] txt = string.Format("{0:D7}", dgvCheckedResult.Rows[e.RowIndex].Cells[0].Value.ToString()).Split(',');
                                 string imgIndex = "";
-                                foreach (var s in txt)
+                                foreach (string s in txt)
                                 {
                                     imgIndex += s;
                                 }
@@ -498,26 +495,26 @@ namespace BarcodeVerificationSystem.View
                                 {
                                     imgIndex = "0" + imgIndex;
                                 }
-                                var imgFileName = _ImageNameList.Find(x => x.Contains(imgIndex));
+                                string imgFileName = _ImageNameList.Find(x => x.Contains(imgIndex));
                                 string path = Shared.Settings.ExportImagePath + "\\" + Shared.JobNameSelected.Split('.')[0] + "\\" + imgFileName;
                                 if (imgFileName != null)
                                 {
                                     try
                                     {
-                                        Bitmap bmp = new Bitmap(Bitmap.FromFile(path), 100, 100);
+                                        var bmp = new Bitmap(Image.FromFile(path), 100, 100);
                                         e.Value = bmp;
                                         bmp = null;
                                     }
                                     catch
                                     {
-                                        Bitmap bmp = new Bitmap(100, 100);
+                                        var bmp = new Bitmap(100, 100);
                                         e.Value = bmp;
                                         bmp = null;
                                     }
                                 }
                                 else
                                 {
-                                    e.Value = BarcodeVerificationSystem.Properties.Resources.icon_NoImage;
+                                    e.Value = Properties.Resources.icon_NoImage;
                                 }
                             }
                             else
@@ -534,13 +531,13 @@ namespace BarcodeVerificationSystem.View
             };
 
             int tableWidth = dgvCheckedResult.Width;
-            float percentWidth = (float)1 / columns.Length;
+            var percentWidth = (float)1 / columns.Length;
             int tableCodeProductListWidth = dgvCheckedResult.Width - 39;
             for (int index = 0; index < columns.ToArray().Length; index++)
             {
                 if (index == 2)
                 {
-                    DataGridViewImageColumn col = new DataGridViewImageColumn
+                    var col = new DataGridViewImageColumn
                     {
                         HeaderText = columns[index],
                         Name = columns[index].Trim()
@@ -559,7 +556,7 @@ namespace BarcodeVerificationSystem.View
                 }
                 else
                 {
-                    DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn
+                    var col = new DataGridViewTextBoxColumn
                     {
                         HeaderText = columns[index],
                         Name = columns[index].Trim(),
@@ -581,7 +578,7 @@ namespace BarcodeVerificationSystem.View
             dgvCheckedResult.RowCount = _PageRows;
             dgvCheckedResult.VirtualMode = true;
         }
-        private string[] defaultRecord = new string[] { "100000", "abcdefghijk123456789abcdefhgh", "Valid", "100", DateTime.Now.ToString() };
+        private readonly string[] defaultRecord = new string[] { "100000", "abcdefghijk123456789abcdefhgh", "Valid", "100", DateTime.Now.ToString() };
 
         private List<int> _SearchResultList = new List<int>();
 
@@ -619,7 +616,7 @@ namespace BarcodeVerificationSystem.View
                 if (filler == "missed")
                 {
                     _SearchResultList.Clear();
-                    foreach (var item in _CheckedData)
+                    foreach (KeyValuePair<string, CompareStatus> item in _CheckedData)
                     {
                         if (!item.Value.Status)
                         {

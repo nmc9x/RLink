@@ -1,20 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using UILanguage;
 
 namespace BarcodeVerificationSystem.Model
 {
-    /// <summary>
-    /// @Author: TrangDong
-    /// @Email: trang.dong@rynantech.com
-    /// @Date created: November 22, 2019
-    /// </summary>
     public class InternalData
     {
     }
@@ -219,11 +210,6 @@ namespace BarcodeVerificationSystem.Model
         BottomRight
     }
 
-    //public enum DatabaseComparisonType
-    //{
-    //    DataExists,
-    //    Order
-    //}
 
     public enum CheckCondition
     {
@@ -334,8 +320,6 @@ namespace BarcodeVerificationSystem.Model
                 throw new ArgumentException("EnumerationValue must be of Enum type", "enumerationValue");
             }
 
-            //Tries to find a DescriptionAttribute for a potential friendly name
-            //for the enum
             MemberInfo[] memberInfo = type.GetMember(enumerationValue.ToString());
             if (memberInfo != null && memberInfo.Length > 0)
             {
@@ -343,11 +327,9 @@ namespace BarcodeVerificationSystem.Model
 
                 if (attrs != null && attrs.Length > 0)
                 {
-                    //Pull out the description value
                     return ((DescriptionAttribute)attrs[0]).Description;
                 }
             }
-            //If we have no description attribute, just return the ToString of the enum
             return enumerationValue.ToString();
         }
     }
@@ -361,42 +343,36 @@ namespace BarcodeVerificationSystem.Model
             switch (comparisonResult)
             {
                 case ComparisonResult.Valid:
-                    //strResult = "PASSED";
                     strResult = ComparisonResult.Valid.ToString().ToUpper(); // Don't convert Uppercase here because it's time consuming
                     break;
 
                 case ComparisonResult.Invalided:
-                    //strResult = "FAILED";
                     strResult = ComparisonResult.Invalided.ToString().ToUpper();
                     break;
 
                 case ComparisonResult.Null:
-                    //strResult = "FAILED";
                     strResult = ComparisonResult.Null.ToString().ToUpper();
                     break;
 
                 case ComparisonResult.Missed:
-                    //strResult = "FAILED";
                     strResult = ComparisonResult.Missed.ToString().ToUpper();
                     break;
 
                 case ComparisonResult.Duplicated:
-                    //strResult = "FAILED";
                     strResult = ComparisonResult.Duplicated.ToString().ToUpper();
                     break;
 
                 default:
-                    //strResult = "FAILED";
                     strResult = ComparisonResult.Invalided.ToString().ToUpper();
                     break;
             }
             return strResult;
         }
 
-        //Define color for text
         public static Color GetBackgroundColor(this ComparisonResult comparisonResult)
         {
-            Color color = Color.Black;
+            _ = Color.Black;
+            Color color;
             switch (comparisonResult)
             {
                 case ComparisonResult.Valid:
@@ -419,7 +395,7 @@ namespace BarcodeVerificationSystem.Model
     {
         public static string ToFriendlyString(this OperationStatus operationStatus)
         {
-            string strResult = "";
+            string strResult;
             switch (operationStatus)
             {
                 case OperationStatus.Running:
@@ -437,10 +413,10 @@ namespace BarcodeVerificationSystem.Model
             return strResult;
         }
 
-        //Define color for text
         public static Color GetForegroundColor(this OperationStatus operationStatus)
         {
-            Color color = Color.Black;
+            _ = Color.Black;
+            Color color;
             switch (operationStatus)
             {
                 case OperationStatus.Running:
@@ -457,6 +433,7 @@ namespace BarcodeVerificationSystem.Model
             }
             return color;
         }
+
     }
     #endregion Enum extensions
 }

@@ -8,12 +8,10 @@ namespace BarcodeVerificationSystem.Controller
         public CsvReader(string fileName) : this(new FileStream(fileName, FileMode.Open, FileAccess.Read))
         {
         }
-
         public CsvReader(Stream stream)
         {
             __reader = new StreamReader(stream);
         }
-
         public System.Collections.IEnumerable RowEnumerator
         {
             get
@@ -47,16 +45,13 @@ namespace BarcodeVerificationSystem.Controller
 
         public void Dispose()
         {
-            if (null != __reader) __reader.Dispose();
+            __reader?.Dispose();
         }
 
-        //============================================
-
-
         private long __rowno = 0;
-        private TextReader __reader;
-        private static Regex rexCsvSplitter = new Regex(@",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))");
-        private static Regex rexRunOnLine = new Regex(@"^[^""]*(?:""[^""]*""[^""]*)*""[^""]*$");
+        private readonly TextReader __reader;
+        private static readonly Regex rexCsvSplitter = new Regex(@",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))");
+        private static readonly Regex rexRunOnLine = new Regex(@"^[^""]*(?:""[^""]*""[^""]*)*""[^""]*$");
     }
     public sealed class CsvWriter : System.IDisposable
     {
@@ -86,16 +81,11 @@ namespace BarcodeVerificationSystem.Controller
 
         public void Dispose()
         {
-            if (null != __writter) __writter.Dispose();
+            __writter?.Dispose();
         }
 
-        //============================================
-
-
-        private long __rowno = 0;
-        private TextWriter __writter;
-        private static Regex rexCsvSplitter = new Regex(@",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))");
-        private static Regex rexRunOnLine = new Regex(@"^[^""]*(?:""[^""]*""[^""]*)*""[^""]*$");
+        private readonly long __rowno = 0;
+        private readonly TextWriter __writter;
     }
     public static class Csv
     {
@@ -103,13 +93,10 @@ namespace BarcodeVerificationSystem.Controller
         {
             if (s.Contains(QUOTE))
                 s = s.Replace(QUOTE, ESCAPED_QUOTE);
-
             if (s.IndexOfAny(CHARACTERS_THAT_MUST_BE_QUOTED) > -1)
                 s = QUOTE + s + QUOTE;
-
             return s;
         }
-
         public static string Unescape(string s)
         {
             if (s == null) return null;
@@ -120,13 +107,11 @@ namespace BarcodeVerificationSystem.Controller
                 if (s.Contains(ESCAPED_QUOTE))
                     s = s.Replace(ESCAPED_QUOTE, QUOTE);
             }
-
             return s;
         }
 
-
         private const string QUOTE = "\"";
         private const string ESCAPED_QUOTE = "\"\"";
-        private static char[] CHARACTERS_THAT_MUST_BE_QUOTED = { ',', '"', '\n' };
+        private static readonly char[] CHARACTERS_THAT_MUST_BE_QUOTED = { ',', '"', '\n' };
     }
 }

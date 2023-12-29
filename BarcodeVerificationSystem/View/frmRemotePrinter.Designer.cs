@@ -1,6 +1,6 @@
 ﻿namespace BarcodeVerificationSystem.View
 {
-    partial class frmRemotePrinter
+    partial class FrmRemotePrinter
     {
         /// <summary>
         /// Required designer variable.

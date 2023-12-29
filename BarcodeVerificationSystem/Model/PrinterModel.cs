@@ -1,18 +1,9 @@
 ﻿using BarcodeVerificationSystem.Controller;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace BarcodeVerificationSystem.Model
 {
-    /// <summary>
-    /// @Author: DungLe
-    /// @Email: dung.le@rynantech.com
-    /// @Date created: October 17, 2022
-    /// </summary>
     [Serializable]
     public class PrinterModel
     {
@@ -27,11 +18,11 @@ namespace BarcodeVerificationSystem.Model
         private int _NumPortRemote = 80;
         private bool _CheckPrinterSettingsIsEnable = true;
         private PODController _PODController = null;
-        [XmlIgnore]//Not save value to xml file
+        [XmlIgnore]
         public bool IsConnected { get => _IsConnected; set => _IsConnected = value; }
-        [XmlIgnore]//Not save value to xml file
+        [XmlIgnore]
         public int CountTimeReconnect { get => _CountTimeReconnect; set => _CountTimeReconnect = value; }
-        [XmlIgnore]//Not save value to xml file
+        [XmlIgnore]
         public PODController PODController { get => _PODController; set => _PODController = value; }
         public int Index { get => _Index; set => _Index = value; }
         public string IP { get => _IP; set => _IP = value; }

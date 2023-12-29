@@ -1,6 +1,6 @@
 ﻿namespace BarcodeVerificationSystem.View
 {
-    partial class frmWarningUSBDongleKey
+    partial class FrmWarningUSBDongleKey
     {
         /// <summary>
         /// Required designer variable.

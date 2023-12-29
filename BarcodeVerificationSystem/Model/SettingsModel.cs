@@ -9,29 +9,19 @@ namespace BarcodeVerificationSystem.Model
     public class SettingsModel
     {
         #region Properties
-        // Compare type
         private CompareType _CompareType = CompareType.CanRead;
         public CompareType CompareType { get => _CompareType; set => _CompareType = value; }
-        // Compare type
 
         private string _JobFileExtension = ".rvis";
 
-        // Camera settings
         private List<CameraModel> _CameraList = new List<CameraModel>();
         public List<CameraModel> CameraList { get => _CameraList; set => _CameraList = value; }
-        // END Camera settings
 
-        // Printer settings
         private List<PrinterModel> _PrinterList = new List<PrinterModel>();
         public List<PrinterModel> PrinterList { get => _PrinterList; set => _PrinterList = value; }
         private bool _IsPrinting = true;
         public bool IsPrinting { get => _IsPrinting; set => _IsPrinting = value; }
 
-
-
-        // END Printer settings
-
-        // Sensor controller
         private bool _SensorControllerEnable = true;
         private string _SensorControllerIP = "192.168.1.100";
         private int _SensorControllerPort = 2001;
@@ -47,9 +37,7 @@ namespace BarcodeVerificationSystem.Model
         public float SensorControllerEncoderDiameter { get => _SensorControllerEncoderDiameter; set => _SensorControllerEncoderDiameter = value; }
         public int SensorControllerDelayBefore { get => _SensorControllerDelayBefore; set => _SensorControllerDelayBefore = value; }
         public int SensorControllerDelayAfter { get => _SensorControllerDelayAfter; set => _SensorControllerDelayAfter = value; }
-        // END Sensor controller
 
-        // System settings
         private string _ExportCheckedResultPath = @"C:\Users\Public\Exports\CheckedResult";
         private string _DataCheckedFileName = "20191220_164200_DataChecked.txt";
         private bool _ExportImageEnable = false;
@@ -62,9 +50,7 @@ namespace BarcodeVerificationSystem.Model
         public string ExportImagePath { get => _ExportImagePath; set => _ExportImagePath = value; }
         public string FailedDataSentToPrinter { get => _FailedDataSentToPrinter; set => _FailedDataSentToPrinter = value; }
         public List<PODModel> PrintFieldForVerifyAndPrint { get => _PrintFieldForVerifyAndPrint; set => _PrintFieldForVerifyAndPrint = value; }
-        // END System settings
 
-        // Language
         private string _Language = "en-US";
         public string Language { get => _Language; set => _Language = value; }
 
@@ -81,7 +67,7 @@ namespace BarcodeVerificationSystem.Model
         private string _ExportNamePrefixFormat = "yyyyMMdd_HHmmss";
         public string ExportNamePrefixFormat { get => _ExportNamePrefixFormat; set => _ExportNamePrefixFormat = value; }
 
-        // END Language
+
         private string _JobDateTimeFormat = "yyyyMMdd_HHmmss";
         public string JobDateTimeFormat { get => _JobDateTimeFormat; set => _JobDateTimeFormat = value; }
         private string _JobFileNameDefault = "Template";
@@ -91,13 +77,13 @@ namespace BarcodeVerificationSystem.Model
         #endregion Properties
 
         #region Methods
-        public virtual void SaveSettings(String fileName)
+        public virtual void SaveSettings(string fileName)
         {
             try
             {
-                XmlDocument xmlDocument = new XmlDocument();
-                XmlSerializer serializer = new XmlSerializer(this.GetType());
-                using (MemoryStream stream = new MemoryStream())
+                var xmlDocument = new XmlDocument();
+                var serializer = new XmlSerializer(this.GetType());
+                using (var stream = new MemoryStream())
                 {
                     serializer.Serialize(stream, this);
                     stream.Position = 0;
@@ -108,25 +94,24 @@ namespace BarcodeVerificationSystem.Model
             }
             catch (Exception)
             {
-                //Log exception here
+              
             }
         }
 
-        public static SettingsModel LoadSetting(String fileName)
+        public static SettingsModel LoadSetting(string fileName)
         {
             SettingsModel info = null;
             try
             {
-                XmlDocument xmlDocument = new XmlDocument();
+                var xmlDocument = new XmlDocument();
                 xmlDocument.Load(fileName);
                 string xmlString = xmlDocument.OuterXml;
 
-                using (StringReader read = new StringReader(xmlString))
+                using (var read = new StringReader(xmlString))
                 {
                     Type outType = typeof(SettingsModel);
-
-                    XmlSerializer serializer = new XmlSerializer(outType);
-                    using (XmlReader reader = new XmlTextReader(read))
+                    var serializer = new XmlSerializer(outType);
+                    using (var reader = new XmlTextReader(read))
                     {
                         info = (SettingsModel)serializer.Deserialize(reader);
                         reader.Close();

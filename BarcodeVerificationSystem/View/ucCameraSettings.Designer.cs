@@ -1,6 +1,6 @@
 ﻿namespace BarcodeVerificationSystem.View
 {
-    partial class ucCameraSettings
+    partial class UcCameraSettings
     {
         /// <summary> 
         /// Required designer variable.

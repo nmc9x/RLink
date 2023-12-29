@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace BarcodeVerificationSystem.Model
 {
-    /// <summary>
-    /// @Author: TrangDong
-    /// @Email: trang.dong@rynantech.com
-    /// @Date created: November 26, 2019
-    /// </summary>
     public class ExportImageModel
     {
         private Bitmap _Image = null;

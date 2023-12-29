@@ -1,6 +1,6 @@
 ﻿namespace BarcodeVerificationSystem.View
 {
-    partial class frmLoginNew
+    partial class FrmLoginNew
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLoginNew));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLoginNew));
             this.panelDrag = new System.Windows.Forms.Panel();
             this.cuzPanel1 = new DesignUI.CuzUI.CuzPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();

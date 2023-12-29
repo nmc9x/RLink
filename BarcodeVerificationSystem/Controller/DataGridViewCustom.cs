@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BarcodeVerificationSystem.Controller
@@ -31,10 +27,12 @@ namespace BarcodeVerificationSystem.Controller
             {
                 if (index == imgIndex)
                 {
-                    DataGridViewImageColumn col = new DataGridViewImageColumn();
-                    col.HeaderText = columns[index];
-                    col.Name = columns[index].Trim();
-                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                    var col = new DataGridViewImageColumn
+                    {
+                        HeaderText = columns[index],
+                        Name = columns[index].Trim(),
+                        SortMode = DataGridViewColumnSortMode.NotSortable
+                    };
                     if (index == 0)
                     {
                         col.Width = (int)(0.75 * tableCodeProductListWidth);
@@ -47,10 +45,12 @@ namespace BarcodeVerificationSystem.Controller
                 }
                 else
                 {
-                    DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
-                    col.HeaderText = (index != 0 && columns.Count() - 1 != index && isPOD) ? columns[index] + " - Field" + (index) : columns[index];
-                    col.Name = columns[index].Trim();
-                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                    var col = new DataGridViewTextBoxColumn
+                    {
+                        HeaderText = (index != 0 && columns.Count() - 1 != index && isPOD) ? columns[index] + " - Field" + (index) : columns[index],
+                        Name = columns[index].Trim(),
+                        SortMode = DataGridViewColumnSortMode.NotSortable
+                    };
                     if (index == 0)
                     {
                         col.Width = (int)(0.75 * tableCodeProductListWidth);
@@ -63,33 +63,23 @@ namespace BarcodeVerificationSystem.Controller
                 }
             }
 
-            //AutoResizeColumnWith(dgv, columns);
-
             dgv.RowHeadersVisible = false;
-
             dgv.EnableHeadersVisualStyles = false;
-
             dgv.RowHeadersVisible = false;
-
             dgv.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgv.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-
             dgv.DefaultCellStyle.ForeColor = SystemColors.WindowFrame;
             dgv.DefaultCellStyle.BackColor = cor;
-
             dgv.ColumnHeadersHeight = 35;
             dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgv.ColumnHeadersDefaultCellStyle.Padding = new Padding(0, 10, 0, 10);
             dgv.ColumnHeadersDefaultCellStyle.BackColor = cor;
             dgv.ColumnHeadersDefaultCellStyle.ForeColor = SystemColors.WindowFrame;
             dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular);
-
             dgv.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(210, 232, 255);
             dgv.RowsDefaultCellStyle.SelectionForeColor = SystemColors.WindowFrame;
-
             dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 251, 255);
             dgv.AllowUserToResizeRows = false;
-
             dgv.RowPostPaint += (obj, e) =>
             {
                 e.Graphics.DrawLine(new Pen(Color.Gainsboro),
@@ -107,7 +97,7 @@ namespace BarcodeVerificationSystem.Controller
         {
             try
             {
-                var firstRowWith = value;
+                string[] firstRowWith = value;
                 int totalColumnsWidth = 0;
                 int[] thickestRowIndex = { 0, TextRenderer.MeasureText(firstRowWith[0], dgv.Font).Width };
                 for (int i = 0; i < firstRowWith.Length; i++)

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BarcodeVerificationSystem.Model
+﻿namespace BarcodeVerificationSystem.Model
 {
     public class PODModel
     {
@@ -29,8 +23,7 @@ namespace BarcodeVerificationSystem.Model
         {
 
         }
-        
-
+ 
         public enum TypePOD {
             TEXT,
             FIELD,
@@ -71,7 +64,7 @@ namespace BarcodeVerificationSystem.Model
 
         public PODModel Clone()
         {
-            PODModel POD = new PODModel
+            var POD = new PODModel
             {
                 Index = Index,
                 Value = Value,

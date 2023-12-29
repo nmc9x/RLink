@@ -1,6 +1,6 @@
 ﻿namespace BarcodeVerificationSystem.View
 {
-    partial class ucSystemSettings
+    partial class UcSystemSettings
     {
         /// <summary> 
         /// Required designer variable.

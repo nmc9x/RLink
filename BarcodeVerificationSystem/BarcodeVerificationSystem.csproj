@@ -474,14 +474,6 @@
     <None Include="Resources\icons8-proximity-sensor-24.png" />
     <None Include="Resources\icons8-import-csv-100.png" />
     <None Include="Resources\icons8_import_csv_35px.png" />
-    <None Include="Resources\icons8_Double_Right_35px.png" />
-    <None Include="Resources\icons8_Double_Left_35px.png" />
-    <None Include="Resources\icons8_Double_Up_35px.png" />
-    <None Include="Resources\icons8_Double_Down_35px.png" />
-    <None Include="Resources\icons8_Double_Down_30px.png" />
-    <None Include="Resources\icons8_Double_Left_30px.png" />
-    <None Include="Resources\icons8_Double_Right_30px.png" />
-    <None Include="Resources\icons8_Double_Up_30px.png" />
     <None Include="Resources\icons8_import_csv_16px.png" />
     <None Include="Resources\icons8_import_csv_20px.png" />
     <None Include="Resources\icons8_database_import_20px.png" />
@@ -495,7 +487,6 @@
     <None Include="Resources\icons8_delete_row_25px.png" />
     <None Include="Resources\icons8_txt_25px.png" />
     <None Include="Resources\icons8_database_25px.png" />
-    <None Include="Resources\icons8_password_window_100px_1.png" />
     <None Include="Resources\icons8_create_20px.png" />
     <None Include="Resources\icons8_done_20px.png" />
     <None Include="Resources\icons8_multiply_20px.png" />
@@ -553,9 +544,7 @@
     <None Include="Resources\icons8_Sort_Up_24px_1.png" />
     <None Include="Resources\icons8_Sort_Down_24px_1.png" />
     <None Include="Resources\icons8_delete_file_24px.png" />
-    <None Include="Resources\icons8_login_as_user_100px.png" />
     <None Include="Resources\icons8_barcode_approve_100px.png" />
-    <None Include="Resources\icons8_Qr_Code_100px.png" />
     <Content Include="Resources\icon_add_18.png" />
     <None Include="Resources\Stop321.png" />
     <None Include="Resources\Play321.png" />
@@ -720,6 +709,9 @@
     <PackageReference Include="FontAwesome.Sharp">
       <Version>6.1.1</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

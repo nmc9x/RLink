@@ -1,6 +1,6 @@
 ﻿namespace BarcodeVerificationSystem.View
 {
-    partial class frmPrintFieldForVerifyAndPrintCompareMode
+    partial class FrmPrintFieldForVerifyAndPrintCompareMode
     {
         /// <summary>
         /// Required designer variable.
@@ -27,7 +27,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrintFieldForVerifyAndPrintCompareMode));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrintFieldForVerifyAndPrintCompareMode));
             this.tblPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.pnlPOD = new System.Windows.Forms.Panel();
             this.tblPanelPOD = new System.Windows.Forms.TableLayoutPanel();
@@ -439,7 +439,7 @@
             this.Name = "frmPrintFieldForVerifyAndPrintCompareMode";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POD Format";
-            this.Load += new System.EventHandler(this.frmPODFormat_Load);
+            this.Load += new System.EventHandler(this.FrmPODFormat_Load);
             this.tblPanelMain.ResumeLayout(false);
             this.pnlPOD.ResumeLayout(false);
             this.tblPanelPOD.ResumeLayout(false);

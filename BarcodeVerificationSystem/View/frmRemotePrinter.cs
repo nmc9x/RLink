@@ -1,22 +1,16 @@
 ﻿using Microsoft.Web.WebView2.Core;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BarcodeVerificationSystem.View
 {
-    public partial class frmRemotePrinter : Form
+    public partial class FrmRemotePrinter : Form
     {
         public string IPAddress = "";
         public int Port = 1001;
 
-        public frmRemotePrinter()
+        public FrmRemotePrinter()
         {
             InitializeComponent();
         }
@@ -25,8 +19,7 @@ namespace BarcodeVerificationSystem.View
         {
             base.OnHandleCreated(e);
             string url = $"{IPAddress}:{Port}";
-            //string url = $"chat.zalo.me";
-            //webView21.Source = new Uri(queryURL);
+           
             InitializeBrowser(url);
 
             reloadToolStripMenuItem.Click += (sender, eventArgs) =>
@@ -37,7 +30,7 @@ namespace BarcodeVerificationSystem.View
             exitToolStripMenuItem.Click += (sender, eventArgs) =>
             {
                 webView21.Dispose();
-                this.Close();
+                Close();
             };
 
             btnMenu.MouseDown += (sender, eventArgs) => {
@@ -54,10 +47,9 @@ namespace BarcodeVerificationSystem.View
             };
         }
 
-
         private async void InitializeBrowser(string url = null)
         {
-            var userDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\BarcodeVerificationSystems";
+            string userDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\BarcodeVerificationSystems";
             var env = await CoreWebView2Environment.CreateAsync(null, userDataFolder);
             await webView21.EnsureCoreWebView2Async(env);
             webView21.Source = new UriBuilder(url).Uri;

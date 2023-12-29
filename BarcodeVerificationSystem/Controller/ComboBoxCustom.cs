@@ -1,29 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace BarcodeVerificationSystem.Controller
 {
     public class ComboBoxCustom
     {
-        public static void cbo_MeasureItem(object sender, MeasureItemEventArgs e)
+        public static void Cbo_MeasureItem(object sender, MeasureItemEventArgs e)
         {
             e.ItemHeight = 35;
         }
 
-        public static void myComboBox_DrawItem(object sender, DrawItemEventArgs e)
+        public static void MyComboBox_DrawItem(object sender, DrawItemEventArgs e)
         {
-            ComboBox box = sender as ComboBox;
-
-            if (Object.ReferenceEquals(null, box))
+            var box = (ComboBox)sender;
+            if (box is null)
                 return;
-
             e.DrawBackground();
-
             if (e.Index >= 0)
             {
                 Graphics g = e.Graphics;
@@ -35,7 +27,6 @@ namespace BarcodeVerificationSystem.Controller
                     using (Brush textBrush = new SolidBrush(e.ForeColor))
                     {
                         g.FillRectangle(brush, e.Bounds);
-
                         g.DrawString(box.Items[e.Index].ToString(),
                                      e.Font,
                                      textBrush,
@@ -44,7 +35,6 @@ namespace BarcodeVerificationSystem.Controller
                     }
                 }
             }
-
             e.DrawFocusRectangle();
         }
     }
